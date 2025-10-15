@@ -47,10 +47,17 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Apply schema with Prisma
+      - name: Test DB connectivity (pg SELECT 1)
+        shell: bash
         env:
           DATABASE_URL: ${{ env.DIRECT_DATABASE_URL }}
-        run: pnpm exec prisma db push --skip-generate --force-reset
+        run: |
+          node -e "(async()=>{const {Client}=require('pg');const c=new Client({connectionString:process.env.DATABASE_URL});await c.connect();const r=await c.query('SELECT 1');console.log('DB OK:',r.rows[0]);await c.end()})().catch(e=>{console.error('DB connectivity failed:',e);process.exit(1)})"
+
+      - name: Apply schema with Prisma (migrate deploy)
+        env:
+          DATABASE_URL: ${{ env.DIRECT_DATABASE_URL }}
+        run: pnpm exec prisma migrate deploy
 
   import-data:
     runs-on: ubuntu-latest
