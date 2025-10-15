@@ -41,8 +41,17 @@ jobs:
               URL="$URL?sslmode=require"
             fi
           fi
+          # Ensure compatibility with node-postgres by also setting ssl=true
+          if [[ "$URL" != *"ssl="* ]]; then
+            if [[ "$URL" == *"?"* ]]; then
+              URL="$URL&ssl=true"
+            else
+              URL="$URL?ssl=true"
+            fi
+          fi
           echo "DATABASE_URL=$URL" >> $GITHUB_ENV
           echo "DIRECT_DATABASE_URL=$URL" >> $GITHUB_ENV
+          echo "PGSSLMODE=require" >> $GITHUB_ENV
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
@@ -51,8 +60,9 @@ jobs:
         shell: bash
         env:
           DATABASE_URL: ${{ env.DIRECT_DATABASE_URL }}
+          PGSSLMODE: ${{ env.PGSSLMODE }}
         run: |
-          node -e "(async()=>{const {Client}=require('pg');const c=new Client({connectionString:process.env.DATABASE_URL});await c.connect();const r=await c.query('SELECT 1');console.log('DB OK:',r.rows[0]);await c.end()})().catch(e=>{console.error('DB connectivity failed:',e);process.exit(1)})"
+          node -e "(async()=>{const {Client}=require('pg');const c=new Client({connectionString:process.env.DATABASE_URL,ssl:{rejectUnauthorized:false}});await c.connect();const r=await c.query('SELECT 1');console.log('DB OK:',r.rows[0]);await c.end()})().catch(e=>{console.error('DB connectivity failed:',e);process.exit(1)})"
 
       - name: Apply schema with Prisma (migrate deploy)
         env:
