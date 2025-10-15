@@ -50,7 +50,7 @@ jobs:
       - name: Apply schema with Prisma
         env:
           DATABASE_URL: ${{ env.DIRECT_DATABASE_URL }}
-        run: pnpm exec prisma db push --skip-generate --force-reset --url "$DATABASE_URL"
+        run: pnpm exec prisma db push --skip-generate --force-reset
 
   import-data:
     runs-on: ubuntu-latest
@@ -70,7 +70,6 @@ jobs:
         with:
           version: 9
           run_install: false
-          cache: true
 
       - name: Prepare DATABASE_URL_RENDER with sslmode=require
         shell: bash
