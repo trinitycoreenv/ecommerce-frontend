@@ -100,9 +100,56 @@ jobs:
           psql "$DATABASE_URL" -v ON_ERROR_STOP=1 -At -c "SELECT 1"
 
       - name: Apply schema with Prisma (migrate deploy)
+        id: prisma_migrate
+        continue-on-error: true
         env:
           DATABASE_URL: ${{ env.DIRECT_DATABASE_URL }}
         run: pnpm exec prisma migrate deploy
+
+      - name: Install jq for Render API polling
+        if: steps.prisma_migrate.outcome == 'failure' && secrets.RENDER_API_KEY != '' && secrets.RENDER_MIGRATION_JOB_ID != ''
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y jq
+
+      - name: Trigger Render migration job (fallback)
+        if: steps.prisma_migrate.outcome == 'failure' && secrets.RENDER_API_KEY != '' && secrets.RENDER_MIGRATION_JOB_ID != ''
+        env:
+          RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
+          RENDER_MIGRATION_JOB_ID: ${{ secrets.RENDER_MIGRATION_JOB_ID }}
+        run: |
+          echo "Triggering Render Job for migration..."
+          RUN_JSON=$(curl -s -X POST \
+            -H "Authorization: Bearer $RENDER_API_KEY" \
+            -H "Content-Type: application/json" \
+            "https://api.render.com/v1/jobs/$RENDER_MIGRATION_JOB_ID/runs")
+          echo "Run response: $RUN_JSON"
+          RUN_ID=$(echo "$RUN_JSON" | jq -r '.id')
+          if [ -z "$RUN_ID" ] || [ "$RUN_ID" = "null" ]; then
+            echo "Failed to start Render Job run"; exit 1
+          fi
+          echo "Started Render migration run: $RUN_ID"
+          for i in {1..60}; do
+            STATUS_JSON=$(curl -s -H "Authorization: Bearer $RENDER_API_KEY" \
+              "https://api.render.com/v1/jobs/$RENDER_MIGRATION_JOB_ID/runs/$RUN_ID")
+            STATUS=$(echo "$STATUS_JSON" | jq -r '.status')
+            echo "Render job status: $STATUS"
+            if [ "$STATUS" = "succeeded" ] || [ "$STATUS" = "completed" ]; then
+              echo "Render migration job succeeded"; exit 0
+            fi
+            if [ "$STATUS" = "failed" ] || [ "$STATUS" = "canceled" ]; then
+              echo "Render migration job failed"; exit 1
+            fi
+            sleep 5
+          done
+          echo "Timeout waiting for Render job"; exit 1
+
+      - name: Fail if migrations not applied and no fallback configured
+        if: steps.prisma_migrate.outcome == 'failure' && (secrets.RENDER_API_KEY == '' || secrets.RENDER_MIGRATION_JOB_ID == '')
+        run: |
+          echo "Prisma migrate failed and Render fallback not configured."
+          echo "Enable External Connections on Render Postgres OR configure RENDER_API_KEY and RENDER_MIGRATION_JOB_ID secrets to run migrations inside Render."
+          exit 1
 
   import-data:
     runs-on: ubuntu-latest
