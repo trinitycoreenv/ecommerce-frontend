@@ -29,9 +29,8 @@ jobs:
         with:
           version: 9
           run_install: false
-          cache: true
 
-      - name: Prepare DATABASE_URL with sslmode=require
+      - name: Prepare Render URLs with sslmode=require
         shell: bash
         run: |
           URL="${{ secrets.DATABASE_URL_RENDER }}"
@@ -43,12 +42,15 @@ jobs:
             fi
           fi
           echo "DATABASE_URL=$URL" >> $GITHUB_ENV
+          echo "DIRECT_DATABASE_URL=$URL" >> $GITHUB_ENV
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
       - name: Apply schema with Prisma
-        run: pnpm exec prisma db push --skip-generate --force-reset
+        env:
+          DATABASE_URL: ${{ env.DIRECT_DATABASE_URL }}
+        run: pnpm exec prisma db push --skip-generate --force-reset --url "$DATABASE_URL"
 
   import-data:
     runs-on: ubuntu-latest
