@@ -1,0 +1,1246 @@
+{
+  "users": [
+    {
+      "id": "bf23f426-29c0-4195-80cd-8cf1595bfc35",
+      "email": "admin@ecommerce.com",
+      "name": "Admin User",
+      "firstName": null,
+      "lastName": null,
+      "phone": null,
+      "address": null,
+      "passwordHash": "$2b$12$N.nAAElSuYgDdoXbhHXvmukYjbyXxLWEiQFRvJ7Z1PxIZQmyQHqLm",
+      "role": "ADMIN",
+      "isActive": true,
+      "emailVerified": true,
+      "emailVerificationToken": null,
+      "emailVerificationExpires": null,
+      "passwordResetToken": null,
+      "passwordResetExpires": null,
+      "createdAt": "2025-10-13T19:07:54.895Z",
+      "updatedAt": "2025-10-13T19:07:54.895Z"
+    },
+    {
+      "id": "4e2cd6b0-ae14-450a-9155-6f611cc9ba47",
+      "email": "finance@ecommerce.com",
+      "name": "Finance Analyst",
+      "firstName": null,
+      "lastName": null,
+      "phone": null,
+      "address": null,
+      "passwordHash": "$2b$12$DmZ6EzUjMfm02mMccgq5IuDiocrq1rXGn/XE0iOxtoc5cM3.zPl8C",
+      "role": "FINANCE_ANALYST",
+      "isActive": true,
+      "emailVerified": true,
+      "emailVerificationToken": null,
+      "emailVerificationExpires": null,
+      "passwordResetToken": null,
+      "passwordResetExpires": null,
+      "createdAt": "2025-10-13T19:07:56.278Z",
+      "updatedAt": "2025-10-13T19:07:56.278Z"
+    },
+    {
+      "id": "faa79352-582c-40aa-aef9-3b5ed9e3632f",
+      "email": "operations@ecommerce.com",
+      "name": "Operations Manager",
+      "firstName": null,
+      "lastName": null,
+      "phone": null,
+      "address": null,
+      "passwordHash": "$2b$12$/gzTM6XOdIGu865fjhbLDO0oM6hXRjMMtZpFEDW3kuxTqbUWB/jNK",
+      "role": "OPERATIONS_MANAGER",
+      "isActive": true,
+      "emailVerified": true,
+      "emailVerificationToken": null,
+      "emailVerificationExpires": null,
+      "passwordResetToken": null,
+      "passwordResetExpires": null,
+      "createdAt": "2025-10-13T19:07:57.103Z",
+      "updatedAt": "2025-10-13T19:07:57.103Z"
+    },
+    {
+      "id": "5c5ba22e-de5b-4b38-86c9-1fc2d13548c0",
+      "email": "vendor@ecommerce.com",
+      "name": "Vendor User",
+      "firstName": null,
+      "lastName": null,
+      "phone": null,
+      "address": null,
+      "passwordHash": "$2b$12$vuI.D88NLE/ujUdZWeru2uWXxb1MHHT7fYcstrbes8cKsJrClg0ui",
+      "role": "VENDOR",
+      "isActive": true,
+      "emailVerified": true,
+      "emailVerificationToken": null,
+      "emailVerificationExpires": null,
+      "passwordResetToken": null,
+      "passwordResetExpires": null,
+      "createdAt": "2025-10-13T19:38:41.836Z",
+      "updatedAt": "2025-10-13T19:38:41.836Z"
+    },
+    {
+      "id": "917aab6f-c13d-4c03-bfda-6994ef2ad69d",
+      "email": "vendor1@gmail.com",
+      "name": "Jay Literal",
+      "firstName": null,
+      "lastName": null,
+      "phone": null,
+      "address": null,
+      "passwordHash": "$2b$12$wgh5bZs9qdcS4b15B/ubGOU.w8Gbv.2Wixq.Hkik3ezBtWRcpcHzW",
+      "role": "VENDOR",
+      "isActive": true,
+      "emailVerified": true,
+      "emailVerificationToken": null,
+      "emailVerificationExpires": null,
+      "passwordResetToken": null,
+      "passwordResetExpires": null,
+      "createdAt": "2025-10-13T19:49:04.983Z",
+      "updatedAt": "2025-10-13T19:49:04.983Z"
+    },
+    {
+      "id": "2ae3b182-65cc-4779-ab81-d0c7209d819d",
+      "email": "customer1@gmail.com",
+      "name": "Jay Literal",
+      "firstName": null,
+      "lastName": null,
+      "phone": null,
+      "address": null,
+      "passwordHash": "$2b$12$mcOT5CnnduGt..vMIHDu4.H76VAGw5tPhnCsQpw8BOsDDLfoAIN/C",
+      "role": "CUSTOMER",
+      "isActive": true,
+      "emailVerified": true,
+      "emailVerificationToken": null,
+      "emailVerificationExpires": null,
+      "passwordResetToken": null,
+      "passwordResetExpires": null,
+      "createdAt": "2025-10-13T23:00:56.009Z",
+      "updatedAt": "2025-10-13T23:00:56.009Z"
+    },
+    {
+      "id": "92ab5447-df82-4e8b-a62c-2d1346739b7c",
+      "email": "vendor2@gmail.com",
+      "name": "Jay Literal",
+      "firstName": null,
+      "lastName": null,
+      "phone": null,
+      "address": null,
+      "passwordHash": "$2b$12$dSCfwFojJ8whfcajHF5eNud7PPzCIOfG3.z9k0EeTMWvDEukx2Fp2",
+      "role": "VENDOR",
+      "isActive": true,
+      "emailVerified": true,
+      "emailVerificationToken": null,
+      "emailVerificationExpires": null,
+      "passwordResetToken": null,
+      "passwordResetExpires": null,
+      "createdAt": "2025-10-14T17:54:02.938Z",
+      "updatedAt": "2025-10-14T17:54:02.938Z"
+    }
+  ],
+  "vendors": [
+    {
+      "id": "cae905e0-013b-4317-bb8a-4069e543afcc",
+      "userId": "5c5ba22e-de5b-4b38-86c9-1fc2d13548c0",
+      "businessName": "Test Vendor Business",
+      "businessAddress": null,
+      "businessType": "E-commerce",
+      "taxId": null,
+      "subscriptionTier": "BASIC",
+      "commissionRate": "0.1",
+      "status": "ACTIVE",
+      "verificationStatus": "APPROVED",
+      "businessLicense": null,
+      "businessLicenseExpiry": null,
+      "website": null,
+      "businessDescription": null,
+      "bankDetails": null,
+      "verificationNotes": null,
+      "verifiedAt": "2025-10-13T20:56:29.319Z",
+      "verifiedBy": null,
+      "createdAt": "2025-10-13T19:38:42.052Z",
+      "updatedAt": "2025-10-13T20:56:29.800Z"
+    },
+    {
+      "id": "125bfca6-c73d-4719-bd3a-3c55208f1921",
+      "userId": "917aab6f-c13d-4c03-bfda-6994ef2ad69d",
+      "businessName": "Jay",
+      "businessAddress": "qc",
+      "businessType": null,
+      "taxId": "12132423423",
+      "subscriptionTier": "BASIC",
+      "commissionRate": "0.1",
+      "status": "ACTIVE",
+      "verificationStatus": "APPROVED",
+      "businessLicense": "",
+      "businessLicenseExpiry": "2079-12-23T00:00:00.000Z",
+      "website": "",
+      "businessDescription": "test",
+      "bankDetails": null,
+      "verificationNotes": null,
+      "verifiedAt": "2025-10-13T20:56:29.319Z",
+      "verifiedBy": null,
+      "createdAt": "2025-10-13T19:49:05.022Z",
+      "updatedAt": "2025-10-13T20:56:29.800Z"
+    },
+    {
+      "id": "89558dc1-7764-4ca8-8dcd-cb1fbe6b5a04",
+      "userId": "92ab5447-df82-4e8b-a62c-2d1346739b7c",
+      "businessName": "Kultura",
+      "businessAddress": "Quezon City",
+      "businessType": null,
+      "taxId": "1234567891",
+      "subscriptionTier": "BASIC",
+      "commissionRate": "0.1",
+      "status": "ACTIVE",
+      "verificationStatus": "APPROVED",
+      "businessLicense": "",
+      "businessLicenseExpiry": "2029-10-15T00:00:00.000Z",
+      "website": "",
+      "businessDescription": "Selling Handmade Dress",
+      "bankDetails": null,
+      "verificationNotes": null,
+      "verifiedAt": null,
+      "verifiedBy": null,
+      "createdAt": "2025-10-14T17:54:03.753Z",
+      "updatedAt": "2025-10-14T17:54:03.753Z"
+    }
+  ],
+  "categories": [
+    {
+      "id": "552242e8-1e5c-426a-85de-6c0dc611e7d5",
+      "name": "Fashion & Apparel",
+      "description": "Clothing, shoes, bags, and fashion accessories",
+      "imageUrl": null,
+      "policyRules": {
+        "maxPrice": 5000,
+        "allowedVendors": [
+          "BASIC",
+          "PREMIUM",
+          "ENTERPRISE"
+        ],
+        "commissionRate": 0.1,
+        "requiresApproval": false
+      },
+      "isActive": true,
+      "createdAt": "2025-10-13T19:07:53.553Z",
+      "updatedAt": "2025-10-13T19:07:53.553Z"
+    },
+    {
+      "id": "c2f9b4ce-7223-4b7e-b818-9d723cc8dce8",
+      "name": "Books & Education",
+      "description": "Books, educational materials, and learning resources",
+      "imageUrl": null,
+      "policyRules": {
+        "maxPrice": 2000,
+        "allowedVendors": [
+          "BASIC",
+          "PREMIUM",
+          "ENTERPRISE"
+        ],
+        "commissionRate": 0.12,
+        "requiresApproval": false
+      },
+      "isActive": true,
+      "createdAt": "2025-10-13T19:07:53.557Z",
+      "updatedAt": "2025-10-13T19:07:53.557Z"
+    },
+    {
+      "id": "614ddf27-d38c-4c35-a44b-afc6170035f5",
+      "name": "Health & Wellness",
+      "description": "Health supplements, medical devices, and wellness products",
+      "imageUrl": null,
+      "policyRules": {
+        "maxPrice": 10000,
+        "allowedVendors": [
+          "PREMIUM",
+          "ENTERPRISE"
+        ],
+        "commissionRate": 0.08,
+        "requiresApproval": true
+      },
+      "isActive": true,
+      "createdAt": "2025-10-13T19:07:53.557Z",
+      "updatedAt": "2025-10-13T19:07:53.557Z"
+    },
+    {
+      "id": "ca1c334d-beb1-4ccd-bfd3-2fbf6ce7618c",
+      "name": "Automotive",
+      "description": "Car accessories, motorcycle parts, and automotive tools",
+      "imageUrl": null,
+      "policyRules": {
+        "maxPrice": 15000,
+        "allowedVendors": [
+          "PREMIUM",
+          "ENTERPRISE"
+        ],
+        "commissionRate": 0.08,
+        "requiresApproval": true
+      },
+      "isActive": true,
+      "createdAt": "2025-10-13T19:07:53.561Z",
+      "updatedAt": "2025-10-13T19:07:53.561Z"
+    },
+    {
+      "id": "1f53c7cb-90ac-4fa3-b25a-0ed88675856f",
+      "name": "Beauty & Personal Care",
+      "description": "Skincare, makeup, hair care, and personal hygiene products",
+      "imageUrl": null,
+      "policyRules": {
+        "maxPrice": 3000,
+        "allowedVendors": [
+          "BASIC",
+          "PREMIUM",
+          "ENTERPRISE"
+        ],
+        "commissionRate": 0.1,
+        "requiresApproval": false
+      },
+      "isActive": true,
+      "createdAt": "2025-10-13T19:07:53.553Z",
+      "updatedAt": "2025-10-13T19:07:53.553Z"
+    },
+    {
+      "id": "48030338-2c7c-4b9f-8137-bcced139cd15",
+      "name": "Electronics & Gadgets",
+      "description": "Smartphones, laptops, tablets, and electronic accessories",
+      "imageUrl": null,
+      "policyRules": {
+        "maxPrice": 50000,
+        "allowedVendors": [
+          "PREMIUM",
+          "ENTERPRISE"
+        ],
+        "commissionRate": 0.08,
+        "requiresApproval": true
+      },
+      "isActive": true,
+      "createdAt": "2025-10-13T19:07:53.553Z",
+      "updatedAt": "2025-10-13T19:07:53.553Z"
+    },
+    {
+      "id": "a6163ac1-80ef-4d3d-97e6-f9cf4cfd7321",
+      "name": "Home & Garden",
+      "description": "Furniture, home decor, garden tools, and household items",
+      "imageUrl": null,
+      "policyRules": {
+        "maxPrice": 25000,
+        "allowedVendors": [
+          "PREMIUM",
+          "ENTERPRISE"
+        ],
+        "commissionRate": 0.08,
+        "requiresApproval": true
+      },
+      "isActive": true,
+      "createdAt": "2025-10-13T19:07:53.553Z",
+      "updatedAt": "2025-10-13T19:07:53.553Z"
+    },
+    {
+      "id": "84bdbb04-9104-4a0e-add1-72a4a7e8aa69",
+      "name": "Sports & Recreation",
+      "description": "Sports equipment, fitness gear, and outdoor recreation items",
+      "imageUrl": null,
+      "policyRules": {
+        "maxPrice": 8000,
+        "allowedVendors": [
+          "BASIC",
+          "PREMIUM",
+          "ENTERPRISE"
+        ],
+        "commissionRate": 0.1,
+        "requiresApproval": false
+      },
+      "isActive": true,
+      "createdAt": "2025-10-13T19:07:53.555Z",
+      "updatedAt": "2025-10-13T19:07:53.555Z"
+    }
+  ],
+  "products": [
+    {
+      "id": "22b07626-8cfe-432f-81d2-af6a4d4be5e4",
+      "vendorId": "125bfca6-c73d-4719-bd3a-3c55208f1921",
+      "categoryId": "552242e8-1e5c-426a-85de-6c0dc611e7d5",
+      "name": "Premium Cotton T-Shirt",
+      "description": "Soft, comfortable 100% organic cotton t-shirt. Available in multiple colors and sizes. Perfect for everyday wear.",
+      "price": "24.99",
+      "sku": "PCT-001",
+      "inventory": 100,
+      "status": "APPROVED",
+      "images": [
+        "/placeholder.jpg"
+      ],
+      "metadata": {
+        "care": "Machine wash cold, tumble dry low",
+        "brand": "EcoWear",
+        "sizes": [
+          "S",
+          "M",
+          "L",
+          "XL",
+          "XXL"
+        ],
+        "colors": [
+          "White",
+          "Black",
+          "Navy",
+          "Gray"
+        ],
+        "material": "100% Organic Cotton",
+        "approvedAt": "2025-10-13T22:59:10.920Z",
+        "approvedBy": "bf23f426-29c0-4195-80cd-8cf1595bfc35",
+        "approvalNotes": ""
+      },
+      "weight": "0.2",
+      "dimensions": {
+        "width": 25,
+        "height": 1,
+        "length": 30
+      },
+      "tags": [
+        "clothing",
+        "t-shirt",
+        "cotton",
+        "organic",
+        "casual"
+      ],
+      "isDigital": false,
+      "requiresShipping": true,
+      "lowStockThreshold": 10,
+      "createdAt": "2025-10-13T22:50:40.219Z",
+      "updatedAt": "2025-10-13T22:59:10.922Z"
+    },
+    {
+      "id": "ef6749d2-8c0a-433a-b520-bfffa097764c",
+      "vendorId": "125bfca6-c73d-4719-bd3a-3c55208f1921",
+      "categoryId": "48030338-2c7c-4b9f-8137-bcced139cd15",
+      "name": "Wireless Bluetooth Headphones",
+      "description": "High-quality wireless Bluetooth headphones with noise cancellation and 30-hour battery life. Perfect for music lovers and professionals.",
+      "price": "299.99",
+      "sku": "WBH-001",
+      "inventory": 10,
+      "status": "APPROVED",
+      "images": [
+        "/wireless-headphones.png"
+      ],
+      "metadata": {
+        "brand": "TechSound",
+        "color": "Black",
+        "model": "WBH-2024",
+        "features": [
+          "Noise Cancellation",
+          "Quick Charge",
+          "Voice Assistant"
+        ],
+        "approvedAt": "2025-10-13T22:59:15.689Z",
+        "approvedBy": "bf23f426-29c0-4195-80cd-8cf1595bfc35",
+        "batteryLife": "30 hours",
+        "connectivity": "Bluetooth 5.0",
+        "approvalNotes": ""
+      },
+      "weight": "0.3",
+      "dimensions": {
+        "width": 18,
+        "height": 8,
+        "length": 20
+      },
+      "tags": [
+        "electronics",
+        "headphones",
+        "wireless",
+        "bluetooth",
+        "audio"
+      ],
+      "isDigital": false,
+      "requiresShipping": true,
+      "lowStockThreshold": 5,
+      "createdAt": "2025-10-13T22:49:41.819Z",
+      "updatedAt": "2025-10-14T20:30:25.880Z"
+    }
+  ],
+  "orders": [
+    {
+      "id": "6023f958-d3a9-4474-986a-268173fc86dd",
+      "customerId": "917aab6f-c13d-4c03-bfda-6994ef2ad69d",
+      "vendorId": "125bfca6-c73d-4719-bd3a-3c55208f1921",
+      "orderNumber": "TEST-1760394659576",
+      "status": "DELIVERED",
+      "totalPrice": "1000",
+      "subtotal": "900",
+      "shippingCost": "50",
+      "tax": "50",
+      "paymentMethod": "STRIPE",
+      "shippingAddress": {
+        "city": "Test City",
+        "state": "Test State",
+        "street": "123 Test Street",
+        "country": "Test Country",
+        "zipCode": "12345"
+      },
+      "billingAddress": {
+        "city": "Test City",
+        "state": "Test State",
+        "street": "123 Test Street",
+        "country": "Test Country",
+        "zipCode": "12345"
+      },
+      "shippingMethod": null,
+      "metadata": {
+        "test": true,
+        "createdBy": "test-api"
+      },
+      "notes": null,
+      "createdAt": "2025-10-13T22:30:59.583Z",
+      "updatedAt": "2025-10-13T22:30:59.583Z"
+    },
+    {
+      "id": "f649a3cd-6ec1-4654-aebe-fcf34b74b855",
+      "customerId": "917aab6f-c13d-4c03-bfda-6994ef2ad69d",
+      "vendorId": "125bfca6-c73d-4719-bd3a-3c55208f1921",
+      "orderNumber": "TEST-1760394659577",
+      "status": "DELIVERED",
+      "totalPrice": "1000",
+      "subtotal": "900",
+      "shippingCost": "50",
+      "tax": "50",
+      "paymentMethod": "STRIPE",
+      "shippingAddress": {
+        "city": "Test City",
+        "state": "Test State",
+        "street": "123 Test Street",
+        "country": "Test Country",
+        "zipCode": "12345"
+      },
+      "billingAddress": {
+        "city": "Test City",
+        "state": "Test State",
+        "street": "123 Test Street",
+        "country": "Test Country",
+        "zipCode": "12345"
+      },
+      "shippingMethod": null,
+      "metadata": {
+        "test": true,
+        "createdBy": "test-api"
+      },
+      "notes": null,
+      "createdAt": "2025-10-13T22:30:59.585Z",
+      "updatedAt": "2025-10-13T22:30:59.585Z"
+    },
+    {
+      "id": "8aaca37e-b310-43f8-a934-27808cb216f9",
+      "customerId": "917aab6f-c13d-4c03-bfda-6994ef2ad69d",
+      "vendorId": "125bfca6-c73d-4719-bd3a-3c55208f1921",
+      "orderNumber": "TEST-1760394661191",
+      "status": "DELIVERED",
+      "totalPrice": "1000",
+      "subtotal": "900",
+      "shippingCost": "50",
+      "tax": "50",
+      "paymentMethod": "STRIPE",
+      "shippingAddress": {
+        "city": "Test City",
+        "state": "Test State",
+        "street": "123 Test Street",
+        "country": "Test Country",
+        "zipCode": "12345"
+      },
+      "billingAddress": {
+        "city": "Test City",
+        "state": "Test State",
+        "street": "123 Test Street",
+        "country": "Test Country",
+        "zipCode": "12345"
+      },
+      "shippingMethod": null,
+      "metadata": {
+        "test": true,
+        "createdBy": "test-api"
+      },
+      "notes": null,
+      "createdAt": "2025-10-13T22:31:01.197Z",
+      "updatedAt": "2025-10-13T22:31:01.197Z"
+    },
+    {
+      "id": "eb4943fb-a619-4e90-b2b2-92e1cf18657c",
+      "customerId": "917aab6f-c13d-4c03-bfda-6994ef2ad69d",
+      "vendorId": "125bfca6-c73d-4719-bd3a-3c55208f1921",
+      "orderNumber": "TEST-1760394663712",
+      "status": "DELIVERED",
+      "totalPrice": "1000",
+      "subtotal": "900",
+      "shippingCost": "50",
+      "tax": "50",
+      "paymentMethod": "STRIPE",
+      "shippingAddress": {
+        "city": "Test City",
+        "state": "Test State",
+        "street": "123 Test Street",
+        "country": "Test Country",
+        "zipCode": "12345"
+      },
+      "billingAddress": {
+        "city": "Test City",
+        "state": "Test State",
+        "street": "123 Test Street",
+        "country": "Test Country",
+        "zipCode": "12345"
+      },
+      "shippingMethod": null,
+      "metadata": {
+        "test": true,
+        "createdBy": "test-api"
+      },
+      "notes": null,
+      "createdAt": "2025-10-13T22:31:03.726Z",
+      "updatedAt": "2025-10-13T22:31:03.726Z"
+    },
+    {
+      "id": "2fa01a76-11c9-46b5-97df-5f1de16ee80d",
+      "customerId": "917aab6f-c13d-4c03-bfda-6994ef2ad69d",
+      "vendorId": "125bfca6-c73d-4719-bd3a-3c55208f1921",
+      "orderNumber": "TEST-1760394675142",
+      "status": "DELIVERED",
+      "totalPrice": "1000",
+      "subtotal": "900",
+      "shippingCost": "50",
+      "tax": "50",
+      "paymentMethod": "STRIPE",
+      "shippingAddress": {
+        "city": "Test City",
+        "state": "Test State",
+        "street": "123 Test Street",
+        "country": "Test Country",
+        "zipCode": "12345"
+      },
+      "billingAddress": {
+        "city": "Test City",
+        "state": "Test State",
+        "street": "123 Test Street",
+        "country": "Test Country",
+        "zipCode": "12345"
+      },
+      "shippingMethod": null,
+      "metadata": {
+        "test": true,
+        "createdBy": "test-api"
+      },
+      "notes": null,
+      "createdAt": "2025-10-13T22:31:15.146Z",
+      "updatedAt": "2025-10-13T22:31:15.146Z"
+    },
+    {
+      "id": "8363bf84-d5a0-4b29-94a6-920857daa019",
+      "customerId": "2ae3b182-65cc-4779-ab81-d0c7209d819d",
+      "vendorId": "125bfca6-c73d-4719-bd3a-3c55208f1921",
+      "orderNumber": "ORD-1760396511285-IPW0",
+      "status": "CONFIRMED",
+      "totalPrice": "823.99",
+      "subtotal": "299.99",
+      "shippingCost": "500",
+      "tax": "24",
+      "paymentMethod": "STRIPE",
+      "shippingAddress": {
+        "city": "Quezon CIty",
+        "state": "NCR",
+        "street": "1071 Quirino Highway, Brgy. Kaligayahan, Novaliches, Quezon City",
+        "country": "Philippines",
+        "zipCode": "1118",
+        "lastName": "Literal",
+        "firstName": "Jay"
+      },
+      "billingAddress": {
+        "city": "Quezon CIty",
+        "state": "NCR",
+        "street": "1071 Quirino Highway, Brgy. Kaligayahan, Novaliches, Quezon City",
+        "country": "Philippines",
+        "zipCode": "1118",
+        "lastName": "Literal",
+        "firstName": "Jay"
+      },
+      "shippingMethod": {
+        "cost": 500,
+        "type": "express",
+        "estimatedDays": 2
+      },
+      "metadata": null,
+      "notes": null,
+      "createdAt": "2025-10-13T23:01:51.318Z",
+      "updatedAt": "2025-10-13T23:18:57.284Z"
+    },
+    {
+      "id": "528be144-98ec-44b8-a29e-e3d3ae2d4274",
+      "customerId": "2ae3b182-65cc-4779-ab81-d0c7209d819d",
+      "vendorId": "125bfca6-c73d-4719-bd3a-3c55208f1921",
+      "orderNumber": "ORD-1760407674611-WAQI",
+      "status": "PENDING",
+      "totalPrice": "723.99",
+      "subtotal": "299.99",
+      "shippingCost": "400",
+      "tax": "24",
+      "paymentMethod": null,
+      "shippingAddress": {
+        "city": "Quezon CIty",
+        "state": "NCR",
+        "street": "1071 Quirino Highway, Brgy. Kaligayahan, Novaliches, Quezon City",
+        "country": "Philippines",
+        "zipCode": "1118",
+        "lastName": "Literal",
+        "firstName": "Jay"
+      },
+      "billingAddress": {
+        "city": "Quezon CIty",
+        "state": "NCR",
+        "street": "1071 Quirino Highway, Brgy. Kaligayahan, Novaliches, Quezon City",
+        "country": "Philippines",
+        "zipCode": "1118",
+        "lastName": "Literal",
+        "firstName": "Jay"
+      },
+      "shippingMethod": {
+        "cost": 400,
+        "type": "express",
+        "estimatedDays": 2
+      },
+      "metadata": null,
+      "notes": null,
+      "createdAt": "2025-10-14T02:07:54.646Z",
+      "updatedAt": "2025-10-14T02:07:54.646Z"
+    },
+    {
+      "id": "f64b4a98-b716-414c-883f-accfcd5259a0",
+      "customerId": "2ae3b182-65cc-4779-ab81-d0c7209d819d",
+      "vendorId": "125bfca6-c73d-4719-bd3a-3c55208f1921",
+      "orderNumber": "ORD-1760407790213-DX9P",
+      "status": "PENDING",
+      "totalPrice": "773.99",
+      "subtotal": "299.99",
+      "shippingCost": "450",
+      "tax": "24",
+      "paymentMethod": null,
+      "shippingAddress": {
+        "city": "Quezon CIty",
+        "state": "NCR",
+        "street": "1071 Quirino Highway, Brgy. Kaligayahan, Novaliches, Quezon City",
+        "country": "Philippines",
+        "zipCode": "1118",
+        "lastName": "Literal",
+        "firstName": "Jay"
+      },
+      "billingAddress": {
+        "city": "Quezon CIty",
+        "state": "NCR",
+        "street": "1071 Quirino Highway, Brgy. Kaligayahan, Novaliches, Quezon City",
+        "country": "Philippines",
+        "zipCode": "1118",
+        "lastName": "Literal",
+        "firstName": "Jay"
+      },
+      "shippingMethod": {
+        "cost": 450,
+        "type": "express",
+        "estimatedDays": 2
+      },
+      "metadata": null,
+      "notes": null,
+      "createdAt": "2025-10-14T02:09:50.219Z",
+      "updatedAt": "2025-10-14T02:09:50.219Z"
+    },
+    {
+      "id": "f9cedfc4-d7f5-4cf8-872c-b72d71386bd4",
+      "customerId": "2ae3b182-65cc-4779-ab81-d0c7209d819d",
+      "vendorId": "125bfca6-c73d-4719-bd3a-3c55208f1921",
+      "orderNumber": "ORD-1760408248353-ZGI0",
+      "status": "PENDING",
+      "totalPrice": "1745.96",
+      "subtotal": "1199.96",
+      "shippingCost": "450",
+      "tax": "96",
+      "paymentMethod": null,
+      "shippingAddress": {
+        "city": "Quezon CIty",
+        "state": "NCR",
+        "street": "1071 Quirino Highway, Brgy. Kaligayahan, Novaliches, Quezon City",
+        "country": "Philippines",
+        "zipCode": "1118",
+        "lastName": "Literal",
+        "firstName": "Jay"
+      },
+      "billingAddress": {
+        "city": "Quezon CIty",
+        "state": "NCR",
+        "street": "1071 Quirino Highway, Brgy. Kaligayahan, Novaliches, Quezon City",
+        "country": "Philippines",
+        "zipCode": "1118",
+        "lastName": "Literal",
+        "firstName": "Jay"
+      },
+      "shippingMethod": {
+        "cost": 450,
+        "type": "express",
+        "estimatedDays": 2
+      },
+      "metadata": null,
+      "notes": null,
+      "createdAt": "2025-10-14T02:17:28.359Z",
+      "updatedAt": "2025-10-14T02:17:28.359Z"
+    },
+    {
+      "id": "771fbe67-bcb0-404a-977b-a7504c908163",
+      "customerId": "2ae3b182-65cc-4779-ab81-d0c7209d819d",
+      "vendorId": "125bfca6-c73d-4719-bd3a-3c55208f1921",
+      "orderNumber": "ORD-1760408342509-ZF9R",
+      "status": "CONFIRMED",
+      "totalPrice": "1943.94",
+      "subtotal": "1799.94",
+      "shippingCost": "0",
+      "tax": "144",
+      "paymentMethod": null,
+      "shippingAddress": {
+        "city": "Quezon CIty",
+        "state": "NCR",
+        "street": "1071 Quirino Highway, Brgy. Kaligayahan, Novaliches, Quezon City",
+        "country": "Philippines",
+        "zipCode": "1118",
+        "lastName": "Literal",
+        "firstName": "Jay"
+      },
+      "billingAddress": {
+        "city": "Quezon CIty",
+        "state": "NCR",
+        "street": "1071 Quirino Highway, Brgy. Kaligayahan, Novaliches, Quezon City",
+        "country": "Philippines",
+        "zipCode": "1118",
+        "lastName": "Literal",
+        "firstName": "Jay"
+      },
+      "shippingMethod": {
+        "cost": 0,
+        "type": "standard",
+        "estimatedDays": 5
+      },
+      "metadata": null,
+      "notes": null,
+      "createdAt": "2025-10-14T02:19:02.514Z",
+      "updatedAt": "2025-10-14T02:21:54.207Z"
+    },
+    {
+      "id": "200f3c20-0964-4175-a76e-5b4e08c6dec7",
+      "customerId": "2ae3b182-65cc-4779-ab81-d0c7209d819d",
+      "vendorId": "125bfca6-c73d-4719-bd3a-3c55208f1921",
+      "orderNumber": "ORD-1760408599995-IVIE",
+      "status": "CONFIRMED",
+      "totalPrice": "2393.94",
+      "subtotal": "1799.94",
+      "shippingCost": "450",
+      "tax": "144",
+      "paymentMethod": null,
+      "shippingAddress": {
+        "city": "Quezon CIty",
+        "state": "CALABARZON",
+        "street": "1071 Quirino Highway, Brgy. Kaligayahan, Novaliches, Quezon City",
+        "country": "Philippines",
+        "zipCode": "1118",
+        "lastName": "Literal",
+        "firstName": "Jay"
+      },
+      "billingAddress": {
+        "city": "Quezon CIty",
+        "state": "CALABARZON",
+        "street": "1071 Quirino Highway, Brgy. Kaligayahan, Novaliches, Quezon City",
+        "country": "Philippines",
+        "zipCode": "1118",
+        "lastName": "Literal",
+        "firstName": "Jay"
+      },
+      "shippingMethod": {
+        "cost": 450,
+        "type": "express",
+        "estimatedDays": 2
+      },
+      "metadata": null,
+      "notes": null,
+      "createdAt": "2025-10-14T02:23:20.001Z",
+      "updatedAt": "2025-10-14T02:23:42.515Z"
+    },
+    {
+      "id": "83bdfab3-0ece-4e1b-9684-67fc7866f6e2",
+      "customerId": "2ae3b182-65cc-4779-ab81-d0c7209d819d",
+      "vendorId": "125bfca6-c73d-4719-bd3a-3c55208f1921",
+      "orderNumber": "ORD-1760408926563-1ODR",
+      "status": "CONFIRMED",
+      "totalPrice": "823.99",
+      "subtotal": "299.99",
+      "shippingCost": "500",
+      "tax": "24",
+      "paymentMethod": null,
+      "shippingAddress": {
+        "city": "Quezon CIty",
+        "state": "NCR",
+        "street": "1071 Quirino Highway, Brgy. Kaligayahan, Novaliches, Quezon City",
+        "country": "Philippines",
+        "zipCode": "1118",
+        "lastName": "Literal",
+        "firstName": "Jay"
+      },
+      "billingAddress": {
+        "city": "Quezon CIty",
+        "state": "NCR",
+        "street": "1071 Quirino Highway, Brgy. Kaligayahan, Novaliches, Quezon City",
+        "country": "Philippines",
+        "zipCode": "1118",
+        "lastName": "Literal",
+        "firstName": "Jay"
+      },
+      "shippingMethod": {
+        "cost": 500,
+        "type": "express",
+        "estimatedDays": 2
+      },
+      "metadata": null,
+      "notes": null,
+      "createdAt": "2025-10-14T02:28:46.581Z",
+      "updatedAt": "2025-10-14T02:29:06.467Z"
+    },
+    {
+      "id": "88ff8913-6c65-427f-ab53-1c515ec2498e",
+      "customerId": "2ae3b182-65cc-4779-ab81-d0c7209d819d",
+      "vendorId": "125bfca6-c73d-4719-bd3a-3c55208f1921",
+      "orderNumber": "ORD-1760410194171-RIYN",
+      "status": "CONFIRMED",
+      "totalPrice": "3091.91",
+      "subtotal": "2399.92",
+      "shippingCost": "500",
+      "tax": "191.99",
+      "paymentMethod": null,
+      "shippingAddress": {
+        "city": "Quezon CIty",
+        "state": "CALABARZON",
+        "street": "1071 Quirino Highway, Brgy. Kaligayahan, Novaliches, Quezon City",
+        "country": "Philippines",
+        "zipCode": "1118",
+        "lastName": "Literal",
+        "firstName": "Jay"
+      },
+      "billingAddress": {
+        "city": "Quezon CIty",
+        "state": "CALABARZON",
+        "street": "1071 Quirino Highway, Brgy. Kaligayahan, Novaliches, Quezon City",
+        "country": "Philippines",
+        "zipCode": "1118",
+        "lastName": "Literal",
+        "firstName": "Jay"
+      },
+      "shippingMethod": {
+        "cost": 500,
+        "type": "express",
+        "estimatedDays": 2
+      },
+      "metadata": null,
+      "notes": null,
+      "createdAt": "2025-10-14T02:49:54.184Z",
+      "updatedAt": "2025-10-14T02:57:15.433Z"
+    },
+    {
+      "id": "d16e8cb9-5c36-494e-bb87-8c142f24f569",
+      "customerId": "2ae3b182-65cc-4779-ab81-d0c7209d819d",
+      "vendorId": "125bfca6-c73d-4719-bd3a-3c55208f1921",
+      "orderNumber": "ORD-1760430508606-7A2C",
+      "status": "PENDING",
+      "totalPrice": "1295.96",
+      "subtotal": "1199.96",
+      "shippingCost": "0",
+      "tax": "96",
+      "paymentMethod": null,
+      "shippingAddress": {
+        "city": "Quezon CIty",
+        "state": "NCR",
+        "street": "1071 Quirino Highway, Brgy. Kaligayahan, Novaliches, Quezon City",
+        "country": "Philippines",
+        "zipCode": "1118",
+        "lastName": "Literal",
+        "firstName": "Jay"
+      },
+      "billingAddress": {
+        "city": "Quezon CIty",
+        "state": "NCR",
+        "street": "1071 Quirino Highway, Brgy. Kaligayahan, Novaliches, Quezon City",
+        "country": "Philippines",
+        "zipCode": "1118",
+        "lastName": "Literal",
+        "firstName": "Jay"
+      },
+      "shippingMethod": {
+        "cost": 0,
+        "type": "standard",
+        "estimatedDays": 5
+      },
+      "metadata": null,
+      "notes": null,
+      "createdAt": "2025-10-14T08:28:28.632Z",
+      "updatedAt": "2025-10-14T08:28:28.632Z"
+    },
+    {
+      "id": "aff3f23d-e4d9-45ea-a034-403d6dcbf2d5",
+      "customerId": "2ae3b182-65cc-4779-ab81-d0c7209d819d",
+      "vendorId": "125bfca6-c73d-4719-bd3a-3c55208f1921",
+      "orderNumber": "ORD-1760430895002-LEU2",
+      "status": "CONFIRMED",
+      "totalPrice": "1795.96",
+      "subtotal": "1199.96",
+      "shippingCost": "500",
+      "tax": "96",
+      "paymentMethod": null,
+      "shippingAddress": {
+        "city": "Quezon CIty",
+        "state": "NCR",
+        "street": "1071 Quirino Highway, Brgy. Kaligayahan, Novaliches, Quezon City",
+        "country": "Philippines",
+        "zipCode": "1118",
+        "lastName": "Literal",
+        "firstName": "Jay"
+      },
+      "billingAddress": {
+        "city": "Quezon CIty",
+        "state": "NCR",
+        "street": "1071 Quirino Highway, Brgy. Kaligayahan, Novaliches, Quezon City",
+        "country": "Philippines",
+        "zipCode": "1118",
+        "lastName": "Literal",
+        "firstName": "Jay"
+      },
+      "shippingMethod": {
+        "cost": 500,
+        "type": "express",
+        "estimatedDays": 2
+      },
+      "metadata": null,
+      "notes": null,
+      "createdAt": "2025-10-14T08:34:55.039Z",
+      "updatedAt": "2025-10-14T08:35:34.603Z"
+    },
+    {
+      "id": "987939db-4da7-4e9b-bb03-58ed5a349159",
+      "customerId": "2ae3b182-65cc-4779-ab81-d0c7209d819d",
+      "vendorId": "125bfca6-c73d-4719-bd3a-3c55208f1921",
+      "orderNumber": "ORD-1760473601549-6BUW",
+      "status": "PENDING",
+      "totalPrice": "1097.98",
+      "subtotal": "599.98",
+      "shippingCost": "450",
+      "tax": "48",
+      "paymentMethod": null,
+      "shippingAddress": {
+        "city": "Caloocan city",
+        "state": "NCR",
+        "street": "Phase 9 Bagong Silang",
+        "country": "Philippines",
+        "zipCode": "1428",
+        "lastName": "Literal",
+        "firstName": "Jay"
+      },
+      "billingAddress": {
+        "city": "Caloocan city",
+        "state": "NCR",
+        "street": "Phase 9 Bagong Silang",
+        "country": "Philippines",
+        "zipCode": "1428",
+        "lastName": "Literal",
+        "firstName": "Jay"
+      },
+      "shippingMethod": {
+        "cost": 450,
+        "type": "express",
+        "estimatedDays": 2
+      },
+      "metadata": null,
+      "notes": null,
+      "createdAt": "2025-10-14T20:26:41.586Z",
+      "updatedAt": "2025-10-14T20:26:41.586Z"
+    },
+    {
+      "id": "df7278a7-61ef-43d9-ba5d-62070bf3bb8e",
+      "customerId": "2ae3b182-65cc-4779-ab81-d0c7209d819d",
+      "vendorId": "125bfca6-c73d-4719-bd3a-3c55208f1921",
+      "orderNumber": "ORD-1760473825862-MFCD",
+      "status": "CONFIRMED",
+      "totalPrice": "1147.98",
+      "subtotal": "599.98",
+      "shippingCost": "500",
+      "tax": "48",
+      "paymentMethod": null,
+      "shippingAddress": {
+        "city": "Caloocan city",
+        "state": "NCR",
+        "street": "Phase 9 Bagong Silang",
+        "country": "Philippines",
+        "zipCode": "1428",
+        "lastName": "Literal",
+        "firstName": "Jay"
+      },
+      "billingAddress": {
+        "city": "Caloocan city",
+        "state": "NCR",
+        "street": "Phase 9 Bagong Silang",
+        "country": "Philippines",
+        "zipCode": "1428",
+        "lastName": "Literal",
+        "firstName": "Jay"
+      },
+      "shippingMethod": {
+        "cost": 500,
+        "type": "express",
+        "estimatedDays": 2
+      },
+      "metadata": null,
+      "notes": null,
+      "createdAt": "2025-10-14T20:30:25.867Z",
+      "updatedAt": "2025-10-14T20:31:56.695Z"
+    }
+  ],
+  "orderItems": [
+    {
+      "id": "ed646838-a6b6-4549-97bd-b9354b0f09b5",
+      "orderId": "8363bf84-d5a0-4b29-94a6-920857daa019",
+      "productId": "ef6749d2-8c0a-433a-b520-bfffa097764c",
+      "variantId": null,
+      "quantity": 1,
+      "price": "299.99",
+      "createdAt": "2025-10-13T23:01:51.391Z"
+    },
+    {
+      "id": "2eefa0c2-9951-42c9-9c7c-f574bdd150f1",
+      "orderId": "528be144-98ec-44b8-a29e-e3d3ae2d4274",
+      "productId": "ef6749d2-8c0a-433a-b520-bfffa097764c",
+      "variantId": null,
+      "quantity": 1,
+      "price": "299.99",
+      "createdAt": "2025-10-14T02:07:54.662Z"
+    },
+    {
+      "id": "8cd17e64-78e6-4655-bb17-01176e70ecbf",
+      "orderId": "f64b4a98-b716-414c-883f-accfcd5259a0",
+      "productId": "ef6749d2-8c0a-433a-b520-bfffa097764c",
+      "variantId": null,
+      "quantity": 1,
+      "price": "299.99",
+      "createdAt": "2025-10-14T02:09:50.228Z"
+    },
+    {
+      "id": "d71a8fe9-f5f3-4753-8223-85e9e663f36b",
+      "orderId": "f9cedfc4-d7f5-4cf8-872c-b72d71386bd4",
+      "productId": "ef6749d2-8c0a-433a-b520-bfffa097764c",
+      "variantId": null,
+      "quantity": 4,
+      "price": "299.99",
+      "createdAt": "2025-10-14T02:17:28.365Z"
+    },
+    {
+      "id": "fc756f2b-8690-41e6-999d-89727b7d4a0a",
+      "orderId": "771fbe67-bcb0-404a-977b-a7504c908163",
+      "productId": "ef6749d2-8c0a-433a-b520-bfffa097764c",
+      "variantId": null,
+      "quantity": 6,
+      "price": "299.99",
+      "createdAt": "2025-10-14T02:19:02.517Z"
+    },
+    {
+      "id": "5edf9f38-80c7-47ae-b6aa-991275589f32",
+      "orderId": "200f3c20-0964-4175-a76e-5b4e08c6dec7",
+      "productId": "ef6749d2-8c0a-433a-b520-bfffa097764c",
+      "variantId": null,
+      "quantity": 6,
+      "price": "299.99",
+      "createdAt": "2025-10-14T02:23:20.006Z"
+    },
+    {
+      "id": "1f875363-21c6-430a-924b-e4698dae93a1",
+      "orderId": "83bdfab3-0ece-4e1b-9684-67fc7866f6e2",
+      "productId": "ef6749d2-8c0a-433a-b520-bfffa097764c",
+      "variantId": null,
+      "quantity": 1,
+      "price": "299.99",
+      "createdAt": "2025-10-14T02:28:46.598Z"
+    },
+    {
+      "id": "a61fbc21-b367-498b-a731-0e00d1548944",
+      "orderId": "88ff8913-6c65-427f-ab53-1c515ec2498e",
+      "productId": "ef6749d2-8c0a-433a-b520-bfffa097764c",
+      "variantId": null,
+      "quantity": 8,
+      "price": "299.99",
+      "createdAt": "2025-10-14T02:49:54.192Z"
+    },
+    {
+      "id": "79d6ac51-f4c8-4126-a85c-674ce836c0aa",
+      "orderId": "d16e8cb9-5c36-494e-bb87-8c142f24f569",
+      "productId": "ef6749d2-8c0a-433a-b520-bfffa097764c",
+      "variantId": null,
+      "quantity": 4,
+      "price": "299.99",
+      "createdAt": "2025-10-14T08:28:28.649Z"
+    },
+    {
+      "id": "d30236c6-5339-416e-b751-470368a4753f",
+      "orderId": "aff3f23d-e4d9-45ea-a034-403d6dcbf2d5",
+      "productId": "ef6749d2-8c0a-433a-b520-bfffa097764c",
+      "variantId": null,
+      "quantity": 4,
+      "price": "299.99",
+      "createdAt": "2025-10-14T08:34:56.155Z"
+    },
+    {
+      "id": "6b874896-decd-49e8-9ef3-c4c81f575730",
+      "orderId": "987939db-4da7-4e9b-bb03-58ed5a349159",
+      "productId": "ef6749d2-8c0a-433a-b520-bfffa097764c",
+      "variantId": null,
+      "quantity": 2,
+      "price": "299.99",
+      "createdAt": "2025-10-14T20:26:41.664Z"
+    },
+    {
+      "id": "bd2b98de-5a21-487c-b51a-48d94d91602a",
+      "orderId": "df7278a7-61ef-43d9-ba5d-62070bf3bb8e",
+      "productId": "ef6749d2-8c0a-433a-b520-bfffa097764c",
+      "variantId": null,
+      "quantity": 2,
+      "price": "299.99",
+      "createdAt": "2025-10-14T20:30:25.874Z"
+    }
+  ],
+  "reviews": [],
+  "subscriptions": [
+    {
+      "id": "f288d399-7df9-4935-ba55-46102eaea4d5",
+      "vendorId": "cae905e0-013b-4317-bb8a-4069e543afcc",
+      "planId": "a0244414-7d9f-48df-bf7f-bb6cb4fce662",
+      "tier": "ENTERPRISE",
+      "startDate": "2025-10-13T19:38:42.294Z",
+      "endDate": null,
+      "status": "ACTIVE",
+      "price": "10000",
+      "billingCycle": "MONTHLY",
+      "nextBillingDate": "2025-11-12T19:38:42.294Z",
+      "trialEndDate": null,
+      "stripeSubscriptionId": "sub_1SHrUVHZwaHkiGdF0LHDcL0Z",
+      "stripeCustomerId": "cus_TEK8WJQqlaYqHe",
+      "autoRenew": true,
+      "createdAt": "2025-10-13T19:38:42.420Z",
+      "updatedAt": "2025-10-13T19:38:42.420Z"
+    },
+    {
+      "id": "997011f5-4c7e-48fe-bf0f-bc9fb5ae350e",
+      "vendorId": "125bfca6-c73d-4719-bd3a-3c55208f1921",
+      "planId": "a0244414-7d9f-48df-bf7f-bb6cb4fce662",
+      "tier": "ENTERPRISE",
+      "startDate": "2025-10-13T19:50:36.272Z",
+      "endDate": null,
+      "status": "ACTIVE",
+      "price": "10000",
+      "billingCycle": "MONTHLY",
+      "nextBillingDate": "2025-11-13T19:50:34.000Z",
+      "trialEndDate": null,
+      "stripeSubscriptionId": "sub_1SHrlOHZwaHkiGdFhSOQCYOg",
+      "stripeCustomerId": "cus_TEKQGWo2uBK9HK",
+      "autoRenew": true,
+      "createdAt": "2025-10-13T19:50:36.278Z",
+      "updatedAt": "2025-10-13T19:50:36.278Z"
+    }
+  ]
+}

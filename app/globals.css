@@ -1,0 +1,480 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Navy blue and white theme for e-commerce platform */
+  --background: oklch(1 0 0); /* White */
+  --foreground: oklch(0.15 0.02 250); /* Navy blue text */
+  --card: oklch(0.99 0 0);
+  --card-foreground: oklch(0.15 0.02 250);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.15 0.02 250);
+  --primary: oklch(0.25 0.08 250); /* Navy blue #001F3F */
+  --primary-foreground: oklch(1 0 0); /* White text on navy */
+  --secondary: oklch(0.95 0.005 250);
+  --secondary-foreground: oklch(0.15 0.02 250);
+  --muted: oklch(0.96 0.005 250);
+  --muted-foreground: oklch(0.5 0.02 250);
+  --accent: oklch(0.55 0.15 250); /* Bright blue accent */
+  --accent-foreground: oklch(1 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(1 0 0);
+  --border: oklch(0.9 0.005 250);
+  --input: oklch(0.9 0.005 250);
+  --ring: oklch(0.55 0.15 250);
+  --chart-1: #000000; /* Pure black for light theme */
+  --chart-2: #1a1a1a; /* Charcoal */
+  --chart-3: #2d2d2d; /* Dark gray */
+  --chart-4: #404040; /* Medium dark gray */
+  --chart-5: #525252; /* Darker gray */
+  --success: oklch(0.6 0.2 150); /* Green for success states */
+  --warning: oklch(0.7 0.18 80); /* Amber for warnings */
+  --radius: 0.5rem;
+  --sidebar: oklch(0.98 0.005 250);
+  --sidebar-foreground: oklch(0.15 0.02 250);
+  --sidebar-primary: oklch(0.25 0.08 250);
+  --sidebar-primary-foreground: oklch(1 0 0);
+  --sidebar-accent: oklch(0.95 0.005 250);
+  --sidebar-accent-foreground: oklch(0.15 0.02 250);
+  --sidebar-border: oklch(0.9 0.005 250);
+  --sidebar-ring: oklch(0.55 0.15 250);
+}
+
+.dark {
+  /* Dark theme with navy blue backgrounds */
+  --background: oklch(0.12 0.02 250); /* Dark navy */
+  --foreground: oklch(0.98 0 0); /* White text */
+  --card: oklch(0.15 0.02 250);
+  --card-foreground: oklch(0.98 0 0);
+  --popover: oklch(0.13 0.02 250);
+  --popover-foreground: oklch(0.98 0 0);
+  --primary: oklch(0.65 0.18 220); /* Bright blue for dark mode */
+  --primary-foreground: oklch(0.12 0.02 250);
+  --secondary: oklch(0.2 0.03 250);
+  --secondary-foreground: oklch(0.98 0 0);
+  --muted: oklch(0.18 0.02 250);
+  --muted-foreground: oklch(0.65 0.02 250);
+  --accent: oklch(0.55 0.15 250);
+  --accent-foreground: oklch(1 0 0);
+  --destructive: oklch(0.55 0.25 27);
+  --destructive-foreground: oklch(0.98 0 0);
+  --border: oklch(0.22 0.03 250);
+  --input: oklch(0.22 0.03 250);
+  --ring: oklch(0.55 0.15 250);
+  --chart-1: #ffffff; /* Pure white for dark theme */
+  --chart-2: #f8f9fa; /* Off-white */
+  --chart-3: #e9ecef; /* Light gray */
+  --chart-4: #dee2e6; /* Medium light gray */
+  --chart-5: #ced4da; /* Gray */
+  --success: oklch(0.75 0.22 150); /* Bright green - highly visible */
+  --warning: oklch(0.8 0.2 80); /* Bright amber - clear warning */
+  --sidebar: oklch(0.1 0.02 250);
+  --sidebar-foreground: oklch(0.98 0 0);
+  --sidebar-primary: oklch(0.65 0.18 220);
+  --sidebar-primary-foreground: oklch(0.12 0.02 250);
+  --sidebar-accent: oklch(0.18 0.02 250);
+  --sidebar-accent-foreground: oklch(0.98 0 0);
+  --sidebar-border: oklch(0.22 0.03 250);
+  --sidebar-ring: oklch(0.55 0.15 250);
+}
+
+@theme inline {
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  .bg-grid-pattern {
+    background-image: 
+      linear-gradient(rgba(0, 0, 0, 0.1) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 0, 0, 0.1) 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+  
+  .dark .bg-grid-pattern {
+    background-image: 
+      linear-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+  }
+
+  /* Mobile-specific utilities */
+  .touch-manipulation {
+    touch-action: manipulation;
+  }
+
+  .line-clamp-1 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+  }
+
+  .line-clamp-2 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+
+  .line-clamp-3 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+  }
+
+  /* Mobile viewport optimization */
+  @media (max-width: 768px) {
+    .mobile-scroll {
+      -webkit-overflow-scrolling: touch;
+      scroll-behavior: smooth;
+    }
+  }
+}
+
+/* Fix autofill styling to maintain theme colors */
+@layer base {
+  /* Light theme autofill */
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill:active,
+  textarea:-webkit-autofill,
+  textarea:-webkit-autofill:hover,
+  textarea:-webkit-autofill:focus,
+  textarea:-webkit-autofill:active,
+  select:-webkit-autofill,
+  select:-webkit-autofill:hover,
+  select:-webkit-autofill:focus,
+  select:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px hsl(var(--background)) inset !important;
+    -webkit-text-fill-color: hsl(var(--foreground)) !important;
+    background-color: hsl(var(--background)) !important;
+    color: hsl(var(--foreground)) !important;
+    border-color: hsl(var(--border)) !important;
+    transition: background-color 5000s ease-in-out 0s !important;
+  }
+
+  /* Dark theme autofill - ensure text is visible */
+  .dark input:-webkit-autofill,
+  .dark input:-webkit-autofill:hover,
+  .dark input:-webkit-autofill:focus,
+  .dark input:-webkit-autofill:active,
+  .dark textarea:-webkit-autofill,
+  .dark textarea:-webkit-autofill:hover,
+  .dark textarea:-webkit-autofill:focus,
+  .dark textarea:-webkit-autofill:active,
+  .dark select:-webkit-autofill,
+  .dark select:-webkit-autofill:hover,
+  .dark select:-webkit-autofill:focus,
+  .dark select:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px hsl(var(--background)) inset !important;
+    -webkit-text-fill-color: #ffffff !important;
+    background-color: hsl(var(--background)) !important;
+    color: #ffffff !important;
+    border-color: hsl(var(--border)) !important;
+    transition: background-color 5000s ease-in-out 0s !important;
+  }
+
+  /* Firefox autofill */
+  input:-moz-autofill,
+  textarea:-moz-autofill,
+  select:-moz-autofill {
+    background-color: hsl(var(--background)) !important;
+    color: hsl(var(--foreground)) !important;
+    border-color: hsl(var(--border)) !important;
+  }
+
+  /* Firefox autofill dark theme */
+  .dark input:-moz-autofill,
+  .dark textarea:-moz-autofill,
+  .dark select:-moz-autofill {
+    background-color: hsl(var(--background)) !important;
+    color: #ffffff !important;
+    border-color: hsl(var(--border)) !important;
+  }
+
+  /* General autofill styling for any browser */
+  input[data-autocompleted],
+  textarea[data-autocompleted],
+  select[data-autocompleted] {
+    background-color: hsl(var(--background)) !important;
+    color: hsl(var(--foreground)) !important;
+    border-color: hsl(var(--border)) !important;
+  }
+
+  /* General autofill dark theme */
+  .dark input[data-autocompleted],
+  .dark textarea[data-autocompleted],
+  .dark select[data-autocompleted] {
+    background-color: hsl(var(--background)) !important;
+    color: #ffffff !important;
+    border-color: hsl(var(--border)) !important;
+  }
+
+  /* Ensure autofill works with shadcn/ui components */
+  .shadcn-input:-webkit-autofill,
+  .shadcn-input:-webkit-autofill:hover,
+  .shadcn-input:-webkit-autofill:focus,
+  .shadcn-input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px hsl(var(--background)) inset !important;
+    -webkit-text-fill-color: hsl(var(--foreground)) !important;
+    background-color: hsl(var(--background)) !important;
+    color: hsl(var(--foreground)) !important;
+    border-color: hsl(var(--border)) !important;
+  }
+
+  /* shadcn/ui dark theme autofill */
+  .dark .shadcn-input:-webkit-autofill,
+  .dark .shadcn-input:-webkit-autofill:hover,
+  .dark .shadcn-input:-webkit-autofill:focus,
+  .dark .shadcn-input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px hsl(var(--background)) inset !important;
+    -webkit-text-fill-color: #ffffff !important;
+    background-color: hsl(var(--background)) !important;
+    color: #ffffff !important;
+    border-color: hsl(var(--border)) !important;
+  }
+
+  /* Force text visibility for all autofilled inputs in dark mode */
+  .dark input:-webkit-autofill,
+  .dark input:-webkit-autofill:hover,
+  .dark input:-webkit-autofill:focus,
+  .dark input:-webkit-autofill:active {
+    -webkit-text-fill-color: #ffffff !important;
+    color: #ffffff !important;
+  }
+
+  /* 3D Effects and Animations */
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+
+  .transform-gpu {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+  }
+
+  /* Subscription card animations */
+  @keyframes cardFloat {
+    0%, 100% { transform: translateY(0px) rotateX(0deg); }
+    50% { transform: translateY(-5px) rotateX(2deg); }
+  }
+
+  @keyframes cardGlow {
+    0%, 100% { box-shadow: 0 0 20px rgba(59, 130, 246, 0.1); }
+    50% { box-shadow: 0 0 30px rgba(59, 130, 246, 0.2); }
+  }
+
+  .card-float {
+    animation: cardFloat 6s ease-in-out infinite;
+  }
+
+  .card-glow {
+    animation: cardGlow 3s ease-in-out infinite;
+  }
+
+  /* Hover effects for subscription cards */
+  .subscription-card {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-style: preserve-3d;
+    min-height: 400px;
+  }
+
+  .subscription-card:hover {
+    transform: translateY(-8px) rotateX(5deg) rotateY(5deg);
+    box-shadow: 
+      0 25px 50px -12px rgba(0, 0, 0, 0.25),
+      0 0 0 1px rgba(59, 130, 246, 0.1);
+  }
+
+  /* Popular card special effects */
+  .popular-card {
+    background: linear-gradient(135deg, 
+      rgba(59, 130, 246, 0.05) 0%, 
+      rgba(147, 51, 234, 0.05) 100%);
+    border: 1px solid rgba(59, 130, 246, 0.2);
+    position: relative;
+    overflow: visible;
+    margin-top: 1rem;
+  }
+
+  .popular-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+      transparent, 
+      rgba(59, 130, 246, 0.1), 
+      transparent);
+    transition: left 0.5s;
+  }
+
+  .popular-card:hover::before {
+    left: 100%;
+  }
+
+  /* Button 3D effects */
+  .btn-3d {
+    position: relative;
+    transform-style: preserve-3d;
+    transition: all 0.2s ease;
+  }
+
+  .btn-3d:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  }
+
+  .btn-3d:active {
+    transform: translateY(0);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Card entrance animations */
+  @keyframes slideInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px) rotateX(10deg);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) rotateX(0deg);
+    }
+  }
+
+  .card-entrance {
+    animation: slideInUp 0.6s ease-out forwards;
+    opacity: 0;
+  }
+
+  /* Staggered animation delays */
+  .card-entrance:nth-child(1) { animation-delay: 0.1s; }
+  .card-entrance:nth-child(2) { animation-delay: 0.2s; }
+  .card-entrance:nth-child(3) { animation-delay: 0.3s; }
+  .card-entrance:nth-child(4) { animation-delay: 0.4s; }
+
+  /* Additional autofill styling for better browser compatibility */
+  input[type="text"]:-webkit-autofill,
+  input[type="email"]:-webkit-autofill,
+  input[type="password"]:-webkit-autofill,
+  input[type="url"]:-webkit-autofill,
+  input[type="date"]:-webkit-autofill,
+  textarea:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 30px hsl(var(--background)) inset !important;
+    -webkit-text-fill-color: hsl(var(--foreground)) !important;
+    background-color: hsl(var(--background)) !important;
+    color: hsl(var(--foreground)) !important;
+    border-color: hsl(var(--border)) !important;
+    transition: background-color 5000s ease-in-out 0s !important;
+  }
+
+  /* Dark mode specific autofill - ensure white text */
+  .dark input[type="text"]:-webkit-autofill,
+  .dark input[type="email"]:-webkit-autofill,
+  .dark input[type="password"]:-webkit-autofill,
+  .dark input[type="url"]:-webkit-autofill,
+  .dark input[type="date"]:-webkit-autofill,
+  .dark textarea:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 30px hsl(var(--background)) inset !important;
+    -webkit-text-fill-color: #ffffff !important;
+    background-color: hsl(var(--background)) !important;
+    color: #ffffff !important;
+    border-color: hsl(var(--border)) !important;
+    transition: background-color 5000s ease-in-out 0s !important;
+  }
+
+  /* Enhanced input field contrast */
+  .placeholder\:text-muted-foreground\/60::placeholder {
+    color: hsl(var(--muted-foreground) / 0.6) !important;
+  }
+
+  /* Ensure input text is always visible */
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  input[type="tel"],
+  input[type="url"],
+  input[type="search"],
+  textarea,
+  select {
+    color: hsl(var(--foreground)) !important;
+  }
+
+  /* Dark theme input contrast */
+  .dark input[type="text"],
+  .dark input[type="email"],
+  .dark input[type="password"],
+  .dark input[type="tel"],
+  .dark input[type="url"],
+  .dark input[type="search"],
+  .dark textarea,
+  .dark select {
+    color: #ffffff !important;
+  }
+
+  /* Light theme input contrast */
+  .light input[type="text"],
+  .light input[type="email"],
+  .light input[type="password"],
+  .light input[type="tel"],
+  .light input[type="url"],
+  .light input[type="search"],
+  .light textarea,
+  .light select {
+    color: #000000 !important;
+  }
+}

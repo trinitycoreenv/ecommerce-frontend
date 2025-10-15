@@ -1,0 +1,77 @@
+/* Custom animations for the carousel */
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes scroll-right {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+/* Animation classes */
+.animate-scroll-left {
+  animation: scroll-left 30s linear infinite;
+}
+
+.animate-scroll-right {
+  animation: scroll-right 30s linear infinite;
+}
+
+.animate-scroll-slow {
+  animation: scroll-left 40s linear infinite;
+}
+
+.animate-scroll-medium {
+  animation: scroll-left 30s linear infinite;
+}
+
+.animate-scroll-fast {
+  animation: scroll-left 20s linear infinite;
+}
+
+.animate-scroll-right-slow {
+  animation: scroll-right 40s linear infinite;
+}
+
+.animate-scroll-right-medium {
+  animation: scroll-right 30s linear infinite;
+}
+
+.animate-scroll-right-fast {
+  animation: scroll-right 20s linear infinite;
+}
+
+/* Pause animation on hover */
+.animate-scroll-left:hover,
+.animate-scroll-right:hover,
+.animate-scroll-slow:hover,
+.animate-scroll-medium:hover,
+.animate-scroll-fast:hover,
+.animate-scroll-right-slow:hover,
+.animate-scroll-right-medium:hover,
+.animate-scroll-right-fast:hover {
+  animation-play-state: paused;
+}
+
+/* Respect user's motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .animate-scroll-left,
+  .animate-scroll-right,
+  .animate-scroll-slow,
+  .animate-scroll-medium,
+  .animate-scroll-fast,
+  .animate-scroll-right-slow,
+  .animate-scroll-right-medium,
+  .animate-scroll-right-fast {
+    animation: none;
+  }
+}

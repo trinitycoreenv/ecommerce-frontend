@@ -1,0 +1,129 @@
+Full Navigation Structure:
+1. Header Navigation Links (CORRECTED ORDER):
+Home → Platform overview (current layout) - FIRST POSITION
+Shop → Customer shopping experience
+Sell → Vendor registration & benefits
+About → Company information
+Contact → Support & contact details
+HOME Category Page Layout (Current Layout) - FIRST IN NAV:
+1. Platform Overview Section (Hero Section)
+Badge: "Platform for Revenue Management"
+Headline: "The complete platform for e-commerce control"
+Subtitle: "Streamline operations with powerful tools for vendors, customers, and administrators"
+Call-to-Action Buttons:
+"Get Started" (primary, links to /login)
+"Explore Platform" (secondary, links to /shop)
+2. Platform Stats Section
+98% Uptime SLA
+10k+ Active Vendors
+5M+ Transactions
+24/7 Support
+3. Performance & Scale Section (FROM ATTACHED IMAGE)
+Section Title: "Performance & Scale" (with lightning bolt icon)
+Headline: "Built for speed. Designed for growth."
+Description: "Our platform handles millions of transactions with real-time updates, ensuring your business never misses a beat. From small startups to enterprise operations, we scale with you."
+Key Features (Bullet Points):
+Real-time synchronization: Instant updates across all dashboards and user roles
+Enterprise-grade security: Role-based access control and data encryption
+Scalable infrastructure: Handle growth from 100 to 100,000+ orders
+Platform Performance Card (Right Side):
+Card Title: "Platform Performance"
+Subtitle: "Real-time metrics"
+Metrics Display:
+Response Time: 45ms (with a visual progress bar)
+Uptime: 99.9% (with a visual progress bar)
+API Success Rate: 99.8% (with a visual progress bar)
+4. Role-Based Features Section
+Title: "Built for every role in your organization"
+Subtitle: "Comprehensive dashboards and tools tailored to each team member's needs"
+Six Feature Cards:
+Administrator Control: "Complete platform oversight with subscription management, catalogue control, and comprehensive reporting tools"
+Vendor Management: "Powerful product management, order tracking, and payout monitoring for vendors to grow their business"
+Customer Experience: "Seamless shopping with advanced search, cart management, and real-time order tracking capabilities"
+Finance Analytics: "Deep insights into transactions, commission breakdowns, and payout schedules with exportable reports"
+Operations Control: "Real-time shipment monitoring, logistics configuration, and SLA compliance tracking for smooth operations"
+Advanced Reporting: "Comprehensive analytics and reporting across all platform activities with customizable dashboards"
+5. Social Proof Section
+Text: "Trusted by leading e-commerce businesses"
+Logos: SHOPIFY, AMAZON, ETSY, WALMART
+6. Platform CTA Section
+Title: "Ready to transform your e-commerce operations?"
+Subtitle: "Join thousands of businesses managing their revenue with our platform. Start your free trial today."
+CTAs: "Start Free Trial" (→ /login) | "View Demo" (→ /shop)
+SHOP Category Page Layout:
+Hero Section
+Title: "Discover Amazing Products"
+Subtitle: "Shop from verified vendors with secure payments"
+Search Bar: Product search with filters
+CTA: "Browse All Products"
+Featured Categories
+Electronics | Fashion | Home & Garden | Sports | Books | Health
+Category Cards: Image + Category Name (e.g., "Electronics" card with an image of gadgets)
+Trending Products
+Product Carousel/Grid: Displays 6-8 trending products
+Product Card Details: Image, Name, Price, Vendor, Rating
+Why Shop With Us?
+Bullet Points:
+"Wide Selection from Trusted Vendors"
+"Secure & Fast Checkout"
+"Reliable Shipping & Returns"
+"24/7 Customer Support"
+Call to Action
+Headline: "Ready to find your next favorite item?"
+CTA Button: "Start Shopping Now"
+SELL Category Page Layout:
+Hero Section
+Title: "Grow Your Business with Us"
+Subtitle: "Reach millions of customers and streamline your sales"
+CTA Button: "Start Selling Today" (links to /register/vendor)
+Key Benefits Carousel: Rotating slides highlighting benefits (e.g., "Low Commissions", "Easy Product Management", "Global Reach")
+How It Works (3 Steps)
+Step 1: Register & Verify: "Sign up, choose your plan, and complete business verification."
+Step 2: List Your Products: "Easily add products, manage inventory, and set pricing."
+Step 3: Sell & Grow: "Process orders, manage shipping, and get paid securely."
+Vendor Benefits
+Bullet Points with Icons:
+Automated Payouts: "Get paid reliably with our automated system."
+Advanced Analytics: "Track sales, performance, and customer insights."
+Scalable Infrastructure: "Handle growth from 100 to 100,000+ orders."
+Dedicated Support: "Access priority support for all your needs."
+Secure Platform: "Benefit from enterprise-grade security and data protection."
+Subscription Plans Overview
+Brief comparison of Starter, Basic, Pro, Enterprise plans
+Key Differentiators: Price, Commission Rate, Max Products, Trial Days (e.g., "Pro Plan: 14-day free trial, payment card required")
+CTA Button: "View All Plans" (links to /register/vendor/plan-selection)
+Vendor Testimonials
+Carousel: Quotes from satisfied vendors
+ABOUT Category Page Layout:
+Hero Section
+Title: "Our Story"
+Subtitle: "Building the future of e-commerce, together."
+Our Mission & Vision
+Mission Statement: Paragraph about the platform's purpose.
+Vision Statement: Paragraph about long-term goals.
+Our Values
+Bullet Points with Icons:
+Trust & Transparency
+Innovation & Growth
+Community & Support
+Security & Reliability
+Team Section (Optional)
+Team Member Cards: Photo, Name, Title (e.g., "John Doe - CEO")
+Milestones/Timeline (Optional)
+Visual Timeline: Key achievements and dates of the platform's journey.
+CONTACT Category Page Layout:
+Hero Section
+Title: "Get in Touch"
+Subtitle: "We're here to help you every step of the way."
+Contact Form
+Fields: Name, Email, Subject, Message
+Submit Button
+CAPTCHA (for spam prevention)
+Other Contact Options
+Email: support@ecommerceplatform.com
+Phone: +1 (XXX) XXX-XXXX (Optional)
+Live Chat: Link to live chat support (if available)
+FAQ Section (Accordion)
+Common Questions & Answers: Expandable sections for frequently asked questions.
+Social Media Links
+Icons: Facebook, Twitter, LinkedIn, Instagra

@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Commerce Platform Control & Revenue Management System - WBS</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .header p {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+
+        .project-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 30px;
+            background: #f8f9fa;
+            border-bottom: 3px solid #e9ecef;
+        }
+
+        .info-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            text-align: center;
+        }
+
+        .info-card h3 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        .info-card .value {
+            font-size: 24px;
+            font-weight: bold;
+            color: #27ae60;
+        }
+
+        .wbs-container {
+            padding: 30px;
+        }
+
+        .wbs-level {
+            margin-bottom: 30px;
+        }
+
+        .wbs-level h2 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 22px;
+            border-left: 5px solid #3498db;
+            padding-left: 15px;
+        }
+
+        .wbs-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .wbs-item {
+            background: white;
+            border: 2px solid #e9ecef;
+            border-radius: 12px;
+            padding: 20px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .wbs-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+            border-color: #3498db;
+        }
+
+        .wbs-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #3498db, #2ecc71);
+        }
+
+        .wbs-item h3 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        .wbs-item .description {
+            color: #7f8c8d;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+
+        .wbs-item .details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .detail-item {
+            background: #f8f9fa;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+
+        .detail-item .label {
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        .detail-item .value {
+            color: #27ae60;
+            font-weight: 600;
+        }
+
+        .budget {
+            background: linear-gradient(135deg, #27ae60, #2ecc71);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .sprint-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: #e74c3c;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .level-1 .wbs-item {
+            border-color: #e74c3c;
+        }
+
+        .level-1 .wbs-item::before {
+            background: linear-gradient(90deg, #e74c3c, #c0392b);
+        }
+
+        .level-2 .wbs-item {
+            border-color: #f39c12;
+        }
+
+        .level-2 .wbs-item::before {
+            background: linear-gradient(90deg, #f39c12, #e67e22);
+        }
+
+        .level-3 .wbs-item {
+            border-color: #9b59b6;
+        }
+
+        .level-3 .wbs-item::before {
+            background: linear-gradient(90deg, #9b59b6, #8e44ad);
+        }
+
+        .level-4 .wbs-item {
+            border-color: #1abc9c;
+        }
+
+        .level-4 .wbs-item::before {
+            background: linear-gradient(90deg, #1abc9c, #16a085);
+        }
+
+        .level-5 .wbs-item {
+            border-color: #34495e;
+        }
+
+        .level-5 .wbs-item::before {
+            background: linear-gradient(90deg, #34495e, #2c3e50);
+        }
+
+        .level-6 .wbs-item {
+            border-color: #e67e22;
+        }
+
+        .level-6 .wbs-item::before {
+            background: linear-gradient(90deg, #e67e22, #d35400);
+        }
+
+        .footer {
+            background: #2c3e50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .total-budget {
+            background: linear-gradient(135deg, #27ae60, #2ecc71);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            .wbs-items {
+                grid-template-columns: 1fr;
+            }
+            
+            .project-info {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>E-Commerce Platform Control & Revenue Management System</h1>
+            <p>Work Breakdown Structure (WBS) - Complete Project Overview</p>
+        </div>
+
+        <div class="project-info">
+            <div class="info-card">
+                <h3>Total Budget</h3>
+                <div class="value">₱3,400,000</div>
+            </div>
+            <div class="info-card">
+                <h3>Project Duration</h3>
+                <div class="value">16 Weeks</div>
+            </div>
+            <div class="info-card">
+                <h3>Timeline</h3>
+                <div class="value">July-Oct 2025</div>
+            </div>
+            <div class="info-card">
+                <h3>Team Size</h3>
+                <div class="value">8 Members</div>
+            </div>
+            <div class="info-card">
+                <h3>ROI</h3>
+                <div class="value">162%</div>
+            </div>
+            <div class="info-card">
+                <h3>Payback Period</h3>
+                <div class="value">4.6 Months</div>
+            </div>
+        </div>
+
+        <div class="wbs-container">
+            <!-- Level 1: Project -->
+            <div class="wbs-level level-1">
+                <h2>Level 1: Project Overview</h2>
+                <div class="wbs-items">
+                    <div class="wbs-item">
+                        <h3>E-Commerce Platform Control & Revenue Management System</h3>
+                        <div class="description">Comprehensive e-commerce platform using Next.js 15, TypeScript, PostgreSQL, and Prisma ORM with role-based access control supporting five user types.</div>
+                        <div class="details">
+                            <div class="detail-item">
+                                <div class="label">Duration:</div>
+                                <div class="value">July 1 - Nov 5, 2025</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="label">Sprints:</div>
+                                <div class="value">8 Sprints</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="label">User Types:</div>
+                                <div class="value">5 User Types</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="label">Concurrent Users:</div>
+                                <div class="value">10,000+</div>
+                            </div>
+                        </div>
+                        <div class="budget">Total Budget: ₱3,400,000</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Level 2: Major Phases -->
+            <div class="wbs-level level-2">
+                <h2>Level 2: Major Phases</h2>
+                <div class="wbs-items">
+                    <div class="wbs-item">
+                        <h3>Planning & Foundation Phase</h3>
+                        <div class="description">Project planning, requirements gathering, and infrastructure setup with Next.js 15, TypeScript, PostgreSQL, and Prisma ORM.</div>
+                        <div class="details">
+                            <div class="detail-item">
+                                <div class="label">Duration:</div>
+                                <div class="value">July 1-21, 2025</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="label">Sprints:</div>
+                                <div class="value">Sprint 0-1</div>
+                            </div>
+                        </div>
+                        <div class="budget">₱400,000</div>
+                    </div>
+                    <div class="wbs-item">
+                        <h3>Core Development Phase</h3>
+                        <div class="description">Development of core modules including user management, product catalog, and order processing with role-based access control.</div>
+                        <div class="details">
+                            <div class="detail-item">
+                                <div class="label">Duration:</div>
+                                <div class="value">July 22 - Sep 1, 2025</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="label">Sprints:</div>
+                                <div class="value">Sprint 2-4</div>
+                            </div>
+                        </div>
+                        <div class="budget">₱500,000</div>
+                    </div>
+                    <div class="wbs-item">
+                        <h3>Advanced Features Phase</h3>
+                        <div class="description">Implementation of subscription management, logistics, analytics, and reporting dashboards for all five user types.</div>
+                        <div class="details">
+                            <div class="detail-item">
+                                <div class="label">Duration:</div>
+                                <div class="value">Sep 2-29, 2025</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="label">Sprints:</div>
+                                <div class="value">Sprint 5-6</div>
+                            </div>
+                        </div>
+                        <div class="budget">₱600,000</div>
+                    </div>
+                    <div class="wbs-item">
+                        <h3>Testing & Deployment Phase</h3>
+                        <div class="description">Final testing, deployment, training, and launch with comprehensive support for all user types and AWS cloud infrastructure.</div>
+                        <div class="details">
+                            <div class="detail-item">
+                                <div class="label">Duration:</div>
+                                <div class="value">Sep 30 - Nov 5, 2025</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="label">Sprints:</div>
+                                <div class="value">Sprint 7-8</div>
+                            </div>
+                        </div>
+                        <div class="budget">₱750,000</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Level 3: Sprint Modules -->
+            <div class="wbs-level level-3">
+                <h2>Level 3: Sprint Modules</h2>
+                <div class="wbs-items">
+                    <div class="wbs-item">
+                        <div class="sprint-badge">Sprint 0</div>
+                        <h3>Planning & Requirements</h3>
+                        <div class="description">Project planning, stakeholder identification, requirements gathering, and sprint planning for all five user types.</div>
+                        <div class="details">
+                            <div class="detail-item">
+                                <div class="label">Duration:</div>
+                                <div class="value">July 1-7, 2025</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="label">Team:</div>
+                                <div class="value">All 8 Members</div>
+                            </div>
+                        </div>
+                        <div class="budget">₱150,000</div>
+                    </div>
+                    <div class="wbs-item">
+                        <div class="sprint-badge">Sprint 1</div>
+                        <h3>Foundation & Infrastructure Setup</h3>
+                        <div class="description">Next.js 15, TypeScript, PostgreSQL, Prisma ORM setup, AWS cloud infrastructure, and development environment configuration.</div>
+                        <div class="details">
+                            <div class="detail-item">
+                                <div class="label">Duration:</div>
+                                <div class="value">July 8-21, 2025</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="label">Focus:</div>
+                                <div class="value">Infrastructure</div>
+                            </div>
+                        </div>
+                        <div class="budget">₱250,000</div>
+                    </div>
+                    <div class="wbs-item">
+                        <div class="sprint-badge">Sprint 2</div>
+                        <h3>User Management & Authentication</h3>
+                        <div class="description">JWT authentication system, role-based access control for all five user types (Admin, Vendor, Customer, Finance Analyst, Operations Manager).</div>
+                        <div class="details">
+                            <div class="detail-item">
+                                <div class="label">Duration:</div>
+                                <div class="value">July 22 - Aug 4, 2025</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="label">Focus:</div>
+                                <div class="value">Security & Access</div>
+                            </div>
+                        </div>
+                        <div class="budget">₱180,000</div>
+                    </div>
+                    <div class="wbs-item">
+                        <div class="sprint-badge">Sprint 3</div>
+                        <h3>Product Catalog & Approval Workflows</h3>
+                        <div class="description">Product management system, approval workflows, catalog management, and policy enforcement for all user types.</div>
+                        <div class="details">
+                            <div class="detail-item">
+                                <div class="label">Duration:</div>
+                                <div class="value">Aug 5-18, 2025</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="label">Focus:</div>
+                                <div class="value">Product Management</div>
+                            </div>
+                        </div>
+                        <div class="budget">₱160,000</div>
+                    </div>
+                    <div class="wbs-item">
+                        <div class="sprint-badge">Sprint 4</div>
+                        <h3>Order Management & Payment Processing</h3>
+                        <div class="description">Order processing system, payment integration, transaction management, and automated payment workflows.</div>
+                        <div class="details">
+                            <div class="detail-item">
+                                <div class="label">Duration:</div>
+                                <div class="value">Aug 19 - Sep 1, 2025</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="label">Focus:</div>
+                                <div class="value">Payments</div>
+                            </div>
+                        </div>
+                        <div class="budget">₱160,000</div>
+                    </div>
+                    <div class="wbs-item">
+                        <div class="sprint-badge">Sprint 5</div>
+                        <h3>Subscription & Commission Management</h3>
+                        <div class="description">Tiered vendor subscription plans (Basic, Premium, Enterprise), automated commission calculations, and subscription management.</div>
+                        <div class="details">
+                            <div class="detail-item">
+                                <div class="label">Duration:</div>
+                                <div class="value">Sep 2-15, 2025</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="label">Focus:</div>
+                                <div class="value">Revenue Management</div>
+                            </div>
+                        </div>
+                        <div class="budget">₱300,000</div>
+                    </div>
+                    <div class="wbs-item">
+                        <div class="sprint-badge">Sprint 6</div>
+                        <h3>Logistics & Operations Management</h3>
+                        <div class="description">Real-time shipment tracking, logistics coordination, operations management, and automated workflow systems.</div>
+                        <div class="details">
+                            <div class="detail-item">
+                                <div class="label">Duration:</div>
+                                <div class="value">Sep 16-29, 2025</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="label">Focus:</div>
+                                <div class="value">Logistics</div>
+                            </div>
+                        </div>
+                        <div class="budget">₱300,000</div>
+                    </div>
+                    <div class="wbs-item">
+                        <div class="sprint-badge">Sprint 7</div>
+                        <h3>Analytics & Reporting Dashboards</h3>
+                        <div class="description">Role-specific dashboards, real-time analytics, KPI reporting, and business intelligence for all five user types.</div>
+                        <div class="details">
+                            <div class="detail-item">
+                                <div class="label">Duration:</div>
+                                <div class="value">Sep 30 - Oct 13, 2025</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="label">Focus:</div>
+                                <div class="value">Analytics</div>
+                            </div>
+                        </div>
+                        <div class="budget">₱200,000</div>
+                    </div>
+                    <div class="wbs-item">
+                        <div class="sprint-badge">Sprint 8</div>
+                        <h3>Testing, Deployment & Launch</h3>
+                        <div class="description">Comprehensive testing, deployment to production, user training, and system launch with 30-day support period.</div>
+                        <div class="details">
+                            <div class="detail-item">
+                                <div class="label">Duration:</div>
+                                <div class="value">Oct 14-27, 2025</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="label">Focus:</div>
+                                <div class="value">Launch</div>
+                            </div>
+                        </div>
+                        <div class="budget">₱250,000</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Level 4: Support Activities -->
+            <div class="wbs-level level-4">
+                <h2>Level 4: Support Activities</h2>
+                <div class="wbs-items">
+                    <div class="wbs-item">
+                        <h3>Technology & Infrastructure</h3>
+                        <div class="description">AWS cloud infrastructure, PostgreSQL database hosting, SSL certificates, GitHub Enterprise, monitoring tools, and third-party APIs.</div>
+                        <div class="details">
+                            <div class="detail-item">
+                                <div class="label">Components:</div>
+                                <div class="value">8 Services</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="label">Duration:</div>
+                                <div class="value">4 Months</div>
+                            </div>
+                        </div>
+                        <div class="budget">₱420,000</div>
+                    </div>
+                    <div class="wbs-item">
+                        <h3>Development & Testing Tools</h3>
+                        <div class="description">Jest testing framework, Playwright E2E testing, Figma Professional, Adobe Creative Suite, SonarQube, and load testing tools.</div>
+                        <div class="details">
+                            <div class="detail-item">
+                                <div class="label">Tools:</div>
+                                <div class="value">9 Tools</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="label">Focus:</div>
+                                <div class="value">Quality Assurance</div>
+                            </div>
+                        </div>
+                        <div class="budget">₱95,000</div>
+                    </div>
+                    <div class="wbs-item">
+                        <h3>Training & Documentation</h3>
+                        <div class="description">Video production equipment, training materials, user manuals, online training platform, and technical documentation for all five user types.</div>
+                        <div class="details">
+                            <div class="detail-item">
+                                <div class="label">Materials:</div>
+                                <div class="value">8 Components</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="label">Users:</div>
+                                <div class="value">5 User Types</div>
+                            </div>
+                        </div>
+                        <div class="budget">₱150,000</div>
+                    </div>
+                    <div class="wbs-item">
+                        <h3>Deployment & Launch</h3>
+                        <div class="description">Production environment setup, domain management, go-live support, performance optimization, security audit, and monitoring setup.</div>
+                        <div class="details">
+                            <div class="detail-item">
+                                <div class="label">Components:</div>
+                                <div class="value">8 Services</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="label">Support:</div>
+                                <div class="value">30 Days</div>
+                            </div>
+                        </div>
+                        <div class="budget">₱180,000</div>
+                    </div>
+                    <div class="wbs-item">
+                        <h3>Legal & Compliance</h3>
+                        <div class="description">Legal consultation, data protection compliance (GDPR), intellectual property protection, and professional liability insurance.</div>
+                        <div class="details">
+                            <div class="detail-item">
+                                <div class="label">Services:</div>
+                                <div class="value">4 Services</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="label">Compliance:</div>
+                                <div class="value">GDPR Ready</div>
+                            </div>
+                        </div>
+                        <div class="budget">₱75,000</div>
+                    </div>
+                    <div class="wbs-item">
+                        <h3>Communication & Collaboration</h3>
+                        <div class="description">Slack Enterprise, Zoom Pro, Microsoft Teams, project management tools (Jira, Confluence), and communication equipment.</div>
+                        <div class="details">
+                            <div class="detail-item">
+                                <div class="label">Tools:</div>
+                                <div class="value">6 Tools</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="label">Duration:</div>
+                                <div class="value">4 Months</div>
+                            </div>
+                        </div>
+                        <div class="budget">₱45,000</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Level 5: Team Structure -->
+            <div class="wbs-level level-5">
+                <h2>Level 5: Team Structure & Responsibilities</h2>
+                <div class="wbs-items">
+                    <div class="wbs-item">
+                        <h3>Scrum Master/Project Manager</h3>
+                        <div class="description">Shiena Mae V. Conje - Facilitates Agile ceremonies, removes impediments, ensures team collaboration, and manages ₱3,400,000 budget.</div>
+                        <div class="details">
+                            <div class="detail-item">
+                                <div class="label">Salary:</div>
+                                <div class="value">₱95,000/month</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="label">Duration:</div>
+                                <div class="value">4 Months</div>
+                            </div>
+                        </div>
+                        <div class="budget">₱380,000</div>
+                    </div>
+                    <div class="wbs-item">
+                        <h3>Product Owner</h3>
+                        <div class="description">Maxine A. Delfin Decide - Business stakeholder responsible for prioritizing features, managing requirements, and defining acceptance criteria.</div>
+                        <div class="details">
+                            <div class="detail-item">
+                                <div class="label">Time:</div>
+                                <div class="value">20% Time</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="label">Role:</div>
+                                <div class="value">Business Stakeholder</div>
+                            </div>
+                        </div>
+                        <div class="budget">₱0 (Business Stakeholder)</div>
+                    </div>
+                    <div class="wbs-item">
+                        <h3>Senior Full-Stack Developer</h3>
+                        <div class="description">Ronald Jay M. Literal - Develops Next.js 15 application with TypeScript and PostgreSQL integration, leads technical architecture.</div>
+                        <div class="details">
+                            <div class="detail-item">
+                                <div class="label">Salary:</div>
+                                <div class="value">₱85,000/month</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="label">Focus:</div>
+                                <div class="value">Technical Leadership</div>
+                            </div>
+                        </div>
+                        <div class="budget">₱340,000</div>
+                    </div>
+                    <div class="wbs-item">
+                        <h3>Full-Stack Developer</h3>
+                        <div class="description">Alghazi E. Utap - Develops system modules with TypeScript standards, follows Prisma ORM best practices, and reports adjustments.</div>
+                        <div class="details">
+                            <div class="detail-item">
+                                <div class="label">Salary:</div>
+                                <div class="value">₱70,000/month</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="label">Focus:</div>
+                                <div class="value">Development</div>
+                            </div>
+                        </div>
+                        <div class="budget">₱280,000</div>
+                    </div>
+                    <div class="wbs-item">
+                        <h3>QA Engineer</h3>
+                        <div class="description">Mike Jaspher D. Pasion - Ensures functionality, conducts testing, validates role-based access control for all five user types.</div>
+                        <div class="details">
+                            <div class="detail-item">
+                                <div class="label">Salary:</div>
+                                <div class="value">₱55,000/month</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="label">Focus:</div>
+                                <div class="value">Quality Assurance</div>
+                            </div>
+                        </div>
+                        <div class="budget">₱220,000</div>
+                    </div>
+                    <div class="wbs-item">
+                        <h3>DevOps Engineer</h3>
+                        <div class="description">Jonathan S. Gatase - Manages AWS deployment, infrastructure, provides technical support for all user roles and system scalability.</div>
+                        <div class="details">
+                            <div class="detail-item">
+                                <div class="label">Salary:</div>
+                                <div class="value">₱65,000/month</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="label">Focus:</div>
+                                <div class="value">Infrastructure</div>
+                            </div>
+                        </div>
+                        <div class="budget">₱260,000</div>
+                    </div>
+                    <div class="wbs-item">
+                        <h3>UI/UX Designer (Contract)</h3>
+                        <div class="description">Contract position - Ensures user interface design meets requirements for all five user types with responsive design.</div>
+                        <div class="details">
+                            <div class="detail-item">
+                                <div class="label">Rate:</div>
+                                <div class="value">₱40,000/month</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="label">Duration:</div>
+                                <div class="value">3 Months</div>
+                            </div>
+                        </div>
+                        <div class="budget">₱120,000</div>
+                    </div>
+                    <div class="wbs-item">
+                        <h3>Business Analyst (Contract)</h3>
+                        <div class="description">Contract position - Documents business processes and requirements according to project scope for all five user types.</div>
+                        <div class="details">
+                            <div class="detail-item">
+                                <div class="label">Rate:</div>
+                                <div class="value">₱30,000/month</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="label">Duration:</div>
+                                <div class="value">2 Months</div>
+                            </div>
+                        </div>
+                        <div class="budget">₱60,000</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Level 6: Additional Costs -->
+            <div class="wbs-level level-6">
+                <h2>Level 6: Additional Costs & Contingency</h2>
+                <div class="wbs-items">
+                    <div class="wbs-item">
+                        <h3>Travel & Meetings</h3>
+                        <div class="description">Client meetings, team building activities, conference attendance, and professional development workshops.</div>
+                        <div class="details">
+                            <div class="detail-item">
+                                <div class="label">Components:</div>
+                                <div class="value">3 Categories</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="label">Purpose:</div>
+                                <div class="value">Team Building</div>
+                            </div>
+                        </div>
+                        <div class="budget">₱35,000</div>
+                    </div>
+                    <div class="wbs-item">
+                        <h3>Contingency & Buffer</h3>
+                        <div class="description">10% reserve fund for unexpected costs, scope changes, risk mitigation, and unforeseen requirements.</div>
+                        <div class="details">
+                            <div class="detail-item">
+                                <div class="label">Percentage:</div>
+                                <div class="value">10% Reserve</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="label">Purpose:</div>
+                                <div class="value">Risk Management</div>
+                            </div>
+                        </div>
+                        <div class="budget">₱340,000</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="total-budget">
+            <h2>Total Project Investment: ₱3,400,000</h2>
+            <p>Expected Annual Benefits: ₱8,900,000 | ROI: 162% | Payback Period: 4.6 months</p>
+        </div>
+
+        <div class="footer">
+            <p>E-Commerce Platform Control & Revenue Management System - Work Breakdown Structure</p>
+            <p>Bestlink College of the Philippines | July-October 2025</p>
+        </div>
+    </div>
+</body>
+</html>

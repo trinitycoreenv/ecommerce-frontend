@@ -1,0 +1,83 @@
+STRIPE TEST CARDS FOR VENDOR ACCOUNTS - ALL SUCCESSFUL
+=====================================================
+
+CARD 1 - VISA SUCCESSFUL (RECOMMENDED)
+-------------------------------------
+Card Number: 4242 4242 4242 4242
+Expiry Date: 12/25
+CVC: 123
+Cardholder Name: Vendor Test User
+Billing Address: 123 Business Street
+City: Manila
+State: Metro Manila
+ZIP: 1000
+Country: Philippines
+Result: ✅ SUCCESSFUL - Primary test card for vendor subscriptions
+
+CARD 2 - VISA DEBIT SUCCESSFUL
+-----------------------------
+Card Number: 4000 0566 5566 5556
+Expiry Date: 12/25
+CVC: 123
+Cardholder Name: Vendor Debit User
+Billing Address: 456 Debit Avenue
+City: Cebu
+State: Cebu
+ZIP: 6000
+Country: Philippines
+Result: ✅ SUCCESSFUL - Debit card for vendor testing
+
+CARD 3 - MASTERCARD SUCCESSFUL
+-----------------------------
+Card Number: 5555 5555 5555 4444
+Expiry Date: 12/25
+CVC: 123
+Cardholder Name: Vendor Mastercard User
+Billing Address: 789 Mastercard Street
+City: Davao
+State: Davao del Sur
+ZIP: 8000
+Country: Philippines
+Result: ✅ SUCCESSFUL - Mastercard for vendor testing
+
+CARD 4 - AMERICAN EXPRESS SUCCESSFUL
+-----------------------------------
+Card Number: 
+Expiry Date: 13782 822463 100052/25
+CVC: 1234
+Cardholder Name: Vendor Amex User
+Billing Address: 321 Amex Boulevard
+City: Makati
+State: Metro Manila
+ZIP: 1200
+Country: Philippines
+Result: ✅ SUCCESSFUL - American Express for vendor testing
+
+TESTING SCENARIOS:
+=================
+
+1. VENDOR SUBSCRIPTION SIGNUP:
+   - Use CARD 1 (Visa) for successful subscription
+   - Use CARD 2 (Visa Debit) for successful subscription
+   - Use CARD 3 (Mastercard) for successful subscription
+   - Use CARD 4 (Amex) for successful subscription
+
+2. VENDOR PAYOUT TESTING:
+   - Use CARD 1 for successful payouts
+   - Use CARD 2 for successful payouts
+   - Use CARD 3 for successful payouts
+   - Use CARD 4 for successful payouts
+
+3. VENDOR PAYMENT PROCESSING:
+   - Use CARD 1 for successful payments
+   - Use CARD 2 for successful payments
+   - Use CARD 3 for successful payments
+   - Use CARD 4 for successful payments
+
+IMPORTANT NOTES:
+===============
+- All cards work in Stripe TEST mode only
+- Use future expiry dates (12/25, 01/26, etc.)
+- Use any valid CVC codes (123, 456, 789)
+- Test both success and failure scenarios
+- These cards are for testing purposes only

@@ -1,0 +1,1444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Commerce Platform Control & Revenue Management System - Work Breakdown Structure</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f5f5;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: #2c3e50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+
+        .header p {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        .wbs-container {
+            padding: 30px;
+        }
+
+        .wbs-level {
+            margin-bottom: 30px;
+        }
+
+        .level-title {
+            background: #34495e;
+            color: white;
+            padding: 10px 15px;
+            margin-bottom: 15px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .wbs-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 15px;
+        }
+
+        .wbs-item {
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            padding: 15px;
+            background: #fafafa;
+            transition: all 0.3s ease;
+        }
+
+        .wbs-item:hover {
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border-color: #3498db;
+        }
+
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .item-title {
+            font-weight: bold;
+            color: #2c3e50;
+            font-size: 14px;
+        }
+
+        .item-id {
+            background: #3498db;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .item-description {
+            color: #666;
+            font-size: 13px;
+            margin-bottom: 10px;
+        }
+
+        .item-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            font-size: 12px;
+        }
+
+        .detail-item {
+            background: #ecf0f1;
+            padding: 5px 8px;
+            border-radius: 3px;
+        }
+
+        .detail-label {
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        .detail-value {
+            color: #27ae60;
+        }
+
+        .level-1 .wbs-item {
+            border-left: 4px solid #e74c3c;
+        }
+
+        .level-2 .wbs-item {
+            border-left: 4px solid #f39c12;
+        }
+
+        .level-3 .wbs-item {
+            border-left: 4px solid #3498db;
+        }
+
+        .level-4 .wbs-item {
+            border-left: 4px solid #9b59b6;
+        }
+
+        .level-5 .wbs-item {
+            border-left: 4px solid #1abc9c;
+        }
+
+        .level-6 .wbs-item {
+            border-left: 4px solid #34495e;
+        }
+
+        @media (max-width: 768px) {
+            .wbs-items {
+                grid-template-columns: 1fr;
+            }
+            
+            .item-details {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>E-Commerce Platform Control & Revenue Management System</h1>
+            <p>Work Breakdown Structure (WBS)</p>
+        </div>
+
+        <div class="wbs-container">
+            <!-- Level 1: Project -->
+            <div class="wbs-level level-1">
+                <div class="level-title">Level 1: Project</div>
+                <div class="wbs-items">
+                    <div class="wbs-item">
+                        <div class="item-header">
+                            <div class="item-title">E-Commerce Platform Control & Revenue Management System</div>
+                            <div class="item-id">1.0</div>
+                        </div>
+                        <div class="item-description">Complete e-commerce platform with role-based access control, automated workflows, and comprehensive business management capabilities</div>
+                        <div class="item-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Scope:</div>
+                                <div class="detail-value">Full Platform Development</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">User Types:</div>
+                                <div class="detail-value">5 Role-Based Access</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Deliverables:</div>
+                                <div class="detail-value">8 Core Modules</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Environment:</div>
+                                <div class="detail-value">Production Ready</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Level 2: Project Phases -->
+            <div class="wbs-level level-2">
+                <div class="level-title">Level 2: Project Phases</div>
+                <div class="wbs-items">
+                    <div class="wbs-item">
+                        <div class="item-header">
+                            <div class="item-title">Project Initiation</div>
+                            <div class="item-id">1.1</div>
+                        </div>
+                        <div class="item-description">Project charter creation, stakeholder identification, requirements gathering, business case validation, and project kickoff</div>
+                        <div class="item-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Phase:</div>
+                                <div class="detail-value">Project Management</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Duration:</div>
+                                <div class="detail-value">1 Week (July 1-7, 2025)</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wbs-item">
+                        <div class="item-header">
+                            <div class="item-title">Planning Phase</div>
+                            <div class="item-id">1.2</div>
+                        </div>
+                        <div class="item-description">Detailed project planning, resource allocation, risk assessment, WBS creation, and sprint planning</div>
+                        <div class="item-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Phase:</div>
+                                <div class="detail-value">Project Management</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Duration:</div>
+                                <div class="detail-value">Integrated with Sprint 0</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wbs-item">
+                        <div class="item-header">
+                            <div class="item-title">Design Phase</div>
+                            <div class="item-id">1.3</div>
+                        </div>
+                        <div class="item-description">System architecture design, UI/UX design, database schema design, and technical specifications</div>
+                        <div class="item-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Phase:</div>
+                                <div class="detail-value">Development Lifecycle</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Duration:</div>
+                                <div class="detail-value">Sprint 1 (July 8-21, 2025)</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wbs-item">
+                        <div class="item-header">
+                            <div class="item-title">Development Phase</div>
+                            <div class="item-id">1.4</div>
+                        </div>
+                        <div class="item-description">Agile development sprints (Sprints 2-7), coding, implementation, and iterative development of all 8 modules</div>
+                        <div class="item-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Phase:</div>
+                                <div class="detail-value">Development Lifecycle</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Duration:</div>
+                                <div class="detail-value">6 Sprints (12 Weeks)</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wbs-item">
+                        <div class="item-header">
+                            <div class="item-title">Testing Phase</div>
+                            <div class="item-id">1.5</div>
+                        </div>
+                        <div class="item-description">Comprehensive testing, UAT, system testing, performance testing, and quality assurance</div>
+                        <div class="item-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Phase:</div>
+                                <div class="detail-value">Development Lifecycle</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Duration:</div>
+                                <div class="detail-value">Sprint 8 (Oct 14-27, 2025)</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wbs-item">
+                        <div class="item-header">
+                            <div class="item-title">Deployment Phase</div>
+                            <div class="item-id">1.6</div>
+                        </div>
+                        <div class="item-description">Production deployment, go-live activities, system migration, and initial user training</div>
+                        <div class="item-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Phase:</div>
+                                <div class="detail-value">Development Lifecycle</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Duration:</div>
+                                <div class="detail-value">Go-Live (Oct 28, 2025)</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wbs-item">
+                        <div class="item-header">
+                            <div class="item-title">Training & Support</div>
+                            <div class="item-id">1.7</div>
+                        </div>
+                        <div class="item-description">User training, documentation delivery, knowledge transfer, and post-launch support</div>
+                        <div class="item-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Phase:</div>
+                                <div class="detail-value">Project Management</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Duration:</div>
+                                <div class="detail-value">1 Week (Oct 28-Nov 4, 2025)</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wbs-item">
+                        <div class="item-header">
+                            <div class="item-title">Project Closure</div>
+                            <div class="item-id">1.8</div>
+                        </div>
+                        <div class="item-description">Project closure activities, lessons learned, documentation finalization, and stakeholder sign-off</div>
+                        <div class="item-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Phase:</div>
+                                <div class="detail-value">Project Management</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Duration:</div>
+                                <div class="detail-value">1 Day (Nov 5, 2025)</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Level 3: Project Initiation Tasks -->
+            <div class="wbs-level level-3">
+                <div class="level-title">Level 3: Project Initiation Tasks (Sprint 0)</div>
+                <div class="wbs-items">
+                    <div class="wbs-item">
+                        <div class="item-header">
+                            <div class="item-title">Requirements Gathering</div>
+                            <div class="item-id">1.1.1</div>
+                        </div>
+                        <div class="item-description">Meet with all 5 user types (Admin, Vendor, Customer, Finance Analyst, Operations Manager) to understand their needs and create prioritized feature list</div>
+                        <div class="item-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Task:</div>
+                                <div class="detail-value">Stakeholder Interviews</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Output:</div>
+                                <div class="detail-value">Requirements Document</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wbs-item">
+                        <div class="item-header">
+                            <div class="item-title">Stakeholder Identification</div>
+                            <div class="item-id">1.1.2</div>
+                        </div>
+                        <div class="item-description">Identify and analyze all project stakeholders using Power/Interest Matrix, create stakeholder management strategy</div>
+                        <div class="item-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Task:</div>
+                                <div class="detail-value">Stakeholder Analysis</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Output:</div>
+                                <div class="detail-value">Stakeholder Register</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wbs-item">
+                        <div class="item-header">
+                            <div class="item-title">Project Charter Creation</div>
+                            <div class="item-id">1.1.3</div>
+                        </div>
+                        <div class="item-description">Create comprehensive project charter with objectives, scope, budget (₱3,400,000), timeline (July-October 2025), and success criteria</div>
+                        <div class="item-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Task:</div>
+                                <div class="detail-value">Charter Development</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Output:</div>
+                                <div class="detail-value">Project Charter</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wbs-item">
+                        <div class="item-header">
+                            <div class="item-title">Business Case Validation</div>
+                            <div class="item-id">1.1.4</div>
+                        </div>
+                        <div class="item-description">Validate business case with ₱8,900,000 annual benefits, 162% ROI, and 4.6-month payback period</div>
+                        <div class="item-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Task:</div>
+                                <div class="detail-value">Financial Analysis</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Output:</div>
+                                <div class="detail-value">Business Case</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wbs-item">
+                        <div class="item-header">
+                            <div class="item-title">Team Assembly</div>
+                            <div class="item-id">1.1.5</div>
+                        </div>
+                        <div class="item-description">Assemble 8-member team: Scrum Master, Product Owner, 2 Developers, QA Engineer, DevOps Engineer, UI/UX Designer, Business Analyst</div>
+                        <div class="item-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Task:</div>
+                                <div class="detail-value">Resource Planning</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Output:</div>
+                                <div class="detail-value">Team Roster</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wbs-item">
+                        <div class="item-header">
+                            <div class="item-title">Project Kickoff</div>
+                            <div class="item-id">1.1.6</div>
+                        </div>
+                        <div class="item-description">Conduct project kickoff meeting with all stakeholders, present project overview, establish communication protocols</div>
+                        <div class="item-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Task:</div>
+                                <div class="detail-value">Kickoff Meeting</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Output:</div>
+                                <div class="detail-value">Kickoff Minutes</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Level 3: Planning Phase Tasks -->
+            <div class="wbs-level level-3">
+                <div class="level-title">Level 3: Planning Phase Tasks</div>
+                <div class="wbs-items">
+                    <div class="wbs-item">
+                        <div class="item-header">
+                            <div class="item-title">Sprint Planning</div>
+                            <div class="item-id">1.2.1</div>
+                        </div>
+                        <div class="item-description">Break down features into 8 two-week sprints, define sprint goals, and assign tasks to team members</div>
+                        <div class="item-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Task:</div>
+                                <div class="detail-value">Sprint Breakdown</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Output:</div>
+                                <div class="detail-value">Sprint Backlog</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wbs-item">
+                        <div class="item-header">
+                            <div class="item-title">Resource Allocation</div>
+                            <div class="item-id">1.2.2</div>
+                        </div>
+                        <div class="item-description">Allocate ₱3,400,000 budget across 8 sprints, assign team members to specific tasks and modules</div>
+                        <div class="item-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Task:</div>
+                                <div class="detail-value">Resource Planning</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Output:</div>
+                                <div class="detail-value">Resource Plan</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wbs-item">
+                        <div class="item-header">
+                            <div class="item-title">Risk Assessment</div>
+                            <div class="item-id">1.2.3</div>
+                        </div>
+                        <div class="item-description">Identify project risks, create mitigation strategies, and establish risk monitoring processes</div>
+                        <div class="item-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Task:</div>
+                                <div class="detail-value">Risk Analysis</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Output:</div>
+                                <div class="detail-value">Risk Register</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wbs-item">
+                        <div class="item-header">
+                            <div class="item-title">WBS Creation</div>
+                            <div class="item-id">1.2.4</div>
+                        </div>
+                        <div class="item-description">Create detailed Work Breakdown Structure for all 8 sprints and project phases</div>
+                        <div class="item-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Task:</div>
+                                <div class="detail-value">WBS Development</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Output:</div>
+                                <div class="detail-value">Project WBS</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wbs-item">
+                        <div class="item-header">
+                            <div class="item-title">Communication Plan</div>
+                            <div class="item-id">1.2.5</div>
+                        </div>
+                        <div class="item-description">Establish communication protocols, meeting schedules, and stakeholder reporting procedures</div>
+                        <div class="item-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Task:</div>
+                                <div class="detail-value">Communication Setup</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Output:</div>
+                                <div class="detail-value">Communication Plan</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wbs-item">
+                        <div class="item-header">
+                            <div class="item-title">Quality Plan</div>
+                            <div class="item-id">1.2.6</div>
+                        </div>
+                        <div class="item-description">Define quality standards, testing procedures, and acceptance criteria for all deliverables</div>
+                        <div class="item-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Task:</div>
+                                <div class="detail-value">Quality Planning</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Output:</div>
+                                <div class="detail-value">Quality Plan</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Level 3: Design Phase Tasks (Sprint 1) -->
+            <div class="wbs-level level-3">
+                <div class="level-title">Level 3: Design Phase Tasks (Sprint 1)</div>
+                <div class="wbs-items">
+                    <div class="wbs-item">
+                        <div class="item-header">
+                            <div class="item-title">System Architecture Design</div>
+                            <div class="item-id">1.3.1</div>
+                        </div>
+                        <div class="item-description">Design Next.js 15, TypeScript, PostgreSQL, Prisma ORM architecture with role-based access control for 5 user types</div>
+                        <div class="item-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Task:</div>
+                                <div class="detail-value">Architecture Planning</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Output:</div>
+                                <div class="detail-value">System Architecture</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wbs-item">
+                        <div class="item-header">
+                            <div class="item-title">Database Schema Design</div>
+                            <div class="item-id">1.3.2</div>
+                        </div>
+                        <div class="item-description">Design PostgreSQL database schema with Prisma ORM models for users, products, orders, payments, subscriptions, and analytics</div>
+                        <div class="item-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Task:</div>
+                                <div class="detail-value">Database Design</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Output:</div>
+                                <div class="detail-value">Database Schema</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wbs-item">
+                        <div class="item-header">
+                            <div class="item-title">UI/UX Design</div>
+                            <div class="item-id">1.3.3</div>
+                        </div>
+                        <div class="item-description">Create responsive UI/UX designs for all 5 user types with role-specific dashboards and workflows</div>
+                        <div class="item-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Task:</div>
+                                <div class="detail-value">Interface Design</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Output:</div>
+                                <div class="detail-value">UI/UX Mockups</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wbs-item">
+                        <div class="item-header">
+                            <div class="item-title">AWS Infrastructure Setup</div>
+                            <div class="item-id">1.3.4</div>
+                        </div>
+                        <div class="item-description">Set up AWS cloud infrastructure with auto-scaling, load balancing, and security configurations for 10,000+ concurrent users</div>
+                        <div class="item-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Task:</div>
+                                <div class="detail-value">Infrastructure Setup</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Output:</div>
+                                <div class="detail-value">Cloud Environment</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wbs-item">
+                        <div class="item-header">
+                            <div class="item-title">Development Environment Setup</div>
+                            <div class="item-id">1.3.5</div>
+                        </div>
+                        <div class="item-description">Set up Next.js 15, TypeScript, PostgreSQL, Prisma ORM development environment with CI/CD pipeline</div>
+                        <div class="item-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Task:</div>
+                                <div class="detail-value">Environment Setup</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Output:</div>
+                                <div class="detail-value">Dev Environment</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wbs-item">
+                        <div class="item-header">
+                            <div class="item-title">Security Framework Design</div>
+                            <div class="item-id">1.3.6</div>
+                        </div>
+                        <div class="item-description">Design JWT authentication, role-based access control, SSL certificates, and security protocols</div>
+                        <div class="item-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Task:</div>
+                                <div class="detail-value">Security Planning</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Output:</div>
+                                <div class="detail-value">Security Framework</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Level 3: Development Phase Tasks (Sprints 2-7) -->
+            <div class="wbs-level level-3">
+                <div class="level-title">Level 3: Development Phase Tasks (Sprints 2-7)</div>
+                <div class="wbs-items">
+                    <div class="wbs-item">
+                        <div class="item-header">
+                            <div class="item-title">Sprint 2: User Management & Authentication</div>
+                            <div class="item-id">1.4.1</div>
+                        </div>
+                        <div class="item-description">Develop JWT authentication, role-based access control, user registration, and profile management for all 5 user types</div>
+                        <div class="item-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Sprint:</div>
+                                <div class="detail-value">July 22 - Aug 4, 2025</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Deliverable:</div>
+                                <div class="detail-value">User Management System</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wbs-item">
+                        <div class="item-header">
+                            <div class="item-title">Sprint 3: Product Catalog & Approval Workflows</div>
+                            <div class="item-id">1.4.2</div>
+                        </div>
+                        <div class="item-description">Build product management system with CRUD operations, categorization, approval workflows, and inventory control</div>
+                        <div class="item-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Sprint:</div>
+                                <div class="detail-value">Aug 5 - Aug 18, 2025</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Deliverable:</div>
+                                <div class="detail-value">Product Catalog System</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wbs-item">
+                        <div class="item-header">
+                            <div class="item-title">Sprint 4: Order Management & Payment Processing</div>
+                            <div class="item-id">1.4.3</div>
+                        </div>
+                        <div class="item-description">Develop order processing system, payment gateway integration, transaction handling, and order tracking</div>
+                        <div class="item-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Sprint:</div>
+                                <div class="detail-value">Aug 19 - Sep 1, 2025</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Deliverable:</div>
+                                <div class="detail-value">Order & Payment System</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wbs-item">
+                        <div class="item-header">
+                            <div class="item-title">Sprint 5: Subscription & Commission Management</div>
+                            <div class="item-id">1.4.4</div>
+                        </div>
+                        <div class="item-description">Implement tiered subscription plans (Basic, Premium, Enterprise), automated commission calculations, and payout processing</div>
+                        <div class="item-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Sprint:</div>
+                                <div class="detail-value">Sep 2 - Sep 15, 2025</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Deliverable:</div>
+                                <div class="detail-value">Subscription & Commission System</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wbs-item">
+                        <div class="item-header">
+                            <div class="item-title">Sprint 6: Logistics & Operations Management</div>
+                            <div class="item-id">1.4.5</div>
+                        </div>
+                        <div class="item-description">Build shipment tracking, logistics partner integration, delivery management, and shipping analytics</div>
+                        <div class="item-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Sprint:</div>
+                                <div class="detail-value">Sep 16 - Sep 29, 2025</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Deliverable:</div>
+                                <div class="detail-value">Logistics Management System</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wbs-item">
+                        <div class="item-header">
+                            <div class="item-title">Sprint 7: Analytics & Reporting Dashboards</div>
+                            <div class="item-id">1.4.6</div>
+                        </div>
+                        <div class="item-description">Develop role-specific dashboards, KPI reporting, business intelligence, and real-time analytics for all user types</div>
+                        <div class="item-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Sprint:</div>
+                                <div class="detail-value">Sep 30 - Oct 13, 2025</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Deliverable:</div>
+                                <div class="detail-value">Analytics & Reporting System</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Level 3: Major Deliverables (Development Phase) -->
+            <div class="wbs-level level-3">
+                <div class="level-title">Level 3: Major Deliverables (Development Phase)</div>
+                <div class="wbs-items">
+                    <div class="wbs-item">
+                        <div class="item-header">
+                            <div class="item-title">User Management System</div>
+                            <div class="item-id">1.4.1</div>
+                        </div>
+                        <div class="item-description">Complete user authentication, authorization, and role-based access control system for all user types</div>
+                        <div class="item-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Deliverable:</div>
+                                <div class="detail-value">Authentication Module</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">User Types:</div>
+                                <div class="detail-value">5 Role-Based Access</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wbs-item">
+                        <div class="item-header">
+                            <div class="item-title">Product Catalog System</div>
+                            <div class="item-id">1.4.2</div>
+                        </div>
+                        <div class="item-description">Product management, categorization, approval workflows, and inventory control system</div>
+                        <div class="item-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Deliverable:</div>
+                                <div class="detail-value">Product Management Module</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Features:</div>
+                                <div class="detail-value">CRUD, Approval, Inventory</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wbs-item">
+                        <div class="item-header">
+                            <div class="item-title">Order Management System</div>
+                            <div class="item-id">1.4.3</div>
+                        </div>
+                        <div class="item-description">Order processing, status tracking, order history, and fulfillment workflow management</div>
+                        <div class="item-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Deliverable:</div>
+                                <div class="detail-value">Order Processing Module</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Features:</div>
+                                <div class="detail-value">Processing, Tracking, History</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wbs-item">
+                        <div class="item-header">
+                            <div class="item-title">Payment Processing System</div>
+                            <div class="item-id">1.4.4</div>
+                        </div>
+                        <div class="item-description">Payment gateway integration, transaction processing, refund handling, and payment security</div>
+                        <div class="item-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Deliverable:</div>
+                                <div class="detail-value">Payment Gateway Module</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Features:</div>
+                                <div class="detail-value">Gateway, Processing, Security</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wbs-item">
+                        <div class="item-header">
+                            <div class="item-title">Subscription Management System</div>
+                            <div class="item-id">1.4.5</div>
+                        </div>
+                        <div class="item-description">Tiered vendor subscription plans, billing cycles, and subscription analytics</div>
+                        <div class="item-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Deliverable:</div>
+                                <div class="detail-value">Subscription Module</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Features:</div>
+                                <div class="detail-value">3-Tier Plans, Billing</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wbs-item">
+                        <div class="item-header">
+                            <div class="item-title">Commission Management System</div>
+                            <div class="item-id">1.4.6</div>
+                        </div>
+                        <div class="item-description">Automated commission calculations, tracking, payout processing, and financial reporting</div>
+                        <div class="item-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Deliverable:</div>
+                                <div class="detail-value">Commission Module</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Features:</div>
+                                <div class="detail-value">Auto-Calc, Tracking, Payouts</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wbs-item">
+                        <div class="item-header">
+                            <div class="item-title">Logistics & Shipping System</div>
+                            <div class="item-id">1.4.7</div>
+                        </div>
+                        <div class="item-description">Shipment tracking, logistics partner integration, delivery management, and shipping analytics</div>
+                        <div class="item-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Deliverable:</div>
+                                <div class="detail-value">Logistics Module</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Features:</div>
+                                <div class="detail-value">Tracking, Integration, Analytics</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wbs-item">
+                        <div class="item-header">
+                            <div class="item-title">Analytics & Reporting System</div>
+                            <div class="item-id">1.4.8</div>
+                        </div>
+                        <div class="item-description">Role-specific dashboards, KPI reporting, business intelligence, and real-time analytics</div>
+                        <div class="item-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Deliverable:</div>
+                                <div class="detail-value">Analytics Module</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Features:</div>
+                                <div class="detail-value">Dashboards, KPIs, BI</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Level 3: Testing Phase Tasks (Sprint 8) -->
+            <div class="wbs-level level-3">
+                <div class="level-title">Level 3: Testing Phase Tasks (Sprint 8)</div>
+                <div class="wbs-items">
+                    <div class="wbs-item">
+                        <div class="item-header">
+                            <div class="item-title">Unit Testing</div>
+                            <div class="item-id">1.5.1</div>
+                        </div>
+                        <div class="item-description">Comprehensive unit testing for all 8 modules using Jest framework with 90%+ code coverage</div>
+                        <div class="item-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Task:</div>
+                                <div class="detail-value">Code Testing</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Output:</div>
+                                <div class="detail-value">Unit Test Results</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wbs-item">
+                        <div class="item-header">
+                            <div class="item-title">Integration Testing</div>
+                            <div class="item-id">1.5.2</div>
+                        </div>
+                        <div class="item-description">Test integration between all modules, APIs, and external services (payment gateways, logistics APIs)</div>
+                        <div class="item-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Task:</div>
+                                <div class="detail-value">System Integration</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Output:</div>
+                                <div class="detail-value">Integration Test Results</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wbs-item">
+                        <div class="item-header">
+                            <div class="item-title">User Acceptance Testing</div>
+                            <div class="item-id">1.5.3</div>
+                        </div>
+                        <div class="item-description">UAT with all 5 user types (Admin, Vendor, Customer, Finance Analyst, Operations Manager) for role-based access control</div>
+                        <div class="item-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Task:</div>
+                                <div class="detail-value">User Validation</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Output:</div>
+                                <div class="detail-value">UAT Sign-off</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wbs-item">
+                        <div class="item-header">
+                            <div class="item-title">Performance Testing</div>
+                            <div class="item-id">1.5.4</div>
+                        </div>
+                        <div class="item-description">Load testing for 10,000+ concurrent users, stress testing, and performance optimization</div>
+                        <div class="item-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Task:</div>
+                                <div class="detail-value">Performance Validation</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Output:</div>
+                                <div class="detail-value">Performance Report</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wbs-item">
+                        <div class="item-header">
+                            <div class="item-title">Security Testing</div>
+                            <div class="item-id">1.5.5</div>
+                        </div>
+                        <div class="item-description">Security audit, penetration testing, JWT validation, and RBAC security testing</div>
+                        <div class="item-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Task:</div>
+                                <div class="detail-value">Security Validation</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Output:</div>
+                                <div class="detail-value">Security Audit Report</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wbs-item">
+                        <div class="item-header">
+                            <div class="item-title">End-to-End Testing</div>
+                            <div class="item-id">1.5.6</div>
+                        </div>
+                        <div class="item-description">Complete workflow testing using Playwright for all user journeys and business processes</div>
+                        <div class="item-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Task:</div>
+                                <div class="detail-value">E2E Validation</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Output:</div>
+                                <div class="detail-value">E2E Test Results</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Level 3: Deployment Phase Tasks -->
+            <div class="wbs-level level-3">
+                <div class="level-title">Level 3: Deployment Phase Tasks</div>
+                <div class="wbs-items">
+                    <div class="wbs-item">
+                        <div class="item-header">
+                            <div class="item-title">Production Environment Setup</div>
+                            <div class="item-id">1.6.1</div>
+                        </div>
+                        <div class="item-description">Configure production AWS environment, deploy all 8 modules, and set up monitoring systems</div>
+                        <div class="item-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Task:</div>
+                                <div class="detail-value">Production Deployment</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Output:</div>
+                                <div class="detail-value">Live System</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wbs-item">
+                        <div class="item-header">
+                            <div class="item-title">Go-Live Activities</div>
+                            <div class="item-id">1.6.2</div>
+                        </div>
+                        <div class="item-description">Execute go-live procedures, system migration, data transfer, and initial user access setup</div>
+                        <div class="item-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Task:</div>
+                                <div class="detail-value">System Launch</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Output:</div>
+                                <div class="detail-value">Operational System</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wbs-item">
+                        <div class="item-header">
+                            <div class="item-title">System Migration</div>
+                            <div class="item-id">1.6.3</div>
+                        </div>
+                        <div class="item-description">Migrate existing data, configure user accounts for all 5 user types, and validate system functionality</div>
+                        <div class="item-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Task:</div>
+                                <div class="detail-value">Data Migration</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Output:</div>
+                                <div class="detail-value">Migrated Data</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wbs-item">
+                        <div class="item-header">
+                            <div class="item-title">Initial User Training</div>
+                            <div class="item-id">1.6.4</div>
+                        </div>
+                        <div class="item-description">Conduct initial training sessions for key users from all 5 user types and validate system access</div>
+                        <div class="item-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Task:</div>
+                                <div class="detail-value">Initial Training</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Output:</div>
+                                <div class="detail-value">Trained Key Users</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wbs-item">
+                        <div class="item-header">
+                            <div class="item-title">System Validation</div>
+                            <div class="item-id">1.6.5</div>
+                        </div>
+                        <div class="item-description">Validate all 8 modules functionality, test role-based access control, and confirm 162% ROI metrics</div>
+                        <div class="item-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Task:</div>
+                                <div class="detail-value">System Validation</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Output:</div>
+                                <div class="detail-value">Validated System</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Level 3: Training & Support Tasks -->
+            <div class="wbs-level level-3">
+                <div class="level-title">Level 3: Training & Support Tasks</div>
+                <div class="wbs-items">
+                    <div class="wbs-item">
+                        <div class="item-header">
+                            <div class="item-title">User Training Sessions</div>
+                            <div class="item-id">1.7.1</div>
+                        </div>
+                        <div class="item-description">Conduct training sessions for all 5 user types with role-specific dashboards and workflows</div>
+                        <div class="item-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Task:</div>
+                                <div class="detail-value">Training Delivery</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Output:</div>
+                                <div class="detail-value">Trained Users</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wbs-item">
+                        <div class="item-header">
+                            <div class="item-title">Documentation Delivery</div>
+                            <div class="item-id">1.7.2</div>
+                        </div>
+                        <div class="item-description">Deliver user manuals, technical documentation, API guides, and troubleshooting guides</div>
+                        <div class="item-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Task:</div>
+                                <div class="detail-value">Documentation Handover</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Output:</div>
+                                <div class="detail-value">Complete Documentation</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wbs-item">
+                        <div class="item-header">
+                            <div class="item-title">Knowledge Transfer</div>
+                            <div class="item-id">1.7.3</div>
+                        </div>
+                        <div class="item-description">Transfer system knowledge to operations team including AWS infrastructure and database management</div>
+                        <div class="item-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Task:</div>
+                                <div class="detail-value">Knowledge Handover</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Output:</div>
+                                <div class="detail-value">Operations Readiness</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wbs-item">
+                        <div class="item-header">
+                            <div class="item-title">Post-Launch Support</div>
+                            <div class="item-id">1.7.4</div>
+                        </div>
+                        <div class="item-description">Provide 30-day post-launch support, issue resolution, and system monitoring</div>
+                        <div class="item-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Task:</div>
+                                <div class="detail-value">Support Services</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Output:</div>
+                                <div class="detail-value">Stable System</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Level 3: Project Closure Tasks -->
+            <div class="wbs-level level-3">
+                <div class="level-title">Level 3: Project Closure Tasks</div>
+                <div class="wbs-items">
+                    <div class="wbs-item">
+                        <div class="item-header">
+                            <div class="item-title">Project Documentation Finalization</div>
+                            <div class="item-id">1.8.1</div>
+                        </div>
+                        <div class="item-description">Finalize all project documentation, archive project records, and complete final project report</div>
+                        <div class="item-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Task:</div>
+                                <div class="detail-value">Documentation Finalization</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Output:</div>
+                                <div class="detail-value">Final Project Report</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wbs-item">
+                        <div class="item-header">
+                            <div class="item-title">Lessons Learned Documentation</div>
+                            <div class="item-id">1.8.2</div>
+                        </div>
+                        <div class="item-description">Document lessons learned from all 8 sprints, team collaboration, and project management processes</div>
+                        <div class="item-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Task:</div>
+                                <div class="detail-value">Lessons Learned</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Output:</div>
+                                <div class="detail-value">Lessons Learned Report</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wbs-item">
+                        <div class="item-header">
+                            <div class="item-title">ROI Validation & Final Metrics</div>
+                            <div class="item-id">1.8.3</div>
+                        </div>
+                        <div class="item-description">Validate achievement of 162% ROI, 4.6-month payback period, and ₱8,900,000 annual benefits</div>
+                        <div class="item-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Task:</div>
+                                <div class="detail-value">ROI Validation</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Output:</div>
+                                <div class="detail-value">ROI Achievement Report</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wbs-item">
+                        <div class="item-header">
+                            <div class="item-title">Stakeholder Sign-off</div>
+                            <div class="item-id">1.8.4</div>
+                        </div>
+                        <div class="item-description">Obtain final stakeholder sign-off from Product Owner (Maxine A. Delfin Decide) and project sponsor</div>
+                        <div class="item-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Task:</div>
+                                <div class="detail-value">Final Approval</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Output:</div>
+                                <div class="detail-value">Project Acceptance</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wbs-item">
+                        <div class="item-header">
+                            <div class="item-title">Team Release & Resource Closure</div>
+                            <div class="item-id">1.8.5</div>
+                        </div>
+                        <div class="item-description">Release project team members, close project resources, and finalize ₱3,400,000 budget accounting</div>
+                        <div class="item-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Task:</div>
+                                <div class="detail-value">Resource Closure</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Output:</div>
+                                <div class="detail-value">Project Closure</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Level 4: Work Packages (User Management System) -->
+            <div class="wbs-level level-4">
+                <div class="level-title">Level 4: Work Packages (User Management System)</div>
+                <div class="wbs-items">
+                    <div class="wbs-item">
+                        <div class="item-header">
+                            <div class="item-title">Authentication System</div>
+                            <div class="item-id">1.4.1.1</div>
+                        </div>
+                        <div class="item-description">JWT-based authentication, login/logout functionality, password management, and session handling</div>
+                        <div class="item-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Work Package:</div>
+                                <div class="detail-value">Auth System Development</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Output:</div>
+                                <div class="detail-value">Secure Login System</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wbs-item">
+                        <div class="item-header">
+                            <div class="item-title">Authorization System</div>
+                            <div class="item-id">1.4.1.2</div>
+                        </div>
+                        <div class="item-description">Role-based access control, permission management, and resource authorization for all user types</div>
+                        <div class="item-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Work Package:</div>
+                                <div class="detail-value">RBAC Implementation</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Output:</div>
+                                <div class="detail-value">Permission System</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wbs-item">
+                        <div class="item-header">
+                            <div class="item-title">User Profile Management</div>
+                            <div class="item-id">1.4.1.3</div>
+                        </div>
+                        <div class="item-description">User registration, profile management, account settings, and user data management</div>
+                        <div class="item-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Work Package:</div>
+                                <div class="detail-value">Profile System Development</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Output:</div>
+                                <div class="detail-value">User Profile System</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wbs-item">
+                        <div class="item-header">
+                            <div class="item-title">User Interface Components</div>
+                            <div class="item-id">1.4.1.4</div>
+                        </div>
+                        <div class="item-description">Login forms, user dashboards, profile pages, and role-specific UI components</div>
+                        <div class="item-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Work Package:</div>
+                                <div class="detail-value">UI Component Development</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Output:</div>
+                                <div class="detail-value">User Interface</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wbs-item">
+                        <div class="item-header">
+                            <div class="item-title">User Management APIs</div>
+                            <div class="item-id">1.4.1.5</div>
+                        </div>
+                        <div class="item-description">RESTful APIs for user operations, authentication endpoints, and user data management</div>
+                        <div class="item-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Work Package:</div>
+                                <div class="detail-value">API Development</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Output:</div>
+                                <div class="detail-value">User Management APIs</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wbs-item">
+                        <div class="item-header">
+                            <div class="item-title">Database Schema</div>
+                            <div class="item-id">1.4.1.6</div>
+                        </div>
+                        <div class="item-description">User tables, roles, permissions, and authentication data with Prisma ORM models</div>
+                        <div class="item-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Work Package:</div>
+                                <div class="detail-value">Database Design</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Output:</div>
+                                <div class="detail-value">User Database Schema</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wbs-item">
+                        <div class="item-header">
+                            <div class="item-title">Security Implementation</div>
+                            <div class="item-id">1.4.1.7</div>
+                        </div>
+                        <div class="item-description">Password encryption, session security, CSRF protection, and security best practices</div>
+                        <div class="item-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Work Package:</div>
+                                <div class="detail-value">Security Development</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Output:</div>
+                                <div class="detail-value">Secure User System</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wbs-item">
+                        <div class="item-header">
+                            <div class="item-title">Testing & Validation</div>
+                            <div class="item-id">1.4.1.8</div>
+                        </div>
+                        <div class="item-description">Unit tests, integration tests, security tests, and user acceptance testing for user management</div>
+                        <div class="item-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Work Package:</div>
+                                <div class="detail-value">Testing Activities</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Output:</div>
+                                <div class="detail-value">Tested User System</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

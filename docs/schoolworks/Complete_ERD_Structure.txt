@@ -1,0 +1,547 @@
+COMPLETE ENTITY RELATIONSHIP DIAGRAM (ERD)
+E-COMMERCE PLATFORM CONTROL & REVENUE MANAGEMENT SYSTEM
+
+Project: E-Commerce Platform Control & Revenue Management System
+Institution: Bestlink College of the Philippines
+Address: 1071 BRGY. Kaligayahan, Novaliches, Quezon City, Philippines 1123
+Date: July 1, 2025
+Budget: ₱3,400,000 (July-October 2025)
+Timeline: 16 weeks (July 1 - November 5, 2025)
+Team Size: 8 members
+ROI: 162% in first year
+Payback Period: 4.6 months
+Annual Benefits: ₱8,900,000
+
+================================================================================
+TECHNOLOGY STACK
+================================================================================
+
+Frontend Framework: Next.js 15
+Programming Language: TypeScript
+Database: PostgreSQL
+ORM: Prisma ORM
+Cloud Infrastructure: AWS Cloud
+Authentication: JWT Authentication
+Access Control: Role-Based Access Control (RBAC)
+API Architecture: RESTful APIs
+User Types: 5 Role-Based Access (Admin, Vendor, Customer, Finance Analyst, Operations Manager)
+
+================================================================================
+ENUMERATIONS & STATUS TYPES
+================================================================================
+
+1. UserRole
+   - ADMIN: System administrator with full access
+   - VENDOR: Business owner selling products
+   - CUSTOMER: End user purchasing products
+   - FINANCE_ANALYST: Financial operations and reporting
+   - OPERATIONS_MANAGER: Logistics and operations oversight
+
+2. SubscriptionTier
+   - BASIC: Entry-level subscription plan
+   - PREMIUM: Mid-tier subscription with enhanced features
+   - ENTERPRISE: Advanced subscription with full features
+
+3. SubscriptionStatus
+   - ACTIVE: Currently active subscription
+   - INACTIVE: Temporarily inactive subscription
+   - SUSPENDED: Suspended due to policy violations
+   - CANCELLED: Permanently cancelled subscription
+
+4. ProductStatus
+   - DRAFT: Product being created/edited
+   - PENDING_APPROVAL: Awaiting admin approval
+   - APPROVED: Approved and available for sale
+   - REJECTED: Rejected by admin
+   - DISCONTINUED: No longer available
+
+5. OrderStatus
+   - PENDING: Order placed, awaiting confirmation
+   - CONFIRMED: Order confirmed and processing
+   - PROCESSING: Order being prepared
+   - SHIPPED: Order shipped to customer
+   - DELIVERED: Order delivered successfully
+   - CANCELLED: Order cancelled
+   - REFUNDED: Order refunded
+
+6. ShipmentStatus
+   - PENDING: Shipment created, awaiting pickup
+   - PICKED_UP: Package picked up by carrier
+   - IN_TRANSIT: Package in transit
+   - OUT_FOR_DELIVERY: Package out for delivery
+   - DELIVERED: Package delivered
+   - FAILED_DELIVERY: Delivery attempt failed
+   - RETURNED: Package returned to sender
+
+7. TransactionStatus
+   - PENDING: Transaction initiated
+   - COMPLETED: Transaction completed successfully
+   - FAILED: Transaction failed
+   - REFUNDED: Transaction refunded
+   - CANCELLED: Transaction cancelled
+
+8. PayoutStatus
+   - PENDING: Payout scheduled
+   - PROCESSING: Payout being processed
+   - COMPLETED: Payout completed
+   - FAILED: Payout failed
+   - CANCELLED: Payout cancelled
+
+9. ReportType
+   - SALES_SUMMARY: Overall sales performance
+   - COMMISSION_REPORT: Commission tracking and analysis
+   - VENDOR_PERFORMANCE: Vendor metrics and KPIs
+   - LOGISTICS_REPORT: Shipping and delivery performance
+   - FINANCIAL_SUMMARY: Financial overview and trends
+
+================================================================================
+CORE ENTITIES & ATTRIBUTES
+================================================================================
+
+1. USER (Core User Management)
+   Primary Key: id (UUID)
+   Attributes:
+   - id: UUID (Primary Key)
+   - email: String (Unique)
+   - name: String
+   - passwordHash: String
+   - role: UserRole (Enum)
+   - isActive: Boolean (Default: true)
+   - createdAt: DateTime
+   - updatedAt: DateTime
+   
+   Relationships:
+   - One-to-One with Vendor (optional)
+   - One-to-Many with Order (as customer)
+   - One-to-Many with Transaction
+   - One-to-Many with AuditLog
+
+2. VENDOR (Business Information)
+   Primary Key: id (UUID)
+   Foreign Key: userId (UUID) → User.id
+   Attributes:
+   - id: UUID (Primary Key)
+   - userId: UUID (Foreign Key to User)
+   - businessName: String
+   - businessAddress: String (Optional)
+   - taxId: String (Optional)
+   - subscriptionTier: SubscriptionTier (Default: BASIC)
+   - commissionRate: Decimal(5,4) (Default: 0.1)
+   - status: String (Default: "ACTIVE")
+   - createdAt: DateTime
+   - updatedAt: DateTime
+   
+   Relationships:
+   - One-to-One with User
+   - One-to-Many with Subscription
+   - One-to-Many with Product
+   - One-to-Many with Order (as vendor)
+   - One-to-Many with Transaction
+   - One-to-Many with Payout
+   - One-to-One with LogisticsConfig
+
+3. SUBSCRIPTION (Subscription Management)
+   Primary Key: id (UUID)
+   Foreign Key: vendorId (UUID) → Vendor.id
+   Attributes:
+   - id: UUID (Primary Key)
+   - vendorId: UUID (Foreign Key to Vendor)
+   - tier: SubscriptionTier (Enum)
+   - startDate: DateTime
+   - endDate: DateTime (Optional)
+   - status: SubscriptionStatus (Enum)
+   - price: Decimal(10,2)
+   - createdAt: DateTime
+   - updatedAt: DateTime
+   
+   Relationships:
+   - Many-to-One with Vendor
+
+4. CATEGORY (Product Categorization)
+   Primary Key: id (UUID)
+   Attributes:
+   - id: UUID (Primary Key)
+   - name: String (Unique)
+   - description: String (Optional)
+   - policyRules: JSON (Optional)
+   - isActive: Boolean (Default: true)
+   - createdAt: DateTime
+   - updatedAt: DateTime
+   
+   Relationships:
+   - One-to-Many with Product
+
+5. PRODUCT (Product Management)
+   Primary Key: id (UUID)
+   Foreign Keys: vendorId (UUID) → Vendor.id, categoryId (UUID) → Category.id
+   Attributes:
+   - id: UUID (Primary Key)
+   - vendorId: UUID (Foreign Key to Vendor)
+   - categoryId: UUID (Foreign Key to Category)
+   - name: String
+   - description: String (Optional)
+   - price: Decimal(10,2)
+   - sku: String (Unique, Optional)
+   - inventory: Integer (Default: 0)
+   - status: ProductStatus (Enum)
+   - images: String[] (Array of image URLs)
+   - metadata: JSON (Optional)
+   - createdAt: DateTime
+   - updatedAt: DateTime
+   
+   Relationships:
+   - Many-to-One with Vendor
+   - Many-to-One with Category
+   - One-to-Many with OrderItem
+
+6. ORDER (Order Management)
+   Primary Key: id (UUID)
+   Foreign Keys: customerId (UUID) → User.id, vendorId (UUID) → Vendor.id
+   Attributes:
+   - id: UUID (Primary Key)
+   - customerId: UUID (Foreign Key to User)
+   - vendorId: UUID (Foreign Key to Vendor)
+   - orderNumber: String (Unique)
+   - status: OrderStatus (Enum)
+   - totalPrice: Decimal(10,2)
+   - shippingAddress: JSON
+   - billingAddress: JSON (Optional)
+   - notes: String (Optional)
+   - createdAt: DateTime
+   - updatedAt: DateTime
+   
+   Relationships:
+   - Many-to-One with User (as customer)
+   - Many-to-One with Vendor
+   - One-to-Many with OrderItem
+   - One-to-Many with Shipment
+   - One-to-Many with Transaction
+
+7. ORDERITEM (Order Line Items)
+   Primary Key: id (UUID)
+   Foreign Keys: orderId (UUID) → Order.id, productId (UUID) → Product.id
+   Attributes:
+   - id: UUID (Primary Key)
+   - orderId: UUID (Foreign Key to Order)
+   - productId: UUID (Foreign Key to Product)
+   - quantity: Integer
+   - price: Decimal(10,2)
+   - createdAt: DateTime
+   
+   Relationships:
+   - Many-to-One with Order
+   - Many-to-One with Product
+
+8. SHIPMENT (Logistics Management)
+   Primary Key: id (UUID)
+   Foreign Key: orderId (UUID) → Order.id
+   Attributes:
+   - id: UUID (Primary Key)
+   - orderId: UUID (Foreign Key to Order)
+   - carrier: String
+   - trackingNumber: String (Unique, Optional)
+   - status: ShipmentStatus (Enum)
+   - slaDeadline: DateTime (Optional)
+   - estimatedDelivery: DateTime (Optional)
+   - actualDelivery: DateTime (Optional)
+   - shippingCost: Decimal(10,2) (Optional)
+   - notes: String (Optional)
+   - createdAt: DateTime
+   - updatedAt: DateTime
+   
+   Relationships:
+   - Many-to-One with Order
+
+9. LOGISTICSCONFIG (Vendor Shipping Configuration)
+   Primary Key: id (UUID)
+   Foreign Key: vendorId (UUID) → Vendor.id
+   Attributes:
+   - id: UUID (Primary Key)
+   - vendorId: UUID (Foreign Key to Vendor, Unique)
+   - shippingZones: JSON
+   - carriers: JSON
+   - slaDefinitions: JSON
+   - autoFulfillment: Boolean (Default: false)
+   - trackingEnabled: Boolean (Default: true)
+   - createdAt: DateTime
+   - updatedAt: DateTime
+   
+   Relationships:
+   - One-to-One with Vendor
+
+10. TRANSACTION (Financial Processing)
+    Primary Key: id (UUID)
+    Foreign Keys: orderId (UUID) → Order.id, vendorId (UUID) → Vendor.id, customerId (UUID) → User.id
+    Attributes:
+    - id: UUID (Primary Key)
+    - orderId: UUID (Foreign Key to Order)
+    - vendorId: UUID (Foreign Key to Vendor)
+    - customerId: UUID (Foreign Key to User)
+    - amount: Decimal(10,2)
+    - commission: Decimal(10,2)
+    - netPayout: Decimal(10,2)
+    - status: TransactionStatus (Enum)
+    - paymentMethod: String (Optional)
+    - paymentId: String (Optional)
+    - processedAt: DateTime (Optional)
+    - createdAt: DateTime
+    - updatedAt: DateTime
+    
+    Relationships:
+    - Many-to-One with Order
+    - Many-to-One with Vendor
+    - Many-to-One with User (as customer)
+
+11. PAYOUT (Vendor Payment Management)
+    Primary Key: id (UUID)
+    Foreign Key: vendorId (UUID) → Vendor.id
+    Attributes:
+    - id: UUID (Primary Key)
+    - vendorId: UUID (Foreign Key to Vendor)
+    - amount: Decimal(10,2)
+    - scheduledDate: DateTime
+    - status: PayoutStatus (Enum)
+    - paymentMethod: String (Optional)
+    - paymentId: String (Optional)
+    - processedAt: DateTime (Optional)
+    - notes: String (Optional)
+    - createdAt: DateTime
+    - updatedAt: DateTime
+    
+    Relationships:
+    - Many-to-One with Vendor
+
+12. REPORT (Analytics & Reporting)
+    Primary Key: id (UUID)
+    Attributes:
+    - id: UUID (Primary Key)
+    - type: ReportType (Enum)
+    - title: String
+    - data: JSON
+    - filters: JSON (Optional)
+    - generatedBy: UUID
+    - generatedAt: DateTime
+    
+    Relationships:
+    - Generated by users (no formal foreign key constraint)
+
+13. AUDITLOG (Security & Compliance)
+    Primary Key: id (UUID)
+    Foreign Key: userId (UUID) → User.id
+    Attributes:
+    - id: UUID (Primary Key)
+    - userId: UUID (Foreign Key to User)
+    - action: String
+    - resource: String
+    - resourceId: String (Optional)
+    - details: JSON (Optional)
+    - ipAddress: String (Optional)
+    - userAgent: String (Optional)
+    - createdAt: DateTime
+    
+    Relationships:
+    - Many-to-One with User
+
+================================================================================
+ENTITY RELATIONSHIPS
+================================================================================
+
+1. USER ↔ VENDOR (1:1)
+   - Each user can have at most one vendor profile
+   - Not all users are vendors (customers, admins, etc.)
+   - Vendor profile contains business-specific information
+
+2. VENDOR ↔ SUBSCRIPTION (1:Many)
+   - A vendor can have multiple subscription records over time
+   - Tracks subscription history, upgrades, downgrades, and renewals
+   - Each subscription record represents a specific time period
+
+3. VENDOR ↔ PRODUCT (1:Many)
+   - Each vendor can create and manage multiple products
+   - Products are owned by the vendor who created them
+   - Vendor can have products in different categories
+
+4. CATEGORY ↔ PRODUCT (1:Many)
+   - Products are organized into categories
+   - Each product belongs to exactly one category
+   - Categories contain policy rules for product approval
+
+5. USER ↔ ORDER (1:Many as Customer)
+   - Customers can place multiple orders
+   - Each order has one customer
+   - Orders track customer purchase history
+
+6. VENDOR ↔ ORDER (1:Many as Vendor)
+   - Vendors can receive multiple orders for their products
+   - Each order is associated with one vendor
+   - Orders track vendor sales performance
+
+7. ORDER ↔ ORDERITEM (1:Many)
+   - Each order contains multiple line items
+   - Each order item belongs to exactly one order
+   - Order items link to specific products with quantities and prices
+
+8. ORDER ↔ SHIPMENT (1:Many)
+   - Orders can have multiple shipments
+   - Supports split shipments for different items
+   - Tracks delivery status for each shipment
+
+9. VENDOR ↔ LOGISTICSCONFIG (1:1)
+   - Each vendor has one logistics configuration
+   - Contains shipping zones, carriers, and SLA definitions
+   - Configures vendor-specific shipping rules
+
+10. ORDER ↔ TRANSACTION (1:Many)
+    - Orders generate multiple transactions
+    - Tracks payment processing, commission calculations
+    - Links to vendor payouts and customer payments
+
+11. VENDOR ↔ TRANSACTION (1:Many)
+    - Vendors are involved in multiple transactions
+    - Tracks commission calculations and net payouts
+    - Links to vendor financial performance
+
+12. USER ↔ TRANSACTION (1:Many as Customer)
+    - Customers make multiple transactions
+    - Tracks customer payment history
+    - Links to order payments
+
+13. VENDOR ↔ PAYOUT (1:Many)
+    - Vendors receive multiple payouts over time
+    - Tracks scheduled and processed payments
+    - Links to transaction history
+
+14. USER ↔ AUDITLOG (1:Many)
+    - All user actions are logged
+    - Tracks security, compliance, and audit trail
+    - Records user activity across the system
+
+15. REPORT GENERATION
+    - Reports are generated by users
+    - Contains aggregated data from multiple entities
+    - Supports business intelligence and analytics
+
+================================================================================
+BUSINESS RULES & CONSTRAINTS
+================================================================================
+
+1. USER MANAGEMENT
+   - Each user must have a unique email address
+   - User roles are predefined (ADMIN, VENDOR, CUSTOMER, FINANCE_ANALYST, OPERATIONS_MANAGER)
+   - Only users with VENDOR role can have vendor profiles
+   - User passwords are hashed and stored securely
+
+2. VENDOR MANAGEMENT
+   - Vendors must have valid business information
+   - Commission rates are decimal values (0.0000 to 1.0000)
+   - Subscription tiers determine vendor capabilities
+   - Vendor status affects product visibility and order processing
+
+3. PRODUCT MANAGEMENT
+   - Products must belong to a valid category
+   - Product status controls visibility and availability
+   - SKU codes must be unique across all products
+   - Inventory levels are tracked and updated with orders
+
+4. ORDER PROCESSING
+   - Orders must have valid customer and vendor
+   - Order numbers are system-generated and unique
+   - Order status follows predefined workflow
+   - Total price is calculated from order items
+
+5. FINANCIAL TRANSACTIONS
+   - Transactions are created for each order
+   - Commission is calculated based on vendor's rate
+   - Net payout = amount - commission
+   - Transaction status tracks payment processing
+
+6. LOGISTICS & SHIPPING
+   - Shipments are created for orders
+   - Tracking numbers are unique when provided
+   - SLA deadlines are calculated based on vendor configuration
+   - Delivery status is updated by logistics partners
+
+7. SUBSCRIPTION MANAGEMENT
+   - Vendors can have multiple subscription records
+   - Subscription status affects vendor capabilities
+   - Tier changes are tracked in subscription history
+   - Pricing is based on subscription tier
+
+8. AUDIT & COMPLIANCE
+   - All user actions are logged in audit trail
+   - Audit logs include IP address and user agent
+   - Resource changes are tracked with details
+   - Logs support security and compliance requirements
+
+================================================================================
+SYSTEM CAPACITY & PERFORMANCE
+================================================================================
+
+Database Capacity:
+- Support for 10,000+ concurrent users
+- Handle 100,000+ products
+- Process 1,000+ orders per day
+- Store 1,000,000+ transaction records
+- Maintain 5+ years of audit trail
+
+Performance Requirements:
+- User authentication: < 2 seconds
+- Product search: < 3 seconds
+- Order processing: < 5 seconds
+- Report generation: < 30 seconds
+- Database queries: < 1 second average
+
+Scalability Features:
+- Horizontal scaling with AWS RDS
+- Read replicas for reporting queries
+- Connection pooling for high concurrency
+- Indexed queries for fast retrieval
+- Caching for frequently accessed data
+
+================================================================================
+SECURITY & COMPLIANCE
+================================================================================
+
+Authentication & Authorization:
+- JWT-based authentication
+- Role-based access control (RBAC)
+- Secure password hashing
+- Session management
+- Multi-factor authentication support
+
+Data Protection:
+- GDPR compliance
+- Data encryption at rest and in transit
+- Secure API endpoints
+- Input validation and sanitization
+- SQL injection prevention
+
+Audit & Monitoring:
+- Comprehensive audit logging
+- Real-time security monitoring
+- Failed login attempt tracking
+- Resource access logging
+- Compliance reporting
+
+================================================================================
+INTEGRATION POINTS
+================================================================================
+
+External APIs:
+- Payment gateways (PayPal, Stripe, etc.)
+- Logistics providers (FedEx, UPS, DHL)
+- SMS notification services
+- Email delivery services
+- Third-party analytics
+
+Internal Systems:
+- User management system
+- Inventory management
+- Financial reporting
+- Customer support
+- Marketing automation
+
+================================================================================
+END OF ERD DOCUMENT
+================================================================================
+

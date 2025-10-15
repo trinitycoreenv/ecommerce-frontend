@@ -1,0 +1,565 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Enums
+enum UserRole {
+  ADMIN
+  VENDOR
+  CUSTOMER
+  FINANCE_ANALYST
+  OPERATIONS_MANAGER
+}
+
+enum SubscriptionTier {
+  STARTER
+  BASIC
+  PREMIUM
+  ENTERPRISE
+}
+
+enum SubscriptionStatus {
+  ACTIVE
+  INACTIVE
+  SUSPENDED
+  CANCELLED
+}
+
+enum ProductStatus {
+  DRAFT
+  PENDING_APPROVAL
+  APPROVED
+  REJECTED
+  DISCONTINUED
+}
+
+enum OrderStatus {
+  PENDING
+  CONFIRMED
+  PROCESSING
+  SHIPPED
+  DELIVERED
+  CANCELLED
+  REFUNDED
+}
+
+enum ShipmentStatus {
+  PENDING
+  PICKED_UP
+  IN_TRANSIT
+  OUT_FOR_DELIVERY
+  DELIVERED
+  FAILED_DELIVERY
+  RETURNED
+}
+
+enum TransactionStatus {
+  PENDING
+  COMPLETED
+  FAILED
+  REFUNDED
+  CANCELLED
+}
+
+enum CommissionStatus {
+  PENDING
+  CALCULATED
+  PAID
+  CANCELLED
+}
+
+enum CommissionType {
+  PERCENTAGE
+  FIXED
+}
+
+enum PayoutStatus {
+  PENDING
+  PROCESSING
+  COMPLETED
+  FAILED
+  CANCELLED
+}
+
+enum ReportType {
+  SALES_SUMMARY
+  COMMISSION_REPORT
+  VENDOR_PERFORMANCE
+  LOGISTICS_REPORT
+  FINANCIAL_SUMMARY
+}
+
+// Core Models
+model User {
+  id            String   @id @default(uuid()) @db.Uuid
+  email         String   @unique
+  name          String
+  firstName     String?  @map("first_name")
+  lastName      String?  @map("last_name")
+  phone         String?
+  address       Json?
+  passwordHash  String   @map("password_hash")
+  role          UserRole
+  isActive      Boolean  @default(true) @map("is_active")
+  emailVerified Boolean  @default(true) @map("email_verified")
+  emailVerificationToken String? @map("email_verification_token")
+  emailVerificationExpires DateTime? @map("email_verification_expires")
+  passwordResetToken String? @map("password_reset_token")
+  passwordResetExpires DateTime? @map("password_reset_expires")
+  createdAt     DateTime @default(now()) @map("created_at")
+  updatedAt     DateTime @updatedAt @map("updated_at")
+
+  // Relations
+  vendor        Vendor?
+  orders        Order[]
+  transactions  Transaction[]
+  auditLogs     AuditLog[]
+  businessVerifications BusinessVerification[] @relation("BusinessVerifier")
+  trialUsage            TrialUsage[]
+
+  @@map("users")
+}
+
+model Vendor {
+  id              String   @id @default(uuid()) @db.Uuid
+  userId          String   @unique @map("user_id") @db.Uuid
+  businessName    String   @map("business_name")
+  businessAddress String?  @map("business_address")
+  businessType    String?  @map("business_type")
+  taxId           String?  @map("tax_id")
+  subscriptionTier SubscriptionTier @default(BASIC) @map("subscription_tier")
+  commissionRate  Decimal  @default(0.1) @map("commission_rate") @db.Decimal(5, 4)
+  status          String   @default("ACTIVE")
+  verificationStatus String @default("APPROVED") @map("verification_status")
+  businessLicense String?  @map("business_license")
+  businessLicenseExpiry DateTime? @map("business_license_expiry")
+  website         String?
+  businessDescription String? @map("business_description")
+  bankDetails     Json?    @map("bank_details")
+  verificationNotes String? @map("verification_notes")
+  verifiedAt      DateTime? @map("verified_at")
+  verifiedBy      String?   @map("verified_by") @db.Uuid
+  createdAt       DateTime @default(now()) @map("created_at")
+  updatedAt       DateTime @updatedAt @map("updated_at")
+
+  // Relations
+  user            User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+  subscriptions   Subscription[]
+  products        Product[]
+  orders          Order[]
+  transactions    Transaction[]
+  payouts         Payout[]
+  payoutSettings  VendorPayoutSettings?
+  logisticsConfig LogisticsConfig?
+  commissions     Commission[]
+  commissionRates CommissionRate[]
+  businessVerification BusinessVerification?
+
+  @@map("vendors")
+}
+
+model SubscriptionPlan {
+  id                String             @id @default(uuid()) @db.Uuid
+  name              String
+  tier              SubscriptionTier
+  description       String?
+  price             Decimal            @db.Decimal(10, 2)
+  billingCycle      String             @default("MONTHLY") @map("billing_cycle") // MONTHLY, YEARLY
+  commissionRate    Decimal            @db.Decimal(5, 2) @map("commission_rate") // Percentage
+  maxProducts       Int?               @map("max_products")
+  maxOrders         Int?               @map("max_orders")
+  features          Json               // Array of features
+  isActive          Boolean            @default(true) @map("is_active")
+  isPopular         Boolean            @default(false) @map("is_popular")
+  trialDays         Int                @default(0) @map("trial_days")
+  createdAt         DateTime           @default(now()) @map("created_at")
+  updatedAt         DateTime           @updatedAt @map("updated_at")
+
+  // Relations
+  subscriptions     Subscription[]
+  trialUsage        TrialUsage[]
+
+  @@map("subscription_plans")
+}
+
+model Subscription {
+  id                String             @id @default(uuid()) @db.Uuid
+  vendorId          String             @map("vendor_id") @db.Uuid
+  planId            String?            @map("plan_id") @db.Uuid
+  tier              SubscriptionTier
+  startDate         DateTime           @map("start_date")
+  endDate           DateTime?          @map("end_date")
+  status            SubscriptionStatus
+  price             Decimal            @db.Decimal(10, 2)
+  billingCycle      String             @default("MONTHLY") @map("billing_cycle")
+  nextBillingDate   DateTime?          @map("next_billing_date")
+  trialEndDate      DateTime?          @map("trial_end_date")
+  stripeSubscriptionId String?         @map("stripe_subscription_id")
+  stripeCustomerId  String?            @map("stripe_customer_id")
+  autoRenew         Boolean            @default(true) @map("auto_renew")
+  createdAt         DateTime           @default(now()) @map("created_at")
+  updatedAt         DateTime           @updatedAt @map("updated_at")
+
+  // Relations
+  vendor            Vendor             @relation(fields: [vendorId], references: [id], onDelete: Cascade)
+  plan              SubscriptionPlan?  @relation(fields: [planId], references: [id])
+
+  @@map("subscriptions")
+}
+
+model BusinessVerification {
+  id                String             @id @default(uuid()) @db.Uuid
+  vendorId          String             @unique @map("vendor_id") @db.Uuid
+  businessLicense   String?            @map("business_license")
+  taxId             String?            @map("tax_id")
+  businessAddress   Json?              @map("business_address")
+  phoneNumber       String?            @map("phone_number")
+  website           String?
+  businessType      String?            @map("business_type")
+  documents         Json               // Array of uploaded documents
+  verificationStatus String            @default("PENDING") @map("verification_status") // PENDING, APPROVED, REJECTED, UNDER_REVIEW
+  rejectionReason   String?            @map("rejection_reason")
+  verifiedBy        String?            @map("verified_by") @db.Uuid
+  verifiedAt        DateTime?          @map("verified_at")
+  notes             String?
+  createdAt         DateTime           @default(now()) @map("created_at")
+  updatedAt         DateTime           @updatedAt @map("updated_at")
+
+  // Relations
+  vendor            Vendor             @relation(fields: [vendorId], references: [id], onDelete: Cascade)
+  verifier          User?              @relation("BusinessVerifier", fields: [verifiedBy], references: [id])
+
+  @@map("business_verifications")
+}
+
+model TrialUsage {
+  id                String             @id @default(uuid()) @db.Uuid
+  userId            String             @map("user_id") @db.Uuid
+  planId            String             @map("plan_id") @db.Uuid
+  email             String
+  phoneNumber       String?            @map("phone_number")
+  ipAddress         String             @map("ip_address")
+  userAgent         String?            @map("user_agent")
+  paymentCardLast4  String?            @map("payment_card_last4")
+  stripeCustomerId  String?            @map("stripe_customer_id")
+  trialStartDate    DateTime           @map("trial_start_date")
+  trialEndDate      DateTime           @map("trial_end_date")
+  status            String             @default("ACTIVE") // ACTIVE, CONVERTED, EXPIRED, CANCELLED
+  conversionDate    DateTime?          @map("conversion_date")
+  cancellationDate  DateTime?          @map("cancellation_date")
+  fraudScore        Int                @default(0) @map("fraud_score")
+  isFraudulent      Boolean            @default(false) @map("is_fraudulent")
+  notes             String?
+  createdAt         DateTime           @default(now()) @map("created_at")
+  updatedAt         DateTime           @updatedAt @map("updated_at")
+
+  // Relations
+  user              User               @relation(fields: [userId], references: [id], onDelete: Cascade)
+  plan              SubscriptionPlan   @relation(fields: [planId], references: [id])
+
+  @@map("trial_usage")
+}
+
+model Category {
+  id          String   @id @default(uuid()) @db.Uuid
+  name        String   @unique
+  description String?
+  imageUrl    String?  @map("image_url")
+  policyRules Json?    @map("policy_rules")
+  isActive    Boolean  @default(true) @map("is_active")
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  // Relations
+  products    Product[]
+  commissionRates CommissionRate[]
+
+  @@map("categories")
+}
+
+model Product {
+  id          String        @id @default(uuid()) @db.Uuid
+  vendorId    String        @map("vendor_id") @db.Uuid
+  categoryId  String        @map("category_id") @db.Uuid
+  name        String
+  description String?
+  price       Decimal       @db.Decimal(10, 2)
+  sku         String?       @unique
+  inventory   Int           @default(0)
+  status      ProductStatus
+  images      String[]      @default([])
+  metadata    Json?
+  weight      Decimal?      @db.Decimal(8, 2) // in grams
+  dimensions  Json?         // {length, width, height} in cm
+  tags        String[]      @default([])
+  isDigital   Boolean       @default(false) @map("is_digital")
+  requiresShipping Boolean  @default(true) @map("requires_shipping")
+  lowStockThreshold Int     @default(10) @map("low_stock_threshold")
+  createdAt   DateTime      @default(now()) @map("created_at")
+  updatedAt   DateTime      @updatedAt @map("updated_at")
+
+  // Relations
+  vendor      Vendor        @relation(fields: [vendorId], references: [id], onDelete: Cascade)
+  category    Category      @relation(fields: [categoryId], references: [id])
+  variants    ProductVariant[]
+  orderItems  OrderItem[]
+
+  @@map("products")
+}
+
+model ProductVariant {
+  id          String        @id @default(uuid()) @db.Uuid
+  productId   String        @map("product_id") @db.Uuid
+  name        String        // e.g., "Red - Large", "Blue - Medium"
+  sku         String?       @unique
+  price       Decimal?      @db.Decimal(10, 2) // Optional override price
+  inventory   Int           @default(0)
+  attributes  Json          // {color: "red", size: "large"}
+  images      String[]      @default([])
+  isActive    Boolean       @default(true) @map("is_active")
+  createdAt   DateTime      @default(now()) @map("created_at")
+  updatedAt   DateTime      @updatedAt @map("updated_at")
+
+  // Relations
+  product     Product       @relation(fields: [productId], references: [id], onDelete: Cascade)
+  orderItems  OrderItem[]
+
+  @@map("product_variants")
+}
+
+model Order {
+  id          String      @id @default(uuid()) @db.Uuid
+  customerId  String      @map("customer_id") @db.Uuid
+  vendorId    String      @map("vendor_id") @db.Uuid
+  orderNumber String      @unique @map("order_number")
+  status      OrderStatus
+  totalPrice  Decimal     @map("total_price") @db.Decimal(10, 2)
+  subtotal    Decimal?    @db.Decimal(10, 2)
+  shippingCost Decimal?   @map("shipping_cost") @db.Decimal(10, 2)
+  tax         Decimal?    @db.Decimal(10, 2)
+  paymentMethod String?   @map("payment_method")
+  shippingAddress Json    @map("shipping_address")
+  billingAddress  Json?   @map("billing_address")
+  shippingMethod Json?    @map("shipping_method")
+  metadata    Json?
+  notes       String?
+  createdAt   DateTime    @default(now()) @map("created_at")
+  updatedAt   DateTime    @updatedAt @map("updated_at")
+
+  // Relations
+  customer    User        @relation(fields: [customerId], references: [id])
+  vendor      Vendor      @relation(fields: [vendorId], references: [id])
+  items       OrderItem[]
+  shipments   Shipment[]
+  transactions Transaction[]
+  commissions Commission[]
+
+  @@map("orders")
+}
+
+model OrderItem {
+  id        String  @id @default(uuid()) @db.Uuid
+  orderId   String  @map("order_id") @db.Uuid
+  productId String  @map("product_id") @db.Uuid
+  variantId String? @map("variant_id") @db.Uuid
+  quantity  Int
+  price     Decimal @db.Decimal(10, 2)
+  createdAt DateTime @default(now()) @map("created_at")
+
+  // Relations
+  order     Order           @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  product   Product         @relation(fields: [productId], references: [id])
+  variant   ProductVariant? @relation(fields: [variantId], references: [id])
+
+  @@map("order_items")
+}
+
+model Shipment {
+  id              String         @id @default(uuid()) @db.Uuid
+  orderId         String         @map("order_id") @db.Uuid
+  carrier         String
+  trackingNumber  String?        @unique @map("tracking_number")
+  status          ShipmentStatus
+  slaDeadline     DateTime?      @map("sla_deadline")
+  estimatedDelivery DateTime?    @map("estimated_delivery")
+  actualDelivery  DateTime?      @map("actual_delivery")
+  shippingCost    Decimal?       @map("shipping_cost") @db.Decimal(10, 2)
+  notes           String?
+  createdAt       DateTime       @default(now()) @map("created_at")
+  updatedAt       DateTime       @updatedAt @map("updated_at")
+
+  // Relations
+  order           Order          @relation(fields: [orderId], references: [id], onDelete: Cascade)
+
+  @@map("shipments")
+}
+
+model Transaction {
+  id          String            @id @default(uuid()) @db.Uuid
+  orderId     String            @map("order_id") @db.Uuid
+  vendorId    String            @map("vendor_id") @db.Uuid
+  customerId  String            @map("customer_id") @db.Uuid
+  amount      Decimal           @db.Decimal(10, 2)
+  commission  Decimal           @db.Decimal(10, 2)
+  netPayout   Decimal           @map("net_payout") @db.Decimal(10, 2)
+  status      TransactionStatus
+  type        String?           // ORDER, REFUND, etc.
+  paymentMethod String?         @map("payment_method")
+  paymentId   String?           @map("payment_id")
+  refundReferenceId String?     @map("refund_reference_id")
+  processedAt DateTime?         @map("processed_at")
+  createdAt   DateTime          @default(now()) @map("created_at")
+  updatedAt   DateTime          @updatedAt @map("updated_at")
+
+  // Relations
+  order       Order             @relation(fields: [orderId], references: [id])
+  vendor      Vendor            @relation(fields: [vendorId], references: [id])
+  customer    User              @relation(fields: [customerId], references: [id])
+
+  @@map("transactions")
+}
+
+model Commission {
+  id          String   @id @default(uuid()) @db.Uuid
+  orderId     String   @map("order_id") @db.Uuid
+  vendorId    String   @map("vendor_id") @db.Uuid
+  payoutId    String?  @map("payout_id") @db.Uuid
+  amount      Decimal  @db.Decimal(10, 2)
+  rate        Decimal  @db.Decimal(5, 2) // e.g., 8.50 for 8.5%
+  status      CommissionStatus
+  calculatedAt DateTime @map("calculated_at")
+  paidAt      DateTime? @map("paid_at")
+  breakdown   Json? // Detailed breakdown of fees
+  notes       String?
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  // Relations
+  order       Order    @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  vendor      Vendor   @relation(fields: [vendorId], references: [id])
+  payout      Payout?  @relation("PayoutCommissions", fields: [payoutId], references: [id])
+
+  @@map("commissions")
+}
+
+model CommissionRate {
+  id            String   @id @default(uuid()) @db.Uuid
+  vendorId      String   @map("vendor_id") @db.Uuid
+  categoryId    String?  @map("category_id") @db.Uuid
+  rate          Decimal  @db.Decimal(5, 2) // e.g., 8.50 for 8.5%
+  type          CommissionType
+  minAmount     Decimal? @map("min_amount") @db.Decimal(10, 2)
+  maxAmount     Decimal? @map("max_amount") @db.Decimal(10, 2)
+  effectiveFrom DateTime @map("effective_from")
+  effectiveTo   DateTime? @map("effective_to")
+  isActive      Boolean  @default(true) @map("is_active")
+  createdAt     DateTime @default(now()) @map("created_at")
+  updatedAt     DateTime @updatedAt @map("updated_at")
+
+  // Relations
+  vendor        Vendor   @relation(fields: [vendorId], references: [id], onDelete: Cascade)
+  category      Category? @relation(fields: [categoryId], references: [id])
+
+  @@map("commission_rates")
+}
+
+model Payout {
+  id            String       @id @default(uuid()) @db.Uuid
+  vendorId      String       @map("vendor_id") @db.Uuid
+  amount        Decimal      @db.Decimal(10, 2)
+  scheduledDate DateTime     @map("scheduled_date")
+  status        PayoutStatus
+  paymentMethod String?      @map("payment_method")
+  paymentId     String?      @map("payment_id")
+  stripeTransferId String?   @map("stripe_transfer_id")
+  processedAt   DateTime?    @map("processed_at")
+  failureReason String?      @map("failure_reason")
+  retryCount    Int          @default(0) @map("retry_count")
+  maxRetries    Int          @default(3) @map("max_retries")
+  metadata      Json?
+  notes         String?
+  createdAt     DateTime     @default(now()) @map("created_at")
+  updatedAt     DateTime     @updatedAt @map("updated_at")
+
+  // Relations
+  vendor        Vendor       @relation(fields: [vendorId], references: [id])
+  commissions   Commission[] @relation("PayoutCommissions")
+
+  @@map("payouts")
+}
+
+model VendorPayoutSettings {
+  id                String   @id @default(uuid()) @db.Uuid
+  vendorId          String   @unique @map("vendor_id") @db.Uuid
+  payoutFrequency   String   @default("WEEKLY") @map("payout_frequency") // WEEKLY, MONTHLY, DAILY
+  minimumPayout     Decimal  @default(50.00) @map("minimum_payout") @db.Decimal(10, 2)
+  payoutMethod      String   @default("STRIPE") @map("payout_method") // STRIPE, BANK_TRANSFER, PAYPAL
+  stripeAccountId   String?  @map("stripe_account_id")
+  bankAccountDetails Json?   @map("bank_account_details")
+  isActive          Boolean  @default(true) @map("is_active")
+  lastPayoutDate    DateTime? @map("last_payout_date")
+  nextPayoutDate    DateTime? @map("next_payout_date")
+  createdAt         DateTime @default(now()) @map("created_at")
+  updatedAt         DateTime @updatedAt @map("updated_at")
+
+  // Relations
+  vendor            Vendor   @relation(fields: [vendorId], references: [id], onDelete: Cascade)
+
+  @@map("vendor_payout_settings")
+}
+
+model LogisticsConfig {
+  id                String   @id @default(uuid()) @db.Uuid
+  vendorId          String   @unique @map("vendor_id") @db.Uuid
+  shippingZones     Json     @map("shipping_zones")
+  carriers          Json
+  slaDefinitions    Json     @map("sla_definitions")
+  autoFulfillment   Boolean  @default(false) @map("auto_fulfillment")
+  trackingEnabled   Boolean  @default(true) @map("tracking_enabled")
+  createdAt         DateTime @default(now()) @map("created_at")
+  updatedAt         DateTime @updatedAt @map("updated_at")
+
+  // Relations
+  vendor            Vendor   @relation(fields: [vendorId], references: [id], onDelete: Cascade)
+
+  @@map("logistics_config")
+}
+
+model Report {
+  id          String    @id @default(uuid()) @db.Uuid
+  type        ReportType
+  title       String
+  data        Json
+  filters     Json?
+  generatedBy String    @map("generated_by") @db.Uuid
+  generatedAt DateTime  @default(now()) @map("generated_at")
+
+  @@map("reports")
+}
+
+model AuditLog {
+  id        String   @id @default(uuid()) @db.Uuid
+  userId    String   @map("user_id") @db.Uuid
+  action    String
+  resource  String
+  resourceId String? @map("resource_id")
+  entityType String? @map("entity_type")
+  entityId   String? @map("entity_id")
+  details   Json?
+  ipAddress String?  @map("ip_address")
+  userAgent String?  @map("user_agent")
+  createdAt DateTime @default(now()) @map("created_at")
+
+  // Relations
+  user      User     @relation(fields: [userId], references: [id])
+
+  @@map("audit_logs")
+}

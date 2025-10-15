@@ -1,0 +1,133 @@
+STAKEHOLDER MANAGEMENT STRATEGY TEMPLATE
+
+STAKEHOLDER MANAGEMENT STRATEGY
+PROJECT: E-Commerce Platform Control & Revenue Management System
+
+BESTLINK COLLEGE OF THE PHILIPPINES
+1071 BRGY. KALIGAYAHAN, NOVALICHES,
+QUEZON CITY, PHILIPPINES, 1123
+
+DATE: JULY 1, 2025
+
+------------------------------------------
+1. INTRODUCTION
+------------------------------------------
+This strategy outlines the approach for identifying, analyzing, and managing stakeholders for the E-Commerce Platform Control & Revenue Management System project. Effective stakeholder management is crucial for the success of this comprehensive e-commerce platform development using Next.js 15, TypeScript, PostgreSQL, and Prisma ORM. The system will support five user types (Admin, Vendor, Customer, Finance Analyst, Operations Manager) with role-based access control, automated workflows, and real-time dashboards.
+
+The strategy will identify and classify stakeholders, determine their power, interest, and influence, and establish appropriate management and communication approaches. This systematic approach allows the project to engage key stakeholders throughout its lifecycle, gain feedback, and ensure smooth implementation.
+
+Early identification and proactive communication with stakeholders is essential to manage interests that may be positively or negatively affected by system automation and policy changes. Continuous engagement ensures objectives are achieved effectively.
+
+------------------------------------------
+2. IDENTIFY STAKEHOLDERS
+------------------------------------------
+The project team will conduct stakeholder identification sessions in multiple phases to ensure all internal and external stakeholders are recognized and engaged.
+
+Phases of stakeholder identification:
+- Phase 1: Internal Technical Stakeholders – IT operations, database admins, security teams, developers, QA personnel, and system admins.
+- Phase 2: Internal Business Stakeholders – finance, administrative staff, product managers, and executives.
+- Phase 3: External Vendor Stakeholders – platform vendors affected by subscription management and policy enforcement.
+- Phase 4: External Partner Stakeholders – logistics partners, payment processors, compliance auditors, and third-party integrations.
+
+Criteria for stakeholder identification:
+- Will the person or organization be directly or indirectly affected by the system?
+- Can they influence project success, approve resources, or affect integration?
+- Do they provide funding, technical expertise, or testing capabilities?
+- Do they have special skills or domain knowledge critical to success?
+- Do they benefit from or resist the proposed system improvements?
+
+------------------------------------------
+3. KEY STAKEHOLDERS
+------------------------------------------
+Key stakeholders include those with authority over policy, commission, product catalogues, logistics, financial transactions, and system integration.
+
+The Project Manager will:
+- Develop individualized engagement plans.
+- Gather stakeholder preferences for communication frequency and feedback.
+- Identify concerns and manage conflicting interests.
+- Include key stakeholders in steering committees, reviews, UAT, and milestone meetings.
+
+This ensures collaboration, transparency, and accountability across project activities.
+
+------------------------------------------
+4. STAKEHOLDER ANALYSIS
+------------------------------------------
+Stakeholders will be analyzed based on their organizational roles and levels of power, influence, and interest. The Mendelow Power/Interest Matrix will be used to assess engagement strategies.
+
+Each stakeholder receives a score for:
+- Power (1-5): degree of influence.
+- Interest (1-5): degree of engagement.
+
+Stakeholder key (bullet-point form replacing table):
+- A: Senior Full-Stack Developer – Ronald Jay M. Literal (₱85,000/month) (Power 4, Interest 5)
+- B: Full-Stack Developer – Alghazi E. Utap (₱70,000/month) (Power 3, Interest 5)
+- C: Scrum Master/Project Manager – Shiena Mae V. Conje (₱95,000/month) (Power 5, Interest 5)
+- D: Product Owner – Maxine A. Delfin Decide (20% time) (Power 5, Interest 5)
+- E: QA Engineer – Mike Jaspher D. Pasion (₱55,000/month) (Power 3, Interest 5)
+- F: DevOps Engineer – Jonathan S. Gatase (₱65,000/month) (Power 4, Interest 4)
+- G: UI/UX Designer – Contract (₱40,000/month × 3 months) (Power 3, Interest 4)
+- H: Business Analyst – Contract (₱30,000/month × 2 months) (Power 3, Interest 4)
+- I: Finance Department – Finance Manager (Power 4, Interest 5)
+- J: External Vendors – Platform Vendors (Power 2, Interest 5)
+- K: Logistics Partners – Logistics Coordinators (Power 3, Interest 4)
+- L: Executive Leadership – Project Sponsor (Power 5, Interest 4)
+
+------------------------------------------
+POWER/INTEREST ANALYSIS SUMMARY
+------------------------------------------
+- Stakeholders G and H: Require minimal management effort (lower left quadrant) - Contract positions with specific deliverables.
+- Stakeholders I and L: Keep satisfied; address concerns promptly - Finance and Executive leadership.
+- Stakeholders A, B, E, J, and K: Keep informed; frequent communication and updates - Development team and external partners.
+- Stakeholders C, D, F, and I: Key players; actively involved in all planning, decision-making, and change management activities - Core project team and finance.
+
+------------------------------------------
+STAKEHOLDER MANAGEMENT MATRIX
+------------------------------------------
+Stakeholder management strategies (bullet-point representation):
+
+- A: Senior Full-Stack Developer (Ronald Jay M. Literal) – Concern: Technical architecture and Next.js 15 implementation.  
+  Strategy – Keep informed; provide technical specs, involve in sprint planning, hold architecture reviews.
+
+- B: Full-Stack Developer (Alghazi E. Utap) – Concern: Task clarity and TypeScript development standards.  
+  Strategy – Keep informed; maintain sprint communication, clarify assignments, include in code reviews.
+
+- C: Scrum Master/Project Manager (Shiena Mae V. Conje) – Concern: Sprint delivery, team coordination, and ₱3,400,000 budget management.  
+  Strategy – Key player; lead daily standups, manage sprint planning, remove blockers, liaise between all stakeholders.
+
+- D: Product Owner (Maxine A. Delfin Decide) – Concern: Feature prioritization, business requirements, and 162% ROI achievement.  
+  Strategy – Key player; collaborate on backlog, lead sprint reviews, validate requirements, ensure business value.
+
+- E: QA Engineer (Mike Jaspher D. Pasion) – Concern: Testing coverage, UAT coordination, and quality metrics for all five user types.  
+  Strategy – Keep informed; align testing schedules, report quality metrics, coordinate UAT across user roles.
+
+- F: DevOps Engineer (Jonathan S. Gatase) – Concern: AWS infrastructure, deployment automation, and system scalability.  
+  Strategy – Key player; manage cloud infrastructure, conduct security audits, ensure 10,000+ user capacity.
+
+- G: UI/UX Designer (Contract) – Concern: User interface design for five user types and responsive design.  
+  Strategy – Monitor; provide design deliverables, attend design reviews, ensure user experience consistency.
+
+- H: Business Analyst (Contract) – Concern: Business process documentation and requirements analysis.  
+  Strategy – Monitor; document business processes, analyze requirements, support training material creation.
+
+- I: Finance Department – Concern: Commission accuracy, audit compliance, and financial transaction processing.  
+  Strategy – Key player; validate financial workflows, participate in testing, review automated payout processes.
+
+- J: External Vendors – Concern: Subscription transparency, payout timing, and platform usability.  
+  Strategy – Keep informed; provide platform updates, conduct training sessions, gather vendor feedback.
+
+- K: Logistics Partners – Concern: API integration, real-time tracking, and system connectivity.  
+  Strategy – Keep informed; communicate integration plans, provide API documentation, test logistics workflows.
+
+- L: Executive Leadership – Concern: Project success, ₱3,400,000 budget adherence, and July-October 2025 timeline delivery.  
+  Strategy – Keep satisfied; attend milestone reviews, allocate resources, provide strategic direction, approve scope changes.
+
+------------------------------------------
+DOCUMENT OUTLINE
+------------------------------------------
+1. Introduction  
+2. Identify Stakeholders  
+3. Key Stakeholders  
+4. Stakeholder Analysis  
+
+------------------------------------------
+END OF DOCUMENT

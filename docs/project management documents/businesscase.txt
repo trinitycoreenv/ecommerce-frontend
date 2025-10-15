@@ -1,0 +1,286 @@
+BUSINESS CASE TEMPLATE
+
+BUSINESS CASE
+E-COMMERCE PLATFORM CONTROL & REVENUE MANAGEMENT SYSTEM
+
+BESTLINK COLLEGE OF THE PHILIPPINES
+1071 BARGY. KALIGAYAHAN NOVALICHES
+QUEZON CITY, PHILIPPINES 1123
+
+DATE: JULY 1, 2025
+
+1. EXECUTIVE SUMMARY
+This business case outlines the strategic initiative to implement the Core Transaction 3: Platform Control & Revenue Management System within our e-commerce ecosystem. The system is designed to address inefficiencies in subscription handling, commission tracking, product policy enforcement, logistics coordination, financial transactions, and reporting.
+
+The proposed solution will centralize control, automate workflows, and provide real-time insights across key operational areas. This document details the business problem, anticipated outcomes, recommended approach, justification, and cost-benefit analysis to support project approval and execution.
+
+1.1. Issue
+The current e-commerce platform lacks a unified system for managing vendor subscriptions, commission structures, product compliance, logistics coordination, and financial transactions. These fragmented processes result in:
+- Inconsistent commission deductions and vendor disputes
+- Manual product listing approvals and policy enforcement delays
+- Poor shipment tracking and delivery performance metrics
+- Inefficient payout processing and financial reconciliation
+- Lack of centralized reporting and KPI visibility
+
+These issues hinder scalability, reduce vendor satisfaction, and increase operational overhead.
+
+1.2. Anticipated Outcomes
+Implementing the Platform Control & Revenue Management System will:
+- Centralize subscription and commission management with automated calculations
+- Streamline product catalogue oversight and enforce compliance policies
+- Optimize logistics partner coordination and shipment tracking
+- Automate vendor payouts and transaction reconciliation
+- Provide real-time dashboards and customizable reports for decision-making
+
+1.3. Recommendation
+Develop and deploy a comprehensive e-commerce platform using modern technologies (Next.js 15, TypeScript, PostgreSQL, Prisma ORM) with role-based access control supporting five user types:
+- Subscription and commission management with tiered vendor plans (Basic, Premium, Enterprise)
+- Product catalogue and policy oversight with approval workflows
+- Shipment and logistics configuration with real-time tracking
+- Payout and transaction management with automated processing
+- Role-specific dashboards and reports for all user types (Admin, Vendor, Customer, Finance Analyst, Operations Manager)
+
+Benefits include:
+- Automated commission deductions with real-time calculations
+- Real-time shipment tracking and logistics partner integration
+- Transparent transactions and payouts with comprehensive audit trails
+- Centralized policy enforcement and automated alerts
+- Interactive dashboards with exportable reports tailored to each user role
+
+1.4. Justification
+The proposed system aligns with strategic goals of efficiency, vendor empowerment, and revenue optimization.
+- Highest ROI via automation
+- Lowest risk via internal modular development
+- Fastest implementation via Agile sprints
+
+Quantitative benefits:
+- 20% reduction in vendor support tickets
+- 30% improvement in payout processing
+- 15% increase in subscription revenue
+- 25% fewer policy violations
+
+Failure to implement will result in continued inefficiencies and lost opportunities.
+
+2. BUSINESS CASE ANALYSIS TEAM
+- Scrum Master/Project Manager: Shiena Mae V. Conje (₱95,000/month)
+- Product Owner: Maxine A. Delfin Decide (Business stakeholder - 20% time)
+- Senior Full-Stack Developer: Ronald Jay M. Literal (₱85,000/month)
+- Full-Stack Developer: Alghazi E. Utap (₱70,000/month)
+- QA Engineer: Mike Jaspher D. Pasion (₱55,000/month)
+- DevOps Engineer: Jonathan S. Gatase (₱65,000/month)
+- UI/UX Designer: Contract (₱40,000/month × 3 months)
+- Business Analyst: Contract (₱30,000/month × 2 months)
+
+3. PROBLEM DEFINITION
+3.1. Problem Statement
+The current system lacks centralized control for platform revenue, leading to:
+- Manual tracking and disputes
+- Delayed policy enforcement
+- Fragmented logistics coordination
+- Inefficient payouts and reports
+- Lack of real-time insights
+
+3.2. Organizational Impact
+Transition to a unified web platform:
+- Replace legacy systems
+- Automate workflows
+- Empower admins, vendors, and logistics partners
+- Use cloud infrastructure for scalability and security
+
+3.3. Technology Implementation
+Phased approach:
+- Phase I: Infrastructure setup and development environment
+- Phase II: Core system development and integration
+- Phase III: Testing and user acceptance testing
+- Phase IV: Training and onboarding for all user types
+- Phase V: Full deployment and go-live support
+
+4. PROJECT OVERVIEW
+4.1. Project Description
+Develop a comprehensive e-commerce platform using modern technologies (Next.js 15, TypeScript, PostgreSQL, Prisma ORM) with role-based access control supporting five user types (Admin, Vendor, Customer, Finance Analyst, Operations Manager). The platform will centralize subscription management, commission tracking, product catalog oversight, logistics coordination, payout processing, and business reporting through automated workflows and real-time dashboards.
+
+4.2. Goals and Objectives
+- Increase revenue visibility through real-time dashboards
+- Improve vendor experience via transparency
+- Reduce overhead with automation
+- Enhance compliance with enforcement and alerts
+
+4.3. Project Performance
+- 95% fewer manual approvals
+- <2% error in deductions
+- 30% fewer policy violations
+- <5% delivery delay reports
+- 40% faster payout cycle
+
+4.4. Project Assumptions
+- ₱3,400,000 budget approved and available for July-October 2025
+- All team members (Scrum Master, Developers, QA, DevOps) are available for full project duration
+- Product Owner (Maxine A. Delfin Decide) can dedicate 20% time to project requirements and decisions
+- Stakeholders from all five user types will participate in requirements gathering and training
+- Third-party APIs (payment gateways, logistics providers) are available for integration
+- Cloud infrastructure (AWS) can be provisioned and configured as needed
+- All user types will adopt the new system and complete required training
+
+4.5. Project Constraints
+- 16-week development timeline (July-October 2025) with no extensions
+- Limited availability of logistics partner APIs may require manual integration
+- Phased training approach for all five user types to ensure proper adoption
+- Complex integration requirements with existing business processes
+- Strong cloud infrastructure required for scalability and security
+- Budget fixed at ₱3,400,000 with no additional funding available
+- Team size limited to 8 members (6 full-time, 2 contract positions)
+
+4.6. Major Project Milestones
+- Project Charter: 07/01/2025
+- Sprint 0 (Planning): 07/01/2025 - 07/07/2025
+- Sprint 1 (Foundation): 07/08/2025 - 07/21/2025
+- Sprint 2 (User Management): 07/22/2025 - 08/04/2025
+- Sprint 3 (Product Catalog): 08/05/2025 - 08/18/2025
+- Sprint 4 (Order Management): 08/19/2025 - 09/01/2025
+- Sprint 5 (Subscriptions): 09/02/2025 - 09/15/2025
+- Sprint 6 (Logistics): 09/16/2025 - 09/29/2025
+- Sprint 7 (Analytics): 09/30/2025 - 10/13/2025
+- Sprint 8 (Testing & Deployment): 10/14/2025 - 10/27/2025
+- Go-Live: 10/28/2025
+- Training & Support: 10/28/2025 - 11/04/2025
+- Project Closeout: 11/05/2025
+
+5. STRATEGIC ALIGNMENT
+- **Platform Growth (2025)**: Increase vendor engagement by 30% and subscription revenue by 15% through improved platform experience and automated commission management
+- **Operational Control (2025)**: Reduce operational overhead by 25% through automation and provide real-time business insights for better decision making
+- **Compliance (2025)**: Strengthen policy enforcement with automated alerts and reduce policy violations by 25% through systematic compliance tracking
+- **Revenue Optimization (2025)**: Achieve 162% ROI in first year through increased vendor retention, faster payout cycles, and reduced support costs
+- **Digital Transformation (2025)**: Modernize business operations with cloud-based infrastructure supporting 10,000+ concurrent users and 100,000+ products
+
+6. COST BENEFIT ANALYSIS
+**INVESTMENT: ₱3,400,000 (July-October 2025)**
+
+**BUSINESS BENEFITS FOR PRODUCT OWNER:**
+
+**REVENUE GROWTH (₱6,300,000/year):**
+
+1. **Increased Subscription Revenue: +₱2,500,000/year**
+   *What this means: More vendors will upgrade to higher subscription plans*
+   *How it works: Current vendors pay ₱16,700,000/year in subscriptions. With better platform experience, 15% will upgrade to higher tiers*
+   *Calculation: ₱16,700,000 × 15% = ₱2,500,000*
+   *Basis: Industry data shows 15% upgrade rate when platform experience improves*
+
+2. **Higher Vendor Retention: +₱1,800,000/year**
+   *What this means: Fewer vendors will leave the platform*
+   *How it works: Currently 20% of vendors leave each year. New platform reduces this to 10%*
+   *Calculation: 10% retention improvement × ₱18,000,000 annual vendor revenue = ₱1,800,000*
+   *Basis: Vendor surveys show 90% satisfaction with automated systems vs 70% with manual processes*
+
+3. **New Vendor Acquisition: +₱1,200,000/year**
+   *What this means: More vendors will join because the platform is better*
+   *How it works: Better platform attracts 30% more new vendors*
+   *Calculation: Current 100 new vendors/year × 30% increase × ₱40,000 average annual revenue = ₱1,200,000*
+   *Basis: Marketing data shows modern platforms attract 30% more vendors*
+
+4. **Commission Optimization: +₱800,000/year**
+   *What this means: Better commission management increases platform revenue*
+   *How it works: Automated commission tracking reduces errors and increases accuracy*
+   *Calculation: ₱50,000,000 annual transactions × 1.6% commission improvement = ₱800,000*
+   *Basis: Manual commission errors average 1.6% of total transactions*
+
+**COST REDUCTION (₱3,300,000/year):**
+
+5. **Reduced Support Staff Costs: -₱1,200,000/year**
+   *What this means: Need fewer customer service staff*
+   *How it works: Automated system reduces support tickets by 20%*
+   *Calculation: Current 5 support staff × ₱300,000/year × 20% reduction = ₱1,200,000*
+   *Basis: Current support team handles 1,000 tickets/month, automation reduces to 800 tickets/month*
+
+6. **Automated Payout Processing: -₱800,000/year**
+   *What this means: Less manual work for finance team*
+   *How it works: Automated payouts reduce manual processing time by 30%*
+   *Calculation: Current 3 finance staff × ₱400,000/year × 30% time savings = ₱800,000*
+   *Basis: Manual payout processing takes 2 hours per vendor, automation reduces to 1.4 hours*
+
+7. **Faster Payment Cycles: -₱600,000/year**
+   *What this means: Better cash flow management*
+   *How it works: Faster payments reduce financing costs*
+   *Calculation: ₱2,000,000 average outstanding payments × 30% faster × 10% financing cost = ₱600,000*
+   *Basis: Current 30-day payment cycle reduces to 21 days with automation*
+
+8. **Reduced Policy Violations: -₱400,000/year**
+   *What this means: Fewer compliance issues and penalties*
+   *How it works: Automated policy enforcement reduces violations by 25%*
+   *Calculation: Current ₱1,600,000/year in violation costs × 25% reduction = ₱400,000*
+   *Basis: Manual policy checking misses 25% of violations, automation catches 95%*
+
+9. **Reduced Manual Data Entry: -₱300,000/year**
+   *What this means: Less time spent on data entry*
+   *How it works: Automated data processing reduces manual work*
+   *Calculation: 2 data entry staff × ₱250,000/year × 60% automation = ₱300,000*
+   *Basis: Current 8 hours/day data entry reduces to 3.2 hours/day with automation*
+
+**OPERATIONAL EFFICIENCY (₱2,100,000/year):**
+
+10. **Real-time Business Insights: +₱1,000,000/year**
+    *What this means: Better business decisions lead to more revenue*
+    *How it works: Real-time dashboards help make faster, better decisions*
+    *Calculation: 5% revenue improvement from better decisions × ₱20,000,000 revenue = ₱1,000,000*
+    *Basis: Companies with real-time analytics see 5% revenue improvement*
+
+11. **Improved Vendor Satisfaction: +₱900,000/year**
+    *What this means: Happy vendors generate more revenue*
+    *How it works: Better vendor experience increases average order value*
+    *Calculation: 3% increase in average order value × ₱30,000,000 vendor sales = ₱900,000*
+    *Basis: Satisfied vendors increase order value by 3% on average*
+
+12. **Streamlined Operations: -₱500,000/year**
+    *What this means: Less operational overhead*
+    *How it works: Automated workflows reduce operational costs*
+    *Calculation: ₱2,000,000 annual operations cost × 25% reduction = ₱500,000*
+    *Basis: Automation typically reduces operational costs by 25%*
+
+13. **Better Inventory Management: +₱700,000/year**
+    *What this means: Less money tied up in inventory*
+    *How it works: Better inventory tracking reduces overstock and stockouts*
+    *Calculation: ₱3,500,000 average inventory × 20% efficiency improvement = ₱700,000*
+    *Basis: Better inventory management reduces carrying costs by 20%*
+
+**SUMMARY:**
+- **Total Annual Benefits: ₱8,900,000**
+- **One-time Investment: ₱3,400,000**
+- **Net Annual Benefit: ₱5,500,000**
+- **ROI: 162% in first year**
+- **Payback Period: 4.6 months**
+
+7. ALTERNATIVES ANALYSIS
+
+**Option 1: No Project (Status Quo)**
+- Cost: ₱0 immediate investment
+- Benefits: None
+- Risks: Continued inefficiencies, vendor dissatisfaction, lost revenue opportunities
+- Annual Loss: ₱2,000,000+ in operational inefficiencies and missed revenue
+
+**Option 2: Outsource Development**
+- Cost: ₱4,500,000+ (33% higher than internal development)
+- Timeline: 8-12 months (50% longer than internal development)
+- Benefits: External expertise, reduced internal resource requirements
+- Risks: Higher cost, longer timeline, less control over development, communication challenges
+- Recommendation: Not recommended due to cost and timeline concerns
+
+**Option 3: Third-Party SaaS Solution**
+- Cost: ₱2,000,000/year (ongoing subscription fees)
+- Timeline: 3-4 months implementation
+- Benefits: Faster implementation, lower upfront cost
+- Risks: Limited customization, integration challenges, vendor lock-in, ongoing costs
+- Recommendation: Not recommended due to customization limitations and ongoing costs
+
+**Option 4: Internal Development (Recommended)**
+- Cost: ₱3,400,000 (one-time investment)
+- Timeline: 4 months (July-October 2025)
+- Benefits: Full control, customization, no ongoing fees, team knowledge retention
+- Risks: Requires internal expertise and project management
+- Recommendation: **RECOMMENDED** - Best balance of cost, control, and customization
+
+8. APPROVALS
+- Product Owner: Maxine A. Delfin Decide
+- Product Sponsor: [Executive Sponsor Name]
+- Scrum Master: Shiena Mae V. Conje
+- Development Team Lead: Ronald Jay M. Literal
+- QA Lead: Mike Jaspher D. Pasion
+- DevOps Lead: Jonathan S. Gatase

@@ -1,0 +1,73 @@
+ISSUE LOG TEMPLATE
+
+E-Commerce Platform Control & Revenue Management System
+Bestlink College of the Philippines
+1071 Brgy. Kaligayahan, Novaliches, Quezon City, Philippines 1123
+Date: July 31, 2025
+
+------------------------------------------
+ISSUE LOG
+------------------------------------------
+Project: E-Commerce Platform Control & Revenue Management System
+Date: 07/31/2025
+
+------------------------------------------
+ISSUE 001
+------------------------------------------
+Description:
+The JWT authentication system in Sprint 2 (User Management & Authentication System) is experiencing intermittent token expiration issues for Admin and Finance Analyst user types. 
+This leads to unexpected logouts and session management problems during critical business operations. 
+The problem occurs primarily during peak usage hours and affects role-based access control functionality.
+
+Priority: High (H)
+Category: Technology
+Reported By: Shiena Mae V. Conje (Scrum Master)
+Assigned To: Ronald Jay M. Literal (Senior Full-Stack Developer)
+Status: Open
+Date Resolved: 08/02/2025
+
+Resolution / Comments:
+The development team is currently investigating the JWT token refresh logic in the Next.js 15 authentication system. 
+A meeting has been scheduled with the Development and QA teams to review the TypeScript code and test cases for all five user types. 
+Ronald Jay M. Literal will provide daily updates and implement a fix within Sprint 2 timeline.
+
+------------------------------------------
+ISSUE 002
+------------------------------------------
+Description:
+The PostgreSQL database performance in Sprint 1 (Foundation & Infrastructure Setup) is experiencing slow query response times during product catalog operations. 
+This lag impacts the new product launch pipeline and requires manual intervention to force updates, affecting all five user types.
+
+Priority: Medium (M)
+Category: Technology
+Reported By: Maxine A. Delfin Decide (Product Owner)
+Assigned To: Alghazi E. Utap (Full-Stack Developer)
+Status: Closed
+Date Resolved: 07/25/2025
+
+Resolution / Comments:
+The database team, led by Alghazi E. Utap, located a bottleneck in the Prisma ORM configuration and PostgreSQL indexing. 
+The issue was resolved by optimizing database queries and implementing proper indexing for product catalog operations. 
+Performance improvements achieved 40% faster query response times.
+
+------------------------------------------
+ISSUE 003
+------------------------------------------
+Description:
+The AWS cloud infrastructure auto-scaling configuration is not responding properly to increased user load during peak hours, affecting system performance for all five user types. 
+This issue causes slow response times and potential service interruptions during critical business operations.
+
+Priority: High (H)
+Category: Technology
+Reported By: Mike Jaspher D. Pasion (QA Engineer)
+Assigned To: Jonathan S. Gatase (DevOps Engineer)
+Status: Closed
+Date Resolved: 07/28/2025
+
+Resolution / Comments:
+The DevOps team, led by Jonathan S. Gatase, discovered a configuration issue in the AWS auto-scaling parameters. 
+The code was updated to properly handle increased user load and implement proper scaling thresholds. 
+The fix has been successfully implemented with 99.9% uptime achieved during peak hours.
+
+------------------------------------------
+END OF ISSUE LOG

@@ -1,0 +1,270 @@
+# 🎯 COMPLETE STRIPE TEST CARDS - 20 WORKING CARDS
+# For E-commerce Platform Testing (Vendors & Customers)
+# =====================================================
+
+## 📋 VENDOR SUBSCRIPTION CARDS (10 Cards)
+# These cards work for vendor subscription payments
+
+### VENDOR CARD #1 - Basic Plan
+Card Number: 4242424242424242
+Expiry: 12/25
+CVC: 123
+ZIP: 12345
+Name: John Vendor
+Status: ✅ SUCCESS - Basic Plan Subscription
+
+### VENDOR CARD #2 - Premium Plan  
+Card Number: 4000056655665556
+Expiry: 12/25
+CVC: 123
+ZIP: 12345
+Name: Sarah Vendor
+Status: ✅ SUCCESS - Premium Plan Subscription
+
+### VENDOR CARD #3 - Enterprise Plan
+Card Number: 5555555555554444
+Expiry: 12/25
+CVC: 123
+ZIP: 12345
+Name: Mike Vendor
+Status: ✅ SUCCESS - Enterprise Plan Subscription
+
+### VENDOR CARD #4 - Visa Debit
+Card Number: 4000000000000002
+Expiry: 12/25
+CVC: 123
+ZIP: 12345
+Name: Lisa Vendor
+Status: ✅ SUCCESS - Visa Debit Subscription
+
+### VENDOR CARD #5 - Mastercard
+Card Number: 5200828282828210
+Expiry: 12/25
+CVC: 123
+ZIP: 12345
+Name: David Vendor
+Status: ✅ SUCCESS - Mastercard Subscription
+
+### VENDOR CARD #6 - American Express
+Card Number: 378282246310005
+Expiry: 12/25
+CVC: 1234
+ZIP: 12345
+Name: Emma Vendor
+Status: ✅ SUCCESS - Amex Subscription
+
+### VENDOR CARD #7 - Discover
+Card Number: 6011111111111117
+Expiry: 12/25
+CVC: 123
+ZIP: 12345
+Name: Alex Vendor
+Status: ✅ SUCCESS - Discover Subscription
+
+### VENDOR CARD #8 - JCB
+Card Number: 3530111333300000
+Expiry: 12/25
+CVC: 123
+ZIP: 12345
+Name: Maria Vendor
+Status: ✅ SUCCESS - JCB Subscription
+
+### VENDOR CARD #9 - Diners Club
+Card Number: 30569309025904
+Expiry: 12/25
+CVC: 123
+ZIP: 12345
+Name: Carlos Vendor
+Status: ✅ SUCCESS - Diners Club Subscription
+
+### VENDOR CARD #10 - UnionPay
+Card Number: 6200000000000005
+Expiry: 12/25
+CVC: 123
+ZIP: 12345
+Name: Wei Vendor
+Status: ✅ SUCCESS - UnionPay Subscription
+
+## 🛒 CUSTOMER PURCHASE CARDS (10 Cards)
+# These cards work for customer product purchases
+
+### CUSTOMER CARD #1 - Standard Purchase
+Card Number: 4242424242424242
+Expiry: 12/25
+CVC: 123
+ZIP: 12345
+Name: Alice Customer
+Status: ✅ SUCCESS - Standard Purchase
+
+### CUSTOMER CARD #2 - High Value Purchase
+Card Number: 4000056655665556
+Expiry: 12/25
+CVC: 123
+ZIP: 12345
+Name: Bob Customer
+Status: ✅ SUCCESS - High Value Purchase
+
+### CUSTOMER CARD #3 - Multiple Items
+Card Number: 5555555555554444
+Expiry: 12/25
+CVC: 123
+ZIP: 12345
+Name: Carol Customer
+Status: ✅ SUCCESS - Multiple Items Purchase
+
+### CUSTOMER CARD #4 - International Customer
+Card Number: 4000000000000002
+Expiry: 12/25
+CVC: 123
+ZIP: 12345
+Name: Diego Customer
+Status: ✅ SUCCESS - International Purchase
+
+### CUSTOMER CARD #5 - Premium Customer
+Card Number: 5200828282828210
+Expiry: 12/25
+CVC: 123
+ZIP: 12345
+Name: Fiona Customer
+Status: ✅ SUCCESS - Premium Customer Purchase
+
+### CUSTOMER CARD #6 - Business Customer
+Card Number: 378282246310005
+Expiry: 12/25
+CVC: 1234
+ZIP: 12345
+Name: George Customer
+Status: ✅ SUCCESS - Business Customer Purchase
+
+### CUSTOMER CARD #7 - Frequent Buyer
+Card Number: 6011111111111117
+Expiry: 12/25
+CVC: 123
+ZIP: 12345
+Name: Hannah Customer
+Status: ✅ SUCCESS - Frequent Buyer Purchase
+
+### CUSTOMER CARD #8 - New Customer
+Card Number: 3530111333300000
+Expiry: 12/25
+CVC: 123
+ZIP: 12345
+Name: Ivan Customer
+Status: ✅ SUCCESS - New Customer Purchase
+
+### CUSTOMER CARD #9 - Bulk Purchase
+Card Number: 30569309025904
+Expiry: 12/25
+CVC: 123
+ZIP: 12345
+Name: Julia Customer
+Status: ✅ SUCCESS - Bulk Purchase
+
+### CUSTOMER CARD #10 - VIP Customer
+Card Number: 6200000000000005
+Expiry: 12/25
+CVC: 123
+ZIP: 12345
+Name: Kevin Customer
+Status: ✅ SUCCESS - VIP Customer Purchase
+
+## 🔧 SPECIAL TEST SCENARIOS
+# Additional cards for specific testing scenarios
+
+### 3D SECURE AUTHENTICATION
+Card Number: 4000000000003220
+Expiry: 12/25
+CVC: 123
+ZIP: 12345
+Name: 3D Secure Test
+Status: ✅ SUCCESS - Requires 3D Secure authentication
+
+### DECLINED CARD (For Testing Error Handling)
+Card Number: 4000000000000002
+Expiry: 12/25
+CVC: 123
+ZIP: 12345
+Name: Declined Test
+Status: ❌ DECLINED - Use for testing error handling
+
+### INSUFFICIENT FUNDS
+Card Number: 4000000000009995
+Expiry: 12/25
+CVC: 123
+ZIP: 12345
+Name: Insufficient Funds
+Status: ❌ DECLINED - Insufficient funds
+
+### EXPIRED CARD
+Card Number: 4000000000000069
+Expiry: 12/20
+CVC: 123
+ZIP: 12345
+Name: Expired Card
+Status: ❌ DECLINED - Expired card
+
+## 📝 USAGE INSTRUCTIONS
+
+### FOR VENDOR SUBSCRIPTIONS:
+1. Use any VENDOR CARD (#1-#10) for subscription payments
+2. All cards will successfully process vendor subscriptions
+3. Cards will be saved for future payout processing
+4. Test different subscription tiers (Basic, Premium, Enterprise)
+
+### FOR CUSTOMER PURCHASES:
+1. Use any CUSTOMER CARD (#1-#10) for product purchases
+2. All cards will successfully process customer orders
+3. Commissions will be automatically calculated
+4. Vendor wallet balance will update immediately
+
+### FOR TESTING ERROR SCENARIOS:
+1. Use DECLINED CARD for testing payment failures
+2. Use INSUFFICIENT FUNDS for testing low balance
+3. Use EXPIRED CARD for testing expired card handling
+4. Use 3D SECURE for testing authentication flows
+
+## 🎯 TESTING WORKFLOW
+
+### VENDOR TESTING:
+1. Login as vendor (vendor1@gmail.com / Test1234)
+2. Go to subscription page
+3. Use any VENDOR CARD to subscribe
+4. Check vendor dashboard for active subscription
+5. Test manual payout feature
+
+### CUSTOMER TESTING:
+1. Login as customer or create new customer account
+2. Add products to cart
+3. Use any CUSTOMER CARD to purchase
+4. Check vendor wallet balance updates
+5. Verify commission calculation
+
+### ADMIN TESTING:
+1. Login as admin (admin@ecommerce.com / Admin123)
+2. Approve vendor products
+3. Monitor transactions and commissions
+4. Check financial dashboard data
+
+## ⚠️ IMPORTANT NOTES
+
+- All cards are STRIPE TEST CARDS - no real money involved
+- Use USD currency for all transactions
+- Cards work in Stripe test mode only
+- Expiry dates should be in the future
+- ZIP codes can be any 5-digit number
+- CVC codes are 3 digits (4 for Amex)
+
+## 🚀 QUICK START
+
+1. Copy any card details above
+2. Paste into Stripe payment form
+3. Use any future expiry date
+4. Use any 5-digit ZIP code
+5. Use 123 for CVC (1234 for Amex)
+6. All transactions will succeed!
+
+---
+Generated: $(date)
+Platform: E-commerce Platform
+Environment: Stripe Test Mode
+Total Cards: 20 Working Cards + 4 Special Test Cards

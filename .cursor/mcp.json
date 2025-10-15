@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "vercel": {
+      "url": "https://mcp.vercel.com"
+    },
+    "render": {
+      "command": "C:\\Users\\Admin\\go\\bin\\render-mcp-server.exe",
+      "env": {
+        "RENDER_API_KEY": "rnd_ZVBXFdL38T0NHnuCSmsYoUzNQMGT"
+      }
+    }
+  }
+}

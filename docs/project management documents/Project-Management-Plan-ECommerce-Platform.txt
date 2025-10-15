@@ -1,0 +1,535 @@
+PROJECT MANAGEMENT PLAN
+E-Commerce Platform Control & Revenue Management System
+
+BESTLINK COLLEGE OF THE PHILIPPINES
+1071 BRGY. KALIGAYAHAN NOVALICHES
+QUEZON CITY, PHILIPPINES 1123
+
+DATE: JULY 1, 2025
+
+------------------------------------------
+TABLE OF CONTENTS
+------------------------------------------
+1. Introduction
+2. Project Management Approach
+3. Project Scope
+4. Milestone List
+5. Schedule Baseline and Work Breakdown Structure
+6. Change Management Plan
+7. Communications Management
+8. Cost Management
+9. Procurement Management
+10. Project Scope Management
+11. Schedule Management
+12. Quality Management
+13. Risk Management Plan
+14. Risk Register
+15. Staffing Management
+16. Resource Calendar
+17. Cost Baseline
+18. Quality Baseline
+
+------------------------------------------
+1. INTRODUCTION
+------------------------------------------
+The E-Commerce Platform Control & Revenue Management System project represents a comprehensive initiative to develop a modern, scalable e-commerce platform using Next.js 15, TypeScript, PostgreSQL, and Prisma ORM. This project addresses critical operational challenges within the current e-commerce platform by introducing robust automation, centralized control, and real-time visibility across all business operations.
+
+The platform will support five distinct user roles (Admin, Vendor, Customer, Finance Analyst, Operations Manager) with role-based access control and automated workflows. The system will streamline platform monetization, improve vendor transparency, and provide real-time insights for all user types through eight core modules developed across 8 sprints.
+
+Key deliverables include:
+- Complete e-commerce platform with all eight sprint modules
+- Role-based access control system supporting five user types
+- Automated subscription and commission management
+- Real-time analytics and reporting dashboards
+- Comprehensive training materials and documentation
+- 162% ROI achievement with 4.6-month payback period
+
+The project will be executed using Agile methodology with continuous stakeholder feedback, ensuring scalable system growth and operational excellence. The ₱3,400,000 investment will deliver ₱8,900,000 in annual benefits, supporting the strategic goal of becoming a premier e-commerce platform provider.
+
+------------------------------------------
+2. PROJECT MANAGEMENT APPROACH
+------------------------------------------
+The Project Manager, Shiena Mae V. Conje, has the overall authority and responsibility for managing and executing this project according to this Project Management Plan and its Subsidiary Management Plans. The project team consists of personnel from development, quality assurance, DevOps, UI/UX design, and business analysis groups.
+
+The project team will be a matrix structure where team members from each organization continue to report to their organizational management throughout the duration of the project. The project manager is responsible for communicating with organizational managers on the progress and performance of each project resource.
+
+All project and subsidiary management plans will be reviewed and approved by the Product Owner, Maxine A. Delfin Decide. All funding decisions will be made by the project sponsor. Any delegation of approval authority to the project manager should be done in writing and be signed by both the project sponsor and project manager.
+
+The project will follow Agile methodology with 8 two-week sprints, daily standups, sprint reviews, and continuous stakeholder feedback. This approach ensures iterative development, early issue identification, and alignment with business objectives throughout the project lifecycle.
+
+------------------------------------------
+3. PROJECT SCOPE
+------------------------------------------
+The scope of the E-Commerce Platform Control & Revenue Management System project includes the planning, design, development, testing, and deployment of a comprehensive e-commerce platform using Next.js 15, TypeScript, PostgreSQL, and Prisma ORM. This platform will meet or exceed organizational software standards and additional requirements established in the project charter.
+
+The scope includes:
+
+**Included in Project:**
+- Complete development of all eight sprint modules:
+  - Sprint 1: Foundation & Infrastructure Setup
+  - Sprint 2: User Management & Authentication System
+  - Sprint 3: Product Catalog & Approval Workflows
+  - Sprint 4: Order Management & Payment Processing
+  - Sprint 5: Subscription & Commission Management
+  - Sprint 6: Logistics & Operations Management
+  - Sprint 7: Analytics & Reporting Dashboards
+  - Sprint 8: Testing, Deployment & Launch
+- Role-based access control for five user types (Admin, Vendor, Customer, Finance Analyst, Operations Manager)
+- AWS cloud infrastructure setup and configuration
+- Integration with third-party APIs (payment gateways, logistics providers)
+- Comprehensive training materials and documentation
+- User acceptance testing and stakeholder validation
+- 30-day post-launch support period
+
+**Excluded from Project:**
+- System maintenance beyond 30-day support period
+- Third-party integration support beyond initial setup
+- Custom integrations not specified in requirements
+- Legacy system migration or data conversion
+- Ongoing operational support after transition period
+
+Project completion will occur when the platform and documentation package has been successfully deployed, tested, and transitioned to the operations group for production use, achieving 162% ROI and 4.6-month payback period.
+
+------------------------------------------
+4. MILESTONE LIST
+------------------------------------------
+The following chart lists the major milestones for the E-Commerce Platform Control & Revenue Management System project. This chart comprises only major project milestones such as completion of a project phase or gate review. There may be smaller milestones which are not included on this chart but are included in the project schedule and WBS.
+
+If there are any scheduling delays which may impact a milestone or delivery date, the project manager must be notified immediately so proactive measures may be taken to mitigate slips in dates. Any approved changes to these milestones or dates will be communicated to the project team by the project manager.
+
+**Major Project Milestones:**
+
+- Project Charter Approval: July 1, 2025
+- Sprint 0 (Planning) Complete: July 7, 2025
+- Sprint 1 (Foundation & Infrastructure Setup) Complete: July 21, 2025
+- Sprint 2 (User Management & Authentication System) Complete: August 4, 2025
+- Sprint 3 (Product Catalog & Approval Workflows) Complete: August 18, 2025
+- Sprint 4 (Order Management & Payment Processing) Complete: September 1, 2025
+- Sprint 5 (Subscription & Commission Management) Complete: September 15, 2025
+- Sprint 6 (Logistics & Operations Management) Complete: September 29, 2025
+- Sprint 7 (Analytics & Reporting Dashboards) Complete: October 13, 2025
+- Sprint 8 (Testing, Deployment & Launch) Complete: October 27, 2025
+- Go-Live: October 28, 2025
+- Training & Support Complete: November 4, 2025
+- Project Closeout: November 5, 2025
+
+------------------------------------------
+5. SCHEDULE BASELINE AND WORK BREAKDOWN STRUCTURE
+------------------------------------------
+The WBS for the E-Commerce Platform Control & Revenue Management System project is comprised of work packages which do not exceed 40 hours of work but are at least 4 hours of work. Work packages were developed through close collaboration among project team members and stakeholders with input from functional managers and research from past projects.
+
+The WBS Dictionary defines all work packages for the project. These definitions include all tasks, resources, and deliverables. Every work package in the WBS is defined in the WBS Dictionary and will aid in resource planning, task completion, and ensuring deliverables meet project requirements.
+
+The project schedule was derived from the WBS and Project Charter with input from all project team members. The schedule was completed, reviewed by the Product Owner, and approved and base-lined. The schedule will be maintained as a detailed Gantt Chart by the Project Manager. Any proposed changes to the schedule will follow the project's change control process.
+
+**Work Breakdown Structure Summary:**
+
+**Level 1 (1.0) – Sprint 0: Planning Phase (July 1-7, 2025)**
+- Tasks: Requirements gathering, stakeholder identification, project scheduling, team setup
+- Deliverable: Project schedule and sprint planning
+- Budget: ₱150,000
+
+**Level 2 (2.0) – Sprint 1-2: Foundation & User Management (July 8-Aug 4, 2025)**
+- Tasks: Infrastructure setup, user authentication, role-based access control
+- Deliverables: Foundation module, user management system
+- Budget: ₱400,000
+
+**Level 3 (3.0) – Sprint 3-4: Product & Order Management (Aug 5-Sep 1, 2025)**
+- Tasks: Product catalog, approval workflows, order processing, payment integration
+- Deliverables: Product catalog module, order management system
+- Budget: ₱500,000
+
+**Level 4 (4.0) – Sprint 5-6: Subscriptions & Logistics (Sep 2-29, 2025)**
+- Tasks: Subscription management, commission tracking, logistics coordination
+- Deliverables: Subscription module, logistics management system
+- Budget: ₱600,000
+
+**Level 5 (5.0) – Sprint 7-8: Analytics & Deployment (Sep 30-Oct 27, 2025)**
+- Tasks: Analytics dashboards, testing, deployment, training
+- Deliverables: Analytics module, deployed system, training materials
+- Budget: ₱750,000
+
+**Level 6 (6.0) – Go-Live & Support (Oct 28-Nov 4, 2025)**
+- Tasks: System launch, user training, support, documentation
+- Deliverable: Live system with full support
+- Budget: ₱200,000
+
+**Total Project Budget: ₱2,600,000 (Core Development)**
+**Additional Costs: ₱800,000 (Infrastructure, Tools, Training, Legal, Contingency)**
+**Total Project Investment: ₱3,400,000**
+
+If established boundary controls may be exceeded, a change request will be submitted to the Project Manager. The Project Manager and team will determine the impact of the change on the schedule, cost, resources, scope, and risks. If it is determined that the impacts will exceed the boundary conditions then the change will be forwarded to the Product Owner for review and approval.
+
+The project boundary conditions are:
+- CPI less than 0.8 or greater than 1.2
+- SPI less than 0.8 or greater than 1.2
+
+If the change is approved by the Product Owner then it will be implemented by the Project Manager who will update the schedule and all documentation and communicate the change to all stakeholders in accordance with the Change Control Process.
+
+------------------------------------------
+6. CHANGE MANAGEMENT PLAN
+------------------------------------------
+The following steps comprise the organization's change control process for all projects and will be utilized on the E-Commerce Platform Control & Revenue Management System project:
+
+**Step #1: Identify the need for a change (Any Stakeholder)**
+Requestor will submit a completed change request form to the project manager
+
+**Step #2: Log change in the change request register (Project Manager)**
+The project manager will maintain a log of all change requests for the duration of the project
+
+**Step #3: Conduct an evaluation of the change (Project Manager, Project Team, Requestor)**
+The project manager will conduct an evaluation of the impact of the change to cost, risk, schedule, and scope
+
+**Step #4: Submit change request to Change Control Board (CCB) (Project Manager)**
+The project manager will submit the change request and analysis to the CCB for review
+
+**Step #5: Change Control Board decision (CCB)**
+The CCB will discuss the proposed change and decide whether or not it will be approved based on all submitted information
+
+**Step #6: Implement change (Project Manager)**
+If a change is approved by the CCB, the project manager will update and re-baseline project documentation as necessary as well as ensure any changes are communicated to the team and stakeholders
+
+Any team member or stakeholder may submit a change request for the project. The Product Owner, Maxine A. Delfin Decide, will chair the CCB and any changes to project scope, cost, or schedule must meet her approval. All change requests will be logged in the change control register by the Project Manager and tracked through to completion whether approved or not.
+
+------------------------------------------
+7. COMMUNICATIONS MANAGEMENT
+------------------------------------------
+This Communications Management Plan sets the communications framework for this project. It will serve as a guide for communications throughout the life of the project and will be updated as communication requirements change. This plan identifies and defines the roles of project team members as they pertain to communications.
+
+The Project Manager will take the lead role in ensuring effective communications on this project. The communications requirements are documented in the Communications Matrix below. The Communications Matrix will be used as the guide for what information to communicate, who is to do the communicating, when to communicate it, and to whom to communicate.
+
+**Project Team Directory:**
+- Shiena Mae V. Conje – Scrum Master/Project Manager (₱95,000/month)
+- Maxine A. Delfin Decide – Product Owner (20% time)
+- Ronald Jay M. Literal – Senior Full-Stack Developer (₱85,000/month)
+- Alghazi E. Utap – Full-Stack Developer (₱70,000/month)
+- Mike Jaspher D. Pasion – QA Engineer (₱55,000/month)
+- Jonathan S. Gatase – DevOps Engineer (₱65,000/month)
+- UI/UX Designer – Contract (₱40,000/month × 3 months)
+- Business Analyst – Contract (₱30,000/month × 2 months)
+
+**Communications Conduct:**
+
+**Meetings:**
+The Project Manager will distribute a meeting agenda at least 2 days prior to any scheduled meeting and all participants are expected to review the agenda prior to the meeting. During all project meetings the timekeeper will ensure that the group adheres to the times stated in the agenda and the recorder will take all notes for distribution to the team upon completion of the meeting. It is imperative that all participants arrive to each meeting on time and all cell phones and devices should be turned off or set to vibrate mode to minimize distractions. Meeting minutes will be distributed no later than 24 hours after each meeting is completed.
+
+**Email:**
+All email pertaining to the project should be professional, free of errors, and provide brief communication. Email should be distributed to the correct project participants in accordance with the communication matrix above based on its content. All attachments should be in one of the organization's standard software suite programs and adhere to established company formats. If the email is to bring an issue forward then it should discuss what the issue is, provide a brief background on the issue, and provide a recommendation to correct the issue. The Project Manager should be included on any email pertaining to the project.
+
+**Informal Communications:**
+While informal communication is a part of every project and is necessary for successful project completion, any issues, concerns, or updates that arise from informal discussion between team members must be communicated to the Project Manager so the appropriate action may be taken.
+
+------------------------------------------
+8. COST MANAGEMENT
+------------------------------------------
+The Project Manager will be responsible for managing and reporting on the project's cost throughout the duration of the project. The Project Manager will present and review the project's cost performance during the monthly project status meeting. Using earned value calculations, the Project Manager is responsible for accounting for cost deviations and presenting the Product Owner with options for getting the project back on budget. All budget authority and decisions, to include budget changes, reside with the Product Owner.
+
+For the project, control accounts will be created at the fourth level of the WBS which is where all costs and performance will be managed and tracked. Financial performance of the project will be measured through earned value calculations pertaining to the project's cost accounts. Work started on work packages will grant that work package with 50% credit; whereas, the remaining 50% is credited upon completion of all work defined in that work package. Costs may be rounded to the nearest peso and work hours rounded to the nearest whole hour.
+
+Cost and Schedule Performance Index (CPI and SPI respectively) will be reported on a monthly basis by the Project Manager to the Product Owner. Variances of 10% or +/- 0.1 in the cost and schedule performance indexes will change the status of the cost to yellow or cautionary. These will be reported and if it's determined that there is no or minimal impact on the project's cost or schedule baseline then there may be no action required. Cost variances of 20%, or +/- 0.2 in the cost and schedule performance indexes will change the status of the cost to red or critical. These will be reported and require corrective action from the Project Manager in order to bring the cost and/or schedule performance indexes back in line with the allowable variance. Any corrective actions will require a project change request and be must approved by the CCB before it can be implemented.
+
+Earned value calculations will be compiled by the Project Manager and reported at the monthly project status meeting. If there are indications that these values will approach or reach the critical stage before a subsequent meeting, the Project Manager will communicate this to the Product Owner immediately.
+
+**Total Project Investment: ₱3,400,000 (July-October 2025)**
+
+**Cost Breakdown:**
+- Personnel costs: ₱1,420,000 (Scrum Master, Developers, QA, DevOps, UI/UX, Business Analyst)
+- Technology & Infrastructure: ₱420,000 (AWS, PostgreSQL, CDN, SSL, GitHub, monitoring)
+- Development & Testing Tools: ₱95,000 (Jest, Playwright, Figma, Adobe, SonarQube)
+- Training & Documentation: ₱150,000 (Video production, manuals, LMS, trainer fees)
+- Deployment & Launch: ₱180,000 (Production setup, security audit, go-live support)
+- Legal & Compliance: ₱75,000 (Legal consultation, data protection, IP protection)
+- Communication & Collaboration: ₱45,000 (Slack, Zoom, Teams, Jira, equipment)
+- Travel & Meetings: ₱35,000 (Client meetings, team building, conferences)
+- Contingency & Buffer: ₱340,000 (10% reserve for unexpected costs)
+
+------------------------------------------
+9. PROCUREMENT MANAGEMENT
+------------------------------------------
+The Project Manager will provide oversight and management for all procurement activities under this project. The Project Manager is authorized to approve all procurement actions up to ₱50,000. Any procurement actions exceeding this amount must be approved by the Product Owner.
+
+While this project requires minimal procurement, in the event procurement is required, the Project Manager will work with the project team to identify all items or services to be procured for the successful completion of the project. The Project Manager will then ensure these procurements are reviewed by the Program Management Office (PMO) and presented to the contracts and purchasing groups.
+
+**Key Procurement Items:**
+- AWS Cloud Infrastructure: ₱120,000 (4 months)
+- PostgreSQL Database Hosting: ₱80,000 (4 months)
+- SSL Certificates & Security: ₱25,000
+- Third-party APIs: ₱50,000
+- GitHub Enterprise: ₱32,000 (4 months)
+- Monitoring & Analytics: ₱18,000
+
+In the event a procurement becomes necessary, the Project Manager will be responsible for managing any selected vendor or external resource. The Project Manager will also measure performance as it relates to the vendor providing necessary goods and/or services and communicate this to the purchasing and contracts groups.
+
+------------------------------------------
+10. PROJECT SCOPE MANAGEMENT
+------------------------------------------
+Scope management for the E-Commerce Platform Control & Revenue Management System project will be the sole responsibility of the Project Manager. The scope for this project is defined by the Scope Statement, Work Breakdown Structure (WBS) and WBS Dictionary. The Project Manager, Product Owner, and Stakeholders will establish and approve documentation for measuring project scope which includes deliverable quality checklists and work performance measurements.
+
+Proposed scope changes may be initiated by the Project Manager, Stakeholders or any member of the project team. All change requests will be submitted to the Project Manager who will then evaluate the requested scope change. Upon acceptance of the scope change request the Project Manager will submit the scope change request to the Change Control Board and Product Owner for acceptance. Upon approval of scope changes by the Change Control Board and Product Owner the Project Manager will update all project documents and communicate the scope change to all stakeholders. Based on feedback and input from the Project Manager and Stakeholders, the Product Owner is responsible for the acceptance of the final project deliverables and project scope.
+
+The Product Owner is responsible for formally accepting the project's final deliverable. This acceptance will be based on a review of all project documentation, testing results, user acceptance testing results, and completion of all tasks/work packages and product functionality.
+
+------------------------------------------
+11. SCHEDULE MANAGEMENT
+------------------------------------------
+Project schedules for the E-Commerce Platform Control & Revenue Management System project will be created using modern project management tools starting with the deliverables identified in the project's Work Breakdown Structure (WBS). Activity definition will identify the specific work packages which must be performed to complete each deliverable. Activity sequencing will be used to determine the order of work packages and assign relationships between project activities. Activity duration estimating will be used to calculate the number of work periods required to complete work packages. Resource estimating will be used to assign resources to work packages in order to complete schedule development.
+
+Once a preliminary schedule has been developed, it will be reviewed by the project team and any resources tentatively assigned to project tasks. The project team and resources must agree to the proposed work package assignments, durations, and schedule. Once this is achieved the Product Owner will review and approve the schedule and it will then be base lined.
+
+In accordance with organizational standards, the following will be designated as milestones for all project schedules:
+- Completion of scope statement and WBS/WBS Dictionary
+- Base lined project schedule
+- Approval of final project budget
+- Project kick-off
+- Approval of roles and responsibilities
+- Requirements definition approval
+- Completion of data mapping/inventory
+- Project implementation
+- Acceptance of final deliverables
+
+**Roles and responsibilities for schedule development are as follows:**
+
+The project manager will be responsible for facilitating work package definition, sequencing, and estimating duration and resources with the project team. The project manager will also create the project schedule and validate the schedule with the project team, stakeholders, and the Product Owner. The project manager will obtain schedule approval from the Product Owner and baseline the schedule.
+
+The project team is responsible for participating in work package definition, sequencing, duration, and resource estimating. The project team will also review and validate the proposed schedule and perform assigned activities once the schedule is approved.
+
+The Product Owner will participate in reviews of the proposed schedule and approve the final schedule before it is base lined.
+
+The project stakeholders will participate in reviews of the proposed schedule and assist in its validation.
+
+------------------------------------------
+12. QUALITY MANAGEMENT
+------------------------------------------
+All members of the project team will play a role in quality management. It is imperative that the team ensures that work is completed at an adequate level of quality from individual work packages to the final project deliverable. The following are the quality roles and responsibilities for the project:
+
+**The Product Owner** is responsible for approving all quality standards for the project. The Product Owner will review all project tasks and deliverables to ensure compliance with established and approved quality standards. Additionally, the Product Owner will sign off on the final acceptance of the project deliverable.
+
+**The Project Manager** is responsible for quality management throughout the duration of the project. The Project Manager is responsible for implementing the Quality Management Plan and ensuring all tasks, processes, and documentation are compliant with the plan. The Project Manager will work with the project's quality specialists to establish acceptable quality standards. The Project Manager is also responsible for communicating and tracking all quality standards to the project team and stakeholders.
+
+**The QA Engineer** is responsible for working with the Project Manager to develop and implement the Quality Management Plan. The QA Engineer will recommend tools and methodologies for tracking quality and standards to establish acceptable quality levels. The QA Engineer will create and maintain Quality Control and Assurance Logs throughout the project.
+
+**The remaining members of the project team**, as well as the stakeholders will be responsible for assisting the Project Manager and QA Engineer in the establishment of acceptable quality standards. They will also work to ensure that all quality standards are met and communicate any concerns regarding quality to the Project Manager.
+
+**Quality control** for the project will utilize tools and methodologies for ensuring that all project deliverables comply with approved quality standards. To meet deliverable requirements and expectations, we must implement a formal process in which quality standards are measured and accepted. The Project Manager will ensure all quality standards and quality control activities are met throughout the project. The QA Engineer will assist the Project Manager in verifying that all quality standards are met for each deliverable. If any changes are proposed and approved by the Product Owner and CCB, the Project Manager is responsible for communicating the changes to the project team and updating all project plans and documentation.
+
+**Quality assurance** for the project will ensure that all processes used in the completion of the project meet acceptable quality standards. These process standards are in place to maximize project efficiency and minimize waste. For each process used throughout the project, the Project Manager will track and measure quality against the approved standards with the assistance of the QA Engineer and ensure all quality standards are met. If any changes are proposed and approved by the Product Owner and CCB, the Project Manager is responsible for communicating the changes to the project team and updating all project plans and documentation.
+
+------------------------------------------
+13. RISK MANAGEMENT PLAN
+------------------------------------------
+The approach for managing risks for the E-Commerce Platform Control & Revenue Management System project includes a methodical process by which the project team identifies, scores, and ranks the various risks. Every effort will be made to proactively identify risks ahead of time in order to implement a mitigation strategy from the project's onset. The most likely and highest impact risks were added to the project schedule to ensure that the assigned risk managers take the necessary steps to implement the mitigation response at the appropriate time during the schedule. Risk managers will provide status updates on their assigned risks in the bi-weekly project team meetings, but only when the meetings include their risk's planned timeframe.
+
+Upon the completion of the project, during the closing process, the project manager will analyze each risk as well as the risk management process. Based on this analysis, the project manager will identify any improvements that can be made to the risk management process for future projects. These improvements will be captured as part of the lessons learned knowledge base.
+
+**Key Risk Categories:**
+- Technical Risks: Integration issues with third-party APIs, cloud infrastructure problems
+- Schedule Risks: Development delays, team availability issues
+- Cost Risks: Budget overruns, scope creep
+- Quality Risks: User adoption issues, testing failures
+- External Risks: Third-party service interruptions, regulatory changes
+
+------------------------------------------
+14. RISK REGISTER
+------------------------------------------
+**Risk 001: Development Delays Due to Team Availability**
+- Description: Team members may not be available for full project duration
+- Probability: Medium
+- Impact: High
+- Risk Score: High
+- Mitigation: Cross-training, backup resources, flexible scheduling
+- Owner: Project Manager
+
+**Risk 002: Integration Issues with Third-Party APIs**
+- Description: Payment gateways and logistics APIs may have integration problems
+- Probability: Medium
+- Impact: High
+- Risk Score: High
+- Mitigation: Early testing, backup providers, manual fallback processes
+- Owner: Senior Full-Stack Developer
+
+**Risk 003: Low User Adoption**
+- Description: Users may not adopt the new system due to insufficient training
+- Probability: Low
+- Impact: High
+- Risk Score: Medium
+- Mitigation: Comprehensive training, user feedback, gradual rollout
+- Owner: Product Owner
+
+**Risk 004: Scope Changes Affecting Timeline**
+- Description: Changes in requirements may impact 16-week timeline
+- Probability: Medium
+- Impact: Medium
+- Risk Score: Medium
+- Mitigation: Change control process, stakeholder communication
+- Owner: Project Manager
+
+**Risk 005: Cloud Infrastructure Issues**
+- Description: AWS infrastructure problems affecting scalability
+- Probability: Low
+- Impact: High
+- Risk Score: Medium
+- Mitigation: Redundancy, monitoring, backup systems
+- Owner: DevOps Engineer
+
+------------------------------------------
+15. STAFFING MANAGEMENT
+------------------------------------------
+The E-Commerce Platform Control & Revenue Management System project will consist of a matrix structure with support from various internal organizations. All work will be performed internally. Staffing requirements for the project include the following:
+
+**Project Manager (1 position) – Shiena Mae V. Conje (₱95,000/month)**
+Responsible for all management for the project. The Project Manager is responsible for planning, creating, and/or managing all work activities, variances, tracking, reporting, communication, performance evaluations, staffing, and internal coordination with functional managers.
+
+**Senior Full-Stack Developer (1 position) – Ronald Jay M. Literal (₱85,000/month)**
+Responsible for oversight of all coding and programming tasks for the project as well as ensuring functionality is compliant with quality standards. Responsible for working with the Project Manager to create work packages, manage risk, manage schedule, identify requirements, and create reports. The Senior Full-Stack Developer will be managed by the Project Manager who will provide performance feedback to the functional manager.
+
+**Full-Stack Developer (1 position) – Alghazi E. Utap (₱70,000/month)**
+Responsible for coding and programming for the project. All coding and programming tasks will be reviewed by the Senior Full-Stack Developer prior to implementation. Responsibilities also include assisting with risk identification, determining impacts of change requests, and status reporting. The Full-Stack Developer will be managed by the Project Manager and feedback will be provided to the functional manager for performance evaluations by the Project Manager and Senior Full-Stack Developer.
+
+**QA Engineer (1 position) – Mike Jaspher D. Pasion (₱55,000/month)**
+Responsible for assisting the Project Manager in creating quality control and assurance standards. The QA Engineer is also responsible for maintaining quality control and assurance logs throughout the project. The QA Engineer will be managed by the Project Manager who will also provide feedback to the functional manager for performance evaluations.
+
+**DevOps Engineer (1 position) – Jonathan S. Gatase (₱65,000/month)**
+Responsible for managing AWS infrastructure, deployment automation, and providing technical support for project testing. The DevOps Engineer will be managed by the Project Manager who will also provide feedback to the functional manager for performance evaluations.
+
+**UI/UX Designer (1 position) – Contract (₱40,000/month × 3 months)**
+Responsible for creating user interface designs that meet project requirements for all five user types. The UI/UX Designer will be managed by the Project Manager who will also provide feedback to the functional manager for performance evaluations.
+
+**Business Analyst (1 position) – Contract (₱30,000/month × 2 months)**
+Responsible for documenting business processes and requirements according to project scope. The Business Analyst will be managed by the Project Manager who will also provide feedback to the functional manager for performance evaluations.
+
+The Project Manager will negotiate with all necessary functional managers in order to identify and assign resources for the project. All resources must be approved by the appropriate functional manager before the resource may begin any project work. The project team will not be co-located for this project and all resources will remain in their current workspace.
+
+------------------------------------------
+16. RESOURCE CALENDAR
+------------------------------------------
+The E-Commerce Platform Control & Revenue Management System project will require all project team members for the entire duration of the project although levels of effort will vary as the project progresses. The Project is scheduled to last 16 weeks (July-October 2025) with standard 40 hour work weeks. If a project team member is not required for a full 40 hour work week at any point during the project, their efforts outside of the project will be at the discretion of their Functional Manager.
+
+**Resource Allocation by Sprint:**
+- Sprint 0 (Planning): All 8 team members at 100% allocation
+- Sprint 1-2 (Foundation & User Management): All 8 team members at 100% allocation
+- Sprint 3-4 (Product & Order Management): All 8 team members at 100% allocation
+- Sprint 5-6 (Subscriptions & Logistics): All 8 team members at 100% allocation
+- Sprint 7-8 (Analytics & Deployment): All 8 team members at 100% allocation
+- Go-Live & Support: All 8 team members at 100% allocation
+
+**Key Resource Requirements:**
+- Project Manager: Full-time throughout project duration
+- Development Team: Full-time throughout project duration
+- QA Engineer: Full-time throughout project duration
+- DevOps Engineer: Full-time throughout project duration
+- UI/UX Designer: Full-time for first 3 months
+- Business Analyst: Full-time for first 2 months
+
+------------------------------------------
+17. COST BASELINE
+------------------------------------------
+The cost baseline for the E-Commerce Platform Control & Revenue Management System project includes all budgeted costs for the successful completion of the project.
+
+**Total Project Investment: ₱3,400,000 (July-October 2025)**
+
+**Detailed Cost Breakdown:**
+- Personnel costs: ₱1,420,000 (41.8%)
+  - Scrum Master/Project Manager: ₱380,000 (4 months)
+  - Senior Full-Stack Developer: ₱340,000 (4 months)
+  - Full-Stack Developer: ₱280,000 (4 months)
+  - QA Engineer: ₱220,000 (4 months)
+  - DevOps Engineer: ₱260,000 (4 months)
+  - UI/UX Designer: ₱120,000 (3 months)
+  - Business Analyst: ₱60,000 (2 months)
+
+- Technology & Infrastructure: ₱420,000 (12.4%)
+  - AWS Cloud Infrastructure: ₱120,000
+  - PostgreSQL Database Hosting: ₱80,000
+  - CDN and Performance Optimization: ₱50,000
+  - SSL Certificates & Security: ₱25,000
+  - GitHub Enterprise: ₱32,000
+  - Monitoring & Analytics: ₱18,000
+  - Development Tools & Licenses: ₱95,000
+
+- Training & Documentation: ₱150,000 (4.4%)
+  - Video production and training materials: ₱80,000
+  - User manuals and documentation: ₱40,000
+  - Training sessions and workshops: ₱30,000
+
+- Deployment & Launch: ₱180,000 (5.3%)
+  - Production setup and configuration: ₱100,000
+  - Security audit and compliance: ₱50,000
+  - Go-live support and monitoring: ₱30,000
+
+- Legal & Compliance: ₱75,000 (2.2%)
+  - Legal consultation and contracts: ₱40,000
+  - Data protection and privacy compliance: ₱25,000
+  - Intellectual property protection: ₱10,000
+
+- Communication & Collaboration: ₱45,000 (1.3%)
+  - Project management tools and software: ₱25,000
+  - Communication platforms and equipment: ₱20,000
+
+- Travel & Meetings: ₱35,000 (1.0%)
+  - Client meetings and stakeholder engagement: ₱20,000
+  - Team building and conferences: ₱15,000
+
+- Contingency & Buffer: ₱340,000 (10.0%)
+  - Risk mitigation and unexpected costs: ₱340,000
+
+This cost baseline provides the foundation for tracking, reporting, and management of costs throughout the project lifecycle using earned value metrics.
+
+------------------------------------------
+18. QUALITY BASELINE
+------------------------------------------
+The E-Commerce Platform Control & Revenue Management System project must meet the quality standards established in the quality baseline. The quality baseline is the baseline which provides the acceptable quality levels of the project. The system must meet or exceed the quality baseline values in order to achieve success.
+
+**Quality Standards and Metrics:**
+
+**Functional Requirements:**
+- All eight sprint modules must be fully functional with 100% feature completion
+- Role-based access control must support all five user types (Admin, Vendor, Customer, Finance Analyst, Operations Manager)
+- System must support 10,000+ concurrent users and 100,000+ products
+- All automated workflows must achieve 99.9% accuracy
+
+**Performance Requirements:**
+- Page load times must be under 2 seconds for all user interfaces
+- Database query response times must be under 500ms
+- System uptime must achieve 99.9% availability
+- API response times must be under 1 second
+
+**Security Requirements:**
+- JWT authentication must be implemented for all user sessions
+- All data transmission must be encrypted using SSL/TLS
+- Role-based access control must prevent unauthorized access
+- All user data must comply with data protection regulations
+
+**Usability Requirements:**
+- User interface must be responsive across all devices
+- All user types must complete training with 90% satisfaction rate
+- System must be intuitive with minimal learning curve
+- Help documentation must be comprehensive and accessible
+
+**Integration Requirements:**
+- All third-party APIs must integrate seamlessly
+- Payment gateway integration must achieve 99.5% success rate
+- Logistics API integration must provide real-time tracking
+- System must maintain data consistency across all modules
+
+**Testing Requirements:**
+- Unit test coverage must achieve 90% minimum
+- Integration testing must cover all API endpoints
+- User acceptance testing must achieve 100% pass rate
+- Performance testing must validate all performance metrics
+
+**Documentation Requirements:**
+- Technical documentation must be complete and accurate
+- User manuals must be provided for all five user types
+- API documentation must be comprehensive
+- Training materials must be delivered for all stakeholders
+
+**Business Requirements:**
+- System must achieve 162% ROI in first year
+- Payback period must be achieved within 4.6 months
+- Annual benefits must reach ₱8,900,000
+- All business processes must be automated and streamlined
+
+The quality baseline serves as the foundation for all quality control and assurance activities throughout the project. All deliverables must meet or exceed these standards before acceptance and deployment.
+
+------------------------------------------
+END OF DOCUMENT

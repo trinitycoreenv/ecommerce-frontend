@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Commerce Platform WBS Diagram</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: white;
+            padding: 40px 20px;
+            min-height: 100vh;
+        }
+
+        .wbs-container {
+            max-width: 1800px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        /* Level 1 - Top Box */
+        .level-1 {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 60px;
+        }
+
+        .wbs-box {
+            border: 2px solid black;
+            padding: 15px 25px;
+            background: white;
+            text-align: center;
+            position: relative;
+        }
+
+        .level-1 .wbs-box {
+            min-width: 400px;
+        }
+
+        .box-title {
+            font-size: 14px;
+            font-weight: normal;
+            line-height: 1.4;
+        }
+
+        /* Vertical line from Level 1 to Level 2 */
+        .level-1::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 100%;
+            width: 2px;
+            height: 40px;
+            background: black;
+            transform: translateX(-50%);
+        }
+
+        /* Level 2 - Main Phases */
+        .level-2 {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 60px;
+            position: relative;
+            flex-wrap: wrap;
+        }
+
+        /* Horizontal line connecting Level 2 boxes */
+        .level-2::before {
+            content: '';
+            position: absolute;
+            left: 5%;
+            right: 5%;
+            top: -20px;
+            height: 2px;
+            background: black;
+        }
+
+        .level-2 .wbs-box {
+            min-width: 180px;
+            position: relative;
+        }
+
+        /* Vertical lines from horizontal line to each Level 2 box */
+        .level-2 .wbs-box::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: 100%;
+            width: 2px;
+            height: 20px;
+            background: black;
+            transform: translateX(-50%);
+        }
+
+        /* Level 3 - Phase Details */
+        .phase-section {
+            margin-bottom: 80px;
+        }
+
+        .phase-title {
+            text-align: center;
+            font-weight: bold;
+            font-size: 16px;
+            margin-bottom: 40px;
+            padding: 10px;
+            border-bottom: 2px solid black;
+        }
+
+        .level-3-container {
+            position: relative;
+            padding-top: 40px;
+        }
+
+        .level-3 {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            position: relative;
+        }
+
+        .level-3 .wbs-box {
+            min-width: 160px;
+            max-width: 200px;
+            font-size: 12px;
+            padding: 12px 15px;
+        }
+
+        /* Horizontal line for Level 3 */
+        .level-3::before {
+            content: '';
+            position: absolute;
+            left: 10%;
+            right: 10%;
+            top: -20px;
+            height: 2px;
+            background: black;
+        }
+
+        /* Vertical lines from horizontal line to each Level 3 box */
+        .level-3 .wbs-box::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: 100%;
+            width: 2px;
+            height: 20px;
+            background: black;
+            transform: translateX(-50%);
+        }
+
+        @media print {
+            body {
+                padding: 20px;
+            }
+            .phase-section {
+                page-break-inside: avoid;
+            }
+        }
+
+        @media (max-width: 1200px) {
+            .level-2 {
+                gap: 15px;
+            }
+            .level-2 .wbs-box {
+                min-width: 140px;
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="wbs-container">
+        <!-- Level 1: Project -->
+        <div class="level-1">
+            <div class="wbs-box">
+                <div class="box-title">E-Commerce Platform Control & Revenue Management System</div>
+            </div>
+        </div>
+
+        <!-- Level 2: Main Project Phases -->
+        <div class="level-2">
+            <div class="wbs-box">
+                <div class="box-title">Project Initiation</div>
+            </div>
+            <div class="wbs-box">
+                <div class="box-title">Planning Phase</div>
+            </div>
+            <div class="wbs-box">
+                <div class="box-title">Design Phase</div>
+            </div>
+            <div class="wbs-box">
+                <div class="box-title">Development Phase</div>
+            </div>
+            <div class="wbs-box">
+                <div class="box-title">Testing Phase</div>
+            </div>
+            <div class="wbs-box">
+                <div class="box-title">Deployment Phase</div>
+            </div>
+            <div class="wbs-box">
+                <div class="box-title">Training & Support</div>
+            </div>
+            <div class="wbs-box">
+                <div class="box-title">Project Closure</div>
+            </div>
+        </div>
+
+        <!-- Level 3: Project Initiation Tasks -->
+        <div class="phase-section">
+            <div class="phase-title">Project Initiation</div>
+            <div class="level-3-container">
+                <div class="level-3">
+                    <div class="wbs-box">
+                        <div class="box-title">Requirements Gathering</div>
+                    </div>
+                    <div class="wbs-box">
+                        <div class="box-title">Stakeholder Identification</div>
+                    </div>
+                    <div class="wbs-box">
+                        <div class="box-title">Project Charter Creation</div>
+                    </div>
+                    <div class="wbs-box">
+                        <div class="box-title">Business Case Validation</div>
+                    </div>
+                    <div class="wbs-box">
+                        <div class="box-title">Team Assembly</div>
+                    </div>
+                    <div class="wbs-box">
+                        <div class="box-title">Project Kickoff</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Level 3: Planning Phase Tasks -->
+        <div class="phase-section">
+            <div class="phase-title">Planning Phase</div>
+            <div class="level-3-container">
+                <div class="level-3">
+                    <div class="wbs-box">
+                        <div class="box-title">Sprint Planning</div>
+                    </div>
+                    <div class="wbs-box">
+                        <div class="box-title">Resource Allocation</div>
+                    </div>
+                    <div class="wbs-box">
+                        <div class="box-title">Risk Assessment</div>
+                    </div>
+                    <div class="wbs-box">
+                        <div class="box-title">WBS Creation</div>
+                    </div>
+                    <div class="wbs-box">
+                        <div class="box-title">Communication Plan</div>
+                    </div>
+                    <div class="wbs-box">
+                        <div class="box-title">Quality Plan</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Level 3: Design Phase Tasks -->
+        <div class="phase-section">
+            <div class="phase-title">Design Phase</div>
+            <div class="level-3-container">
+                <div class="level-3">
+                    <div class="wbs-box">
+                        <div class="box-title">System Architecture Design</div>
+                    </div>
+                    <div class="wbs-box">
+                        <div class="box-title">Database Schema Design</div>
+                    </div>
+                    <div class="wbs-box">
+                        <div class="box-title">UI/UX Design</div>
+                    </div>
+                    <div class="wbs-box">
+                        <div class="box-title">AWS Infrastructure Setup</div>
+                    </div>
+                    <div class="wbs-box">
+                        <div class="box-title">Development Environment Setup</div>
+                    </div>
+                    <div class="wbs-box">
+                        <div class="box-title">Security Framework Design</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Level 3: Development Phase Tasks -->
+        <div class="phase-section">
+            <div class="phase-title">Development Phase</div>
+            <div class="level-3-container">
+                <div class="level-3">
+                    <div class="wbs-box">
+                        <div class="box-title">User Management & Authentication</div>
+                    </div>
+                    <div class="wbs-box">
+                        <div class="box-title">Product Catalog & Approval Workflows</div>
+                    </div>
+                    <div class="wbs-box">
+                        <div class="box-title">Order Management & Payment Processing</div>
+                    </div>
+                    <div class="wbs-box">
+                        <div class="box-title">Subscription & Commission Management</div>
+                    </div>
+                    <div class="wbs-box">
+                        <div class="box-title">Logistics & Operations Management</div>
+                    </div>
+                    <div class="wbs-box">
+                        <div class="box-title">Analytics & Reporting Dashboards</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Level 3: Testing Phase Tasks -->
+        <div class="phase-section">
+            <div class="phase-title">Testing Phase</div>
+            <div class="level-3-container">
+                <div class="level-3">
+                    <div class="wbs-box">
+                        <div class="box-title">Unit Testing</div>
+                    </div>
+                    <div class="wbs-box">
+                        <div class="box-title">Integration Testing</div>
+                    </div>
+                    <div class="wbs-box">
+                        <div class="box-title">User Acceptance Testing</div>
+                    </div>
+                    <div class="wbs-box">
+                        <div class="box-title">Performance Testing</div>
+                    </div>
+                    <div class="wbs-box">
+                        <div class="box-title">Security Testing</div>
+                    </div>
+                    <div class="wbs-box">
+                        <div class="box-title">End-to-End Testing</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Level 3: Deployment Phase Tasks -->
+        <div class="phase-section">
+            <div class="phase-title">Deployment Phase</div>
+            <div class="level-3-container">
+                <div class="level-3">
+                    <div class="wbs-box">
+                        <div class="box-title">Production Environment Setup</div>
+                    </div>
+                    <div class="wbs-box">
+                        <div class="box-title">Go-Live Activities</div>
+                    </div>
+                    <div class="wbs-box">
+                        <div class="box-title">System Migration</div>
+                    </div>
+                    <div class="wbs-box">
+                        <div class="box-title">Initial User Training</div>
+                    </div>
+                    <div class="wbs-box">
+                        <div class="box-title">System Validation</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Level 3: Training & Support Tasks -->
+        <div class="phase-section">
+            <div class="phase-title">Training & Support</div>
+            <div class="level-3-container">
+                <div class="level-3">
+                    <div class="wbs-box">
+                        <div class="box-title">User Training Sessions</div>
+                    </div>
+                    <div class="wbs-box">
+                        <div class="box-title">Documentation Delivery</div>
+                    </div>
+                    <div class="wbs-box">
+                        <div class="box-title">Knowledge Transfer</div>
+                    </div>
+                    <div class="wbs-box">
+                        <div class="box-title">Post-Launch Support</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Level 3: Project Closure Tasks -->
+        <div class="phase-section">
+            <div class="phase-title">Project Closure</div>
+            <div class="level-3-container">
+                <div class="level-3">
+                    <div class="wbs-box">
+                        <div class="box-title">Project Documentation Finalization</div>
+                    </div>
+                    <div class="wbs-box">
+                        <div class="box-title">Lessons Learned Documentation</div>
+                    </div>
+                    <div class="wbs-box">
+                        <div class="box-title">ROI Validation & Final Metrics</div>
+                    </div>
+                    <div class="wbs-box">
+                        <div class="box-title">Stakeholder Sign-off</div>
+                    </div>
+                    <div class="wbs-box">
+                        <div class="box-title">Team Release & Resource Closure</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

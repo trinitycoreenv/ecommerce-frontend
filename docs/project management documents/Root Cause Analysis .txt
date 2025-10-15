@@ -1,0 +1,152 @@
+﻿Root Cause Analysis Template
+
+
+
+
+
+
+Root Cause Analysis (RCA)
+Core III
+
+
+
+
+
+
+
+
+Core Transaction 3: Platform Control & Revenue Management 
+Bestlink College Of The Philippines
+1071 BRGY. Kaligayahan Novaliches Quezon City, Philippines 1123
+
+
+Date: August 14, 2025
+
+
+
+
+________________
+
+
+
+
+Table of Contents
+Introduction        3
+Event Description        3
+Chronology of Events / Timeline        4
+Investigative Team and Method        5
+Findings and Root Cause        6
+Corrective Action        6
+
+
+
+
+
+
+
+
+
+
+
+
+________________
+Introduction
+This Root Cause Analysis (RCA) investigates the issues that required the development of the Core Transaction 3: Platform Control & Revenue Management System. The purpose is to understand the underlying causes of inefficiencies in vendor subscriptions, commission tracking, product compliance, logistics coordination, and financial reporting.
+
+
+The objective of this RCA is to determine:
+- What happened within the platform’s prior operations.
+- How it happened across fragmented systems and manual processes.
+- Why it happened in terms of organizational gaps, lack of automation, and limited visibility.
+
+
+The analysis ensures that the root causes are specific, identifiable, and manageable, enabling corrective actions that prevent recurrence and align with the organization’s goals of scalability, transparency, and efficiency.
+ 
+Event Description
+The e-commerce platform faced repeated challenges due to the absence of a centralized revenue and platform control system. Over time, these operational deficiencies led to:
+
+
+- Inconsistent commission deductions causing vendor disputes.
+- Delays in product policy enforcement leading to compliance risks.
+- Poor shipment tracking and fragmented logistics coordination.
+- Manual and inefficient payout processing with reconciliation delays.
+- Lack of real-time reporting and KPI monitoring, hindering decision-making.
+
+
+The situation directly impacted vendors, administrators, logistics partners, and the finance team. It limited the platform’s scalability, eroded vendor trust, and created financial inefficiencies.
+ 
+Chronology of Events / Timeline
+5:00 PM - Wednesday September  2025
+Legacy processes in place: manual commission tracking and fragmented reporting identified.
+
+
+
+
+5:00 PM - Wednesday September 2025
+Vendor complaints increase regarding delayed payouts and unclear commission deductions.
+
+
+5:00 PM - Wednesday September  2025
+Internal audits highlight inconsistencies in financial reconciliation and policy enforcement.
+
+
+5:00 PM - Wednesday September  2025
+Business case formulated for Core Transaction 3: Platform Control & Revenue Management.
+
+
+5:00 PM - Wednesday October  2025
+Business case approved by stakeholders (Bestlink College of the Philippines).
+
+
+5:00 PM - Wednesday October  2025 onwards
+RCA initiated to ensure alignment of corrective action with system design.
+Investigative Team and Method
+The RCA team was assembled from the Core Transaction 3 project stakeholders:
+
+
+- Shiena Mae V. Conje – Scrum Master (Facilitator)
+- Maxine A. Delfin – Product Owner (Business Alignment)
+- Ronald Jay M. Literal & Alghazi E. Utap – Development Team (Technical Analysis)
+- Mike Jaspher D. Pasion – Quality Assurance (Process Validation)
+- Jonathan S. Gatase – Support Staff (User Feedback & Escalations)
+
+
+Methodology:
+- Review of vendor support tickets and finance logs.
+- Interviews with admins, vendors, and logistics partners.
+- Analysis of legacy system limitations and data reconciliation reports.
+
+
+The purpose of this section is to present the composition of the Root Cause Analysis (RCA) team and the methodology applied in conducting the assessment. The team was composed of representatives from key stakeholder groups of the Core Transaction 3 project, each assigned with specific roles to ensure a balanced and comprehensive evaluation. The process followed a structured approach, which included the review of vendor support tickets and financial logs, interviews with administrators, vendors, and logistics partners, and an in-depth analysis of legacy system limitations alongside data reconciliation reports.
+
+
+Findings and Root Cause
+Findings:
+Commission Tracking – Manual deductions prone to human error, resulting in disputes.
+Policy Enforcement – Product listings lacked automated compliance checks, causing approval delays.
+Logistics Coordination – Shipment updates were inconsistent due to limited integration with partner APIs.
+Payout Processing – Finance team faced reconciliation delays due to fragmented data sources.
+Reporting – Lack of real-time dashboards restricted KPI visibility and timely decisions.
+
+
+Root Causes:
+Fragmented Systems: Multiple disconnected tools without centralization.
+Manual Processes: Over-reliance on staff input for commissions, payouts, and compliance checks.
+Limited Integration: Poor connectivity with logistics partners and financial systems.
+Lack of Automation: Absence of automated workflows for subscriptions, deductions, and reporting.
+Inadequate Visibility: No unified dashboard for monitoring performance and compliance.
+
+
+Corrective Action
+Centralized Revenue Management: Implement automated subscription and commission modules with error reduction targets (<2% error rate).
+Automated Compliance Checks: Introduce product catalogue policy enforcement with real-time violation alerts.
+Integrated Logistics Tracking: Develop APIs for partner shipment updates with <5% delivery delay reporting.
+Streamlined Payout Processing: Automate reconciliation and payouts, reducing cycle times by 40%.
+Real-Time Reporting Dashboards: Deploy customizable dashboards and reports for improved decision-making.
+
+
+Expected Outcomes:
+        30% improvement in payout processing efficiency.
+        25% reduction in policy violations.
+        20% reduction in vendor complaints.
+        Improved trust, transparency, and scalability of the platform.

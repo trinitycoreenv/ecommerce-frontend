@@ -1,0 +1,702 @@
+RISK MANAGEMENT PLAN
+E-Commerce Platform Control & Revenue Management System
+
+BESTLINK COLLEGE OF THE PHILIPPINES
+1071 BRGY. KALIGAYAHAN NOVALICHES
+QUEZON CITY, PHILIPPINES 1123
+
+DATE: JULY 1, 2025
+
+------------------------------------------
+TABLE OF CONTENTS
+------------------------------------------
+1. Introduction
+2. Risk Management Approach
+3. Risk Identification
+4. Risk Qualification and Prioritization
+5. Risk Monitoring
+6. Risk Mitigation and Avoidance
+7. Risk Register
+8. Risk Management Roles and Responsibilities
+
+------------------------------------------
+1. INTRODUCTION
+------------------------------------------
+This section explains why risks exist and highlights the purpose and importance of the risk management plan. It provides a general description of why risk management is essential to effectively managing a project and describes what is needed before risk management can begin.
+
+As organizations begin new projects they begin operating in an area of uncertainty that comes along with developing new and unique products or services. By doing so, these organizations take chances which results in risk playing a significant part in any project. The purpose of the risk management plan is to establish the framework in which the project team will identify risks and develop strategies to mitigate or avoid those risks. However, before risks can be identified and managed, there are preliminary project elements which must be completed. These elements are outlined in the risk management approach.
+
+This project is considered a medium-high risk project as it has an overall risk score of 32 on a scale from 0 to 100. The project risk score is the average of the risk scores of the most significant risks to this project. A risk score below 16 is low risk project, a score between 16 and 45 is a medium risk project and a score above 45 is a high risk project.
+
+The E-Commerce Platform Control & Revenue Management System project involves significant technological complexity, multiple stakeholder groups, third-party integrations, and financial transactions, making comprehensive risk management essential for project success. The project's success depends on achieving 162% ROI and 4.6-month payback period while delivering a scalable platform supporting 10,000+ concurrent users and 100,000+ products.
+
+Before risk management begins it is imperative that a foundation is established for providing structured project information, thus, the following project elements were completed and defined prior to developing this Risk Management Plan:
+
+**Define work scope, schedule, resources, and cost elements:**
+- Complete e-commerce platform with 8 sprint modules using Next.js 15, TypeScript, PostgreSQL, and Prisma ORM
+- 16-week timeline (July-October 2025) with 8 two-week sprints
+- 8 team members (6 full-time, 2 contract positions) with ₱3,400,000 budget
+- Role-based access control for 5 user types (Admin, Vendor, Customer, Finance Analyst, Operations Manager)
+
+**Develop project WBS/WBS dictionary:**
+- 6-level work breakdown structure with detailed work packages
+- Sprint-based delivery with clear deliverables and acceptance criteria
+- Resource allocation and budget distribution across all sprints
+
+**Develop master schedule and detailed schedules:**
+- Sprint 0: Planning (July 1-7, 2025)
+- Sprint 1-2: Foundation & User Management (July 8-Aug 4, 2025)
+- Sprint 3-4: Product & Order Management (Aug 5-Sep 1, 2025)
+- Sprint 5-6: Subscriptions & Logistics (Sep 2-29, 2025)
+- Sprint 7-8: Analytics & Deployment (Sep 30-Oct 27, 2025)
+- Go-Live & Support (Oct 28-Nov 4, 2025)
+
+**Estimate project cost and finalize budget:**
+- Total investment: ₱3,400,000 with detailed cost breakdown
+- Personnel costs: ₱1,420,000 (41.8%)
+- Technology & Infrastructure: ₱420,000 (12.4%)
+- Training & Documentation: ₱150,000 (4.4%)
+- Contingency & Buffer: ₱340,000 (10.0%)
+
+**Identify required and available resources:**
+- Scrum Master/Project Manager: Shiena Mae V. Conje (₱95,000/month)
+- Senior Full-Stack Developer: Ronald Jay M. Literal (₱85,000/month)
+- Full-Stack Developer: Alghazi E. Utap (₱70,000/month)
+- QA Engineer: Mike Jaspher D. Pasion (₱55,000/month)
+- DevOps Engineer: Jonathan S. Gatase (₱65,000/month)
+- UI/UX Designer: Contract (₱40,000/month × 3 months)
+- Business Analyst: Contract (₱30,000/month × 2 months)
+
+**Establish performance measurement metrics:**
+- Schedule Performance Index (SPI): Target 1.0, Alert < 0.8 or > 1.2
+- Cost Performance Index (CPI): Target 1.0, Alert < 0.8 or > 1.2
+- Quality metrics: 90% test coverage, 99.9% uptime, <2 second response times
+- Business metrics: 162% ROI, 4.6-month payback, ₱8,900,000 annual benefits
+
+**Define minimum and maximum baseline thresholds:**
+- Schedule: No more than 1 week delay on any sprint milestone
+- Resources: All team members must be available for full project duration
+- Cost: Budget variance not to exceed 10% without CCB approval
+- Quality: All deliverables must meet acceptance criteria before sprint completion
+
+**Baseline reporting requirements:**
+- Format: Monthly status reports with earned value analysis
+- Frequency: Weekly sprint reviews, monthly stakeholder reports
+- Distribution: Project team, Product Owner, stakeholders, CCB members
+
+**Define Risk Management Roles and Responsibilities:**
+- Project Manager chairs the risk assessment meetings and maintains risk register
+- Project team participates in risk assessment meetings and members serve as meeting recorder and timekeeper
+- Key stakeholders participate in risk assessment meetings and provide domain expertise
+- Product Owner may participate in risk assessment meetings for high-impact risks
+- Risk managers are assigned to specific risks based on their expertise and responsibilities
+
+**Top Three Risks:**
+It is important to explicitly state the top three risks to the project in the Risk Management Plan. This will make management aware of the top risks for the project and the nature of the risks.
+
+The top three high probability and high impact risks to this project are:
+
+**1. Integration Issues with Third-Party APIs**
+Due to dependencies on external payment gateways and logistics providers, API integration failures could cause significant delays in order processing and payment systems, affecting all five user types and potentially impacting the 162% ROI target. The project manager will mitigate this risk by implementing early testing, backup providers, and manual fallback processes.
+
+**2. Development Delays Due to Team Availability**
+Due to the complexity of the Next.js 15, TypeScript, PostgreSQL, and Prisma ORM technology stack, any team member unavailability could cause cascading delays across multiple sprints, potentially impacting the 16-week timeline and ₱3,400,000 budget. The project manager will mitigate this risk through cross-training, backup resources, and flexible scheduling.
+
+**3. Low User Adoption Across All Five User Types**
+Due to the comprehensive nature of the platform changes and the need for all user types to adapt to new workflows, insufficient training or resistance to change could result in low adoption rates, affecting the projected ₱8,900,000 annual benefits. The project manager will mitigate this risk through comprehensive training programs, user feedback integration, and gradual rollout strategies.
+
+------------------------------------------
+2. RISK MANAGEMENT APPROACH
+------------------------------------------
+This section provides a general description for the approach taken to identify and manage the risks associated with the project. It should be a short paragraph or two summarizing the approach to risk management on this project.
+
+The approach we have taken to manage risks for this project included a methodical process by which the project team identified, scored, and ranked the various risks. The most likely and highest impact risks were added to the project schedule to ensure that the assigned risk managers take the necessary steps to implement the mitigation response at the appropriate time during the schedule. Risk managers will provide status updates on their assigned risks in the bi-weekly project team meetings, but only when the meetings include their risk's planned timeframe. Upon the completion of the project, during the closing process, the project manager will analyze each risk as well as the risk management process. Based on this analysis, the project manager will identify any improvements that can be made to the risk management process for future projects. These improvements will be captured as part of the lessons learned knowledge base.
+
+The risk management approach for the E-Commerce Platform Control & Revenue Management System project emphasizes proactive identification, continuous monitoring, and adaptive response strategies. Given the project's complexity involving multiple technologies, stakeholder groups, and business processes, a comprehensive risk management framework is essential to ensure successful delivery within the ₱3,400,000 budget and 16-week timeline while achieving the target 162% ROI.
+
+The approach integrates risk management into the Agile development methodology, with risk assessment activities embedded within each sprint cycle. This ensures that risks are identified early, mitigation strategies are implemented promptly, and the project remains aligned with business objectives throughout the development lifecycle.
+
+------------------------------------------
+3. RISK IDENTIFICATION
+------------------------------------------
+This section explains the process by which the risks associated with this project were identified. It should describe the method(s) for how the project team identified risks, the format in which risks are recorded, and the forum in which this process was conducted. Typical methods of identifying risks are expert interview, review historical information from similar projects and conducting a risk assessment meeting with the project team and key stakeholders.
+
+For this project, risk identification was conducted in the initial project risk assessment meeting. The method used by the project team to identify risks was the Crawford Slip method. The project manager chaired the risk assessment meeting and distributed notepads to each member of the team and allowed 10 minutes for all team members to record as many risks as possible.
+
+**Expert Interview:**
+Two Expert Interviews were held for this project. The interviews revealed several risks which were then mitigated by making changes to the project plan. The remaining risks are included in the Risk Register.
+
+**Interview 1: Technical Architecture Expert**
+- Identified risks related to Next.js 15, TypeScript, PostgreSQL, and Prisma ORM integration
+- Highlighted potential performance bottlenecks with 10,000+ concurrent users
+- Recommended early performance testing and optimization strategies
+
+**Interview 2: E-Commerce Platform Expert**
+- Identified risks related to payment gateway integration and financial transaction processing
+- Highlighted potential issues with role-based access control for five user types
+- Recommended comprehensive security testing and compliance validation
+
+**Risk Assessment Meeting:**
+A risk assessment meeting was held with key team members and stakeholders. The risks identified during this meeting were added to the project plan and Risk Register.
+
+**Meeting Participants:**
+- Project Manager: Shiena Mae V. Conje
+- Product Owner: Maxine A. Delfin Decide
+- Senior Full-Stack Developer: Ronald Jay M. Literal
+- Full-Stack Developer: Alghazi E. Utap
+- QA Engineer: Mike Jaspher D. Pasion
+- DevOps Engineer: Jonathan S. Gatase
+- UI/UX Designer: Contract representative
+- Business Analyst: Contract representative
+
+**Risk Identification Methods Used:**
+1. **Crawford Slip Method**: 10-minute individual risk identification session
+2. **Brainstorming Sessions**: Group discussion on potential project risks
+3. **Checklist Analysis**: Review of common e-commerce platform risks
+4. **Assumptions Analysis**: Examination of project assumptions for risk potential
+5. **SWOT Analysis**: Strengths, Weaknesses, Opportunities, and Threats assessment
+
+**Historical Review of Similar Projects:**
+The project team reviewed the history of similar projects in order to determine the most common risks and the strategies used to mitigate those risks.
+
+**Similar Project Analysis:**
+- Reviewed 3 previous e-commerce platform development projects
+- Identified common failure points in payment integration and user adoption
+- Analyzed successful risk mitigation strategies from similar technology stacks
+- Documented lessons learned from previous Next.js and PostgreSQL implementations
+
+**Risk Categories Identified:**
+1. **Technical Risks**: Technology integration, performance, security
+2. **Schedule Risks**: Development delays, resource availability, scope creep
+3. **Cost Risks**: Budget overruns, unexpected expenses, resource costs
+4. **Quality Risks**: User acceptance, testing failures, performance issues
+5. **External Risks**: Third-party dependencies, regulatory changes, market conditions
+6. **Organizational Risks**: Team dynamics, stakeholder alignment, change management
+
+------------------------------------------
+4. RISK QUALIFICATION AND PRIORITIZATION
+------------------------------------------
+Once risks are identified it is important to determine the probability and impact of each risk in order to allow the project manager to prioritize the risk avoidance and mitigation strategy. Risks which are more likely to occur and have a significant impact on the project will be the highest priority risks while those which are more unlikely or have a low impact will be a much lower priority. This is usually done with a probability – impact matrix. This section explains risks were qualified and prioritized for this project.
+
+In order to determine the severity of the risks identified by the team, a probability and impact factor was assigned to each risk. This process allowed the project manager to prioritize risks based upon the effect they may have on the project. The project manager utilized a probability-impact matrix to facilitate the team in moving each risk to the appropriate place on the chart.
+
+**Risk Scoring Methodology:**
+- **Probability Scale**: 1 (Very Low) to 5 (Very High)
+- **Impact Scale**: 1 (Very Low) to 5 (Very High)
+- **Risk Score**: Probability × Impact (1-25 scale)
+- **Risk Level**: Low (1-8), Medium (9-16), High (17-25)
+
+**Probability Assessment Criteria:**
+- **Very High (5)**: >80% chance of occurrence
+- **High (4)**: 60-80% chance of occurrence
+- **Medium (3)**: 40-60% chance of occurrence
+- **Low (2)**: 20-40% chance of occurrence
+- **Very Low (1)**: <20% chance of occurrence
+
+**Impact Assessment Criteria:**
+- **Very High (5)**: Project failure, >20% budget overrun, >4 weeks delay
+- **High (4)**: Major issues, 10-20% budget overrun, 2-4 weeks delay
+- **Medium (3)**: Moderate issues, 5-10% budget overrun, 1-2 weeks delay
+- **Low (2)**: Minor issues, <5% budget overrun, <1 week delay
+- **Very Low (1)**: Minimal impact, no budget or schedule impact
+
+**Risk Prioritization Matrix:**
+
+**High Priority Risks (Score 17-25):**
+- Integration Issues with Third-Party APIs (Score: 20)
+- Development Delays Due to Team Availability (Score: 18)
+- Low User Adoption Across All User Types (Score: 17)
+
+**Medium Priority Risks (Score 9-16):**
+- Cloud Infrastructure Performance Issues (Score: 15)
+- Scope Changes Affecting Timeline (Score: 12)
+- Security Vulnerabilities in Authentication (Score: 12)
+- Database Performance Bottlenecks (Score: 10)
+
+**Low Priority Risks (Score 1-8):**
+- Minor UI/UX Design Changes (Score: 6)
+- Documentation Delays (Score: 4)
+- Training Material Revisions (Score: 3)
+
+Once the risks were assigned a probability and impact and placed in the appropriate position on the chart, the recorder captured the finished product and the project manager moved the process on to the next step: risk mitigation/avoidance planning.
+
+------------------------------------------
+5. RISK MONITORING
+------------------------------------------
+This section should discuss how the risks in the project will be actively monitored. One effective way to monitor project risks is to add those risks with the highest scores to the project schedule with an assigned risk manager. This allows the project manager to see when these risks need to be monitored more closely and when to expect the risk manager to provide status updates at the bi-weekly project team meetings. The key to risk monitoring is to ensure that it is continuous throughout the life of the project and includes the identification of trigger conditions for each risk and thorough documentation of the process.
+
+The most likely and greatest impact risks have been added to the project plan to ensure that they are monitored during the time the project is exposed to each risk. At the appropriate time in the project schedule a Risk Manager is assigned to each risk. During the bi-weekly project team meeting the Risk Manager for each risk will discuss the status of that risk; however, only risks which fall in the current time period will be discussed. Risk monitoring will be a continuous process throughout the life of this project. As risks approach on the project schedule the project manager will ensure that the appropriate risk manager provides the necessary status updates which include the risk status, identification of trigger conditions, and the documentation of the results of the risk response.
+
+**Risk Monitoring Framework:**
+
+**Continuous Monitoring Activities:**
+- Daily standup meetings include risk status updates
+- Weekly sprint reviews assess risk mitigation effectiveness
+- Monthly stakeholder reports include risk dashboard
+- Quarterly risk assessment reviews with full team
+
+**Risk Monitoring Schedule:**
+
+**Sprint 0-1 (July 1-21, 2025):**
+- Monitor: Team availability and resource allocation
+- Risk Manager: Project Manager
+- Focus: Foundation setup and team coordination
+
+**Sprint 2-3 (July 22-Aug 18, 2025):**
+- Monitor: User management system and authentication risks
+- Risk Manager: Senior Full-Stack Developer
+- Focus: JWT implementation and role-based access control
+
+**Sprint 4-5 (Aug 19-Sep 15, 2025):**
+- Monitor: Payment integration and third-party API risks
+- Risk Manager: Full-Stack Developer
+- Focus: Payment gateway integration and order processing
+
+**Sprint 6-7 (Sep 16-Oct 13, 2025):**
+- Monitor: Performance and scalability risks
+- Risk Manager: DevOps Engineer
+- Focus: AWS infrastructure and system performance
+
+**Sprint 8 & Go-Live (Oct 14-Nov 4, 2025):**
+- Monitor: User adoption and deployment risks
+- Risk Manager: Product Owner
+- Focus: Training, deployment, and user acceptance
+
+**Risk Monitoring Tools:**
+- Risk Register with automated alerts
+- Project dashboard with risk indicators
+- Earned value analysis for cost and schedule risks
+- Performance monitoring for technical risks
+- User feedback systems for adoption risks
+
+**Trigger Conditions:**
+Each risk has defined trigger conditions that indicate when the risk is becoming more likely or impactful:
+
+**Technical Risk Triggers:**
+- API response times >2 seconds
+- Test coverage <90%
+- Security scan failures
+- Performance degradation >20%
+
+**Schedule Risk Triggers:**
+- Sprint completion <80%
+- Resource availability <90%
+- Milestone delays >3 days
+- Scope changes >10%
+
+**Cost Risk Triggers:**
+- Budget variance >5%
+- Resource cost overruns
+- Unexpected infrastructure costs
+- Third-party service price increases
+
+**Quality Risk Triggers:**
+- User acceptance rate <85%
+- Bug discovery rate >5 per sprint
+- Performance issues reported
+- Training completion <90%
+
+**Risk Status Reporting:**
+- **Green**: Risk is under control, mitigation strategies working
+- **Yellow**: Risk requires attention, additional mitigation needed
+- **Red**: Risk is critical, immediate action required
+
+**Documentation Requirements:**
+- Risk status updates in weekly reports
+- Mitigation strategy effectiveness assessments
+- Lessons learned documentation
+- Risk response outcome analysis
+
+------------------------------------------
+6. RISK MITIGATION AND AVOIDANCE
+------------------------------------------
+Once risks have been qualified, the team must determine how to address those risks which have the greatest potential probability and impact on the project. This section explains the considerations which must be made and the options available to the project manager in managing these risks.
+
+The project manager has led the project team in developing responses to each identified risk. As more risks are identified, they will be qualified and the team will develop avoidance and mitigation strategies. These risks will also be added to the Risk Register and the project plan to ensure they are monitored at the appropriate times and are responded to accordingly.
+
+The risks for this project will be managed and controlled within the constraints of time, scope, and cost. All identified risks will be evaluated in order to determine how they affect this triple constraint. The project manager, with the assistance of the project team, will determine the best way to respond to each risk to ensure compliance with these constraints.
+
+**Risk Response Strategies:**
+
+**1. Avoid (Eliminate the risk):**
+- Remove the risk source or change the project approach
+- Examples: Use proven technology stacks, avoid experimental features
+
+**2. Mitigate (Reduce probability or impact):**
+- Implement actions to reduce risk probability or impact
+- Examples: Early testing, backup systems, comprehensive training
+
+**3. Transfer (Shift risk to third party):**
+- Transfer risk ownership to external party
+- Examples: Insurance, vendor contracts, service level agreements
+
+**4. Accept (Acknowledge and monitor):**
+- Accept the risk and monitor for changes
+- Examples: Low-impact risks, risks with acceptable consequences
+
+**High Priority Risk Mitigation Strategies:**
+
+**Risk 1: Integration Issues with Third-Party APIs (Score: 20)**
+- **Strategy**: Mitigate
+- **Actions**:
+  - Early API testing and validation (Sprint 2-3)
+  - Implement backup payment providers
+  - Create manual fallback processes
+  - Establish service level agreements with providers
+  - Regular API health monitoring
+- **Owner**: Senior Full-Stack Developer
+- **Timeline**: Continuous throughout project
+- **Cost**: ₱50,000 (backup systems and monitoring)
+
+**Risk 2: Development Delays Due to Team Availability (Score: 18)**
+- **Strategy**: Mitigate
+- **Actions**:
+  - Cross-training team members on critical components
+  - Identify backup resources for each role
+  - Implement flexible scheduling and remote work options
+  - Regular team availability assessments
+  - Knowledge documentation and sharing
+- **Owner**: Project Manager
+- **Timeline**: Continuous throughout project
+- **Cost**: ₱30,000 (training and documentation)
+
+**Risk 3: Low User Adoption Across All User Types (Score: 17)**
+- **Strategy**: Mitigate
+- **Actions**:
+  - Comprehensive training programs for all user types
+  - User feedback integration throughout development
+  - Gradual rollout with pilot groups
+  - Change management communication
+  - User support and help desk setup
+- **Owner**: Product Owner
+- **Timeline**: Sprint 6-8 and post-launch
+- **Cost**: ₱150,000 (training and support)
+
+**Medium Priority Risk Mitigation Strategies:**
+
+**Risk 4: Cloud Infrastructure Performance Issues (Score: 15)**
+- **Strategy**: Mitigate
+- **Actions**:
+  - Performance testing and optimization
+  - Auto-scaling configuration
+  - Load balancing implementation
+  - Monitoring and alerting systems
+- **Owner**: DevOps Engineer
+- **Timeline**: Sprint 1-7
+- **Cost**: ₱80,000 (infrastructure optimization)
+
+**Risk 5: Scope Changes Affecting Timeline (Score: 12)**
+- **Strategy**: Mitigate
+- **Actions**:
+  - Strict change control process
+  - Regular stakeholder communication
+  - Clear scope documentation
+  - Impact assessment for all changes
+- **Owner**: Project Manager
+- **Timeline**: Continuous throughout project
+- **Cost**: ₱20,000 (change management tools)
+
+**Risk 6: Security Vulnerabilities in Authentication (Score: 12)**
+- **Strategy**: Mitigate
+- **Actions**:
+  - Security code reviews
+  - Penetration testing
+  - JWT implementation best practices
+  - Regular security audits
+- **Owner**: Senior Full-Stack Developer
+- **Timeline**: Sprint 2-8
+- **Cost**: ₱40,000 (security testing and tools)
+
+**Risk Response Implementation:**
+
+**Implementation Timeline:**
+- Risk mitigation strategies are integrated into sprint planning
+- Risk managers implement strategies during assigned sprints
+- Progress is tracked through weekly sprint reviews
+- Effectiveness is assessed monthly
+
+**Resource Allocation:**
+- Risk mitigation activities are included in sprint backlogs
+- Dedicated time allocated for risk management activities
+- Budget reserves maintained for risk response actions
+- Team members trained on risk management processes
+
+**Success Metrics:**
+- Risk probability reduction by 50%
+- Risk impact reduction by 30%
+- Early risk identification rate >80%
+- Risk response effectiveness >90%
+
+In extreme cases it may be necessary to allow flexibility to one of the project's constraints. Only one of the constraints for this project allows for flexibility as a last resort. If necessary, funding may be added to the project to allow for more resources in order to meet the time (schedule) and scope constraints. Time and scope are firm constraints and allow for no flexibility. Again, the cost constraint is flexible only in extreme cases where no other risk avoidance or mitigation strategy will work.
+
+**Contingency Planning:**
+- **Budget Contingency**: ₱340,000 (10% of total budget)
+- **Schedule Contingency**: 1 week buffer in each sprint
+- **Resource Contingency**: Backup team members identified
+- **Technical Contingency**: Alternative technology solutions prepared
+
+------------------------------------------
+7. RISK REGISTER
+------------------------------------------
+Every project must maintain a risk register in order to track risks and associated mitigation strategies. This section describes the risk register criteria as well as where the risk register is maintained and how these risks are tracked in the project schedule.
+
+The Risk Register for this project is a log of all identified risks, their probability and impact to the project, the category they belong to, mitigation strategy, and when the risk will occur. The register was created through the initial project risk management meeting led by the project manager. During this meeting, the project team identified and categorized each risk. Additionally, the team assigned each risk a score based on the probability of it occurring and the impact it could potentially have. The Risk Register also contains the mitigation strategy for each risk as well as when the risk is likely to occur.
+
+Based on the identified risks and timeframes in the risk register, each risk has been added to the project plan. At the appropriate time in the plan—prior to when the risk is most likely to occur—the project manager will assign a risk manager to ensure adherence to the agreed upon mitigation strategy. The each risk manager will provide the status of their assigned risk at the bi-weekly project team meeting for their risk's planned timeframe.
+
+**Risk Register Summary:**
+
+**HIGH PRIORITY RISKS (Score 17-25):**
+
+**Risk 001: Integration Issues with Third-Party APIs**
+- **Description**: Payment gateways and logistics APIs may have integration problems affecting order processing and delivery tracking
+- **Category**: Technical
+- **Probability**: 4 (High)
+- **Impact**: 5 (Very High)
+- **Risk Score**: 20
+- **Risk Level**: High
+- **Risk Manager**: Ronald Jay M. Literal (Senior Full-Stack Developer)
+- **Timeline**: Sprint 4-5 (Aug 19-Sep 15, 2025)
+- **Mitigation Strategy**: Early API testing, backup providers, manual fallback processes
+- **Status**: Active
+- **Last Updated**: July 1, 2025
+
+**Risk 002: Development Delays Due to Team Availability**
+- **Description**: Team members may not be available for full project duration, causing cascading delays
+- **Category**: Schedule
+- **Probability**: 4 (High)
+- **Impact**: 4 (High)
+- **Risk Score**: 18
+- **Risk Level**: High
+- **Risk Manager**: Shiena Mae V. Conje (Project Manager)
+- **Timeline**: Continuous (July 1-Oct 27, 2025)
+- **Mitigation Strategy**: Cross-training, backup resources, flexible scheduling
+- **Status**: Active
+- **Last Updated**: July 1, 2025
+
+**Risk 003: Low User Adoption Across All User Types**
+- **Description**: Users may not adopt the new system due to insufficient training or resistance to change
+- **Category**: Quality
+- **Probability**: 3 (Medium)
+- **Impact**: 5 (Very High)
+- **Risk Score**: 17
+- **Risk Level**: High
+- **Risk Manager**: Maxine A. Delfin Decide (Product Owner)
+- **Timeline**: Sprint 6-8 and post-launch (Sep 16-Nov 4, 2025)
+- **Mitigation Strategy**: Comprehensive training, user feedback, gradual rollout
+- **Status**: Active
+- **Last Updated**: July 1, 2025
+
+**MEDIUM PRIORITY RISKS (Score 9-16):**
+
+**Risk 004: Cloud Infrastructure Performance Issues**
+- **Description**: AWS infrastructure may not handle 10,000+ concurrent users effectively
+- **Category**: Technical
+- **Probability**: 3 (Medium)
+- **Impact**: 5 (Very High)
+- **Risk Score**: 15
+- **Risk Level**: Medium
+- **Risk Manager**: Jonathan S. Gatase (DevOps Engineer)
+- **Timeline**: Sprint 1-7 (July 8-Oct 13, 2025)
+- **Mitigation Strategy**: Performance testing, auto-scaling, load balancing
+- **Status**: Active
+- **Last Updated**: July 1, 2025
+
+**Risk 005: Scope Changes Affecting Timeline**
+- **Description**: Changes in requirements may impact 16-week timeline and budget
+- **Category**: Schedule
+- **Probability**: 4 (High)
+- **Impact**: 3 (Medium)
+- **Risk Score**: 12
+- **Risk Level**: Medium
+- **Risk Manager**: Shiena Mae V. Conje (Project Manager)
+- **Timeline**: Continuous (July 1-Oct 27, 2025)
+- **Mitigation Strategy**: Change control process, stakeholder communication
+- **Status**: Active
+- **Last Updated**: July 1, 2025
+
+**Risk 006: Security Vulnerabilities in Authentication**
+- **Description**: JWT authentication system may have security vulnerabilities
+- **Category**: Technical
+- **Probability**: 3 (Medium)
+- **Impact**: 4 (High)
+- **Risk Score**: 12
+- **Risk Level**: Medium
+- **Risk Manager**: Ronald Jay M. Literal (Senior Full-Stack Developer)
+- **Timeline**: Sprint 2-8 (July 22-Oct 27, 2025)
+- **Mitigation Strategy**: Security reviews, penetration testing, best practices
+- **Status**: Active
+- **Last Updated**: July 1, 2025
+
+**Risk 007: Database Performance Bottlenecks**
+- **Description**: PostgreSQL database may experience performance issues with large datasets
+- **Category**: Technical
+- **Probability**: 3 (Medium)
+- **Impact**: 3 (Medium)
+- **Risk Score**: 10
+- **Risk Level**: Medium
+- **Risk Manager**: Alghazi E. Utap (Full-Stack Developer)
+- **Timeline**: Sprint 3-7 (Aug 5-Oct 13, 2025)
+- **Mitigation Strategy**: Database optimization, indexing, query optimization
+- **Status**: Active
+- **Last Updated**: July 1, 2025
+
+**Risk 008: Budget Overruns Due to Unexpected Costs**
+- **Description**: Unexpected infrastructure or third-party costs may exceed budget
+- **Category**: Cost
+- **Probability**: 3 (Medium)
+- **Impact**: 3 (Medium)
+- **Risk Score**: 10
+- **Risk Level**: Medium
+- **Risk Manager**: Shiena Mae V. Conje (Project Manager)
+- **Timeline**: Continuous (July 1-Oct 27, 2025)
+- **Mitigation Strategy**: Budget monitoring, cost controls, contingency reserves
+- **Status**: Active
+- **Last Updated**: July 1, 2025
+
+**LOW PRIORITY RISKS (Score 1-8):**
+
+**Risk 009: Minor UI/UX Design Changes**
+- **Description**: User interface design may require minor adjustments based on feedback
+- **Category**: Quality
+- **Probability**: 4 (High)
+- **Impact**: 2 (Low)
+- **Risk Score**: 6
+- **Risk Level**: Low
+- **Risk Manager**: UI/UX Designer (Contract)
+- **Timeline**: Sprint 2-6 (July 22-Sep 29, 2025)
+- **Mitigation Strategy**: Early user feedback, iterative design process
+- **Status**: Active
+- **Last Updated**: July 1, 2025
+
+**Risk 010: Documentation Delays**
+- **Description**: Technical documentation may be delayed due to development priorities
+- **Category**: Quality
+- **Probability**: 3 (Medium)
+- **Impact**: 2 (Low)
+- **Risk Score**: 4
+- **Risk Level**: Low
+- **Risk Manager**: Business Analyst (Contract)
+- **Timeline**: Sprint 4-8 (Aug 19-Oct 27, 2025)
+- **Mitigation Strategy**: Parallel documentation, template usage
+- **Status**: Active
+- **Last Updated**: July 1, 2025
+
+**Risk 011: Training Material Revisions**
+- **Description**: Training materials may need revisions based on system changes
+- **Category**: Quality
+- **Probability**: 3 (Medium)
+- **Impact**: 1 (Very Low)
+- **Risk Score**: 3
+- **Risk Level**: Low
+- **Risk Manager**: Business Analyst (Contract)
+- **Timeline**: Sprint 6-8 (Sep 16-Oct 27, 2025)
+- **Mitigation Strategy**: Modular training materials, version control
+- **Status**: Active
+- **Last Updated**: July 1, 2025
+
+**Risk Register Maintenance:**
+- Updated weekly during sprint reviews
+- Reviewed monthly with full project team
+- Escalated to Product Owner for high-priority risks
+- Archived upon risk closure or project completion
+
+The Risk Register will be maintained as an appendix to this Risk Management Plan and updated throughout the project lifecycle.
+
+------------------------------------------
+8. RISK MANAGEMENT ROLES AND RESPONSIBILITIES
+------------------------------------------
+**Project Manager (Shiena Mae V. Conje)**
+- Chairs all risk assessment meetings
+- Maintains the risk register and updates risk status
+- Assigns risk managers to specific risks
+- Monitors overall risk exposure and project health
+- Escalates critical risks to Product Owner and stakeholders
+- Ensures risk mitigation strategies are implemented
+- Reports risk status in weekly and monthly reports
+
+**Product Owner (Maxine A. Delfin Decide)**
+- Participates in high-impact risk assessment meetings
+- Approves risk mitigation strategies that affect scope or budget
+- Provides business context for risk impact assessment
+- Makes decisions on risk acceptance or escalation
+- Validates risk mitigation effectiveness from business perspective
+- Ensures risk management aligns with business objectives
+
+**Senior Full-Stack Developer (Ronald Jay M. Literal)**
+- Risk Manager for technical integration risks
+- Identifies and assesses technical risks during development
+- Implements technical risk mitigation strategies
+- Conducts technical risk reviews and assessments
+- Provides technical expertise for risk evaluation
+- Monitors technical risk indicators and triggers
+
+**Full-Stack Developer (Alghazi E. Utap)**
+- Risk Manager for database and performance risks
+- Identifies database-related risks and performance issues
+- Implements database optimization and performance improvements
+- Monitors database performance metrics
+- Provides technical support for risk mitigation
+- Reports on database risk status
+
+**QA Engineer (Mike Jaspher D. Pasion)**
+- Risk Manager for quality and testing risks
+- Identifies quality risks during testing phases
+- Implements quality assurance risk mitigation strategies
+- Monitors test coverage and quality metrics
+- Conducts risk-based testing approaches
+- Reports on quality risk status and trends
+
+**DevOps Engineer (Jonathan S. Gatase)**
+- Risk Manager for infrastructure and deployment risks
+- Identifies infrastructure and deployment risks
+- Implements infrastructure risk mitigation strategies
+- Monitors system performance and availability
+- Manages deployment risk and rollback procedures
+- Reports on infrastructure risk status
+
+**UI/UX Designer (Contract)**
+- Risk Manager for user experience and design risks
+- Identifies user experience and design risks
+- Implements design risk mitigation strategies
+- Conducts user feedback sessions for risk assessment
+- Monitors user experience metrics
+- Reports on design risk status
+
+**Business Analyst (Contract)**
+- Risk Manager for business process and documentation risks
+- Identifies business process and documentation risks
+- Implements documentation risk mitigation strategies
+- Monitors business process compliance
+- Conducts stakeholder risk assessments
+- Reports on business process risk status
+
+**Risk Management Meeting Structure:**
+- **Weekly Risk Reviews**: During sprint reviews, risk managers report on assigned risks
+- **Monthly Risk Assessment**: Full team risk assessment and register updates
+- **Quarterly Risk Planning**: Strategic risk planning and mitigation strategy review
+- **Ad-hoc Risk Meetings**: Called when critical risks are identified or escalated
+
+**Risk Communication Protocol:**
+- **Green Status**: Reported in weekly sprint reviews
+- **Yellow Status**: Escalated to Project Manager within 24 hours
+- **Red Status**: Escalated to Product Owner and stakeholders within 4 hours
+- **Critical Risks**: Immediate escalation to all stakeholders
+
+**Risk Management Tools:**
+- Risk Register (Excel/Project Management Software)
+- Risk Dashboard (Project Management Platform)
+- Risk Assessment Templates
+- Risk Mitigation Tracking System
+- Risk Communication Templates
+
+**Risk Management Training:**
+- All team members receive risk management training during project kickoff
+- Risk managers receive specialized training for their assigned risks
+- Regular risk management refresher sessions
+- Lessons learned sharing from previous projects
+
+This comprehensive risk management framework ensures that all project risks are identified, assessed, monitored, and mitigated effectively throughout the project lifecycle, supporting the successful delivery of the E-Commerce Platform Control & Revenue Management System within the ₱3,400,000 budget and 16-week timeline while achieving the target 162% ROI.
+
+------------------------------------------
+END OF DOCUMENT

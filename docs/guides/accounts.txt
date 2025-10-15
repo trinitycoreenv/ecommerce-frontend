@@ -1,0 +1,16 @@
+ Admin Accounts:
+1. Admin User
+Email: admin@ecommerce.com
+Password: admin123
+Role: ADMIN
+Access: Full platform access, all admin features
+2. Finance Analyst
+Email: finance@ecommerce.com
+Password: finance123
+Role: FINANCE_ANALYST
+Access: Financial reports, revenue analytics, payout management
+3. Operations Manager
+Email: operations@ecommerce.com
+Password: ops123
+Role: OPERATIONS_MANAGER
+Access: Logistics, shipments, performance monitoring

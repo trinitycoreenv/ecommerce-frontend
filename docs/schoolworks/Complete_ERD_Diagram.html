@@ -1,0 +1,1082 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Commerce Platform Control & Revenue Management System - ERD</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .header .subtitle {
+            font-size: 1.2em;
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+
+        .project-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .info-card {
+            background: rgba(255,255,255,0.1);
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .info-card h3 {
+            font-size: 1.1em;
+            margin-bottom: 5px;
+            color: #ecf0f1;
+        }
+
+        .info-card p {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #f39c12;
+        }
+
+        .erd-container {
+            padding: 30px;
+            background: #f8f9fa;
+        }
+
+        .erd-title {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #2c3e50;
+        }
+
+        .erd-title h2 {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        .erd-title p {
+            font-size: 1.1em;
+            color: #7f8c8d;
+        }
+
+        .entity-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .entity {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .entity:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        }
+
+        .entity-header {
+            padding: 20px;
+            font-weight: bold;
+            font-size: 1.2em;
+            color: white;
+            text-align: center;
+        }
+
+        .entity-header.core { background: linear-gradient(135deg, #3498db, #2980b9); }
+        .entity-header.user { background: linear-gradient(135deg, #e74c3c, #c0392b); }
+        .entity-header.product { background: linear-gradient(135deg, #f39c12, #e67e22); }
+        .entity-header.order { background: linear-gradient(135deg, #27ae60, #229954); }
+        .entity-header.financial { background: linear-gradient(135deg, #9b59b6, #8e44ad); }
+        .entity-header.logistics { background: linear-gradient(135deg, #1abc9c, #16a085); }
+        .entity-header.analytics { background: linear-gradient(135deg, #34495e, #2c3e50); }
+
+        .entity-body {
+            padding: 20px;
+        }
+
+        .field {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px solid #ecf0f1;
+        }
+
+        .field:last-child {
+            border-bottom: none;
+        }
+
+        .field-name {
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .field-type {
+            background: #ecf0f1;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.85em;
+            color: #7f8c8d;
+        }
+
+        .field-type.pk { background: #e74c3c; color: white; }
+        .field-type.fk { background: #3498db; color: white; }
+        .field-type.enum { background: #f39c12; color: white; }
+
+        .relationships {
+            margin-top: 40px;
+        }
+
+        .relationships h3 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #2c3e50;
+            font-size: 1.8em;
+        }
+
+        .relationship-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 20px;
+        }
+
+        .relationship {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-left: 5px solid #3498db;
+        }
+
+        .relationship h4 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+
+        .relationship p {
+            color: #7f8c8d;
+            line-height: 1.6;
+        }
+
+        .enum-section {
+            margin-top: 40px;
+        }
+
+        .enum-section h3 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #2c3e50;
+            font-size: 1.8em;
+        }
+
+        .enum-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .enum-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-top: 4px solid #f39c12;
+        }
+
+        .enum-card h4 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 1.1em;
+        }
+
+        .enum-value {
+            background: #f8f9fa;
+            padding: 5px 10px;
+            margin: 3px 0;
+            border-radius: 5px;
+            font-family: monospace;
+            font-size: 0.9em;
+            color: #2c3e50;
+        }
+
+        .tech-stack {
+            margin-top: 40px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .tech-stack h3 {
+            margin-bottom: 20px;
+            font-size: 1.8em;
+        }
+
+        .tech-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .tech-item {
+            background: rgba(255,255,255,0.1);
+            padding: 15px;
+            border-radius: 10px;
+            font-weight: 600;
+        }
+
+        .footer {
+            background: #2c3e50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .entity-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .relationship-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .enum-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .project-info {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>E-Commerce Platform Control & Revenue Management System</h1>
+            <div class="subtitle">Entity Relationship Diagram (ERD)</div>
+            
+            <div class="project-info">
+                <div class="info-card">
+                    <h3>Project Budget</h3>
+                    <p>₱3,400,000</p>
+                </div>
+                <div class="info-card">
+                    <h3>Timeline</h3>
+                    <p>16 weeks</p>
+                </div>
+                <div class="info-card">
+                    <h3>ROI</h3>
+                    <p>162%</p>
+                </div>
+                <div class="info-card">
+                    <h3>User Types</h3>
+                    <p>5 Roles</p>
+                </div>
+                <div class="info-card">
+                    <h3>Team Size</h3>
+                    <p>8 Members</p>
+                </div>
+                <div class="info-card">
+                    <h3>Annual Benefits</h3>
+                    <p>₱8,900,000</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="erd-container">
+            <div class="erd-title">
+                <h2>Complete Database Schema</h2>
+                <p>Comprehensive entity relationship diagram covering all system components</p>
+            </div>
+
+            <div class="entity-grid">
+                <!-- Core User Management -->
+                <div class="entity">
+                    <div class="entity-header user">User</div>
+                    <div class="entity-body">
+                        <div class="field">
+                            <span class="field-name">id</span>
+                            <span class="field-type pk">UUID PK</span>
+                        </div>
+                        <div class="field">
+                            <span class="field-name">email</span>
+                            <span class="field-type">String (Unique)</span>
+                        </div>
+                        <div class="field">
+                            <span class="field-name">name</span>
+                            <span class="field-type">String</span>
+                        </div>
+                        <div class="field">
+                            <span class="field-name">passwordHash</span>
+                            <span class="field-type">String</span>
+                        </div>
+                        <div class="field">
+                            <span class="field-name">role</span>
+                            <span class="field-type enum">UserRole</span>
+                        </div>
+                        <div class="field">
+                            <span class="field-name">isActive</span>
+                            <span class="field-type">Boolean</span>
+                        </div>
+                        <div class="field">
+                            <span class="field-name">createdAt</span>
+                            <span class="field-type">DateTime</span>
+                        </div>
+                        <div class="field">
+                            <span class="field-name">updatedAt</span>
+                            <span class="field-type">DateTime</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="entity">
+                    <div class="entity-header user">Vendor</div>
+                    <div class="entity-body">
+                        <div class="field">
+                            <span class="field-name">id</span>
+                            <span class="field-type pk">UUID PK</span>
+                        </div>
+                        <div class="field">
+                            <span class="field-name">userId</span>
+                            <span class="field-type fk">UUID FK</span>
+                        </div>
+                        <div class="field">
+                            <span class="field-name">businessName</span>
+                            <span class="field-type">String</span>
+                        </div>
+                        <div class="field">
+                            <span class="field-name">businessAddress</span>
+                            <span class="field-type">String</span>
+                        </div>
+                        <div class="field">
+                            <span class="field-name">taxId</span>
+                            <span class="field-type">String</span>
+                        </div>
+                        <div class="field">
+                            <span class="field-name">subscriptionTier</span>
+                            <span class="field-type enum">SubscriptionTier</span>
+                        </div>
+                        <div class="field">
+                            <span class="field-name">commissionRate</span>
+                            <span class="field-type">Decimal(5,4)</span>
+                        </div>
+                        <div class="field">
+                            <span class="field-name">status</span>
+                            <span class="field-type">String</span>
+                        </div>
+                        <div class="field">
+                            <span class="field-name">createdAt</span>
+                            <span class="field-type">DateTime</span>
+                        </div>
+                        <div class="field">
+                            <span class="field-name">updatedAt</span>
+                            <span class="field-type">DateTime</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Subscription Management -->
+                <div class="entity">
+                    <div class="entity-header financial">Subscription</div>
+                    <div class="entity-body">
+                        <div class="field">
+                            <span class="field-name">id</span>
+                            <span class="field-type pk">UUID PK</span>
+                        </div>
+                        <div class="field">
+                            <span class="field-name">vendorId</span>
+                            <span class="field-type fk">UUID FK</span>
+                        </div>
+                        <div class="field">
+                            <span class="field-name">tier</span>
+                            <span class="field-type enum">SubscriptionTier</span>
+                        </div>
+                        <div class="field">
+                            <span class="field-name">startDate</span>
+                            <span class="field-type">DateTime</span>
+                        </div>
+                        <div class="field">
+                            <span class="field-name">endDate</span>
+                            <span class="field-type">DateTime</span>
+                        </div>
+                        <div class="field">
+                            <span class="field-name">status</span>
+                            <span class="field-type enum">SubscriptionStatus</span>
+                        </div>
+                        <div class="field">
+                            <span class="field-name">price</span>
+                            <span class="field-type">Decimal(10,2)</span>
+                        </div>
+                        <div class="field">
+                            <span class="field-name">createdAt</span>
+                            <span class="field-type">DateTime</span>
+                        </div>
+                        <div class="field">
+                            <span class="field-name">updatedAt</span>
+                            <span class="field-type">DateTime</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Management -->
+                <div class="entity">
+                    <div class="entity-header product">Category</div>
+                    <div class="entity-body">
+                        <div class="field">
+                            <span class="field-name">id</span>
+                            <span class="field-type pk">UUID PK</span>
+                        </div>
+                        <div class="field">
+                            <span class="field-name">name</span>
+                            <span class="field-type">String (Unique)</span>
+                        </div>
+                        <div class="field">
+                            <span class="field-name">description</span>
+                            <span class="field-type">String</span>
+                        </div>
+                        <div class="field">
+                            <span class="field-name">policyRules</span>
+                            <span class="field-type">JSON</span>
+                        </div>
+                        <div class="field">
+                            <span class="field-name">isActive</span>
+                            <span class="field-type">Boolean</span>
+                        </div>
+                        <div class="field">
+                            <span class="field-name">createdAt</span>
+                            <span class="field-type">DateTime</span>
+                        </div>
+                        <div class="field">
+                            <span class="field-name">updatedAt</span>
+                            <span class="field-type">DateTime</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="entity">
+                    <div class="entity-header product">Product</div>
+                    <div class="entity-body">
+                        <div class="field">
+                            <span class="field-name">id</span>
+                            <span class="field-type pk">UUID PK</span>
+                        </div>
+                        <div class="field">
+                            <span class="field-name">vendorId</span>
+                            <span class="field-type fk">UUID FK</span>
+                        </div>
+                        <div class="field">
+                            <span class="field-name">categoryId</span>
+                            <span class="field-type fk">UUID FK</span>
+                        </div>
+                        <div class="field">
+                            <span class="field-name">name</span>
+                            <span class="field-type">String</span>
+                        </div>
+                        <div class="field">
+                            <span class="field-name">description</span>
+                            <span class="field-type">String</span>
+                        </div>
+                        <div class="field">
+                            <span class="field-name">price</span>
+                            <span class="field-type">Decimal(10,2)</span>
+                        </div>
+                        <div class="field">
+                            <span class="field-name">sku</span>
+                            <span class="field-type">String (Unique)</span>
+                        </div>
+                        <div class="field">
+                            <span class="field-name">inventory</span>
+                            <span class="field-type">Integer</span>
+                        </div>
+                        <div class="field">
+                            <span class="field-name">status</span>
+                            <span class="field-type enum">ProductStatus</span>
+                        </div>
+                        <div class="field">
+                            <span class="field-name">images</span>
+                            <span class="field-type">String[]</span>
+                        </div>
+                        <div class="field">
+                            <span class="field-name">metadata</span>
+                            <span class="field-type">JSON</span>
+                        </div>
+                        <div class="field">
+                            <span class="field-name">createdAt</span>
+                            <span class="field-type">DateTime</span>
+                        </div>
+                        <div class="field">
+                            <span class="field-name">updatedAt</span>
+                            <span class="field-type">DateTime</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Order Management -->
+                <div class="entity">
+                    <div class="entity-header order">Order</div>
+                    <div class="entity-body">
+                        <div class="field">
+                            <span class="field-name">id</span>
+                            <span class="field-type pk">UUID PK</span>
+                        </div>
+                        <div class="field">
+                            <span class="field-name">customerId</span>
+                            <span class="field-type fk">UUID FK</span>
+                        </div>
+                        <div class="field">
+                            <span class="field-name">vendorId</span>
+                            <span class="field-type fk">UUID FK</span>
+                        </div>
+                        <div class="field">
+                            <span class="field-name">orderNumber</span>
+                            <span class="field-type">String (Unique)</span>
+                        </div>
+                        <div class="field">
+                            <span class="field-name">status</span>
+                            <span class="field-type enum">OrderStatus</span>
+                        </div>
+                        <div class="field">
+                            <span class="field-name">totalPrice</span>
+                            <span class="field-type">Decimal(10,2)</span>
+                        </div>
+                        <div class="field">
+                            <span class="field-name">shippingAddress</span>
+                            <span class="field-type">JSON</span>
+                        </div>
+                        <div class="field">
+                            <span class="field-name">billingAddress</span>
+                            <span class="field-type">JSON</span>
+                        </div>
+                        <div class="field">
+                            <span class="field-name">notes</span>
+                            <span class="field-type">String</span>
+                        </div>
+                        <div class="field">
+                            <span class="field-name">createdAt</span>
+                            <span class="field-type">DateTime</span>
+                        </div>
+                        <div class="field">
+                            <span class="field-name">updatedAt</span>
+                            <span class="field-type">DateTime</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="entity">
+                    <div class="entity-header order">OrderItem</div>
+                    <div class="entity-body">
+                        <div class="field">
+                            <span class="field-name">id</span>
+                            <span class="field-type pk">UUID PK</span>
+                        </div>
+                        <div class="field">
+                            <span class="field-name">orderId</span>
+                            <span class="field-type fk">UUID FK</span>
+                        </div>
+                        <div class="field">
+                            <span class="field-name">productId</span>
+                            <span class="field-type fk">UUID FK</span>
+                        </div>
+                        <div class="field">
+                            <span class="field-name">quantity</span>
+                            <span class="field-type">Integer</span>
+                        </div>
+                        <div class="field">
+                            <span class="field-name">price</span>
+                            <span class="field-type">Decimal(10,2)</span>
+                        </div>
+                        <div class="field">
+                            <span class="field-name">createdAt</span>
+                            <span class="field-type">DateTime</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Logistics Management -->
+                <div class="entity">
+                    <div class="entity-header logistics">Shipment</div>
+                    <div class="entity-body">
+                        <div class="field">
+                            <span class="field-name">id</span>
+                            <span class="field-type pk">UUID PK</span>
+                        </div>
+                        <div class="field">
+                            <span class="field-name">orderId</span>
+                            <span class="field-type fk">UUID FK</span>
+                        </div>
+                        <div class="field">
+                            <span class="field-name">carrier</span>
+                            <span class="field-type">String</span>
+                        </div>
+                        <div class="field">
+                            <span class="field-name">trackingNumber</span>
+                            <span class="field-type">String (Unique)</span>
+                        </div>
+                        <div class="field">
+                            <span class="field-name">status</span>
+                            <span class="field-type enum">ShipmentStatus</span>
+                        </div>
+                        <div class="field">
+                            <span class="field-name">slaDeadline</span>
+                            <span class="field-type">DateTime</span>
+                        </div>
+                        <div class="field">
+                            <span class="field-name">estimatedDelivery</span>
+                            <span class="field-type">DateTime</span>
+                        </div>
+                        <div class="field">
+                            <span class="field-name">actualDelivery</span>
+                            <span class="field-type">DateTime</span>
+                        </div>
+                        <div class="field">
+                            <span class="field-name">shippingCost</span>
+                            <span class="field-type">Decimal(10,2)</span>
+                        </div>
+                        <div class="field">
+                            <span class="field-name">notes</span>
+                            <span class="field-type">String</span>
+                        </div>
+                        <div class="field">
+                            <span class="field-name">createdAt</span>
+                            <span class="field-type">DateTime</span>
+                        </div>
+                        <div class="field">
+                            <span class="field-name">updatedAt</span>
+                            <span class="field-type">DateTime</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="entity">
+                    <div class="entity-header logistics">LogisticsConfig</div>
+                    <div class="entity-body">
+                        <div class="field">
+                            <span class="field-name">id</span>
+                            <span class="field-type pk">UUID PK</span>
+                        </div>
+                        <div class="field">
+                            <span class="field-name">vendorId</span>
+                            <span class="field-type fk">UUID FK</span>
+                        </div>
+                        <div class="field">
+                            <span class="field-name">shippingZones</span>
+                            <span class="field-type">JSON</span>
+                        </div>
+                        <div class="field">
+                            <span class="field-name">carriers</span>
+                            <span class="field-type">JSON</span>
+                        </div>
+                        <div class="field">
+                            <span class="field-name">slaDefinitions</span>
+                            <span class="field-type">JSON</span>
+                        </div>
+                        <div class="field">
+                            <span class="field-name">autoFulfillment</span>
+                            <span class="field-type">Boolean</span>
+                        </div>
+                        <div class="field">
+                            <span class="field-name">trackingEnabled</span>
+                            <span class="field-type">Boolean</span>
+                        </div>
+                        <div class="field">
+                            <span class="field-name">createdAt</span>
+                            <span class="field-type">DateTime</span>
+                        </div>
+                        <div class="field">
+                            <span class="field-name">updatedAt</span>
+                            <span class="field-type">DateTime</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Financial Management -->
+                <div class="entity">
+                    <div class="entity-header financial">Transaction</div>
+                    <div class="entity-body">
+                        <div class="field">
+                            <span class="field-name">id</span>
+                            <span class="field-type pk">UUID PK</span>
+                        </div>
+                        <div class="field">
+                            <span class="field-name">orderId</span>
+                            <span class="field-type fk">UUID FK</span>
+                        </div>
+                        <div class="field">
+                            <span class="field-name">vendorId</span>
+                            <span class="field-type fk">UUID FK</span>
+                        </div>
+                        <div class="field">
+                            <span class="field-name">customerId</span>
+                            <span class="field-type fk">UUID FK</span>
+                        </div>
+                        <div class="field">
+                            <span class="field-name">amount</span>
+                            <span class="field-type">Decimal(10,2)</span>
+                        </div>
+                        <div class="field">
+                            <span class="field-name">commission</span>
+                            <span class="field-type">Decimal(10,2)</span>
+                        </div>
+                        <div class="field">
+                            <span class="field-name">netPayout</span>
+                            <span class="field-type">Decimal(10,2)</span>
+                        </div>
+                        <div class="field">
+                            <span class="field-name">status</span>
+                            <span class="field-type enum">TransactionStatus</span>
+                        </div>
+                        <div class="field">
+                            <span class="field-name">paymentMethod</span>
+                            <span class="field-type">String</span>
+                        </div>
+                        <div class="field">
+                            <span class="field-name">paymentId</span>
+                            <span class="field-type">String</span>
+                        </div>
+                        <div class="field">
+                            <span class="field-name">processedAt</span>
+                            <span class="field-type">DateTime</span>
+                        </div>
+                        <div class="field">
+                            <span class="field-name">createdAt</span>
+                            <span class="field-type">DateTime</span>
+                        </div>
+                        <div class="field">
+                            <span class="field-name">updatedAt</span>
+                            <span class="field-type">DateTime</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="entity">
+                    <div class="entity-header financial">Payout</div>
+                    <div class="entity-body">
+                        <div class="field">
+                            <span class="field-name">id</span>
+                            <span class="field-type pk">UUID PK</span>
+                        </div>
+                        <div class="field">
+                            <span class="field-name">vendorId</span>
+                            <span class="field-type fk">UUID FK</span>
+                        </div>
+                        <div class="field">
+                            <span class="field-name">amount</span>
+                            <span class="field-type">Decimal(10,2)</span>
+                        </div>
+                        <div class="field">
+                            <span class="field-name">scheduledDate</span>
+                            <span class="field-type">DateTime</span>
+                        </div>
+                        <div class="field">
+                            <span class="field-name">status</span>
+                            <span class="field-type enum">PayoutStatus</span>
+                        </div>
+                        <div class="field">
+                            <span class="field-name">paymentMethod</span>
+                            <span class="field-type">String</span>
+                        </div>
+                        <div class="field">
+                            <span class="field-name">paymentId</span>
+                            <span class="field-type">String</span>
+                        </div>
+                        <div class="field">
+                            <span class="field-name">processedAt</span>
+                            <span class="field-type">DateTime</span>
+                        </div>
+                        <div class="field">
+                            <span class="field-name">notes</span>
+                            <span class="field-type">String</span>
+                        </div>
+                        <div class="field">
+                            <span class="field-name">createdAt</span>
+                            <span class="field-type">DateTime</span>
+                        </div>
+                        <div class="field">
+                            <span class="field-name">updatedAt</span>
+                            <span class="field-type">DateTime</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Analytics & Reporting -->
+                <div class="entity">
+                    <div class="entity-header analytics">Report</div>
+                    <div class="entity-body">
+                        <div class="field">
+                            <span class="field-name">id</span>
+                            <span class="field-type pk">UUID PK</span>
+                        </div>
+                        <div class="field">
+                            <span class="field-name">type</span>
+                            <span class="field-type enum">ReportType</span>
+                        </div>
+                        <div class="field">
+                            <span class="field-name">title</span>
+                            <span class="field-type">String</span>
+                        </div>
+                        <div class="field">
+                            <span class="field-name">data</span>
+                            <span class="field-type">JSON</span>
+                        </div>
+                        <div class="field">
+                            <span class="field-name">filters</span>
+                            <span class="field-type">JSON</span>
+                        </div>
+                        <div class="field">
+                            <span class="field-name">generatedBy</span>
+                            <span class="field-type">UUID</span>
+                        </div>
+                        <div class="field">
+                            <span class="field-name">generatedAt</span>
+                            <span class="field-type">DateTime</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Audit & Security -->
+                <div class="entity">
+                    <div class="entity-header core">AuditLog</div>
+                    <div class="entity-body">
+                        <div class="field">
+                            <span class="field-name">id</span>
+                            <span class="field-type pk">UUID PK</span>
+                        </div>
+                        <div class="field">
+                            <span class="field-name">userId</span>
+                            <span class="field-type fk">UUID FK</span>
+                        </div>
+                        <div class="field">
+                            <span class="field-name">action</span>
+                            <span class="field-type">String</span>
+                        </div>
+                        <div class="field">
+                            <span class="field-name">resource</span>
+                            <span class="field-type">String</span>
+                        </div>
+                        <div class="field">
+                            <span class="field-name">resourceId</span>
+                            <span class="field-type">String</span>
+                        </div>
+                        <div class="field">
+                            <span class="field-name">details</span>
+                            <span class="field-type">JSON</span>
+                        </div>
+                        <div class="field">
+                            <span class="field-name">ipAddress</span>
+                            <span class="field-type">String</span>
+                        </div>
+                        <div class="field">
+                            <span class="field-name">userAgent</span>
+                            <span class="field-type">String</span>
+                        </div>
+                        <div class="field">
+                            <span class="field-name">createdAt</span>
+                            <span class="field-type">DateTime</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="relationships">
+                <h3>Key Relationships</h3>
+                <div class="relationship-grid">
+                    <div class="relationship">
+                        <h4>User ↔ Vendor (1:1)</h4>
+                        <p>Each user can have one vendor profile. Vendors are users with additional business information and subscription details.</p>
+                    </div>
+                    <div class="relationship">
+                        <h4>Vendor ↔ Subscription (1:Many)</h4>
+                        <p>A vendor can have multiple subscription records over time, tracking their subscription history and changes.</p>
+                    </div>
+                    <div class="relationship">
+                        <h4>Vendor ↔ Product (1:Many)</h4>
+                        <p>Each vendor can create and manage multiple products in their catalog.</p>
+                    </div>
+                    <div class="relationship">
+                        <h4>Category ↔ Product (1:Many)</h4>
+                        <p>Products are organized into categories with specific policy rules and approval workflows.</p>
+                    </div>
+                    <div class="relationship">
+                        <h4>User ↔ Order (1:Many)</h4>
+                        <p>Customers can place multiple orders, while vendors can receive orders for their products.</p>
+                    </div>
+                    <div class="relationship">
+                        <h4>Order ↔ OrderItem (1:Many)</h4>
+                        <p>Each order contains multiple items, linking to specific products with quantities and prices.</p>
+                    </div>
+                    <div class="relationship">
+                        <h4>Order ↔ Shipment (1:Many)</h4>
+                        <p>Orders can have multiple shipments for different items or split deliveries.</p>
+                    </div>
+                    <div class="relationship">
+                        <h4>Vendor ↔ LogisticsConfig (1:1)</h4>
+                        <p>Each vendor has specific logistics configuration for shipping zones, carriers, and SLA definitions.</p>
+                    </div>
+                    <div class="relationship">
+                        <h4>Order ↔ Transaction (1:Many)</h4>
+                        <p>Orders generate transactions for payment processing, commission calculations, and payout tracking.</p>
+                    </div>
+                    <div class="relationship">
+                        <h4>Vendor ↔ Payout (1:Many)</h4>
+                        <p>Vendors receive multiple payouts based on their transaction history and commission structure.</p>
+                    </div>
+                    <div class="relationship">
+                        <h4>User ↔ AuditLog (1:Many)</h4>
+                        <p>All user actions are logged for security, compliance, and audit trail purposes.</p>
+                    </div>
+                    <div class="relationship">
+                        <h4>Report Generation</h4>
+                        <p>Reports are generated by users and contain aggregated data from multiple entities for business intelligence.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="enum-section">
+                <h3>Enumerations & Status Types</h3>
+                <div class="enum-grid">
+                    <div class="enum-card">
+                        <h4>UserRole</h4>
+                        <div class="enum-value">ADMIN</div>
+                        <div class="enum-value">VENDOR</div>
+                        <div class="enum-value">CUSTOMER</div>
+                        <div class="enum-value">FINANCE_ANALYST</div>
+                        <div class="enum-value">OPERATIONS_MANAGER</div>
+                    </div>
+                    <div class="enum-card">
+                        <h4>SubscriptionTier</h4>
+                        <div class="enum-value">BASIC</div>
+                        <div class="enum-value">PREMIUM</div>
+                        <div class="enum-value">ENTERPRISE</div>
+                    </div>
+                    <div class="enum-card">
+                        <h4>SubscriptionStatus</h4>
+                        <div class="enum-value">ACTIVE</div>
+                        <div class="enum-value">INACTIVE</div>
+                        <div class="enum-value">SUSPENDED</div>
+                        <div class="enum-value">CANCELLED</div>
+                    </div>
+                    <div class="enum-card">
+                        <h4>ProductStatus</h4>
+                        <div class="enum-value">DRAFT</div>
+                        <div class="enum-value">PENDING_APPROVAL</div>
+                        <div class="enum-value">APPROVED</div>
+                        <div class="enum-value">REJECTED</div>
+                        <div class="enum-value">DISCONTINUED</div>
+                    </div>
+                    <div class="enum-card">
+                        <h4>OrderStatus</h4>
+                        <div class="enum-value">PENDING</div>
+                        <div class="enum-value">CONFIRMED</div>
+                        <div class="enum-value">PROCESSING</div>
+                        <div class="enum-value">SHIPPED</div>
+                        <div class="enum-value">DELIVERED</div>
+                        <div class="enum-value">CANCELLED</div>
+                        <div class="enum-value">REFUNDED</div>
+                    </div>
+                    <div class="enum-card">
+                        <h4>ShipmentStatus</h4>
+                        <div class="enum-value">PENDING</div>
+                        <div class="enum-value">PICKED_UP</div>
+                        <div class="enum-value">IN_TRANSIT</div>
+                        <div class="enum-value">OUT_FOR_DELIVERY</div>
+                        <div class="enum-value">DELIVERED</div>
+                        <div class="enum-value">FAILED_DELIVERY</div>
+                        <div class="enum-value">RETURNED</div>
+                    </div>
+                    <div class="enum-card">
+                        <h4>TransactionStatus</h4>
+                        <div class="enum-value">PENDING</div>
+                        <div class="enum-value">COMPLETED</div>
+                        <div class="enum-value">FAILED</div>
+                        <div class="enum-value">REFUNDED</div>
+                        <div class="enum-value">CANCELLED</div>
+                    </div>
+                    <div class="enum-card">
+                        <h4>PayoutStatus</h4>
+                        <div class="enum-value">PENDING</div>
+                        <div class="enum-value">PROCESSING</div>
+                        <div class="enum-value">COMPLETED</div>
+                        <div class="enum-value">FAILED</div>
+                        <div class="enum-value">CANCELLED</div>
+                    </div>
+                    <div class="enum-card">
+                        <h4>ReportType</h4>
+                        <div class="enum-value">SALES_SUMMARY</div>
+                        <div class="enum-value">COMMISSION_REPORT</div>
+                        <div class="enum-value">VENDOR_PERFORMANCE</div>
+                        <div class="enum-value">LOGISTICS_REPORT</div>
+                        <div class="enum-value">FINANCIAL_SUMMARY</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tech-stack">
+                <h3>Technology Stack</h3>
+                <div class="tech-items">
+                    <div class="tech-item">Next.js 15</div>
+                    <div class="tech-item">TypeScript</div>
+                    <div class="tech-item">PostgreSQL</div>
+                    <div class="tech-item">Prisma ORM</div>
+                    <div class="tech-item">AWS Cloud</div>
+                    <div class="tech-item">JWT Authentication</div>
+                    <div class="tech-item">Role-Based Access Control</div>
+                    <div class="tech-item">RESTful APIs</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>E-Commerce Platform Control & Revenue Management System - Entity Relationship Diagram</p>
+            <p>Bestlink College of the Philippines | July 2025</p>
+        </div>
+    </div>
+</body>
+</html>
+

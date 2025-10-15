@@ -1,0 +1,183 @@
+TRANSITION OUT PLAN TEMPLATE
+
+Project: E-Commerce Platform Control & Revenue Management System
+Institution: Bestlink College of the Philippines
+Address: 1071 BRGY. Kaligayahan, Novaliches, Quezon City, Philippines 1123
+Date: October 28, 2025
+
+------------------------------------------
+TABLE OF CONTENTS
+------------------------------------------
+- Executive Summary
+- Transition Approach
+- Transition Team Organization
+- Workforce Transition
+- Work Execution During Transition
+- Subcontracts
+- Property Transition
+  - Government Furnished Equipment (GFE)
+  - Incumbent Owned Equipment
+  - Intellectual Property
+  - User Accounts and Passwords
+- Knowledge Transfer
+- Schedule
+- Handover and Acceptance
+
+------------------------------------------
+1. EXECUTIVE SUMMARY
+------------------------------------------
+This plan describes how the E-Commerce Platform Control & Revenue Management System project will be transitioned smoothly and securely after completion. It ensures that all tools, data, and knowledge are transferred to the appropriate teams without disrupting operations.
+
+The project developed a comprehensive e-commerce platform using Next.js 15, TypeScript, PostgreSQL, and Prisma ORM with role-based access control supporting five user types (Admin, Vendor, Customer, Finance Analyst, Operations Manager) to manage:
+- Subscription management with tiered vendor plans (Basic, Premium, Enterprise)
+- Commission tracking with automated calculations
+- Product catalog and policy oversight with approval workflows
+- Logistics coordination with real-time tracking
+- Payout processing with automated transactions
+- Role-specific dashboards and analytics for all user types
+
+After completion, the project will transition from the development team to the operations and support units.
+Estimated transition duration: 7 days after Go-Live (October 28 - November 4, 2025).
+
+------------------------------------------
+2. TRANSITION APPROACH
+------------------------------------------
+Steps include:
+- Reviewing technical documentation, source code, configuration files, and user manuals for all eight sprint modules.
+- Structuring project files for easy navigation with clear documentation for Next.js 15, TypeScript, PostgreSQL, and Prisma ORM architecture.
+- Cleaning up outdated or duplicate data while preserving all business-critical information.
+- Reviewing access permissions for all five user types (Admin, Vendor, Customer, Finance Analyst, Operations Manager).
+- Creating a transition checklist including AWS credentials, database access, SSL certificates, GitHub repositories, and all documentation.
+- Validating all automated workflows, commission calculations, and payout processes.
+- Ensuring all role-based access control systems are properly configured and tested.
+
+All materials will be verified and stored securely before knowledge transfer to ensure seamless operations and maintain the 162% ROI achievement.
+
+------------------------------------------
+3. TRANSITION TEAM ORGANIZATION
+------------------------------------------
+- Transition Lead: Shiena Mae V. Conje (₱95,000/month)
+  • Coordinates all transition activities and ensures ₱3,400,000 budget compliance.
+- Product Owner: Maxine A. Delfin Decide (20% time)
+  • Approves deliverables and validates business requirements for all five user types.
+- Senior Full-Stack Developer: Ronald Jay M. Literal (₱85,000/month)
+  • Prepares technical documentation for Next.js 15, TypeScript, and PostgreSQL architecture.
+- Full-Stack Developer: Alghazi E. Utap (₱70,000/month)
+  • Prepares technical documentation for Prisma ORM and database schemas.
+- QA Engineer: Mike Jaspher D. Pasion (₱55,000/month)
+  • Confirms testing completion and validates all user acceptance testing results.
+- DevOps Engineer: Jonathan S. Gatase (₱65,000/month)
+  • Provides AWS infrastructure support and deployment documentation.
+- UI/UX Designer: Contract (₱40,000/month × 3 months)
+  • Transfers design assets and user interface documentation.
+- Business Analyst: Contract (₱30,000/month × 2 months)
+  • Transfers business process documentation and training materials.
+
+------------------------------------------
+4. WORKFORCE TRANSITION
+------------------------------------------
+- All 8 team members retain roles until handover completion (October 28 - November 4, 2025).
+- Operations support team shadows developers during the 7-day transition period.
+- Daily coordination meetings held with Product Owner (Maxine A. Delfin Decide) and stakeholders.
+- Full ownership transferred post-acceptance with comprehensive knowledge transfer.
+- Contract positions (UI/UX Designer, Business Analyst) complete final deliverables during transition.
+- All team members provide 30-day post-launch support as outlined in project scope.
+
+------------------------------------------
+5. WORK EXECUTION DURING TRANSITION
+------------------------------------------
+- Continue bug fixing, testing, and validation for all eight sprint modules.
+- Development and operations teams collaborate to ensure system stability and performance.
+- Address any remaining technical issues with Next.js 15, TypeScript, PostgreSQL, and Prisma ORM.
+- Monitor system performance and user adoption across all five user types.
+- Validate all automated workflows, commission calculations, and payout processes.
+- Ensure role-based access control is functioning correctly for all user types.
+- Conduct final security audits and performance optimization.
+
+------------------------------------------
+6. SUBCONTRACTS
+------------------------------------------
+- AWS Cloud Infrastructure: ₱120,000 (4 months)
+  • Secure cloud hosting configuration with auto-scaling capabilities for 10,000+ concurrent users.
+- PostgreSQL Database Hosting: ₱80,000 (4 months)
+  • Database setup, backup, and API integration with Prisma ORM.
+- SSL Certificates & Security: ₱25,000
+  • Wildcard SSL certificates and security scanning services.
+- Third-party APIs: ₱50,000
+  • Payment gateways, logistics APIs, and SMS services integration.
+- GitHub Enterprise: ₱32,000 (4 months)
+  • Professional code management and collaboration platform.
+- Monitoring & Analytics: ₱18,000
+  • New Relic and Google Analytics Pro for system monitoring.
+
+All documentation, credentials, and licenses will be turned over to operations with comprehensive access management for all five user types.
+
+------------------------------------------
+7. PROPERTY TRANSITION
+------------------------------------------
+7.1. Government Furnished Equipment (GFE)
+- All hardware/software remains property of BCP.
+- Devices inspected, cleared, and returned to IT.
+
+7.2. Incumbent Owned Equipment
+- Personally owned devices remain with owners.
+- No BCP data retained.
+
+7.3. Intellectual Property
+- All code, designs, and configurations belong to BCP.
+- Includes: software modules, databases, interface designs.
+- Source files turned over to Product Owner.
+
+7.4. User Accounts and Passwords
+- All user accounts will be audited and transferred for all five user types.
+- Account summary (replacing table):
+  • System Administrator Account → IT Department
+  • Database Administrator → IT Department
+  • Admin User Account → BCP Admin Representative
+  • Vendor Management Account → Platform Admin
+  • Customer Support Account → Customer Service Department
+  • Finance Analyst Account → Accounting Department
+  • Operations Manager Account → Operations Department
+  • QA Account → System Admin
+  • DevOps Account → IT Department
+  • UI/UX Designer Account → Design Team
+  • Business Analyst Account → Business Analysis Team
+
+------------------------------------------
+8. KNOWLEDGE TRANSFER
+------------------------------------------
+Training conducted through:
+- Formal Sessions: Next.js 15, TypeScript, PostgreSQL, and Prisma ORM architecture and workflows.
+- Hands-on Sessions: supervised practice for all five user types (Admin, Vendor, Customer, Finance Analyst, Operations Manager).
+- Documentation: comprehensive manuals and troubleshooting guides for all eight sprint modules.
+- Role-specific Training: customized training sessions for each user type with their specific dashboards and functionalities.
+- Technical Training: AWS infrastructure management, database administration, and system monitoring.
+- Business Process Training: subscription management, commission calculations, payout processing, and analytics.
+
+All sessions completed before final handover with validation of 162% ROI achievement and 4.6-month payback period.
+
+------------------------------------------
+9. SCHEDULE
+------------------------------------------
+Transition duration: 7 days post-Go-Live (October 28 - November 4, 2025).
+Activities include:
+- Day 1-2: Documentation review and access transfer for all five user types
+- Day 3-4: Technical training and hands-on sessions for operations team
+- Day 5-6: Role-specific training for all user types and business process validation
+- Day 7: Final acceptance verification and sign-off with Product Owner (Maxine A. Delfin Decide)
+
+All activities aligned with ₱3,400,000 budget and July-October 2025 project timeline.
+
+------------------------------------------
+10. HANDOVER AND ACCEPTANCE
+------------------------------------------
+- Operations and Product Owner (Maxine A. Delfin Decide) review final checklist for all eight sprint modules.
+- Closing meeting confirms completion with validation of 162% ROI achievement and 4.6-month payback period.
+- Product Owner signs acceptance form verifying delivery and transition of all system components.
+- Final validation of role-based access control for all five user types (Admin, Vendor, Customer, Finance Analyst, Operations Manager).
+- Confirmation of system performance metrics: 10,000+ concurrent users, 100,000+ products, and automated workflows.
+- Documentation of all technical assets: Next.js 15, TypeScript, PostgreSQL, Prisma ORM, and AWS infrastructure.
+- Final sign-off on ₱3,400,000 budget compliance and July-October 2025 timeline achievement.
+
+------------------------------------------
+END OF DOCUMENT
