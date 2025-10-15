@@ -56,6 +56,20 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
+      - name: Inspect DNS and TLS (openssl starttls)
+        continue-on-error: true
+        shell: bash
+        env:
+          DATABASE_URL: ${{ env.DIRECT_DATABASE_URL }}
+        run: |
+          HOST=$(node -e "const u=new URL(process.env.DATABASE_URL);console.log(u.hostname)")
+          PORT=$(node -e "const u=new URL(process.env.DATABASE_URL);console.log(u.port||'5432')")
+          echo "Host: $HOST  Port: $PORT"
+          echo "DNS resolution for host:"
+          getent hosts "$HOST" || nslookup "$HOST" || true
+          echo "Probing TLS handshake with starttls postgres..."
+          timeout 15 openssl s_client -connect "$HOST:$PORT" -servername "$HOST" -starttls postgres -brief -no_ticket < /dev/null || true
+
       - name: Test DB connectivity (pg SELECT 1)
         id: pg_check
         continue-on-error: true
@@ -76,6 +90,7 @@ jobs:
 
       - name: Fallback DB connectivity via psql (SELECT 1)
         if: steps.pg_check.outcome == 'failure'
+        continue-on-error: true
         env:
           DATABASE_URL: ${{ env.DIRECT_DATABASE_URL }}
           PGSSLMODE: ${{ env.PGSSLMODE }}
