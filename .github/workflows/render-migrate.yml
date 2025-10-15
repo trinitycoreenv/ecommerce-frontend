@@ -57,12 +57,32 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Test DB connectivity (pg SELECT 1)
+        id: pg_check
+        continue-on-error: true
         shell: bash
         env:
           DATABASE_URL: ${{ env.DIRECT_DATABASE_URL }}
           PGSSLMODE: ${{ env.PGSSLMODE }}
+          PGCONNECT_TIMEOUT: 15
+          NODE_OPTIONS: --dns-result-order=ipv4first
         run: |
-          node -e "(async()=>{const {Client}=require('pg');const c=new Client({connectionString:process.env.DATABASE_URL,ssl:{rejectUnauthorized:false}});await c.connect();const r=await c.query('SELECT 1');console.log('DB OK:',r.rows[0]);await c.end()})().catch(e=>{console.error('DB connectivity failed:',e);process.exit(1)})"
+          node -e "(async()=>{const {Client}=require('pg');const url=process.env.DATABASE_URL;console.log('Connecting to Render Postgres...');const cfg={connectionString:url,keepAlive:true,connectionTimeoutMillis:15000,ssl:{rejectUnauthorized:false}};const c=new Client(cfg);try{await c.connect();const r=await c.query('SELECT 1');console.log('DB OK:',r.rows[0]);}catch(e){console.error('DB connectivity failed (pg):',e);process.exit(1);}finally{try{await c.end();}catch{}}})()"
+
+      - name: Install PostgreSQL client (fallback)
+        if: steps.pg_check.outcome == 'failure'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y postgresql-client
+
+      - name: Fallback DB connectivity via psql (SELECT 1)
+        if: steps.pg_check.outcome == 'failure'
+        env:
+          DATABASE_URL: ${{ env.DIRECT_DATABASE_URL }}
+          PGSSLMODE: ${{ env.PGSSLMODE }}
+          PGCONNECT_TIMEOUT: 15
+        run: |
+          echo "Testing connectivity with psql..."
+          psql "$DATABASE_URL" -v ON_ERROR_STOP=1 -At -c "SELECT 1"
 
       - name: Apply schema with Prisma (migrate deploy)
         env:
