@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -8,38 +8,121 @@ import { Label } from "@/components/ui/label"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { DataTable } from "@/components/shared/data-table"
 import { Badge } from "@/components/ui/badge"
-import { Plus, Edit, Trash2 } from "lucide-react"
+import { Plus, Edit, Trash2, Loader2 } from "lucide-react"
 import { useToast } from "@/hooks/use-toast"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
-const shippingZones = [
-  { id: "1", name: "Metro Manila", countries: "NCR, Rizal, Cavite, Laguna, Bulacan", carriers: "LBC, J&T Express, Grab Express", sla: "1-2 days" },
-  { id: "2", name: "Luzon", countries: "Central Luzon, CALABARZON, MIMAROPA, Bicol", carriers: "LBC, J&T Express, 2GO", sla: "2-3 days" },
-  {
-    id: "3",
-    name: "Visayas & Mindanao",
-    countries: "Cebu, Davao, Iloilo, Cagayan de Oro, +15 provinces",
-    carriers: "LBC, J&T Express, 2GO, Air21",
-    sla: "3-5 days",
-  },
-]
+interface ShippingZone {
+  id: string
+  name: string
+  countries: string
+  carriers: string
+  sla: string
+}
 
-const carriers = [
-  { id: "1", name: "LBC Express", type: "Express", coverage: "Philippines", status: "active" as const },
-  { id: "2", name: "J&T Express", type: "Standard", coverage: "Philippines", status: "active" as const },
-  { id: "3", name: "2GO Express", type: "Express", coverage: "Philippines", status: "active" as const },
-  { id: "4", name: "Grab Express", type: "Same Day", coverage: "Metro Manila", status: "active" as const },
-]
+interface Carrier {
+  id: string
+  name: string
+  type: string
+  coverage: string
+  status: "active" | "inactive"
+}
 
-const slaMetrics = [
-  { zone: "Metro Manila", target: "1-2 days", actual: "1.3 days", compliance: "98%" },
-  { zone: "Luzon", target: "2-3 days", actual: "2.1 days", compliance: "96%" },
-  { zone: "Visayas & Mindanao", target: "3-5 days", actual: "3.8 days", compliance: "94%" },
-]
+interface SLAMetric {
+  zone: string
+  target: string
+  actual: string
+  compliance: string
+}
 
 export default function LogisticsPage() {
   const { toast } = useToast()
   const [isEditing, setIsEditing] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
+  const [shippingZones, setShippingZones] = useState<ShippingZone[]>([])
+  const [carriers, setCarriers] = useState<Carrier[]>([])
+  const [slaMetrics, setSlaMetrics] = useState<SLAMetric[]>([])
+
+  // Fetch real data from Shippo and database
+  useEffect(() => {
+    fetchLogisticsData()
+  }, [])
+
+  const fetchLogisticsData = async () => {
+    try {
+      setIsLoading(true)
+
+      // Fetch shipping stats from API
+      const statsResponse = await fetch('/api/shipping/stats', {
+        headers: {
+          'Authorization': `Bearer ${localStorage.getItem('auth_token')}`
+        }
+      })
+
+      if (statsResponse.ok) {
+        const statsData = await statsResponse.json()
+        if (statsData.success) {
+          // Map carrier breakdown to carriers list
+          const carrierData = statsData.data.carrierBreakdown.map((c: any, index: number) => ({
+            id: String(index + 1),
+            name: c.carrier,
+            type: c.carrier.includes('Express') ? 'Express' : 'Standard',
+            coverage: 'United States',
+            status: 'active' as const
+          }))
+          setCarriers(carrierData)
+
+          // Create SLA metrics from real data
+          const slaData: SLAMetric[] = [
+            {
+              zone: 'United States',
+              target: '3-5 days',
+              actual: `${statsData.data.averageDeliveryTime || 0} days`,
+              compliance: statsData.data.totalShipments > 0
+                ? `${Math.round((statsData.data.deliveredShipments / statsData.data.totalShipments) * 100)}%`
+                : '0%'
+            }
+          ]
+          setSlaMetrics(slaData)
+        }
+      }
+
+      // Set default shipping zones (can be made dynamic later)
+      setShippingZones([
+        {
+          id: "1",
+          name: "United States",
+          countries: "US",
+          carriers: "USPS, UPS, FedEx",
+          sla: "3-5 days"
+        },
+        {
+          id: "2",
+          name: "North America",
+          countries: "CA, MX",
+          carriers: "USPS, UPS, FedEx",
+          sla: "5-7 days"
+        },
+        {
+          id: "3",
+          name: "International",
+          countries: "GB, DE, FR, Other",
+          carriers: "USPS, FedEx, DHL",
+          sla: "7-14 days",
+        },
+      ])
+
+    } catch (error) {
+      console.error('Error fetching logistics data:', error)
+      toast({
+        title: "Error",
+        description: "Failed to load logistics data. Please try again.",
+        variant: "destructive"
+      })
+    } finally {
+      setIsLoading(false)
+    }
+  }
 
   const handleSave = () => {
     toast({
@@ -47,6 +130,15 @@ export default function LogisticsPage() {
       description: "Logistics settings have been updated successfully.",
     })
     setIsEditing(false)
+  }
+
+  if (isLoading) {
+    return (
+      <div className="flex items-center justify-center min-h-[400px]">
+        <Loader2 className="h-8 w-8 animate-spin text-primary" />
+        <span className="ml-2">Loading logistics data...</span>
+      </div>
+    )
   }
 
   return (
@@ -132,10 +224,10 @@ export default function LogisticsPage() {
                     <SelectValue placeholder="Select carriers" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="lbc">LBC Express</SelectItem>
-                    <SelectItem value="jnt">J&T Express</SelectItem>
-                    <SelectItem value="gogo">2GO Express</SelectItem>
-                    <SelectItem value="grab">Grab Express</SelectItem>
+                    <SelectItem value="usps">USPS</SelectItem>
+                    <SelectItem value="ups">UPS</SelectItem>
+                    <SelectItem value="fedex">FedEx</SelectItem>
+                    <SelectItem value="dhl">DHL Express</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
@@ -230,15 +322,27 @@ export default function LogisticsPage() {
             </CardHeader>
             <CardContent>
               <div className="space-y-3">
-                <div className="flex items-center justify-between p-3 border rounded-lg">
-                  <div>
-                    <p className="font-medium">Asia Pacific - Below Target</p>
-                    <p className="text-sm text-muted-foreground">Compliance dropped to 92% this week</p>
+                {slaMetrics.filter(m => Number.parseInt(m.compliance) < 95).length > 0 ? (
+                  slaMetrics
+                    .filter(m => Number.parseInt(m.compliance) < 95)
+                    .map((metric, index) => (
+                      <div key={index} className="flex items-center justify-between p-3 border rounded-lg">
+                        <div>
+                          <p className="font-medium">{metric.zone} - Below Target</p>
+                          <p className="text-sm text-muted-foreground">
+                            Compliance at {metric.compliance} (Target: 95%+)
+                          </p>
+                        </div>
+                        <Button variant="outline" size="sm">
+                          Investigate
+                        </Button>
+                      </div>
+                    ))
+                ) : (
+                  <div className="text-center p-8 text-muted-foreground">
+                    <p>No SLA alerts at this time. All zones meeting targets.</p>
                   </div>
-                  <Button variant="outline" size="sm">
-                    Investigate
-                  </Button>
-                </div>
+                )}
               </div>
             </CardContent>
           </Card>

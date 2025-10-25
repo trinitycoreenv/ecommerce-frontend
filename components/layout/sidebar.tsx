@@ -25,6 +25,7 @@ import {
   UserCheck,
   Shield,
   Menu,
+  Store,
 } from "lucide-react"
 
 interface NavItem {
@@ -35,23 +36,25 @@ interface NavItem {
 }
 
 const navigationItems: NavItem[] = [
-  // Admin navigation - Cleaned up duplicates
+  // Admin navigation - ORIGINAL COMPLETE STRUCTURE
   { title: "Dashboard", href: "/admin", icon: LayoutDashboard, roles: ["ADMIN"] },
   { title: "Analytics & Reports", href: "/admin/analytics", icon: BarChart3, roles: ["ADMIN"] },
   { title: "Product Approval", href: "/admin/product-approval", icon: CheckCircle, roles: ["ADMIN"] },
+  { title: "Vendor", href: "/admin/vendors", icon: Store, roles: ["ADMIN"] },
   { title: "Commission Management", href: "/admin/commissions", icon: DollarSign, roles: ["ADMIN"] },
   { title: "Payout Management", href: "/admin/payouts", icon: CreditCard, roles: ["ADMIN"] },
   { title: "Inventory Management", href: "/admin/inventory", icon: Package, roles: ["ADMIN"] },
   { title: "Logistics & Shipping", href: "/admin/logistics", icon: Truck, roles: ["ADMIN"] },
-  { title: "Subscriptions", href: "/admin/subscriptions", icon: Shield, roles: ["ADMIN"] },
+  { title: "Subscription", href: "/admin/subscriptions", icon: Calendar, roles: ["ADMIN"] },
 
   // Vendor navigation
   { title: "Dashboard", href: "/vendor", icon: LayoutDashboard, roles: ["VENDOR"] },
   { title: "Product Management", href: "/vendor/products", icon: Package, roles: ["VENDOR"] },
+  { title: "Orders", href: "/vendor/orders", icon: ShoppingBag, roles: ["VENDOR"] },
   { title: "Inventory", href: "/vendor/inventory", icon: Package, roles: ["VENDOR"] },
   { title: "Shipping", href: "/vendor/shipping", icon: Truck, roles: ["VENDOR"] },
+  { title: "Policies", href: "/vendor/policies", icon: Shield, roles: ["VENDOR"] },
   { title: "Analytics", href: "/vendor/analytics", icon: BarChart3, roles: ["VENDOR"] },
-  { title: "Orders", href: "/vendor/orders", icon: ShoppingBag, roles: ["VENDOR"] },
   { title: "Payouts", href: "/vendor/payouts", icon: DollarSign, roles: ["VENDOR"] },
 
   // Customer navigation

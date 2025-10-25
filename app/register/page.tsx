@@ -1,4 +1,4 @@
-"use client"
+﻿"use client"
 
 import React from "react"
 import { useState } from "react"
@@ -94,7 +94,7 @@ export default function RegisterPage() {
                 </div>
                 <div className="flex justify-between items-center">
                   <span className="text-xs font-medium">Pro</span>
-                  <Badge variant="default" className="text-xs">₱5,000/mo</Badge>
+                  <Badge variant="default" className="text-xs">$5,000/mo</Badge>
                 </div>
               </div>
             </CardContent>
@@ -184,7 +184,7 @@ export default function RegisterPage() {
             <div className="mx-auto mb-2 p-1.5 bg-primary/10 rounded-full w-fit">
               <TrendingUp className="h-4 w-4 text-primary" />
             </div>
-            <h3 className="text-lg font-bold mb-1">₱50M+</h3>
+            <h3 className="text-lg font-bold mb-1">$50M+</h3>
             <p className="text-xs text-muted-foreground">Annual Sales</p>
           </div>
         </div>

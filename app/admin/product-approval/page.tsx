@@ -197,9 +197,9 @@ export default function ProductApprovalPage() {
   }
 
   const formatPrice = (price: number) => {
-    return new Intl.NumberFormat('en-PH', {
+    return new Intl.NumberFormat('en-US', {
       style: 'currency',
-      currency: 'PHP'
+      currency: 'USD'
     }).format(price)
   }
 

@@ -1,0 +1,331 @@
+================================================================================
+E-COMMERCE MULTI-VENDOR MARKETPLACE PLATFORM
+LIVE DEMONSTRATION SCRIPT
+================================================================================
+
+Presented by: [Your Name]
+Institution: Bestlink College of the Philippines
+Date: [Presentation Date]
+
+================================================================================
+INTRODUCTION
+================================================================================
+
+Good [morning/afternoon], Professor. Thank you for this opportunity.
+
+Today I'll demonstrate our E-Commerce Multi-Vendor Marketplace Platform - a complete system where multiple vendors can sell products through one unified marketplace, with automated commission tracking, order management, and financial operations.
+
+I'll show you the actual working system, walking through each user role and feature.
+
+Let's begin.
+
+================================================================================
+PART 1: CUSTOMER REGISTRATION & SHOPPING
+================================================================================
+
+**CUSTOMER REGISTRATION**
+
+Let me start by showing you how a new customer would sign up to use our marketplace. I'll navigate to the registration page where you can see we offer two types of accounts - one for customers who want to shop, and one for vendors who want to sell products.
+
+I'm going to click on "Register as Customer" to create a shopper account. The registration form is straightforward - it asks for your full name, email address, password, and optionally your phone number and address. Let me fill this out with some sample information.
+
+Once I submit this form, the system instantly creates the account, logs me in automatically, and takes me directly to the shop page where I can start browsing products. No email verification needed - you're ready to shop immediately.
+
+**BROWSING PRODUCTS**
+
+Now I'm on the main shop page, and this is what customers see when they want to browse products. At the top, there's a search bar where you can type in what you're looking for. Below that, you'll see product categories displayed as cards - things like Electronics, Fashion, Home & Garden, and so on.
+
+The main section shows all the featured products from various vendors across the platform. Each product card gives you a quick overview - you can see the product image, the name, which vendor is selling it, the price, and customer ratings. There's also a button to either view more details or add it directly to your cart.
+
+It's important to note that only approved products appear here. When vendors add products, they go through an admin approval process first, so customers only see quality, verified products.
+
+Let me try the search feature. I'll type in a product name and you'll see how the system filters the results in real-time, showing only products that match what I'm looking for.
+
+**VIEWING PRODUCT DETAILS**
+
+When a customer finds something interesting, they can click on it to see more details. Let me click on this product here.
+
+The product detail page gives you everything you need to make a purchase decision. You can see multiple product images, a full description of what you're buying, the price, information about the vendor selling it, and how many units are in stock. There's a quantity selector where you can choose how many you want, and then a big "Add to Cart" button.
+
+Let me add one of these to my cart. You'll see a confirmation message pop up letting me know the item was successfully added.
+
+**SHOPPING CART**
+
+Now let me show you the shopping cart. I'll click on the cart icon in the navigation bar.
+
+Here's where customers can review everything they're planning to buy. You can see all the items you've added, with the ability to increase or decrease quantities, or remove items completely if you change your mind. The cart automatically calculates the subtotal for each item and shows you the total amount at the bottom.
+
+When you're ready to complete your purchase, you click "Proceed to Checkout". Let me do that now.
+
+**CHECKOUT PROCESS**
+
+The checkout process is designed to be smooth and intuitive. It's broken down into clear steps so customers don't feel overwhelmed.
+
+First, you enter or confirm your shipping information - your address, phone number, and email. This is where the order will be delivered.
+
+Next comes the shipping method selection, and this is really cool - the system connects to real shipping carriers and fetches actual rates in real-time. You can see options from FedEx, UPS, USPS, and others, along with estimated delivery times and the cost for each option. Customers can choose based on how quickly they need it and how much they want to spend on shipping.
+
+After selecting shipping, you get an order review page where you can see everything one more time - all your items, the shipping cost, and the final total amount.
+
+When you click "Create Order", the system generates the order and takes you to the payment page. We've integrated Stripe for secure payment processing, so customers can pay with their credit or debit cards safely. The payment happens in real-time.
+
+Once the payment goes through successfully, you get an order confirmation with your order number, and the system sends you a confirmation email. You're then redirected to a confirmation page with all your order details.
+
+**ORDER TRACKING**
+
+After placing an order, customers can track it anytime. Let me navigate to the orders page.
+
+Here you can see all your past and current orders. Each order shows the order number, date, total amount, and current status - whether it's pending, being processed, shipped, or delivered. For shipped orders, you get tracking numbers so you can follow your package's journey. You can also see estimated delivery dates and view the full details of any order by clicking on it.
+
+This gives customers complete visibility into their purchases from start to finish.
+
+================================================================================
+PART 2: VENDOR REGISTRATION & PRODUCT MANAGEMENT
+================================================================================
+
+Now let me switch perspectives and show you how the platform works for vendors - the people who want to sell products on our marketplace.
+
+**VENDOR REGISTRATION**
+
+I'll log out of the customer account and go back to the registration page. This time, I'm going to click "Register as Vendor" to create a seller account.
+
+You'll notice the vendor registration form is much more comprehensive than the customer one. That's because we need to collect business information to ensure legitimate sellers on the platform. The form asks for personal details like name, email, and password, but also business information - your business name, business address, tax ID number, business license number and expiry date, and you can optionally add your website and a description of what your business does.
+
+Let me fill this out with sample vendor information and submit it. Once I do, the system creates the vendor account, automatically approves it for demo purposes, logs me in, and takes me to the vendor dashboard where I can start managing my business.
+
+**VENDOR DASHBOARD**
+
+This is the vendor dashboard - the control center for sellers. Right at the top, you can see key performance metrics that give you a quick snapshot of your business. There's total orders showing how many orders you've received all time, total revenue from completed orders, pending orders that are waiting to be fulfilled, and completed orders that have been successfully delivered.
+
+Below the metrics, you'll see your recent orders list so you can quickly jump into fulfilling customer purchases. There's also a revenue chart that visualizes your sales performance over time, helping you understand your business trends at a glance.
+
+**PRODUCT MANAGEMENT**
+
+Let me navigate to the products section - this is where vendors spend a lot of their time managing their product catalog.
+
+I'll click "Add Product" to show you how vendors list new items for sale. The product creation form is quite detailed because we want to give customers all the information they need. You enter the product name, write a description, select which category it belongs to from a dropdown menu, set your price, and add a SKU number for inventory tracking.
+
+You also specify how many units you have in stock, upload product images so customers can see what they're buying, and enter the weight and dimensions - these are important because the system uses them to calculate accurate shipping costs. You can add tags to help with search, and there are checkboxes to indicate if it's a digital product or if it requires shipping.
+
+Here's something important - when I submit this product, notice that its status is set to "Pending Approval". The product is created in the system, but it's not visible to customers yet. It needs to go through an admin review process first to ensure quality and compliance with platform policies.
+
+Back on the products page, you can see all your products in a table format. Each product shows its name, category, price, current stock level, and status. The statuses are color-coded for easy scanning - pending approval items are yellow or orange, approved products are green, rejected ones are red, and drafts are gray. You can edit or delete any product using the action buttons.
+
+**ORDER MANAGEMENT**
+
+Now let me show you order management. When customers buy your products, the orders appear here. You can see the order number, customer name, order date, total amount, current status, and what items were purchased.
+
+For each order, vendors have several actions they can take. You can view the full order details to see exactly what was ordered and where it needs to be shipped. You can update the order status as you process it - from pending to confirmed to processing to shipped. You can also add tracking information once you've shipped the package, which automatically updates the customer's order tracking page.
+
+**VENDOR ANALYTICS**
+
+The analytics section gives vendors deeper insights into their business performance. You can see revenue trends over time to understand if you're growing, identify your top-selling products so you know what to stock more of, view customer statistics to understand your buyer base, analyze product performance to see what's working and what's not, and break down sales by category.
+
+This data helps vendors make informed decisions about inventory, pricing, and product selection.
+
+**PAYOUT MANAGEMENT**
+
+Finally, let's look at payouts - this is where vendors manage their earnings. The payout page shows your available balance, which is money that's ready to be withdrawn. You can see your total earnings across all time, any pending payouts that are being processed, and your complete payout history.
+
+When you have sufficient balance, you can request a payout. Here's how the money works - when a customer buys your product, the system automatically calculates the order total, deducts the platform commission based on your subscription tier, and the remaining amount becomes your net payout. This all happens automatically, so there's complete transparency in how much you're earning.
+
+================================================================================
+PART 3: ADMIN DASHBOARD & PLATFORM MANAGEMENT
+================================================================================
+
+Now let me show you the administrative side of the platform - this is where platform administrators oversee the entire marketplace and ensure everything runs smoothly.
+
+I'll log out and log back in using an admin account to demonstrate these features.
+
+**ADMIN DASHBOARD**
+
+Welcome to the admin dashboard - this is mission control for the entire platform. Unlike the vendor dashboard which shows individual business metrics, this dashboard gives you a bird's eye view of the entire marketplace.
+
+At the top, you can see critical platform-wide metrics. There's total platform revenue which combines subscription fees from vendors and commission from sales. You can see subscription revenue broken down into MRR - that's Monthly Recurring Revenue - which is crucial for understanding the platform's financial health. Commission revenue shows how much the platform is earning from vendor sales.
+
+You also see active vendors currently selling on the platform, pending product approvals that need review, and active shipments currently in transit. These numbers help admins quickly identify what needs attention.
+
+Below the metrics, there are several charts and visualizations. Revenue trends show how the platform is performing over time. Vendor statistics break down sellers by their status - active, inactive, or suspended. There's also subscription tier distribution showing how many vendors are on each plan, and a recent activity feed that shows what's happening across the platform in real-time.
+
+**PRODUCT APPROVAL**
+
+Let me navigate to one of the most important admin functions - product approval. This is where quality control happens.
+
+This page shows all products that vendors have submitted and are waiting for approval. You can see the product name, which vendor submitted it, what category it's in, the price, and when it was submitted. Each product has a preview button.
+
+Let me click on one to review it. The review page shows everything about the product - all the details the vendor entered, the product images, information about the vendor who's selling it, and the system even runs some automated policy checks to flag potential issues.
+
+As an admin, I have three options here. I can approve the product, which immediately changes its status to "Approved" and makes it visible in the customer shop. I can reject it if it doesn't meet our standards, and I'd provide a reason so the vendor knows what to fix. Or I can request changes if it's almost good but needs some modifications.
+
+Let me approve this one. You'll see the status change instantly, and now customers browsing the shop will be able to see and purchase this product.
+
+**VENDOR MANAGEMENT**
+
+Now let's look at vendor management. This page shows all the vendors registered on the platform. You can see their business name, owner name, email, current status - whether they're active, inactive, or suspended - their subscription tier, and when they joined the platform.
+
+Admins have full control here. You can click on any vendor to view their complete details, activate or deactivate vendor accounts if needed, view all the products a specific vendor has listed, see all their orders, and check their subscription status to ensure they're paying their fees.
+
+This gives admins the ability to manage the seller community and ensure only quality vendors are active on the platform.
+
+**ANALYTICS**
+
+The analytics section provides comprehensive insights into platform performance. You can view revenue broken down by different time periods - daily, weekly, or monthly. There are sales trend charts showing if the marketplace is growing. You can see vendor performance rankings to identify your top sellers and those who might need support.
+
+Customer acquisition metrics show how many new shoppers are joining, and product category performance reveals which types of products are most popular. All of this data can be exported to PDF, Excel, or CSV formats for further analysis or reporting to stakeholders.
+
+**INVENTORY MANAGEMENT**
+
+The inventory management page gives a platform-wide view of all products and stock levels. You can see the total number of products across all vendors, get alerts for low stock items that might need attention, identify out-of-stock products that are losing sales opportunities, view inventory broken down by vendor, and track inventory movements to understand stock flow.
+
+**SUBSCRIPTION MANAGEMENT**
+
+In the subscription management section, admins can oversee all vendor subscription plans. You can see active subscriptions, view the different tiers - Starter, Basic, Premium, and Enterprise - and how many vendors are on each tier. You can track revenue by tier to understand which plans are most popular, see upcoming renewals so you can ensure payment processing goes smoothly, and identify expired subscriptions that need follow-up.
+
+**TRANSACTION MONITORING**
+
+Finally, the transaction monitoring page shows every financial transaction happening on the platform. You can see all order transactions, check payment statuses to ensure everything is processing correctly, view how commissions are being calculated for each sale, track any refunds that have been issued, and access complete transaction history for auditing purposes.
+
+This level of visibility ensures financial transparency and helps identify any issues quickly.
+
+================================================================================
+PART 4: FINANCE ANALYST DASHBOARD
+================================================================================
+
+Now let me show you the finance analyst role - this is for team members who focus specifically on the financial operations of the platform.
+
+I'll log out and log back in using a finance analyst account.
+
+**FINANCE DASHBOARD**
+
+The finance dashboard is all about money - tracking revenue, managing commissions, and processing payouts. It's designed for people who need to focus on the financial health of the platform without getting distracted by other operational details.
+
+At the top, you see the key financial metrics. Total platform revenue shows all money coming into the platform. Subscription revenue is broken down into MRR - Monthly Recurring Revenue - and ARR - Annual Recurring Revenue - which are critical metrics for understanding the platform's recurring income. Transaction revenue shows money from actual sales, and commission revenue displays what the platform earns from each vendor sale. You also see pending payouts, which is money that vendors have requested to withdraw.
+
+**COMMISSION MANAGEMENT**
+
+Let me navigate to commission management - this is where finance analysts track how much the platform earns from each sale.
+
+This page shows a detailed record of every commission. For each entry, you can see the order number, which vendor made the sale, the total order amount, the commission rate that was applied, the actual commission amount earned, the status - whether it's been calculated or paid - and the date.
+
+What's really powerful here is that the system automatically calculates commissions based on the vendor's subscription tier. Vendors on the Starter plan pay 15% commission, Basic tier vendors pay 12%, Premium tier pays 8%, and Enterprise tier pays only 5%. This incentivizes vendors to upgrade their subscriptions to keep more of their earnings, while ensuring the platform generates revenue from every sale.
+
+**PAYOUT PROCESSING**
+
+Now let's look at payout processing - this is where finance analysts actually send money to vendors.
+
+This page shows all payout requests from vendors. When a vendor has earned money and wants to withdraw it, their request appears here. You can see the vendor name, how much they're requesting, when they made the request, and the current status.
+
+For each payout, there's a "Process Payout" button. Let me click on one to show you what happens. The system first verifies that the vendor actually has this balance available - we don't want to pay out more than they've earned. Then it initiates the payment through Stripe, which handles the actual money transfer. The payout status gets updated so everyone can track it, and the vendor receives a confirmation notification letting them know their money is on the way.
+
+This automation ensures vendors get paid quickly and accurately, which keeps them happy and motivated to sell on the platform.
+
+**TRANSACTION MONITORING**
+
+The transaction monitoring page gives finance analysts a complete view of all money movement on the platform. You can see customer payments coming in, vendor payouts going out, commission calculations for every sale, any refunds that have been issued, and detailed information about each transaction.
+
+This comprehensive view is essential for financial reporting, auditing, and ensuring everything balances correctly.
+
+================================================================================
+PART 5: OPERATIONS MANAGER DASHBOARD
+================================================================================
+
+Finally, let me show you the operations manager role - this is for team members who focus on logistics and ensuring orders get delivered on time.
+
+I'll log out and log in as an operations manager.
+
+**OPERATIONS DASHBOARD**
+
+The operations dashboard is all about shipments and delivery performance. It's designed for people who need to monitor the physical movement of products from vendors to customers.
+
+The key metrics here are focused on logistics. Active shipments shows how many packages are currently in transit - on trucks, planes, or out for delivery. SLA compliance is the on-time delivery rate, which tells you what percentage of orders are being delivered within the promised timeframe. Delayed shipments highlights any packages that are running late and might need intervention. And average delivery time shows how long it typically takes for a package to reach the customer from the moment it ships.
+
+These metrics help operations managers identify problems quickly and maintain high customer satisfaction through reliable delivery.
+
+**SHIPMENT TRACKING**
+
+Let me navigate to the shipment tracking page - this is where operations managers monitor every package moving through the system.
+
+This page shows all shipments across the entire platform. For each shipment, you can see the order number, customer name, which carrier is handling it - FedEx, UPS, USPS, DHL, or others - the tracking number, current status like pending, in transit, or delivered, the estimated delivery date, and once it arrives, the actual delivery date.
+
+Operations managers can use this to monitor shipment status in real-time, track SLA compliance to ensure we're meeting our delivery promises, quickly identify delayed shipments that need attention, and evaluate carrier performance to see which shipping companies are most reliable.
+
+If there's a problem - say a package is stuck or delayed - the operations manager can proactively reach out to the customer or the carrier to resolve it before it becomes a bigger issue.
+
+**PERFORMANCE ANALYTICS**
+
+The performance analytics page provides deeper insights into logistics operations. You can see fulfillment rate trends showing how quickly orders are being shipped after they're placed. Delivery time analysis breaks down how long different types of shipments take. Carrier comparison shows which shipping companies are performing best in terms of speed and reliability.
+
+There's also SLA compliance broken down by geographic zone - maybe deliveries to urban areas are faster than rural ones, and you can see that here. And performance by vendor shows which sellers are doing a great job of shipping quickly and which might need support to improve their fulfillment process.
+
+**SHIPPING MANAGEMENT**
+
+The shipping management section is where operations managers configure the logistics infrastructure. You can manage carrier integrations - connecting to FedEx, UPS, and other shipping companies. You can define shipping zones based on geography. You can set up rate tables that determine shipping costs. And you can establish SLA definitions - the service level agreements that define what "on-time delivery" means for different types of shipments.
+
+This configuration ensures the entire shipping system runs smoothly and customers get accurate delivery estimates and costs.
+
+================================================================================
+SUMMARY OF KEY FEATURES
+================================================================================
+
+Let me quickly summarize what you've seen in this demonstration.
+
+**Multi-Role System**
+We've built a platform that serves five distinct user types, each with their own specialized dashboard and tools. Customers can shop and track orders. Vendors can manage products and fulfill orders. Admins oversee the entire platform and approve products. Finance analysts handle commissions and payouts. And operations managers monitor logistics and delivery performance. Each role sees exactly what they need to do their job effectively.
+
+**Complete Product Lifecycle**
+You've seen how a product moves through the system from creation to sale. A vendor creates a product and submits it. An admin reviews and approves it to ensure quality. The product then appears in the customer shop where it can be purchased. When a customer buys it, the order goes to the vendor for fulfillment. This workflow ensures quality control while keeping the process moving efficiently.
+
+**Seamless Order Processing**
+The order flow is designed to be smooth and reliable. Customers place orders through an intuitive checkout process. Payments are processed securely through Stripe integration. Vendors immediately receive the order details and can start fulfilling it. Shipment tracking keeps everyone informed about delivery progress. And delivery confirmation closes the loop, ensuring customer satisfaction.
+
+**Automated Financial Operations**
+One of the most powerful aspects of this platform is how it handles money automatically. Commission calculations happen instantly based on subscription tiers - no manual math required. Vendors can request payouts whenever they want. Finance analysts can process those payouts with a single click. And every transaction is tracked for complete financial transparency and auditing.
+
+**Real-Time Integrations**
+The platform connects to external services to provide real-time functionality. When customers check out, the system fetches live shipping rates from actual carriers like FedEx and UPS, so they see accurate costs and delivery times. Inventory updates happen instantly when products are sold. Order notifications are sent immediately. This real-time connectivity makes the platform feel responsive and professional.
+
+**Comprehensive Analytics**
+Every role has access to analytics tailored to their needs. Revenue dashboards show financial performance. Sales analytics reveal trends and opportunities. Vendor performance metrics help identify top sellers. And all this data can be exported for further analysis or reporting. Data-driven decision making is built into every level of the platform.
+
+================================================================================
+CONCLUSION
+================================================================================
+
+What you've seen today is a fully functional multi-vendor e-commerce marketplace that handles the complete lifecycle of online selling - from vendor registration and product listing, through customer shopping and payment, to order fulfillment and financial settlement.
+
+The platform demonstrates secure user authentication with role-based access control, ensuring everyone sees only what they need to see. It includes product catalog management with approval workflows to maintain quality. The shopping cart and checkout process is smooth and integrates with Stripe for secure payments. Order management and shipment tracking keep everyone informed. Commission calculations happen automatically based on subscription tiers. Payout processing is streamlined for quick vendor payments. And comprehensive analytics provide insights at every level.
+
+Every feature I've shown you today is fully implemented and working. This isn't a prototype or a mockup - it's a production-ready system that could handle real customers and real transactions right now.
+
+Thank you for your time and attention. I'm happy to answer any questions you might have about the platform.
+
+================================================================================
+TEST ACCOUNTS
+================================================================================
+
+For testing purposes, here are the login credentials:
+
+ADMIN:
+Email: admin@ecommerce.com
+Password: admin123
+
+VENDOR:
+Email: vendor1@example.com
+Password: vendor123
+
+CUSTOMER:
+Email: customer1@example.com
+Password: customer123
+
+FINANCE ANALYST:
+Email: finance@ecommerce.com
+Password: finance123
+
+OPERATIONS MANAGER:
+Email: operations@ecommerce.com
+Password: operations123
+
+================================================================================
+END OF DEMONSTRATION
+================================================================================
+

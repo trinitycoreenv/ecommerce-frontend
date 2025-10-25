@@ -1,4 +1,4 @@
-"use client"
+﻿"use client"
 
 import { useEffect, useState } from "react"
 import { cn } from "@/lib/utils"
@@ -40,10 +40,10 @@ export function ActivityFeed({ className, maxItems = 5 }: ActivityFeedProps) {
           "Product 'Phone Case' price updated"
         ],
         payment: [
-          "Payment of ₱299.99 processed",
-          "Payout of ₱1,250.00 scheduled",
-          "Commission of ₱45.50 calculated",
-          "Refund of ₱89.99 processed"
+          "Payment of $299.99 processed",
+          "Payout of $1,250.00 scheduled",
+          "Commission of $45.50 calculated",
+          "Refund of $89.99 processed"
         ],
         user: [
           "New vendor 'TechGear Solutions' registered",

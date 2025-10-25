@@ -38,6 +38,7 @@ async function createShippingLabel(request: AuthenticatedRequest) {
     }
 
     // Check permissions
+    // ADMIN and OPERATIONS_MANAGER have full access
     if (request.user.role === 'VENDOR' && order.vendorId !== request.user.userId) {
       return NextResponse.json(
         { success: false, error: 'Access denied' },

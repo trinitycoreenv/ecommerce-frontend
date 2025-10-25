@@ -1,21 +1,119 @@
 "use client"
-import { Warehouse, MapPin, Package, AlertCircle, CheckCircle2 } from "lucide-react"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { useState, useEffect } from "react"
+import { Warehouse, MapPin, Package, AlertCircle, CheckCircle2, Loader2 } from "lucide-react"
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { KPICard } from "@/components/shared/kpi-card"
-import { AdvancedChart } from "@/components/shared/advanced-chart"
 import { Progress } from "@/components/ui/progress"
+import { useToast } from "@/hooks/use-toast"
+import { ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart"
+import { Line, LineChart, CartesianGrid, XAxis, YAxis } from "recharts"
 
 export default function LogisticsPage() {
-  // Real data will be fetched from API endpoints
-  const warehouses: any[] = []
+  const [isLoading, setIsLoading] = useState(true)
+  const [stats, setStats] = useState({
+    warehouses: 0,
+    totalInventory: 0,
+    fulfillmentRate: 0,
+    stockAlerts: 0
+  })
+  const { toast } = useToast()
 
-  // Real data will be fetched from API endpoints
-  const shippingZones: any[] = []
+  useEffect(() => {
+    fetchData()
+  }, [])
 
-  // Real data will be fetched from API endpoints
-  const performanceData: any[] = []
+  const fetchData = async () => {
+    try {
+      setIsLoading(true)
+      const token = localStorage.getItem('auth_token')
+
+      // Fetch orders to calculate fulfillment rate
+      const ordersResponse = await fetch('/api/orders?limit=1000', {
+        headers: { 'Authorization': `Bearer ${token}` }
+      })
+
+      if (ordersResponse.ok) {
+        const ordersData = await ordersResponse.json()
+        const orders = ordersData.data || []
+
+        // Calculate fulfillment rate
+        const deliveredOrders = orders.filter((o: any) => o.status === 'DELIVERED').length
+        const fulfillmentRate = orders.length > 0
+          ? Math.round((deliveredOrders / orders.length) * 100)
+          : 0
+
+        // For now, use placeholder values for warehouses and inventory
+        // In a real system, these would come from dedicated warehouse/inventory APIs
+        setStats({
+          warehouses: 1, // Placeholder - would come from warehouse API
+          totalInventory: orders.length * 10, // Rough estimate based on orders
+          fulfillmentRate,
+          stockAlerts: 0 // Placeholder - would come from inventory API
+        })
+      }
+    } catch (error) {
+      console.error('❌ Error fetching logistics data:', error)
+      toast({
+        title: 'Error',
+        description: 'Failed to load logistics data',
+        variant: 'destructive'
+      })
+    } finally {
+      setIsLoading(false)
+    }
+  }
+
+  // Placeholder data for shipping zones
+  const shippingZones = [
+    {
+      zone: "Zone 1 - Local",
+      states: "Same state delivery",
+      cost: "$5.99",
+      avgDelivery: "1-2 days",
+      volume: 450
+    },
+    {
+      zone: "Zone 2 - Regional",
+      states: "Neighboring states",
+      cost: "$8.99",
+      avgDelivery: "2-3 days",
+      volume: 320
+    },
+    {
+      zone: "Zone 3 - National",
+      states: "Nationwide",
+      cost: "$12.99",
+      avgDelivery: "3-5 days",
+      volume: 180
+    }
+  ]
+
+  // Placeholder data for performance chart
+  const performanceData = [
+    { name: "Mon", value: 85 },
+    { name: "Tue", value: 92 },
+    { name: "Wed", value: 88 },
+    { name: "Thu", value: 95 },
+    { name: "Fri", value: 90 },
+    { name: "Sat", value: 78 },
+    { name: "Sun", value: 82 }
+  ]
+
+  // Placeholder warehouse data
+  const warehouses = [
+    {
+      id: "1",
+      name: "Main Distribution Center",
+      location: "New York, NY",
+      capacity: 10000,
+      current: 7500,
+      status: "operational",
+      orders: 145,
+      shipments: 89
+    }
+  ]
 
   return (
     <div className="space-y-6">
@@ -25,33 +123,61 @@ export default function LogisticsPage() {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <KPICard title="Warehouses" value="0" icon={<Warehouse className="h-5 w-5" />} />
+        <KPICard
+          title="Warehouses"
+          value={isLoading ? <Loader2 className="h-5 w-5 animate-spin" /> : stats.warehouses.toString()}
+          icon={<Warehouse className="h-5 w-5" />}
+        />
         <KPICard
           title="Total Inventory"
-          value="0"
+          value={isLoading ? <Loader2 className="h-5 w-5 animate-spin" /> : stats.totalInventory.toString()}
           icon={<Package className="h-5 w-5" />}
         />
         <KPICard
           title="Fulfillment Rate"
-          value="0%"
+          value={isLoading ? <Loader2 className="h-5 w-5 animate-spin" /> : `${stats.fulfillmentRate}%`}
           icon={<CheckCircle2 className="h-5 w-5" />}
         />
         <KPICard
           title="Stock Alerts"
-          value="0"
+          value={isLoading ? <Loader2 className="h-5 w-5 animate-spin" /> : stats.stockAlerts.toString()}
           icon={<AlertCircle className="h-5 w-5" />}
         />
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <AdvancedChart
-          title="Fulfillment Performance"
-          description="Daily fulfillment rate percentage"
-          data={performanceData}
-          type="line"
-          dataKey="value"
-          showGrid={true}
-        />
+        {/* Fulfillment Performance - Line Chart */}
+        <Card>
+          <CardHeader>
+            <CardTitle>Fulfillment Performance</CardTitle>
+            <CardDescription>Daily fulfillment rate percentage</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <ChartContainer
+              config={{
+                value: {
+                  label: "Fulfillment Rate %",
+                  color: "hsl(var(--chart-1))",
+                },
+              }}
+              className="h-[300px]"
+            >
+              <LineChart data={performanceData}>
+                <CartesianGrid strokeDasharray="3 3" className="stroke-muted" />
+                <XAxis dataKey="day" className="text-xs" />
+                <YAxis className="text-xs" />
+                <ChartTooltip content={<ChartTooltipContent />} />
+                <Line
+                  type="monotone"
+                  dataKey="value"
+                  stroke="var(--color-value)"
+                  strokeWidth={2}
+                  dot={{ r: 4 }}
+                />
+              </LineChart>
+            </ChartContainer>
+          </CardContent>
+        </Card>
 
         <Card>
           <CardHeader>

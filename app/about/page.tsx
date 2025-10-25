@@ -22,13 +22,6 @@ export default function AboutPage() {
     { year: "2024", title: "Platform 2.0", description: "Launched our next-generation platform" },
   ]
 
-  const team = [
-    { name: "John Doe", role: "CEO & Founder", image: "/api/placeholder/150/150" },
-    { name: "Jane Smith", role: "CTO", image: "/api/placeholder/150/150" },
-    { name: "Mike Johnson", role: "Head of Product", image: "/api/placeholder/150/150" },
-    { name: "Sarah Wilson", role: "Head of Operations", image: "/api/placeholder/150/150" },
-  ]
-
   const stats = [
     { number: "10,000+", label: "Active Vendors" },
     { number: "1M+", label: "Happy Customers" },
@@ -169,28 +162,6 @@ export default function AboutPage() {
                 </div>
               ))}
             </div>
-          </div>
-        </section>
-
-        {/* Team Section */}
-        <section className="container mx-auto px-4 py-16">
-          <div className="text-center mb-12">
-            <h2 className="text-title text-3xl md:text-4xl mb-4">Meet Our Team</h2>
-            <p className="text-subtitle text-lg text-muted-foreground">The people behind our success</p>
-          </div>
-          
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-4xl mx-auto">
-            {team.map((member, index) => (
-              <Card key={index} className="text-center border-2 hover:border-primary/50 transition-all duration-300">
-                <CardContent className="p-6">
-                  <div className="w-24 h-24 bg-muted rounded-full flex items-center justify-center mx-auto mb-4">
-                    <div className="text-muted-foreground">Photo</div>
-                  </div>
-                  <h3 className="text-lg text-heading mb-1">{member.name}</h3>
-                  <p className="text-body text-sm text-muted-foreground">{member.role}</p>
-                </CardContent>
-              </Card>
-            ))}
           </div>
         </section>
 

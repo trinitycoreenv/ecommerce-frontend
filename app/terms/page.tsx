@@ -1,4 +1,4 @@
-"use client"
+﻿"use client"
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -184,7 +184,7 @@ export default function TermsOfServicePage() {
                 Commission fees are deducted from sales proceeds before payout.
               </p>
               <p>
-                All prices are displayed in Philippine Peso (₱) unless otherwise specified. 
+                All prices are displayed in Philippine Peso ($) unless otherwise specified. 
                 Taxes and shipping costs are calculated at checkout.
               </p>
             </CardContent>

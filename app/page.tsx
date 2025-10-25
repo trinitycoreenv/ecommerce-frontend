@@ -116,41 +116,41 @@ export default function HomePage() {
     fetchData()
   }, [toast])
   const successStories = [
-    { 
-      id: 1, 
-      name: "Lee Min-ho", 
-      business: "Fashion Store", 
-      sales: "₱2.5M", 
-      growth: "300%", 
-      quote: "Increased my sales by 300% in just 3 months! The platform's reach is incredible.", 
-      image: "https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=100&h=100&fit=crop&crop=center" 
+    {
+      id: 1,
+      name: "Lee Min-ho",
+      business: "Fashion Store",
+      sales: "$2.5M",
+      growth: "300%",
+      quote: "Increased my sales by 300% in just 3 months! The platform's reach is incredible.",
+      image: "https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=100&h=100&fit=crop&crop=center"
     },
-    { 
-      id: 2, 
-      name: "Park Shin-hye", 
-      business: "TechGadgets Korea", 
-      sales: "₱1.8M", 
-      growth: "250%", 
-      quote: "The platform made it so easy to reach customers worldwide. Amazing results!", 
-      image: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=100&h=100&fit=crop&crop=center" 
+    {
+      id: 2,
+      name: "Park Shin-hye",
+      business: "TechGadgets Korea",
+      sales: "$1.8M",
+      growth: "250%",
+      quote: "The platform made it so easy to reach customers worldwide. Amazing results!",
+      image: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=100&h=100&fit=crop&crop=center"
     },
-    { 
-      id: 3, 
-      name: "Kim Soo-hyun", 
-      business: "Home & Garden Seoul", 
-      sales: "₱3.2M", 
-      growth: "400%", 
-      quote: "Best decision I made for my business growth. The analytics are fantastic!", 
-      image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=100&h=100&fit=crop&crop=center" 
+    {
+      id: 3,
+      name: "Kim Soo-hyun",
+      business: "Home & Garden Seoul",
+      sales: "$3.2M",
+      growth: "400%",
+      quote: "Best decision I made for my business growth. The analytics are fantastic!",
+      image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=100&h=100&fit=crop&crop=center"
     },
-    { 
-      id: 4, 
-      name: "Song Hye-kyo", 
-      business: "Electronics Hub Korea", 
-      sales: "₱4.1M", 
-      growth: "350%", 
-      quote: "Outstanding support and seamless integration. Highly recommended platform!", 
-      image: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=100&h=100&fit=crop&crop=center" 
+    {
+      id: 4,
+      name: "Song Hye-kyo",
+      business: "Electronics Hub Korea",
+      sales: "$4.1M",
+      growth: "350%",
+      quote: "Outstanding support and seamless integration. Highly recommended platform!",
+      image: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=100&h=100&fit=crop&crop=center"
     },
   ]
 
@@ -397,7 +397,7 @@ export default function HomePage() {
                     <h3 className="text-heading font-semibold mb-1">{product.name}</h3>
                     <p className="text-body text-sm text-muted-foreground mb-2">by {product.vendor.businessName}</p>
                     <div className="flex items-center justify-between">
-                      <span className="text-lg font-bold text-primary">₱{Number(product.price).toFixed(2)}</span>
+                      <span className="text-lg font-bold text-primary">${Number(product.price).toFixed(2)}</span>
                       <Button size="sm" asChild>
                         <Link href={`/shop/product/${product.id}`}>Add to Cart</Link>
                       </Button>
@@ -524,7 +524,7 @@ export default function HomePage() {
             <Card className="border-2 hover:border-primary/50 transition-all duration-300">
               <CardHeader className="text-center">
                 <CardTitle className="text-lg">Starter</CardTitle>
-                <div className="text-3xl font-bold text-primary">₱0<span className="text-sm text-muted-foreground">/month</span></div>
+                <div className="text-3xl font-bold text-primary">$0<span className="text-sm text-muted-foreground">/month</span></div>
                 <CardDescription>Perfect for getting started</CardDescription>
               </CardHeader>
               <CardContent className="space-y-2">
@@ -546,7 +546,7 @@ export default function HomePage() {
             <Card className="border-2 hover:border-primary/50 transition-all duration-300">
               <CardHeader className="text-center">
                 <CardTitle className="text-lg">Basic</CardTitle>
-                <div className="text-3xl font-bold text-primary">₱2,000<span className="text-sm text-muted-foreground">/month</span></div>
+                <div className="text-3xl font-bold text-primary">$2,000<span className="text-sm text-muted-foreground">/month</span></div>
                 <CardDescription>For growing businesses</CardDescription>
               </CardHeader>
               <CardContent className="space-y-2">
@@ -569,7 +569,7 @@ export default function HomePage() {
               <Badge className="absolute -top-2 left-1/2 transform -translate-x-1/2">Popular</Badge>
               <CardHeader className="text-center">
                 <CardTitle className="text-lg">Pro</CardTitle>
-                <div className="text-3xl font-bold text-primary">₱5,000<span className="text-sm text-muted-foreground">/month</span></div>
+                <div className="text-3xl font-bold text-primary">$5,000<span className="text-sm text-muted-foreground">/month</span></div>
                 <CardDescription>For established sellers</CardDescription>
               </CardHeader>
               <CardContent className="space-y-2">
@@ -595,7 +595,7 @@ export default function HomePage() {
             <Card className="border-2 hover:border-primary/50 transition-all duration-300">
               <CardHeader className="text-center">
                 <CardTitle className="text-lg">Enterprise</CardTitle>
-                <div className="text-3xl font-bold text-primary">₱10,000<span className="text-sm text-muted-foreground">/month</span></div>
+                <div className="text-3xl font-bold text-primary">$10,000<span className="text-sm text-muted-foreground">/month</span></div>
                 <CardDescription>For large operations</CardDescription>
               </CardHeader>
               <CardContent className="space-y-2">

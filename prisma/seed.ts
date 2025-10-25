@@ -13,136 +13,155 @@ async function main() {
   console.log('🌱 Starting comprehensive database seed...')
 
   // Create comprehensive categories
-  const categories = await Promise.all([
-    prisma.category.create({
-      data: {
-        name: 'Electronics & Gadgets',
-        description: 'Smartphones, laptops, tablets, and electronic accessories',
-        policyRules: {
-          requiresApproval: true,
-          maxPrice: 50000,
-          allowedVendors: ['PREMIUM', 'ENTERPRISE'],
-          commissionRate: 0.08
-        }
+  const categoryDefinitions = [
+    {
+      name: 'Electronics & Gadgets',
+      imageUrl: 'https://source.unsplash.com/featured/?electronics,gadgets',
+      description: 'Smartphones, laptops, tablets, and electronic accessories',
+      policyRules: {
+        requiresApproval: true,
+        maxPrice: 50000,
+        allowedVendors: ['PREMIUM', 'ENTERPRISE'],
+        commissionRate: 0.08
       }
-    }),
-    prisma.category.create({
-      data: {
-        name: 'Fashion & Apparel',
-        description: 'Clothing, shoes, bags, and fashion accessories',
-        policyRules: {
-          requiresApproval: false,
-          maxPrice: 5000,
-          allowedVendors: ['BASIC', 'PREMIUM', 'ENTERPRISE'],
-          commissionRate: 0.10
-        }
+    },
+    {
+      name: 'Fashion & Apparel',
+      imageUrl: 'https://source.unsplash.com/featured/?fashion,apparel',
+      description: 'Clothing, shoes, bags, and fashion accessories',
+      policyRules: {
+        requiresApproval: false,
+        maxPrice: 5000,
+        allowedVendors: ['BASIC', 'PREMIUM', 'ENTERPRISE'],
+        commissionRate: 0.10
       }
-    }),
-    prisma.category.create({
-      data: {
-        name: 'Home & Garden',
-        description: 'Furniture, home decor, garden tools, and household items',
-        policyRules: {
-          requiresApproval: true,
-          maxPrice: 25000,
-          allowedVendors: ['PREMIUM', 'ENTERPRISE'],
-          commissionRate: 0.08
-        }
+    },
+    {
+      name: 'Home & Garden',
+      imageUrl: 'https://source.unsplash.com/featured/?home,garden',
+      description: 'Furniture, home decor, garden tools, and household items',
+      policyRules: {
+        requiresApproval: true,
+        maxPrice: 25000,
+        allowedVendors: ['PREMIUM', 'ENTERPRISE'],
+        commissionRate: 0.08
       }
-    }),
-    prisma.category.create({
-      data: {
-        name: 'Beauty & Personal Care',
-        description: 'Skincare, makeup, hair care, and personal hygiene products',
-        policyRules: {
-          requiresApproval: false,
-          maxPrice: 3000,
-          allowedVendors: ['BASIC', 'PREMIUM', 'ENTERPRISE'],
-          commissionRate: 0.10
-        }
+    },
+    {
+      name: 'Beauty & Personal Care',
+      imageUrl: 'https://source.unsplash.com/featured/?beauty,personal-care',
+      description: 'Skincare, makeup, hair care, and personal hygiene products',
+      policyRules: {
+        requiresApproval: false,
+        maxPrice: 3000,
+        allowedVendors: ['BASIC', 'PREMIUM', 'ENTERPRISE'],
+        commissionRate: 0.10
       }
-    }),
-    prisma.category.create({
-      data: {
-        name: 'Sports & Recreation',
-        description: 'Sports equipment, fitness gear, and outdoor recreation items',
-        policyRules: {
-          requiresApproval: false,
-          maxPrice: 8000,
-          allowedVendors: ['BASIC', 'PREMIUM', 'ENTERPRISE'],
-          commissionRate: 0.10
-        }
+    },
+    {
+      name: 'Sports & Recreation',
+      imageUrl: 'https://source.unsplash.com/featured/?sports,fitness',
+      description: 'Sports equipment, fitness gear, and outdoor recreation items',
+      policyRules: {
+        requiresApproval: false,
+        maxPrice: 8000,
+        allowedVendors: ['BASIC', 'PREMIUM', 'ENTERPRISE'],
+        commissionRate: 0.10
       }
-    }),
-    prisma.category.create({
-      data: {
-        name: 'Books & Education',
-        description: 'Books, educational materials, and learning resources',
-        policyRules: {
-          requiresApproval: false,
-          maxPrice: 2000,
-          allowedVendors: ['BASIC', 'PREMIUM', 'ENTERPRISE'],
-          commissionRate: 0.12
-        }
+    },
+    {
+      name: 'Books & Education',
+      imageUrl: 'https://source.unsplash.com/featured/?books,education',
+      description: 'Books, educational materials, and learning resources',
+      policyRules: {
+        requiresApproval: false,
+        maxPrice: 2000,
+        allowedVendors: ['BASIC', 'PREMIUM', 'ENTERPRISE'],
+        commissionRate: 0.12
       }
-    }),
-    prisma.category.create({
-      data: {
-        name: 'Health & Wellness',
-        description: 'Health supplements, medical devices, and wellness products',
-        policyRules: {
-          requiresApproval: true,
-          maxPrice: 10000,
-          allowedVendors: ['PREMIUM', 'ENTERPRISE'],
-          commissionRate: 0.08
-        }
+    },
+    {
+      name: 'Health & Wellness',
+      imageUrl: 'https://source.unsplash.com/featured/?health,wellness',
+      description: 'Health supplements, medical devices, and wellness products',
+      policyRules: {
+        requiresApproval: true,
+        maxPrice: 10000,
+        allowedVendors: ['PREMIUM', 'ENTERPRISE'],
+        commissionRate: 0.08
       }
-    }),
-    prisma.category.create({
-      data: {
-        name: 'Automotive',
-        description: 'Car accessories, motorcycle parts, and automotive tools',
-        policyRules: {
-          requiresApproval: true,
-          maxPrice: 15000,
-          allowedVendors: ['PREMIUM', 'ENTERPRISE'],
-          commissionRate: 0.08
-        }
+    },
+    {
+      name: 'Automotive',
+      imageUrl: 'https://source.unsplash.com/featured/?automotive,cars',
+      description: 'Car accessories, motorcycle parts, and automotive tools',
+      policyRules: {
+        requiresApproval: true,
+        maxPrice: 15000,
+        allowedVendors: ['PREMIUM', 'ENTERPRISE'],
+        commissionRate: 0.08
       }
-    })
-  ])
+    }
+  ]
+
+  const categories = await Promise.all(
+    categoryDefinitions.map(cat =>
+      (async () => {
+        // Resolve source.unsplash redirects so we store the final image URL
+        let finalImageUrl = cat.imageUrl
+        try {
+          if (cat.imageUrl && cat.imageUrl.includes('source.unsplash.com')) {
+            // Use fetch to follow redirect and read the final URL
+            const res = await fetch(cat.imageUrl, { method: 'GET', redirect: 'follow' })
+            if (res && res.url) {
+              finalImageUrl = res.url
+            }
+          }
+        } catch (err) {
+          console.warn('Failed to resolve unsplash redirect for', cat.name, err)
+          finalImageUrl = cat.imageUrl
+        }
+
+        return prisma.category.upsert({
+          where: { name: cat.name },
+          update: {
+            imageUrl: finalImageUrl,
+            description: cat.description,
+            policyRules: cat.policyRules
+          },
+          create: {
+            name: cat.name,
+            imageUrl: finalImageUrl,
+            description: cat.description,
+            policyRules: cat.policyRules
+          }
+        })
+      })()
+    )
+  )
 
   console.log('✅ Created categories')
 
   // Create admin users
   const adminPassword = await bcrypt.hash('admin123', 12)
-  const admin = await prisma.user.create({
-    data: {
-      email: 'admin@ecommerce.com',
-      name: 'Admin User',
-      passwordHash: adminPassword,
-      role: UserRole.ADMIN
-    }
+  const admin = await prisma.user.upsert({
+    where: { email: 'admin@ecommerce.com' },
+    update: { name: 'Admin User', passwordHash: adminPassword, role: UserRole.ADMIN },
+    create: { email: 'admin@ecommerce.com', name: 'Admin User', passwordHash: adminPassword, role: UserRole.ADMIN }
   })
 
   const financePassword = await bcrypt.hash('finance123', 12)
-  const finance = await prisma.user.create({
-    data: {
-      email: 'finance@ecommerce.com',
-      name: 'Finance Analyst',
-      passwordHash: financePassword,
-      role: UserRole.FINANCE_ANALYST
-    }
+  const finance = await prisma.user.upsert({
+    where: { email: 'finance@ecommerce.com' },
+    update: { name: 'Finance Analyst', passwordHash: financePassword, role: UserRole.FINANCE_ANALYST },
+    create: { email: 'finance@ecommerce.com', name: 'Finance Analyst', passwordHash: financePassword, role: UserRole.FINANCE_ANALYST }
   })
 
   const opsPassword = await bcrypt.hash('ops123', 12)
-  const operations = await prisma.user.create({
-    data: {
-      email: 'operations@ecommerce.com',
-      name: 'Operations Manager',
-      passwordHash: opsPassword,
-      role: UserRole.OPERATIONS_MANAGER
-    }
+  const operations = await prisma.user.upsert({
+    where: { email: 'operations@ecommerce.com' },
+    update: { name: 'Operations Manager', passwordHash: opsPassword, role: UserRole.OPERATIONS_MANAGER },
+    create: { email: 'operations@ecommerce.com', name: 'Operations Manager', passwordHash: opsPassword, role: UserRole.OPERATIONS_MANAGER }
   })
 
   console.log('✅ Created admin users')

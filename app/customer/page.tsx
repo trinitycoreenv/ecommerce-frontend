@@ -36,14 +36,14 @@ function ProductImage({ product }: { product: Product }) {
   const [imageError, setImageError] = useState(false)
   const [imageLoaded, setImageLoaded] = useState(false)
 
-  const hasValidImage = product.images && product.images.length > 0 && product.images[0] && !imageError
+  const hasValidImage = Array.isArray(product.images) && product.images.length > 0 && product.images[0] && !imageError
 
   return (
     <div className="aspect-video bg-muted rounded-t-lg flex items-center justify-center overflow-hidden relative">
       {hasValidImage ? (
         <>
           <img 
-            src={product.images[0]} 
+            src={product.images?.[0] ?? '/placeholder.svg'} 
             alt={product.name}
             className="h-full w-full object-cover rounded-t-lg"
             onError={() => setImageError(true)}
@@ -307,8 +307,8 @@ export default function CustomerShopPage() {
                     <h3 className="text-heading mb-1 line-clamp-2">{product.name}</h3>
                     <p className="text-body text-sm text-muted-foreground mb-3">by {product.vendor.businessName}</p>
                     <div className="flex items-center justify-between">
-                      <span className="text-title text-lg text-primary">₱{Number(product.price).toFixed(2)}</span>
-                      <Button size="sm" className="opacity-0 group-hover:opacity-100 transition-opacity" asChild>
+                      <span className="text-title text-lg text-primary">${Number(product.price).toFixed(2)}</span>
+                      <Button size="sm" asChild>
                         <Link href={`/shop/product/${product.id}`}>
                           <ShoppingCart className="h-4 w-4" />
                         </Link>

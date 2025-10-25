@@ -90,6 +90,23 @@ export function AdvancedChart({
         },
       }
 
+  // Handle empty data
+  if (!data || data.length === 0) {
+    return (
+      <Card className={className}>
+        <CardHeader>
+          <CardTitle className="text-sm md:text-base">{title}</CardTitle>
+          {description && <CardDescription className="text-xs md:text-sm">{description}</CardDescription>}
+        </CardHeader>
+        <CardContent>
+          <div className="h-[250px] md:h-[300px] lg:h-[350px] w-full flex items-center justify-center text-muted-foreground">
+            No data available
+          </div>
+        </CardContent>
+      </Card>
+    )
+  }
+
   return (
     <Card className={className}>
       <CardHeader>
@@ -97,9 +114,9 @@ export function AdvancedChart({
         {description && <CardDescription className="text-xs md:text-sm">{description}</CardDescription>}
       </CardHeader>
       <CardContent>
-        <ChartContainer 
-          key={`chart-${theme}-${isDark}`} 
-          config={chartConfig} 
+        <ChartContainer
+          key={`chart-${theme}-${isDark}`}
+          config={chartConfig}
           className="h-[250px] md:h-[300px] lg:h-[350px] w-full"
         >
           <ResponsiveContainer width="100%" height="100%">

@@ -1,4 +1,4 @@
-"use client"
+﻿"use client"
 
 import { useState, useEffect } from "react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
@@ -58,11 +58,25 @@ export default function SubscriptionPage() {
       const data = await response.json()
       
       if (data.success) {
-        const plans = data.data.map((plan: any) => ({
+        // Map plans and mark free trial where applicable
+        const mapped = data.data.map((plan: any) => ({
           ...plan,
           hasFreeTrial: plan.tier === 'PREMIUM' && plan.trialDays > 0 // Only PRO plan has free trial
         }))
-        setSubscriptionPlans(plans)
+
+        // Stronger dedupe: filter by composite signature (name|tier|price|features|isPopular)
+        // This handles cases where the backend accidentally returns duplicate rows with
+        // different ids but identical plan data.
+        const seen = new Set<string>()
+        const uniqueBySignature = mapped.filter((p: any) => {
+          const featuresSig = Array.isArray(p.features) ? p.features.join('|') : String(p.features || '')
+          const sig = `${p.name}::${p.tier}::${p.price}::${featuresSig}::${p.isPopular ? '1' : '0'}`
+          if (seen.has(sig)) return false
+          seen.add(sig)
+          return true
+        })
+
+        setSubscriptionPlans(uniqueBySignature)
       }
     } catch (error) {
       console.error('Failed to fetch subscription plans:', error)
@@ -225,7 +239,7 @@ export default function SubscriptionPage() {
                 {/* Price with 3D effect */}
                 <div className="mt-2 space-y-1">
                   <div className="flex items-baseline justify-center gap-1">
-                    <span className="text-xl font-bold">₱{plan.price.toLocaleString()}</span>
+                    <span className="text-xl font-bold">${plan.price.toLocaleString()}</span>
                     <span className="text-muted-foreground text-xs">/month</span>
                   </div>
                   {plan.hasFreeTrial && (

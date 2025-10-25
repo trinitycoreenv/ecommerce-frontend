@@ -11,7 +11,7 @@ async function getShippingStats(request: AuthenticatedRequest) {
     const { searchParams } = new URL(request.url)
     const vendorId = searchParams.get('vendorId')
 
-    // Only allow vendors to see their own stats, or admins to see all
+    // Only allow vendors to see their own stats, or admins/operations managers to see all
     const targetVendorId = request.user.role === 'VENDOR' ? request.user.userId : vendorId || undefined
 
     const stats = await ShippingService.getShippingStats(targetVendorId)

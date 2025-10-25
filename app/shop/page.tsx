@@ -312,7 +312,7 @@ export default function ShopPage() {
                     <h3 className="text-heading mb-1 line-clamp-2">{product.name}</h3>
                     <p className="text-body text-sm text-muted-foreground mb-3">by {product.vendor.businessName}</p>
                     <div className="flex items-center justify-between">
-                      <span className="text-title text-lg text-primary">₱{Number(product.price).toFixed(2)}</span>
+                      <span className="text-title text-lg text-primary">${Number(product.price).toFixed(2)}</span>
                       <Button size="sm" className="opacity-0 group-hover:opacity-100 transition-opacity" asChild>
                         <Link href={`/shop/product/${product.id}`}>
                           <ShoppingCart className="h-4 w-4" />

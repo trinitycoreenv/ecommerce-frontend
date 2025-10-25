@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react"
 import { KPICard } from "@/components/shared/kpi-card"
-import { AdvancedChart } from "@/components/shared/advanced-chart"
 import { DataList } from "@/components/shared/data-list"
 import { StatusBadge } from "@/components/shared/status-badge"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"

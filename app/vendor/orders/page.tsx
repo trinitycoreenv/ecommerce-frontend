@@ -84,6 +84,15 @@ interface Order {
     amount: number
     type: string
   }>
+  shipments?: Array<{
+    id: string
+    carrier: string
+    trackingNumber: string
+    status: string
+    estimatedDelivery?: string
+    actualDelivery?: string
+    shippingCost: number
+  }>
 }
 
 export default function VendorOrdersPage() {
@@ -93,6 +102,8 @@ export default function VendorOrdersPage() {
   const [searchTerm, setSearchTerm] = useState("")
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [selectedOrder, setSelectedOrder] = useState<Order | null>(null)
+  const [newStatus, setNewStatus] = useState<string>("")
+  const [isUpdatingStatus, setIsUpdatingStatus] = useState(false)
   const { toast } = useToast()
   const { user } = useAuth()
   const router = useRouter()
@@ -180,9 +191,9 @@ export default function VendorOrdersPage() {
   }
 
   const formatPrice = (price: number) => {
-    return new Intl.NumberFormat('en-PH', {
+    return new Intl.NumberFormat('en-US', {
       style: 'currency',
-      currency: 'PHP',
+      currency: 'USD',
     }).format(price)
   }
 
@@ -194,6 +205,56 @@ export default function VendorOrdersPage() {
   const closeOrderDetails = () => {
     setIsModalOpen(false)
     setSelectedOrder(null)
+    setNewStatus("")
+  }
+
+  const handleUpdateStatus = async () => {
+    if (!selectedOrder || !newStatus) return
+
+    try {
+      setIsUpdatingStatus(true)
+      const response = await fetch(`/api/vendor/orders/${selectedOrder.id}/status`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${localStorage.getItem('auth_token')}`
+        },
+        body: JSON.stringify({ status: newStatus })
+      })
+
+      const data = await response.json()
+
+      if (data.success) {
+        toast({
+          title: "Success",
+          description: "Order status updated successfully"
+        })
+        // Update the order in the list
+        setOrders(orders.map(order =>
+          order.id === selectedOrder.id
+            ? { ...order, status: newStatus }
+            : order
+        ))
+        // Update selected order
+        setSelectedOrder({ ...selectedOrder, status: newStatus })
+        setNewStatus("")
+      } else {
+        toast({
+          title: "Error",
+          description: data.error || "Failed to update order status",
+          variant: "destructive"
+        })
+      }
+    } catch (error) {
+      console.error('Failed to update order status:', error)
+      toast({
+        title: "Error",
+        description: "Failed to update order status",
+        variant: "destructive"
+      })
+    } finally {
+      setIsUpdatingStatus(false)
+    }
   }
 
   // Filter orders based on search and status
@@ -453,6 +514,75 @@ export default function VendorOrdersPage() {
                 <p className="font-medium">{selectedOrder.customer.name} ({selectedOrder.customer.email})</p>
               </div>
               <Separator />
+              {/* Update Order Status */}
+              <div className="bg-muted/50 p-4 rounded-lg">
+                <h3 className="font-semibold mb-3 flex items-center gap-2">
+                  <Truck className="h-4 w-4" />
+                  Update Order Status
+                </h3>
+                <div className="flex gap-2">
+                  <Select value={newStatus} onValueChange={setNewStatus}>
+                    <SelectTrigger className="flex-1">
+                      <SelectValue placeholder="Select new status" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="PENDING">Pending</SelectItem>
+                      <SelectItem value="CONFIRMED">Confirmed</SelectItem>
+                      <SelectItem value="PROCESSING">Processing</SelectItem>
+                      <SelectItem value="SHIPPED">Shipped</SelectItem>
+                      <SelectItem value="DELIVERED">Delivered</SelectItem>
+                      <SelectItem value="CANCELLED">Cancelled</SelectItem>
+                    </SelectContent>
+                  </Select>
+                  <Button
+                    onClick={handleUpdateStatus}
+                    disabled={!newStatus || isUpdatingStatus}
+                  >
+                    {isUpdatingStatus ? (
+                      <>
+                        <Loader2 className="h-4 w-4 mr-2 animate-spin" />
+                        Updating...
+                      </>
+                    ) : (
+                      'Update Status'
+                    )}
+                  </Button>
+                </div>
+              </div>
+              <Separator />
+
+              {/* Shipment Tracking Info */}
+              {selectedOrder.shipments && selectedOrder.shipments.length > 0 && (
+                <div className="bg-blue-50 dark:bg-blue-950 p-4 rounded-lg border border-blue-200 dark:border-blue-800">
+                  <div className="flex items-center gap-2 mb-3">
+                    <Truck className="h-5 w-5 text-blue-600" />
+                    <h3 className="font-semibold text-blue-900 dark:text-blue-100">Shipment Information</h3>
+                  </div>
+                  <div className="grid gap-3 md:grid-cols-2">
+                    <div>
+                      <p className="text-sm text-muted-foreground">Carrier</p>
+                      <p className="font-medium">{selectedOrder.shipments[0].carrier}</p>
+                    </div>
+                    <div>
+                      <p className="text-sm text-muted-foreground">Tracking Number</p>
+                      <p className="font-mono font-medium">{selectedOrder.shipments[0].trackingNumber || 'Not available'}</p>
+                    </div>
+                    <div>
+                      <p className="text-sm text-muted-foreground">Shipment Status</p>
+                      <Badge className="mt-1">{selectedOrder.shipments[0].status.replace('_', ' ')}</Badge>
+                    </div>
+                    <div>
+                      <p className="text-sm text-muted-foreground">Estimated Delivery</p>
+                      <p className="font-medium">
+                        {selectedOrder.shipments[0].estimatedDelivery
+                          ? new Date(selectedOrder.shipments[0].estimatedDelivery).toLocaleDateString()
+                          : 'TBD'}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              )}
+
               <div>
                 <h3 className="font-semibold mb-3">Shipping Address</h3>
                 <p>{selectedOrder.shippingAddress.firstName} {selectedOrder.shippingAddress.lastName}</p>
@@ -490,7 +620,7 @@ export default function VendorOrdersPage() {
                         {item.variant && (
                           <p className="text-sm text-muted-foreground">{item.variant.name} ({Object.values(item.variant.attributes).join(', ')})</p>
                         )}
-                        <p className="text-sm text-muted-foreground">Vendor: {item.product.vendor.businessName}</p>
+                        <p className="text-sm text-muted-foreground">Vendor: {item.product.vendor?.businessName || 'Unknown'}</p>
                       </div>
                       <div className="text-right">
                         <p className="font-medium">{formatPrice(item.price)}</p>
@@ -505,7 +635,7 @@ export default function VendorOrdersPage() {
               <div>
                 <h3 className="font-semibold mb-3">Transactions</h3>
             <div className="space-y-2">
-                  {selectedOrder.transactions.length > 0 ? (
+                  {selectedOrder.transactions && selectedOrder.transactions.length > 0 ? (
                     selectedOrder.transactions.map((transaction) => (
                       <div key={transaction.id} className="flex items-center justify-between text-sm p-2 border rounded-lg">
                         <p className="font-medium">{transaction.type}</p>

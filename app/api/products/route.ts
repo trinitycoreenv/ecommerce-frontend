@@ -310,6 +310,19 @@ async function createProduct(request: AuthenticatedRequest) {
       }
     })
 
+    // Auto-validate product against policies
+    try {
+      const { PolicyService } = await import('@/lib/services/policy')
+      const validationResult = await PolicyService.validateProduct(product.id, true)
+
+      if (!validationResult.isCompliant) {
+        console.log(`Product ${product.id} has ${validationResult.violations.length} policy violations`)
+      }
+    } catch (policyError) {
+      console.error('Policy validation error:', policyError)
+      // Don't fail product creation if policy validation fails
+    }
+
     return NextResponse.json({
       success: true,
       data: product

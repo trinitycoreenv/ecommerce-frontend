@@ -101,7 +101,7 @@ export default function CartPage() {
                           <Plus className="h-3 w-3" />
                         </Button>
                       </div>
-                      <p className="text-lg font-bold">₱{(item.price * item.quantity).toLocaleString('en-PH')}</p>
+                      <p className="text-lg font-bold">${(item.price * item.quantity).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
                     </div>
                     {item.quantity >= item.maxQuantity && (
                       <p className="text-xs text-muted-foreground">
@@ -125,25 +125,25 @@ export default function CartPage() {
               <div className="space-y-2">
                 <div className="flex justify-between text-sm">
                   <span className="text-muted-foreground">Subtotal</span>
-                  <span className="font-medium">₱{subtotal.toLocaleString('en-PH')}</span>
+                  <span className="font-medium">${subtotal.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>
                 </div>
                 <div className="flex justify-between text-sm">
                   <span className="text-muted-foreground">Shipping</span>
-                  <span className="font-medium">{shipping === 0 ? "Free" : `₱${shipping.toLocaleString('en-PH')}`}</span>
+                  <span className="font-medium">{shipping === 0 ? "Free" : `$${shipping.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`}</span>
                 </div>
                 <div className="flex justify-between text-sm">
                   <span className="text-muted-foreground">Tax (8%)</span>
-                  <span className="font-medium">₱{tax.toLocaleString('en-PH')}</span>
+                  <span className="font-medium">${tax.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>
                 </div>
                 <Separator />
                 <div className="flex justify-between">
                   <span className="font-semibold">Total</span>
-                  <span className="text-2xl font-bold">₱{total.toLocaleString('en-PH')}</span>
+                  <span className="text-2xl font-bold">${total.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>
                 </div>
               </div>
               {shipping > 0 && (
                 <p className="text-xs text-muted-foreground">
-                  Add ₱{(5000 - subtotal).toLocaleString('en-PH')} more for free shipping
+                  Add ${(5000 - subtotal).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} more for free shipping
                 </p>
               )}
             </CardContent>

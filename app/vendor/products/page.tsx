@@ -293,7 +293,11 @@ export default function ProductManagementPage() {
                 flagged and may be removed.
               </p>
             </div>
-            <Button variant="outline" size="sm">
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => window.location.href = '/vendor/policies'}
+            >
               View Policies
             </Button>
           </div>

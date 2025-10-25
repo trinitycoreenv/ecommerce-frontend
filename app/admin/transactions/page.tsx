@@ -1,4 +1,4 @@
-"use client"
+﻿"use client"
 
 import { DataTable } from "@/components/shared/data-table"
 import { StatusBadge } from "@/components/shared/status-badge"
@@ -68,7 +68,7 @@ export default function TransactionsPage() {
             <CardTitle className="text-sm font-medium text-muted-foreground">Transaction Volume</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-3xl font-bold">₱0</div>
+            <div className="text-3xl font-bold">$0</div>
             <p className="text-sm text-muted-foreground mt-1">No data available</p>
           </CardContent>
         </Card>
@@ -77,7 +77,7 @@ export default function TransactionsPage() {
             <CardTitle className="text-sm font-medium text-muted-foreground">Pending Payouts</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-3xl font-bold">₱0</div>
+            <div className="text-3xl font-bold">$0</div>
             <p className="text-sm text-muted-foreground mt-1">No data available</p>
           </CardContent>
         </Card>
@@ -86,7 +86,7 @@ export default function TransactionsPage() {
             <CardTitle className="text-sm font-medium text-muted-foreground">Platform Commission</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-3xl font-bold">₱0</div>
+            <div className="text-3xl font-bold">$0</div>
             <p className="text-sm text-muted-foreground mt-1">No data available</p>
           </CardContent>
         </Card>

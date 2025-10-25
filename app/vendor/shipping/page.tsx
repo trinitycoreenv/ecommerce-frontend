@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useState, useEffect } from 'react'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
@@ -508,7 +508,7 @@ export default function VendorShippingDashboard() {
                         <div className="text-right">
                           <p className="font-medium">{shipment.carrier}</p>
                           <p className="text-sm text-muted-foreground">
-                            ₱{Number(shipment.shippingCost).toFixed(2)}
+                            ${Number(shipment.shippingCost).toFixed(2)}
                           </p>
                         </div>
                         <Badge className={getStatusColor(shipment.status)}>
@@ -598,7 +598,7 @@ export default function VendorShippingDashboard() {
                   </div>
                   <div className="flex items-center justify-between">
                     <span className="text-sm font-medium">Total Shipping Cost</span>
-                    <span className="text-sm">₱{stats?.totalShippingCost.toFixed(2) || '0.00'}</span>
+                    <span className="text-sm">${stats?.totalShippingCost.toFixed(2) || '0.00'}</span>
                   </div>
                 </div>
               </CardContent>

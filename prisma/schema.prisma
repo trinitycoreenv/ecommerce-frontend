@@ -8,7 +8,6 @@ generator client {
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
-  directUrl = env("DIRECT_DATABASE_URL")
 }
 
 // Enums
@@ -98,6 +97,31 @@ enum ReportType {
   FINANCIAL_SUMMARY
 }
 
+enum PolicyType {
+  PROHIBITED_PRODUCT
+  COUNTERFEIT
+  CONTENT_RESTRICTION
+  SELLER_BEHAVIOR
+  PRICING
+  SHIPPING
+  QUALITY_STANDARD
+}
+
+enum PolicySeverity {
+  LOW
+  MEDIUM
+  HIGH
+  CRITICAL
+}
+
+enum ViolationStatus {
+  PENDING
+  UNDER_REVIEW
+  RESOLVED
+  APPEALED
+  REJECTED
+}
+
 // Core Models
 model User {
   id            String   @id @default(uuid()) @db.Uuid
@@ -125,6 +149,8 @@ model User {
   auditLogs     AuditLog[]
   businessVerifications BusinessVerification[] @relation("BusinessVerifier")
   trialUsage            TrialUsage[]
+  flaggedViolations     PolicyViolation[] @relation("FlaggedViolations")
+  reviewedViolations    PolicyViolation[] @relation("ReviewedViolations")
 
   @@map("users")
 }
@@ -163,6 +189,7 @@ model Vendor {
   commissions     Commission[]
   commissionRates CommissionRate[]
   businessVerification BusinessVerification?
+  policyViolations PolicyViolation[]
 
   @@map("vendors")
 }
@@ -312,6 +339,7 @@ model Product {
   category    Category      @relation(fields: [categoryId], references: [id])
   variants    ProductVariant[]
   orderItems  OrderItem[]
+  policyViolations PolicyViolation[]
 
   @@map("products")
 }
@@ -563,4 +591,55 @@ model AuditLog {
   user      User     @relation(fields: [userId], references: [id])
 
   @@map("audit_logs")
+}
+
+model Policy {
+  id          String         @id @default(uuid()) @db.Uuid
+  name        String
+  description String
+  type        PolicyType
+  severity    PolicySeverity @default(MEDIUM)
+  rules       Json
+  isActive    Boolean        @default(true) @map("is_active")
+  autoEnforce Boolean        @default(false) @map("auto_enforce")
+  createdAt   DateTime       @default(now()) @map("created_at")
+  updatedAt   DateTime       @updatedAt @map("updated_at")
+
+  // Relations
+  violations  PolicyViolation[]
+
+  @@index([type])
+  @@index([isActive])
+  @@map("policies")
+}
+
+model PolicyViolation {
+  id              String          @id @default(uuid()) @db.Uuid
+  policyId        String          @map("policy_id") @db.Uuid
+  productId       String          @map("product_id") @db.Uuid
+  vendorId        String          @map("vendor_id") @db.Uuid
+  status          ViolationStatus @default(PENDING)
+  reason          String
+  details         Json?
+  flaggedBy       String?         @map("flagged_by") @db.Uuid
+  reviewedBy      String?         @map("reviewed_by") @db.Uuid
+  resolvedAt      DateTime?       @map("resolved_at")
+  appealMessage   String?         @map("appeal_message")
+  appealDocuments Json?           @map("appeal_documents")
+  adminNotes      String?         @map("admin_notes")
+  createdAt       DateTime        @default(now()) @map("created_at")
+  updatedAt       DateTime        @updatedAt @map("updated_at")
+
+  // Relations
+  policy          Policy          @relation(fields: [policyId], references: [id], onDelete: Cascade)
+  product         Product         @relation(fields: [productId], references: [id], onDelete: Cascade)
+  vendor          Vendor          @relation(fields: [vendorId], references: [id], onDelete: Cascade)
+  flaggedByUser   User?           @relation("FlaggedViolations", fields: [flaggedBy], references: [id], onDelete: SetNull)
+  reviewedByUser  User?           @relation("ReviewedViolations", fields: [reviewedBy], references: [id], onDelete: SetNull)
+
+  @@index([productId])
+  @@index([vendorId])
+  @@index([status])
+  @@index([policyId])
+  @@map("policy_violations")
 }

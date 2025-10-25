@@ -1,4 +1,4 @@
-"use client"
+﻿"use client"
 
 import { useState, useEffect } from "react"
 import { DataTable } from "@/components/shared/data-table"
@@ -146,7 +146,7 @@ export default function SubscriptionsPage() {
             <CardTitle className="text-sm font-medium text-muted-foreground">Monthly Revenue</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-3xl font-bold">₱{stats?.totalRevenue || 0}</div>
+            <div className="text-3xl font-bold">${stats?.totalRevenue || 0}</div>
             <p className="text-sm text-muted-foreground mt-1">
               Monthly recurring revenue
             </p>
@@ -205,7 +205,7 @@ export default function SubscriptionsPage() {
                 {
                   key: "price",
                   label: "Price",
-                  render: (subscription) => `₱${subscription.price}/month`,
+                  render: (subscription) => `$${subscription.price}/month`,
                 },
                 {
                   key: "status",
@@ -256,10 +256,10 @@ export default function SubscriptionsPage() {
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="Starter">Starter - ₱0/mo</SelectItem>
-                  <SelectItem value="Basic">Basic - ₱0/mo</SelectItem>
-                  <SelectItem value="Pro">Pro - ₱0/mo</SelectItem>
-                  <SelectItem value="Enterprise">Enterprise - ₱0/mo</SelectItem>
+                  <SelectItem value="Starter">Starter - $0/mo</SelectItem>
+                  <SelectItem value="Basic">Basic - $0/mo</SelectItem>
+                  <SelectItem value="Pro">Pro - $0/mo</SelectItem>
+                  <SelectItem value="Enterprise">Enterprise - $0/mo</SelectItem>
                 </SelectContent>
               </Select>
             </div>

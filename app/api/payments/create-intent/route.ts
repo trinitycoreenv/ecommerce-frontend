@@ -8,7 +8,7 @@ import { prisma } from '@/lib/prisma'
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json()
-    const { orderId, amount, currency = 'php' } = body
+    const { orderId, amount, currency = 'usd' } = body
 
     // Validate required fields
     if (!orderId || !amount) {
@@ -59,6 +59,19 @@ export async function POST(request: NextRequest) {
       }
     })
 
+    // Check if amount meets Stripe's minimum requirement (50 cents USD)
+    const minimumAmount = 0.5;
+    
+    if (amount < minimumAmount) {
+      return NextResponse.json(
+        { 
+          success: false, 
+          error: `Payment amount is too low. Minimum amount is ${minimumAmount} ${currency.toUpperCase()}` 
+        },
+        { status: 400 }
+      )
+    }
+    
     // Create payment intent
     const paymentIntent = await PaymentService.createPaymentIntent({
       amount: amount,

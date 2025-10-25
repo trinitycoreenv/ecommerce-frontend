@@ -364,7 +364,7 @@
       "inventory": 100,
       "status": "APPROVED",
       "images": [
-        "/placeholder.jpg"
+        "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=800&h=800&fit=crop"
       ],
       "metadata": {
         "care": "Machine wash cold, tumble dry low",

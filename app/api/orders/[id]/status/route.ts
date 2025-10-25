@@ -126,7 +126,7 @@ async function updateOrderStatus(
             }
           }
         },
-        orderItems: {
+        items: {
           include: {
             product: {
               select: {
@@ -146,6 +146,44 @@ async function updateOrderStatus(
         }
       }
     })
+
+    // Create shipment record when order is marked as SHIPPED
+    if (status === OrderStatus.SHIPPED && trackingNumber) {
+      try {
+        // Check if shipment already exists for this order
+        const existingShipment = await prisma.shipment.findFirst({
+          where: { orderId: orderId }
+        })
+
+        if (!existingShipment) {
+          await prisma.shipment.create({
+            data: {
+              orderId: orderId,
+              carrier: 'USPS', // Default carrier, can be updated later
+              trackingNumber: trackingNumber,
+              status: 'IN_TRANSIT',
+              estimatedDelivery: estimatedDelivery ? new Date(estimatedDelivery) : undefined,
+              shippingCost: order.shippingCost || 0,
+              notes: notes || 'Shipment created from order status update'
+            }
+          })
+        } else {
+          // Update existing shipment
+          await prisma.shipment.update({
+            where: { id: existingShipment.id },
+            data: {
+              trackingNumber: trackingNumber,
+              status: 'IN_TRANSIT',
+              estimatedDelivery: estimatedDelivery ? new Date(estimatedDelivery) : undefined,
+              notes: notes || 'Shipment updated from order status update'
+            }
+          })
+        }
+      } catch (shipmentError) {
+        console.error('Failed to create/update shipment:', shipmentError)
+        // Don't fail the order status update if shipment creation fails
+      }
+    }
 
     // Log the status change
     await prisma.auditLog.create({

@@ -20,37 +20,37 @@ export default function SellPage() {
   ]
 
   const plans = [
-    { 
-      name: "Starter", 
-      price: "₱0", 
-      period: "/month", 
+    {
+      name: "Starter",
+      price: "$0",
+      period: "/month",
       description: "Perfect for getting started",
       features: ["Up to 10 products", "25 orders/month", "15% commission", "Email support"],
       popular: false,
       trial: "Forever Free"
     },
-    { 
-      name: "Basic", 
-      price: "₱2,000", 
-      period: "/month", 
+    {
+      name: "Basic",
+      price: "$2,000",
+      period: "/month",
       description: "For growing businesses",
       features: ["Up to 50 products", "100 orders/month", "12% commission", "Email support"],
       popular: false,
       trial: "No Trial"
     },
-    { 
-      name: "Pro", 
-      price: "₱5,000", 
-      period: "/month", 
+    {
+      name: "Pro",
+      price: "$5,000",
+      period: "/month",
       description: "For established sellers",
       features: ["Up to 200 products", "500 orders/month", "8% commission", "Priority support", "Custom branding", "API access"],
       popular: true,
       trial: "14-day free trial"
     },
-    { 
-      name: "Enterprise", 
-      price: "₱10,000", 
-      period: "/month", 
+    {
+      name: "Enterprise",
+      price: "$10,000",
+      period: "/month",
       description: "For large operations",
       features: ["Unlimited products", "Unlimited orders", "5% commission", "Dedicated support", "White-label solution", "Custom integrations", "SLA guarantee"],
       popular: false,

@@ -59,7 +59,7 @@ export interface StripeCustomer {
 class PaymentService {
   private static readonly STRIPE_SECRET_KEY = process.env.STRIPE_SECRET_KEY
   private static readonly STRIPE_PUBLISHABLE_KEY = process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
-  private static readonly CURRENCY = 'php'
+  private static readonly CURRENCY = 'usd'
   private static readonly APPLICATION_FEE_PERCENTAGE = 0.029 // 2.9% application fee
 
   // Initialize Stripe instance

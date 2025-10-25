@@ -63,9 +63,16 @@ async function getVendorOrders(request: AuthenticatedRequest) {
                 select: {
                   name: true,
                   price: true,
-                  images: true
+                  images: true,
+                  vendor: {
+                    select: {
+                      id: true,
+                      businessName: true
+                    }
+                  }
                 }
-              }
+              },
+              variant: true
             }
           },
           shipments: {
@@ -74,6 +81,15 @@ async function getVendorOrders(request: AuthenticatedRequest) {
               status: true,
               trackingNumber: true,
               carrier: true
+            }
+          },
+          transactions: {
+            select: {
+              id: true,
+              type: true,
+              amount: true,
+              status: true,
+              createdAt: true
             }
           }
         },

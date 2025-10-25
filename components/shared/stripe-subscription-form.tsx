@@ -196,12 +196,9 @@ function SubscriptionForm({
   }
 
   const formatPrice = (price: number) => {
-    if (currency.toLowerCase() === 'php') {
-      return `₱${price.toLocaleString('en-PH')}`
-    }
     return new Intl.NumberFormat('en-US', {
       style: 'currency',
-      currency: currency.toUpperCase()
+      currency: 'USD'
     }).format(price)
   }
 

@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useState } from 'react'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
@@ -90,9 +90,9 @@ export function PlanSelection({ plans, selectedPlanId, onPlanSelect, onContinue,
   const getBillingText = (plan: SubscriptionPlan) => {
     if (plan.price === 0) return 'Free Forever'
     if (billingCycle === 'YEARLY') {
-      return `₱${Math.round(plan.price * 0.8)}/month billed yearly`
+      return `$${Math.round(plan.price * 0.8)}/month billed yearly`
     }
-    return `₱${plan.price}/month`
+    return `$${plan.price}/month`
   }
 
   return (
@@ -161,14 +161,14 @@ export function PlanSelection({ plans, selectedPlanId, onPlanSelect, onContinue,
               
               <div className="mt-4">
                 <div className="text-3xl font-bold">
-                  ₱{calculatePrice(plan).toLocaleString('en-PH')}
+                  ${calculatePrice(plan).toLocaleString('en-US')}
                 </div>
                 <div className="text-sm text-muted-foreground">
                   {getBillingText(plan)}
                 </div>
                 {billingCycle === 'YEARLY' && (
                   <div className="text-xs text-green-600 dark:text-green-400 mt-1">
-                    Save ₱{Math.round(plan.price * 12 * 0.2).toLocaleString('en-PH')}/year
+                    Save ${Math.round(plan.price * 12 * 0.2).toLocaleString('en-US')}/year
                   </div>
                 )}
               </div>

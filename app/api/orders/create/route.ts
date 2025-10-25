@@ -252,6 +252,26 @@ async function createOrder(request: AuthenticatedRequest) {
         transaction: order.transaction
       })
 
+      // Create shipment automatically for the order
+      const estimatedDeliveryDate = new Date()
+      estimatedDeliveryDate.setDate(estimatedDeliveryDate.getDate() + shippingMethod.estimatedDays)
+
+      const slaDeadline = new Date()
+      slaDeadline.setDate(slaDeadline.getDate() + shippingMethod.estimatedDays + 2) // SLA is 2 days after estimated delivery
+
+      await prisma.shipment.create({
+        data: {
+          orderId: order.order.id,
+          carrier: shippingMethod.type === 'express' ? 'FedEx' : shippingMethod.type === 'economy' ? 'USPS' : 'UPS',
+          trackingNumber: `TRK-${Date.now()}-${Math.random().toString(36).substr(2, 6).toUpperCase()}`,
+          status: 'PENDING',
+          estimatedDelivery: estimatedDeliveryDate,
+          slaDeadline: slaDeadline,
+          shippingCost: shippingCost,
+          notes: `Shipment created automatically for order ${orderNumber}`
+        }
+      })
+
       // Log order creation
       await prisma.auditLog.create({
         data: {

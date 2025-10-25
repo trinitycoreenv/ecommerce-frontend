@@ -1,4 +1,6 @@
 import { prisma } from '@/lib/prisma'
+import { getShippo, toShippoAddress, toShippoParcel, handleShippoRequest } from '@/lib/clients/shippo'
+import { ShipmentStatus } from '@prisma/client'
 
 export interface ShippingAddress {
   name: string
@@ -41,7 +43,7 @@ export interface ShippingLabel {
   currency: string
   service: string
   carrier: string
-  status: 'CREATED' | 'PURCHASED' | 'CANCELLED' | 'REFUNDED'
+  status: ShipmentStatus
   createdAt: Date
 }
 
@@ -114,6 +116,13 @@ export class ShippingService {
     packageInfo: PackageDimensions,
     services?: string[]
   ): Promise<ShippingRate[]> {
+    // If Shippo is configured, fetch real-time rates via Shippo
+    if (process.env.SHIPPO_API_KEY) {
+      const shippoRates = await this.getShippoRates(fromAddress, toAddress, packageInfo, services)
+      return shippoRates.sort((a, b) => a.cost - b.cost)
+    }
+
+    // Fallback to mock provider rates
     const rates: ShippingRate[] = []
     const activeProviders = this.getProviders()
 
@@ -410,37 +419,38 @@ export class ShippingService {
     carrier: string,
     orderId: string
   ): Promise<ShippingLabel> {
-    // In a real implementation, this would call the carrier's API to create a label
-    // For now, we'll create a mock label
-    
+    // Use Shippo when available; otherwise create a mock label
+    if (process.env.SHIPPO_API_KEY) {
+      return await this.createShippoLabel(fromAddress, toAddress, packageInfo, service, carrier, orderId)
+    }
+
     const trackingNumber = this.generateTrackingNumber(carrier)
     const labelId = `label_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`
-    
+
     const label: ShippingLabel = {
       id: labelId,
       trackingNumber,
       labelUrl: `https://api.example.com/labels/${labelId}.pdf`,
       trackingUrl: this.getTrackingUrl(carrier, trackingNumber),
-      cost: 0, // Will be calculated based on service
+      cost: 0,
       currency: 'PHP',
       service,
       carrier,
-      status: 'CREATED',
+      status: ShipmentStatus.PENDING,
       createdAt: new Date()
     }
-    
-    // Store label in database
+
     await prisma.shipment.create({
       data: {
         orderId,
         carrier,
         trackingNumber,
-        status: 'CREATED',
-        shippingCost: 0, // Will be updated with actual cost
+        status: ShipmentStatus.PENDING,
+        shippingCost: 0,
         notes: `Label created for ${service} via ${carrier}`
       }
     })
-    
+
     return label
   }
 
@@ -448,12 +458,12 @@ export class ShippingService {
    * Generate tracking number based on carrier
    */
   private static generateTrackingNumber(carrier: string): string {
-    const prefixes = {
+    const prefixes: Record<string, string> = {
       'UPS': '1Z',
       'FedEx': 'FX',
       'USPS': 'US',
       'DHL': 'DH'
-    }
+    } as const
     
     const prefix = prefixes[carrier] || 'XX'
     const randomPart = Math.random().toString(36).substr(2, 18).toUpperCase()
@@ -464,12 +474,12 @@ export class ShippingService {
    * Get tracking URL for a carrier
    */
   private static getTrackingUrl(carrier: string, trackingNumber: string): string {
-    const baseUrls = {
+    const baseUrls: Record<string, string> = {
       'UPS': 'https://www.ups.com/track?track=yes&trackNums=',
       'FedEx': 'https://www.fedex.com/fedextrack/?trknbr=',
       'USPS': 'https://tools.usps.com/go/TrackConfirmAction?qtc_tLabels1=',
       'DHL': 'https://www.dhl.com/en/express/tracking.html?AWB='
-    }
+    } as const
     
     const baseUrl = baseUrls[carrier] || 'https://example.com/track?number='
     return `${baseUrl}${trackingNumber}`
@@ -479,30 +489,32 @@ export class ShippingService {
    * Get tracking information for a package
    */
   static async getTrackingInfo(trackingNumber: string, carrier: string): Promise<TrackingInfo[]> {
-    // In a real implementation, this would call the carrier's tracking API
-    // For now, we'll return mock tracking information
-    
+    // Use Shippo when configured; otherwise return mock tracking info
+    if (process.env.SHIPPO_API_KEY) {
+      return await this.getShippoTrackingInfo(trackingNumber, carrier)
+    }
+
     const mockTrackingEvents = [
       {
         status: 'In Transit',
         description: 'Package is in transit to destination',
         location: 'Distribution Center',
-        timestamp: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000) // 2 days ago
+        timestamp: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000)
       },
       {
         status: 'Picked Up',
         description: 'Package has been picked up',
         location: 'Origin Facility',
-        timestamp: new Date(Date.now() - 3 * 24 * 60 * 60 * 1000) // 3 days ago
+        timestamp: new Date(Date.now() - 3 * 24 * 60 * 60 * 1000)
       },
       {
         status: 'Label Created',
         description: 'Shipping label has been created',
         location: 'Origin',
-        timestamp: new Date(Date.now() - 4 * 24 * 60 * 60 * 1000) // 4 days ago
+        timestamp: new Date(Date.now() - 4 * 24 * 60 * 60 * 1000)
       }
     ]
-    
+
     return mockTrackingEvents.map(event => ({
       trackingNumber,
       status: event.status,
@@ -604,5 +616,157 @@ export class ShippingService {
     }, 0)
     
     return Math.round(totalDays / deliveredShipments.length)
+  }
+
+  /**
+   * Shippo: Get real-time shipping rates
+   */
+  private static async getShippoRates(
+    fromAddress: ShippingAddress,
+    toAddress: ShippingAddress,
+    packageInfo: PackageDimensions,
+    services?: string[]
+  ): Promise<ShippingRate[]> {
+    const shippo = getShippo()
+    const addressFrom = toShippoAddress(fromAddress)
+    const addressTo = toShippoAddress(toAddress)
+    const parcel = toShippoParcel(packageInfo)
+
+    const shipment = await handleShippoRequest(shippo.shipments.create({
+      addressFrom,
+      addressTo,
+      parcels: [parcel],
+      async: false
+    }))
+
+    const rawRates = Array.isArray((shipment as any).rates) ? (shipment as any).rates : []
+
+    // Log all available carriers for debugging
+    console.log(`Shippo returned ${rawRates.length} rates from carriers:`,
+      [...new Set(rawRates.map((r: any) => r?.provider || r?.carrier || 'Unknown'))])
+
+    const mapped: ShippingRate[] = rawRates
+      .filter((r: any) => {
+        // Filter out invalid rates
+        if (!r || !r.amount || r.amount === '0' || r.amount === 0) return false
+
+        // If services filter is provided, apply it
+        if (!services || services.length === 0) return true
+        const name = r?.servicelevel?.name || r?.servicelevel_name || ''
+        const token = r?.servicelevel?.token || r?.servicelevel_token || ''
+        return services.some(s =>
+          s.toLowerCase() === name.toLowerCase() || s.toLowerCase() === token.toLowerCase()
+        )
+      })
+      .map((r: any) => {
+        const estimatedDays = Number(r?.estimated_days || 0)
+        const estimatedDelivery = estimatedDays > 0 ? new Date(Date.now() + estimatedDays * 24 * 60 * 60 * 1000) : undefined
+
+        return {
+          service: r?.servicelevel?.name || r?.servicelevel_name || 'Unknown',
+          serviceCode: r?.servicelevel?.token || r?.servicelevel_token || 'UNKNOWN',
+          carrier: r?.provider || r?.carrier || 'Unknown',
+          cost: Number(r?.amount || r?.price || 0),
+          currency: r?.currency || 'USD',
+          estimatedDays,
+          estimatedDelivery,
+          description: r?.duration_terms || r?.servicelevel?.name || undefined
+        } as ShippingRate
+      })
+
+    console.log(`Returning ${mapped.length} valid rates after filtering`)
+    return mapped
+  }
+
+  /**
+   * Shippo: Create shipping label via transaction
+   */
+  private static async createShippoLabel(
+    fromAddress: ShippingAddress,
+    toAddress: ShippingAddress,
+    packageInfo: PackageDimensions,
+    service: string,
+    carrier: string,
+    orderId: string
+  ): Promise<ShippingLabel> {
+    const shippo = getShippo()
+    const addressFrom = toShippoAddress(fromAddress)
+    const addressTo = toShippoAddress(toAddress)
+    const parcel = toShippoParcel(packageInfo)
+
+    const shipment = await shippo.shipments.create({ addressFrom, addressTo, parcels: [parcel], async: false })
+
+    const rates: any[] = Array.isArray((shipment as any).rates) ? (shipment as any).rates : []
+
+    const match = rates.find(r => {
+      const name = r?.servicelevel?.name || r?.servicelevel_name || ''
+      const token = r?.servicelevel?.token || r?.servicelevel_token || ''
+      const provider = r?.provider || r?.carrier || ''
+      return (
+        provider.toLowerCase() === carrier.toLowerCase() &&
+        (name.toLowerCase() === service.toLowerCase() || token.toLowerCase() === service.toLowerCase())
+      )
+    }) || rates.sort((a, b) => Number(a.amount || 0) - Number(b.amount || 0))[0]
+
+    if (!match) {
+      throw new Error('No Shippo rate available to create label')
+    }
+
+    const transaction = await handleShippoRequest(shippo.transactions.create({
+      rate: match.object_id || match.objectId,
+      labelFileType: 'PDF',
+      async: false
+    }))
+
+    const label: ShippingLabel = {
+      id: (transaction as any).object_id || (transaction as any).objectId || `tx_${Date.now()}`,
+      trackingNumber: (transaction as any).tracking_number || '',
+      labelUrl: (transaction as any).label_url || '',
+      trackingUrl: (transaction as any).tracking_url_provider || '',
+      cost: Number((transaction as any).amount || 0),
+      currency: (transaction as any).currency || 'USD',
+      service: match?.servicelevel?.name || match?.servicelevel_name || service,
+      carrier: match?.provider || match?.carrier || carrier,
+      status: ((transaction as any).status || 'SUCCESS') === 'SUCCESS' ? ShipmentStatus.IN_TRANSIT : ShipmentStatus.PENDING,
+      createdAt: new Date()
+    }
+
+    await prisma.shipment.create({
+      data: {
+        orderId,
+        carrier: label.carrier,
+        trackingNumber: label.trackingNumber,
+        status: label.status === ShipmentStatus.IN_TRANSIT ? ShipmentStatus.IN_TRANSIT : ShipmentStatus.PENDING,
+        shippingCost: label.cost,
+        notes: `Label created via Shippo for ${label.service}`
+      }
+    })
+
+    return label
+  }
+
+  /**
+   * Shippo: Tracking info
+   */
+  private static async getShippoTrackingInfo(trackingNumber: string, carrier: string): Promise<TrackingInfo[]> {
+    const shippo = getShippo()
+
+    const resp = await handleShippoRequest(shippo.trackingStatus.get({
+      carrier,
+      trackingNumber
+    }))
+
+    const history: any[] = Array.isArray((resp as any).tracking_history) ? (resp as any).tracking_history : []
+    const events = history.length > 0 ? history : (resp as any).tracking_status ? [(resp as any).tracking_status] : []
+
+    return events.map((e: any) => ({
+      trackingNumber,
+      status: e?.status || e?.status_details || 'Unknown',
+      description: e?.status_details || e?.status || '',
+      location: e?.location || e?.location_city || undefined,
+      timestamp: e?.status_date ? new Date(e.status_date) : new Date(),
+      carrier,
+      service: 'Standard'
+    }))
   }
 }

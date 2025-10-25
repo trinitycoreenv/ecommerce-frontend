@@ -13,7 +13,8 @@ import { AnimatedCounter } from '@/components/ui/animated-counter'
 import { LiveIndicator } from '@/components/ui/live-indicator'
 import { EmptyState } from '@/components/shared/empty-state'
 import { Skeleton } from '@/components/ui/skeleton'
-import { AdvancedChart } from '@/components/shared/advanced-chart'
+import { ChartContainer, ChartTooltip, ChartTooltipContent, ChartLegend, ChartLegendContent } from "@/components/ui/chart"
+import { Area, AreaChart, Bar, BarChart, Line, LineChart, Pie, PieChart, Cell, CartesianGrid, XAxis, YAxis, RadialBar, RadialBarChart, Label, PolarGrid, Radar, RadarChart, PolarAngleAxis } from "recharts"
 import { ExportDropdown, QuickExportButton } from '@/components/shared/export-dropdown'
 import { ExportService, AnalyticsExportUtils } from '@/lib/export-service'
 import { format } from 'date-fns'
@@ -283,15 +284,15 @@ export default function AnalyticsDashboard() {
   return (
     <div className="space-y-6">
       <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-        <div>
+        <div className="mb-2 md:mb-0">
           <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight">Analytics & Reports</h1>
           <p className="text-muted-foreground mt-2 text-sm md:text-base">Comprehensive business intelligence and reporting</p>
         </div>
         <div className="flex flex-col gap-2 sm:flex-row sm:items-center">
-          <div className="flex gap-1 sm:gap-2">
+          <div className="flex flex-wrap gap-1 sm:gap-2 items-center">
             <Select value={periodType} onValueChange={setPeriodType}>
-              <SelectTrigger className="w-20 sm:w-24 md:w-32">
-                <SelectValue />
+              <SelectTrigger className="w-[120px] sm:w-[140px] md:w-[160px] px-3 h-9 flex items-center justify-center">
+                <SelectValue className="text-center" />
               </SelectTrigger>
               <SelectContent>
                 <SelectItem value="daily">Daily</SelectItem>
@@ -302,9 +303,9 @@ export default function AnalyticsDashboard() {
             </Select>
             <Popover>
               <PopoverTrigger asChild>
-                <Button variant="outline" className="w-full sm:w-28 md:w-40 justify-start text-left font-normal text-xs md:text-sm">
-                  <CalendarIcon className="mr-1 sm:mr-2 h-3 w-3 md:h-4 md:w-4" />
-                  <span className="truncate">
+                <Button variant="outline" className="w-[140px] sm:w-[160px] md:w-[180px] h-9 px-2 flex items-center justify-between">
+                  <CalendarIcon className="mr-1 h-3 w-3 md:h-4 md:w-4 flex-shrink-0" />
+                  <span className="flex-1 text-center">
                     {dateRange.from ? (
                       dateRange.to ? (
                         <>
@@ -633,32 +634,81 @@ export default function AnalyticsDashboard() {
 
           {/* Overview Charts */}
           <div className="grid gap-4 grid-cols-1 md:grid-cols-2">
-            <AdvancedChart
-              title="Platform Overview"
-              description="Key platform metrics at a glance"
-              data={[
-                { name: 'Total Revenue', value: report?.revenue?.totalRevenue || 0 },
-                { name: 'Total Orders', value: report?.revenue?.totalOrders || 0 },
-                { name: 'Active Vendors', value: report?.vendors?.activeVendors || 0 },
-                { name: 'Total Products', value: report?.platform?.totalProducts || 0 }
-              ]}
-              type="pie"
-              dataKey="value"
-              showGrid={true}
-            />
-            <AdvancedChart
-              title="Business Performance"
-              description="Overall business performance metrics"
-              data={[
-                { name: 'Revenue Growth', value: report?.revenue?.revenueGrowth || 0 },
-                { name: 'Order Growth', value: 0 },
-                { name: 'Vendor Growth', value: report?.vendors?.newVendors || 0 },
-                { name: 'Product Growth', value: 0 }
-              ]}
-              type="bar"
-              dataKey="value"
-              showGrid={true}
-            />
+            <Card>
+              <CardHeader>
+                <CardTitle>Platform Overview</CardTitle>
+                <CardDescription>Key platform metrics at a glance</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <ChartContainer
+                  config={{
+                    value: {
+                      label: "Value",
+                    },
+                  }}
+                  className="h-[300px]"
+                >
+                  <PieChart>
+                    <ChartTooltip content={<ChartTooltipContent />} />
+                    <Pie
+                      data={[
+                        { name: 'Total Revenue', value: report?.revenue?.totalRevenue || 0 },
+                        { name: 'Total Orders', value: report?.revenue?.totalOrders || 0 },
+                        { name: 'Active Vendors', value: report?.vendors?.activeVendors || 0 },
+                        { name: 'Total Products', value: report?.platform?.totalProducts || 0 }
+                      ]}
+                      dataKey="value"
+                      nameKey="name"
+                      cx="50%"
+                      cy="50%"
+                      outerRadius={80}
+                      label
+                    >
+                      {[
+                        { name: 'Total Revenue', value: report?.revenue?.totalRevenue || 0 },
+                        { name: 'Total Orders', value: report?.revenue?.totalOrders || 0 },
+                        { name: 'Active Vendors', value: report?.vendors?.activeVendors || 0 },
+                        { name: 'Total Products', value: report?.platform?.totalProducts || 0 }
+                      ].map((_entry, index) => (
+                        <Cell key={`cell-${index}`} fill={`hsl(var(--chart-${(index % 5) + 1}))`} />
+                      ))}
+                    </Pie>
+                    <ChartLegend content={<ChartLegendContent />} />
+                  </PieChart>
+                </ChartContainer>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <CardTitle>Business Performance</CardTitle>
+                <CardDescription>Overall business performance metrics</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <ChartContainer
+                  config={{
+                    value: {
+                      label: "Growth %",
+                      color: "hsl(var(--chart-1))",
+                    },
+                  }}
+                  className="h-[300px]"
+                >
+                  <BarChart data={[
+                    { name: 'Revenue Growth', value: report?.revenue?.revenueGrowth || 0 },
+                    { name: 'Order Growth', value: 0 },
+                    { name: 'Vendor Growth', value: report?.vendors?.newVendors || 0 },
+                    { name: 'Product Growth', value: 0 }
+                  ]}>
+                    <CartesianGrid strokeDasharray="3 3" className="stroke-muted" />
+                    <XAxis dataKey="name" className="text-xs" />
+                    <YAxis className="text-xs" />
+                    <ChartTooltip content={<ChartTooltipContent />} />
+                    <Bar dataKey="value" fill="var(--color-value)" radius={[4, 4, 0, 0]} />
+                  </BarChart>
+                </ChartContainer>
+              </CardContent>
+            </Card>
           </div>
         </TabsContent>
 
@@ -727,52 +777,322 @@ export default function AnalyticsDashboard() {
 
           {/* Revenue Charts */}
           <div className="grid gap-4 grid-cols-1 md:grid-cols-2">
-            <AdvancedChart
-              title="Revenue Trends"
-              description="Daily revenue over the selected period"
-              data={report?.sales?.dailySales?.map(item => ({
-                name: new Date(item.date).toLocaleDateString(),
-                value: item.revenue,
-                orders: item.orders
-              })) || []}
-              type="area"
-              dataKey="value"
-              showGrid={true}
-            />
-            <AdvancedChart
-              title="Revenue vs Commissions"
-              description="Platform revenue vs commission earnings"
-              data={[
-                { name: 'Platform Revenue', value: report?.revenue.totalRevenue || 0 },
-                { name: 'Commission Earnings', value: report?.revenue.totalCommissions || 0 }
-              ]}
-              type="bar"
-              dataKey="value"
-              showGrid={true}
-            />
+            <Card>
+              <CardHeader>
+                <CardTitle>Revenue Trends</CardTitle>
+                <CardDescription>Daily revenue over the selected period</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <ChartContainer
+                  config={{
+                    value: {
+                      label: "Revenue ($)",
+                      color: "hsl(var(--chart-1))",
+                    },
+                    orders: {
+                      label: "Orders",
+                      color: "hsl(var(--chart-2))",
+                    },
+                  }}
+                  className="h-[350px]"
+                >
+                  <AreaChart data={report?.sales?.dailySales?.map(item => ({
+                    name: new Date(item.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }),
+                    value: item.revenue,
+                    orders: item.orders
+                  })) || []}>
+                    <defs>
+                      <linearGradient id="fillRevenue" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="5%" stopColor="var(--color-value)" stopOpacity={0.8} />
+                        <stop offset="95%" stopColor="var(--color-value)" stopOpacity={0.1} />
+                      </linearGradient>
+                      <linearGradient id="fillOrders" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="5%" stopColor="var(--color-orders)" stopOpacity={0.8} />
+                        <stop offset="95%" stopColor="var(--color-orders)" stopOpacity={0.1} />
+                      </linearGradient>
+                    </defs>
+                    <CartesianGrid strokeDasharray="3 3" className="stroke-muted" vertical={false} />
+                    <XAxis
+                      dataKey="name"
+                      className="text-xs"
+                      tickLine={false}
+                      axisLine={false}
+                    />
+                    <YAxis
+                      className="text-xs"
+                      tickLine={false}
+                      axisLine={false}
+                    />
+                    <ChartTooltip
+                      content={<ChartTooltipContent indicator="dot" />}
+                      cursor={{ stroke: "hsl(var(--muted-foreground))", strokeWidth: 1, strokeDasharray: "3 3" }}
+                    />
+                    <ChartLegend content={<ChartLegendContent />} />
+                    <Area
+                      type="monotone"
+                      dataKey="value"
+                      stroke="var(--color-value)"
+                      fill="url(#fillRevenue)"
+                      strokeWidth={2}
+                    />
+                    <Area
+                      type="monotone"
+                      dataKey="orders"
+                      stroke="var(--color-orders)"
+                      fill="url(#fillOrders)"
+                      strokeWidth={2}
+                    />
+                  </AreaChart>
+                </ChartContainer>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <CardTitle>Revenue vs Commissions</CardTitle>
+                <CardDescription>Platform revenue vs commission earnings</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <ChartContainer
+                  config={{
+                    revenue: {
+                      label: "Platform Revenue",
+                      color: "hsl(var(--chart-1))",
+                    },
+                    commissions: {
+                      label: "Commissions",
+                      color: "hsl(var(--chart-2))",
+                    },
+                  }}
+                  className="h-[350px]"
+                >
+                  <RadialBarChart
+                    data={[
+                      {
+                        name: "Platform Revenue",
+                        value: report?.revenue.totalRevenue || 0,
+                        fill: "var(--color-revenue)",
+                      },
+                      {
+                        name: "Commissions",
+                        value: report?.revenue.totalCommissions || 0,
+                        fill: "var(--color-commissions)",
+                      },
+                    ]}
+                    startAngle={90}
+                    endAngle={-270}
+                    innerRadius={30}
+                    outerRadius={110}
+                  >
+                    <ChartTooltip
+                      content={<ChartTooltipContent hideLabel />}
+                      cursor={false}
+                    />
+                    <PolarGrid
+                      gridType="circle"
+                      radialLines={false}
+                      stroke="none"
+                      className="first:fill-muted last:fill-background"
+                      polarRadius={[86, 74]}
+                    />
+                    <RadialBar
+                      dataKey="value"
+                      background
+                      cornerRadius={10}
+                    />
+                    <Label
+                      content={({ viewBox }) => {
+                        if (viewBox && "cx" in viewBox && "cy" in viewBox) {
+                          const total = (report?.revenue.totalRevenue || 0) + (report?.revenue.totalCommissions || 0)
+                          return (
+                            <text
+                              x={viewBox.cx}
+                              y={viewBox.cy}
+                              textAnchor="middle"
+                              dominantBaseline="middle"
+                            >
+                              <tspan
+                                x={viewBox.cx}
+                                y={viewBox.cy}
+                                className="fill-foreground text-3xl font-bold"
+                              >
+                                ${(total / 1000).toFixed(1)}k
+                              </tspan>
+                              <tspan
+                                x={viewBox.cx}
+                                y={(viewBox.cy || 0) + 24}
+                                className="fill-muted-foreground text-xs"
+                              >
+                                Total Revenue
+                              </tspan>
+                            </text>
+                          )
+                        }
+                      }}
+                    />
+                    <ChartLegend
+                      content={<ChartLegendContent />}
+                      className="-translate-y-2 flex-wrap gap-2 [&>*]:basis-1/3 [&>*]:justify-center"
+                    />
+                  </RadialBarChart>
+                </ChartContainer>
+              </CardContent>
+            </Card>
           </div>
-          
+
           <div className="grid gap-4 grid-cols-1 md:grid-cols-2">
-            <AdvancedChart
-              title="Monthly Sales Growth"
-              description="Month-over-month revenue growth"
-              data={report?.sales?.monthlySales?.map(month => ({
-                name: month.month,
-                value: month.revenue,
-                growth: month.growth
-              })) || []}
-              type="line"
-              dataKey="value"
-              showGrid={true}
-            />
-            <AdvancedChart
-              title="Order Status Distribution"
-              description="Breakdown of orders by status"
-              data={[]}
-              type="pie"
-              dataKey="value"
-              showGrid={true}
-            />
+            <Card>
+              <CardHeader>
+                <CardTitle>Monthly Sales Growth</CardTitle>
+                <CardDescription>Month-over-month revenue growth</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <ChartContainer
+                  config={{
+                    value: {
+                      label: "Revenue ($)",
+                      color: "hsl(var(--chart-3))",
+                    },
+                    growth: {
+                      label: "Growth %",
+                      color: "hsl(var(--chart-4))",
+                    },
+                  }}
+                  className="h-[350px]"
+                >
+                  <LineChart
+                    data={report?.sales?.monthlySales?.map(month => ({
+                      name: month.month,
+                      value: month.revenue,
+                      growth: month.growth
+                    })) || []}
+                    margin={{ top: 20, right: 20, bottom: 20, left: 20 }}
+                  >
+                    <CartesianGrid strokeDasharray="3 3" className="stroke-muted" vertical={false} />
+                    <XAxis
+                      dataKey="name"
+                      className="text-xs"
+                      tickLine={false}
+                      axisLine={false}
+                    />
+                    <YAxis
+                      className="text-xs"
+                      tickLine={false}
+                      axisLine={false}
+                    />
+                    <ChartTooltip
+                      content={<ChartTooltipContent indicator="line" />}
+                      cursor={{ stroke: "hsl(var(--muted-foreground))", strokeWidth: 1, strokeDasharray: "3 3" }}
+                    />
+                    <ChartLegend content={<ChartLegendContent />} />
+                    <Line
+                      type="monotone"
+                      dataKey="value"
+                      stroke="var(--color-value)"
+                      strokeWidth={3}
+                      dot={{
+                        fill: "var(--color-value)",
+                        r: 6,
+                        strokeWidth: 2,
+                        stroke: "hsl(var(--background))",
+                      }}
+                      activeDot={{
+                        r: 8,
+                        strokeWidth: 2,
+                      }}
+                    />
+                  </LineChart>
+                </ChartContainer>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <CardTitle>Order Status Distribution</CardTitle>
+                <CardDescription>Breakdown of orders by status</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <ChartContainer
+                  config={{
+                    pending: {
+                      label: "Pending",
+                      color: "hsl(var(--chart-1))",
+                    },
+                    processing: {
+                      label: "Processing",
+                      color: "hsl(var(--chart-2))",
+                    },
+                    shipped: {
+                      label: "Shipped",
+                      color: "hsl(var(--chart-3))",
+                    },
+                    delivered: {
+                      label: "Delivered",
+                      color: "hsl(var(--chart-4))",
+                    },
+                  }}
+                  className="h-[350px]"
+                >
+                  <PieChart>
+                    <ChartTooltip
+                      content={<ChartTooltipContent hideLabel />}
+                      cursor={false}
+                    />
+                    <Pie
+                      data={[
+                        { name: "Pending", value: 45, fill: "var(--color-pending)" },
+                        { name: "Processing", value: 120, fill: "var(--color-processing)" },
+                        { name: "Shipped", value: 85, fill: "var(--color-shipped)" },
+                        { name: "Delivered", value: 250, fill: "var(--color-delivered)" },
+                      ]}
+                      dataKey="value"
+                      nameKey="name"
+                      cx="50%"
+                      cy="50%"
+                      innerRadius={60}
+                      outerRadius={100}
+                      strokeWidth={5}
+                      paddingAngle={2}
+                    >
+                      <Label
+                        content={({ viewBox }) => {
+                          if (viewBox && "cx" in viewBox && "cy" in viewBox) {
+                            const total = 45 + 120 + 85 + 250
+                            return (
+                              <text
+                                x={viewBox.cx}
+                                y={viewBox.cy}
+                                textAnchor="middle"
+                                dominantBaseline="middle"
+                              >
+                                <tspan
+                                  x={viewBox.cx}
+                                  y={viewBox.cy}
+                                  className="fill-foreground text-3xl font-bold"
+                                >
+                                  {total.toLocaleString()}
+                                </tspan>
+                                <tspan
+                                  x={viewBox.cx}
+                                  y={(viewBox.cy || 0) + 24}
+                                  className="fill-muted-foreground"
+                                >
+                                  Total Orders
+                                </tspan>
+                              </text>
+                            )
+                          }
+                        }}
+                      />
+                    </Pie>
+                    <ChartLegend
+                      content={<ChartLegendContent nameKey="name" />}
+                      className="-translate-y-2 flex-wrap gap-2 [&>*]:basis-1/4 [&>*]:justify-center"
+                    />
+                  </PieChart>
+                </ChartContainer>
+              </CardContent>
+            </Card>
           </div>
         </TabsContent>
 
@@ -905,57 +1225,146 @@ export default function AnalyticsDashboard() {
 
           {/* Vendor Charts */}
           <div className="grid gap-4 grid-cols-1 md:grid-cols-2">
-            <AdvancedChart
-              title="Top Vendors by Revenue"
-              description="Top performing vendors"
-              data={report?.sales?.topVendors?.map(vendor => ({
-                name: vendor.vendorName,
-                value: vendor.revenue,
-                orders: vendor.orders
-              })) || []}
-              type="bar"
-              dataKey="value"
-              showGrid={true}
-            />
-            <AdvancedChart
-              title="Vendor Performance"
-              description="Vendor performance metrics"
-              data={report?.sales?.topVendors?.map(vendor => ({
-                name: vendor.vendorName,
-                value: vendor.revenue,
-                orders: vendor.orders
-              })) || []}
-              type="bar"
-              dataKey="value"
-              showGrid={true}
-            />
+            <Card>
+              <CardHeader>
+                <CardTitle>Top Vendors by Revenue</CardTitle>
+                <CardDescription>Top performing vendors</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <ChartContainer
+                  config={{
+                    value: {
+                      label: "Revenue ($)",
+                      color: "hsl(var(--chart-1))",
+                    },
+                  }}
+                  className="h-[300px]"
+                >
+                  <BarChart data={report?.sales?.topVendors?.map(vendor => ({
+                    name: vendor.vendorName,
+                    value: vendor.revenue,
+                    orders: vendor.orders
+                  })) || []}>
+                    <CartesianGrid strokeDasharray="3 3" className="stroke-muted" />
+                    <XAxis dataKey="name" className="text-xs" />
+                    <YAxis className="text-xs" />
+                    <ChartTooltip content={<ChartTooltipContent />} />
+                    <Bar dataKey="value" fill="var(--color-value)" radius={[4, 4, 0, 0]} />
+                  </BarChart>
+                </ChartContainer>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <CardTitle>Vendor Performance</CardTitle>
+                <CardDescription>Vendor performance metrics</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <ChartContainer
+                  config={{
+                    value: {
+                      label: "Revenue ($)",
+                      color: "hsl(var(--chart-2))",
+                    },
+                  }}
+                  className="h-[300px]"
+                >
+                  <BarChart data={report?.sales?.topVendors?.map(vendor => ({
+                    name: vendor.vendorName,
+                    value: vendor.revenue,
+                    orders: vendor.orders
+                  })) || []}>
+                    <CartesianGrid strokeDasharray="3 3" className="stroke-muted" />
+                    <XAxis dataKey="name" className="text-xs" />
+                    <YAxis className="text-xs" />
+                    <ChartTooltip content={<ChartTooltipContent />} />
+                    <Bar dataKey="value" fill="var(--color-value)" radius={[4, 4, 0, 0]} />
+                  </BarChart>
+                </ChartContainer>
+              </CardContent>
+            </Card>
           </div>
-          
+
           <div className="grid gap-4 grid-cols-1 md:grid-cols-2">
-            <AdvancedChart
-              title="Vendor Growth"
-              description="New vendors over time"
-              data={report?.vendors?.vendorGrowth?.map(growth => ({
-                name: growth.month,
-                value: growth.newVendors,
-                total: growth.activeVendors
-              })) || []}
-              type="line"
-              dataKey="value"
-              showGrid={true}
-            />
-            <AdvancedChart
-              title="Vendor Distribution"
-              description="Vendor count by status"
-              data={[
-                { name: 'Active Vendors', value: report?.vendors?.activeVendors || 0 },
-                { name: 'New Vendors', value: report?.vendors?.newVendors || 0 },
-                { name: 'Total Vendors', value: report?.vendors?.totalVendors || 0 }
-              ]}
-              type="pie"
-              dataKey="value"
-              showGrid={true}
-            />
+            <Card>
+              <CardHeader>
+                <CardTitle>Vendor Growth</CardTitle>
+                <CardDescription>New vendors over time</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <ChartContainer
+                  config={{
+                    value: {
+                      label: "New Vendors",
+                      color: "hsl(var(--chart-3))",
+                    },
+                  }}
+                  className="h-[300px]"
+                >
+                  <LineChart data={report?.vendors?.vendorGrowth?.map(growth => ({
+                    name: growth.month,
+                    value: growth.newVendors,
+                    total: growth.activeVendors
+                  })) || []}>
+                    <CartesianGrid strokeDasharray="3 3" className="stroke-muted" />
+                    <XAxis dataKey="name" className="text-xs" />
+                    <YAxis className="text-xs" />
+                    <ChartTooltip content={<ChartTooltipContent />} />
+                    <Line
+                      type="monotone"
+                      dataKey="value"
+                      stroke="var(--color-value)"
+                      strokeWidth={2}
+                      dot={{ r: 4 }}
+                    />
+                  </LineChart>
+                </ChartContainer>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <CardTitle>Vendor Distribution</CardTitle>
+                <CardDescription>Vendor count by status</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <ChartContainer
+                  config={{
+                    value: {
+                      label: "Vendors",
+                    },
+                  }}
+                  className="h-[300px]"
+                >
+                  <PieChart>
+                    <ChartTooltip content={<ChartTooltipContent />} />
+                    <Pie
+                      data={[
+                        { name: 'Active Vendors', value: report?.vendors?.activeVendors || 0 },
+                        { name: 'New Vendors', value: report?.vendors?.newVendors || 0 },
+                        { name: 'Total Vendors', value: report?.vendors?.totalVendors || 0 }
+                      ]}
+                      dataKey="value"
+                      nameKey="name"
+                      cx="50%"
+                      cy="50%"
+                      outerRadius={80}
+                      label
+                    >
+                      {[
+                        { name: 'Active Vendors', value: report?.vendors?.activeVendors || 0 },
+                        { name: 'New Vendors', value: report?.vendors?.newVendors || 0 },
+                        { name: 'Total Vendors', value: report?.vendors?.totalVendors || 0 }
+                      ].map((_entry, index) => (
+                        <Cell key={`cell-${index}`} fill={`hsl(var(--chart-${(index % 5) + 1}))`} />
+                      ))}
+                    </Pie>
+                    <ChartLegend content={<ChartLegendContent />} />
+                  </PieChart>
+                </ChartContainer>
+              </CardContent>
+            </Card>
           </div>
         </TabsContent>
 
@@ -1024,30 +1433,78 @@ export default function AnalyticsDashboard() {
 
           {/* Product Charts */}
           <div className="grid gap-4 grid-cols-1 md:grid-cols-2">
-            <AdvancedChart
-              title="Top Selling Products"
-              description="Products with highest revenue"
-              data={report?.sales?.topProducts?.map(product => ({
-                name: product.productName,
-                value: product.revenue,
-                quantity: product.quantitySold
-              })) || []}
-              type="bar"
-              dataKey="value"
-              showGrid={true}
-            />
-            <AdvancedChart
-              title="Product Categories"
-              description="Revenue by product category"
-              data={report?.inventory?.categoryPerformance?.map(category => ({
-                name: category.categoryName,
-                value: category.revenue,
-                count: category.productCount
-              })) || []}
-              type="pie"
-              dataKey="value"
-              showGrid={true}
-            />
+            <Card>
+              <CardHeader>
+                <CardTitle>Top Selling Products</CardTitle>
+                <CardDescription>Products with highest revenue</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <ChartContainer
+                  config={{
+                    value: {
+                      label: "Revenue ($)",
+                      color: "hsl(var(--chart-1))",
+                    },
+                  }}
+                  className="h-[300px]"
+                >
+                  <BarChart data={report?.sales?.topProducts?.map(product => ({
+                    name: product.productName,
+                    value: product.revenue,
+                    quantity: product.quantitySold
+                  })) || []}>
+                    <CartesianGrid strokeDasharray="3 3" className="stroke-muted" />
+                    <XAxis dataKey="name" className="text-xs" />
+                    <YAxis className="text-xs" />
+                    <ChartTooltip content={<ChartTooltipContent />} />
+                    <Bar dataKey="value" fill="var(--color-value)" radius={[4, 4, 0, 0]} />
+                  </BarChart>
+                </ChartContainer>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <CardTitle>Product Categories</CardTitle>
+                <CardDescription>Revenue by product category</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <ChartContainer
+                  config={{
+                    value: {
+                      label: "Revenue",
+                    },
+                  }}
+                  className="h-[300px]"
+                >
+                  <PieChart>
+                    <ChartTooltip content={<ChartTooltipContent />} />
+                    <Pie
+                      data={report?.inventory?.categoryPerformance?.map(category => ({
+                        name: category.categoryName,
+                        value: category.revenue,
+                        count: category.productCount
+                      })) || []}
+                      dataKey="value"
+                      nameKey="name"
+                      cx="50%"
+                      cy="50%"
+                      outerRadius={80}
+                      label
+                    >
+                      {(report?.inventory?.categoryPerformance?.map(category => ({
+                        name: category.categoryName,
+                        value: category.revenue,
+                        count: category.productCount
+                      })) || []).map((_entry, index) => (
+                        <Cell key={`cell-${index}`} fill={`hsl(var(--chart-${(index % 5) + 1}))`} />
+                      ))}
+                    </Pie>
+                    <ChartLegend content={<ChartLegendContent />} />
+                  </PieChart>
+                </ChartContainer>
+              </CardContent>
+            </Card>
           </div>
         </TabsContent>
 
@@ -1116,26 +1573,70 @@ export default function AnalyticsDashboard() {
 
           {/* Shipping Charts */}
           <div className="grid gap-4 grid-cols-1 md:grid-cols-2">
-            <AdvancedChart
-              title="Shipping Status Distribution"
-              description="Breakdown of shipments by status"
-              data={[]}
-              type="pie"
-              dataKey="value"
-              showGrid={true}
-            />
-            <AdvancedChart
-              title="Average Delivery Times"
-              description="Delivery performance by carrier"
-              data={report?.shipping?.carrierPerformance?.map(carrier => ({
-                name: carrier.carrier,
-                value: carrier.averageDeliveryTime,
-                shipments: carrier.shipments
-              })) || []}
-              type="bar"
-              dataKey="value"
-              showGrid={true}
-            />
+            <Card>
+              <CardHeader>
+                <CardTitle>Shipping Status Distribution</CardTitle>
+                <CardDescription>Breakdown of shipments by status</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <ChartContainer
+                  config={{
+                    value: {
+                      label: "Shipments",
+                    },
+                  }}
+                  className="h-[300px]"
+                >
+                  <PieChart>
+                    <ChartTooltip content={<ChartTooltipContent />} />
+                    <Pie
+                      data={[]}
+                      dataKey="value"
+                      nameKey="name"
+                      cx="50%"
+                      cy="50%"
+                      outerRadius={80}
+                      label
+                    >
+                      {[].map((_entry, index) => (
+                        <Cell key={`cell-${index}`} fill={`hsl(var(--chart-${(index % 5) + 1}))`} />
+                      ))}
+                    </Pie>
+                    <ChartLegend content={<ChartLegendContent />} />
+                  </PieChart>
+                </ChartContainer>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <CardTitle>Average Delivery Times</CardTitle>
+                <CardDescription>Delivery performance by carrier</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <ChartContainer
+                  config={{
+                    value: {
+                      label: "Delivery Time (days)",
+                      color: "hsl(var(--chart-1))",
+                    },
+                  }}
+                  className="h-[300px]"
+                >
+                  <BarChart data={report?.shipping?.carrierPerformance?.map(carrier => ({
+                    name: carrier.carrier,
+                    value: carrier.averageDeliveryTime,
+                    shipments: carrier.shipments
+                  })) || []}>
+                    <CartesianGrid strokeDasharray="3 3" className="stroke-muted" />
+                    <XAxis dataKey="name" className="text-xs" />
+                    <YAxis className="text-xs" />
+                    <ChartTooltip content={<ChartTooltipContent />} />
+                    <Bar dataKey="value" fill="var(--color-value)" radius={[4, 4, 0, 0]} />
+                  </BarChart>
+                </ChartContainer>
+              </CardContent>
+            </Card>
           </div>
         </TabsContent>
       </Tabs>

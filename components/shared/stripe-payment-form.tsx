@@ -30,7 +30,7 @@ const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!
 function PaymentForm({
   orderId,
   amount,
-  currency = 'php',
+  currency = 'usd',
   onPaymentSuccess,
   onPaymentError,
   disabled = false
@@ -133,12 +133,9 @@ function PaymentForm({
   }
 
   const formatPrice = (price: number) => {
-    if (currency.toLowerCase() === 'php') {
-      return `₱${price.toLocaleString('en-PH')}`
-    }
     return new Intl.NumberFormat('en-US', {
       style: 'currency',
-      currency: currency.toUpperCase()
+      currency: 'USD'
     }).format(price)
   }
 

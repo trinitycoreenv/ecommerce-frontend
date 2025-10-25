@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import { useRouter } from "next/navigation"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
@@ -82,6 +83,15 @@ interface Order {
     amount: number
     type: string
   }>
+  shipments?: Array<{
+    id: string
+    carrier: string
+    trackingNumber: string
+    status: string
+    estimatedDelivery?: string
+    actualDelivery?: string
+    shippingCost: number
+  }>
 }
 
 interface OrderStats {
@@ -96,6 +106,7 @@ interface OrderStats {
 }
 
 export default function OrdersPage() {
+  const router = useRouter()
   const [orders, setOrders] = useState<Order[]>([])
   const [isLoading, setIsLoading] = useState(true)
   const [selectedOrder, setSelectedOrder] = useState<Order | null>(null)
@@ -175,9 +186,9 @@ export default function OrdersPage() {
   }
 
   const formatPrice = (price: number) => {
-    return new Intl.NumberFormat('en-PH', {
+    return new Intl.NumberFormat('en-US', {
       style: 'currency',
-      currency: 'PHP'
+      currency: 'USD'
     }).format(price)
   }
 
@@ -434,7 +445,12 @@ export default function OrdersPage() {
                       <p className="text-sm text-muted-foreground">{statusInfo.description}</p>
                     </div>
                     {statusInfo.showTrack && order.metadata?.trackingNumber && (
-                      <Button variant="outline" size="sm">
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={() => router.push(`/customer/orders/${order.id}/tracking`)}
+                      >
+                        <Truck className="h-4 w-4 mr-2" />
                         Track Package
                       </Button>
                 )}
@@ -485,10 +501,14 @@ export default function OrdersPage() {
                       View Details
                     </Button>
                     {order.status === 'SHIPPED' && order.metadata?.trackingNumber && (
-                  <Button variant="outline" size="sm">
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={() => router.push(`/customer/orders/${order.id}/tracking`)}
+                      >
                         <Truck className="h-4 w-4 mr-2" />
-                    Track Package
-                  </Button>
+                        Track Package
+                      </Button>
                     )}
                   </div>
                 </CardContent>
@@ -554,6 +574,48 @@ export default function OrdersPage() {
                   ))}
                 </div>
               </div>
+
+              {/* Shipment Tracking Info */}
+              {selectedOrder.shipments && selectedOrder.shipments.length > 0 && (
+                <div className="bg-blue-50 dark:bg-blue-950 p-4 rounded-lg border border-blue-200 dark:border-blue-800">
+                  <div className="flex items-center gap-2 mb-3">
+                    <Truck className="h-5 w-5 text-blue-600" />
+                    <h3 className="font-semibold text-blue-900 dark:text-blue-100">Shipment Information</h3>
+                  </div>
+                  <div className="grid gap-3 md:grid-cols-2">
+                    <div>
+                      <p className="text-sm text-muted-foreground">Carrier</p>
+                      <p className="font-medium">{selectedOrder.shipments[0].carrier}</p>
+                    </div>
+                    <div>
+                      <p className="text-sm text-muted-foreground">Tracking Number</p>
+                      <p className="font-mono font-medium">{selectedOrder.shipments[0].trackingNumber || 'Not available'}</p>
+                    </div>
+                    <div>
+                      <p className="text-sm text-muted-foreground">Shipment Status</p>
+                      <Badge className="mt-1">{selectedOrder.shipments[0].status.replace('_', ' ')}</Badge>
+                    </div>
+                    <div>
+                      <p className="text-sm text-muted-foreground">Estimated Delivery</p>
+                      <p className="font-medium">
+                        {selectedOrder.shipments[0].estimatedDelivery
+                          ? new Date(selectedOrder.shipments[0].estimatedDelivery).toLocaleDateString()
+                          : 'TBD'}
+                      </p>
+                    </div>
+                  </div>
+                  {selectedOrder.status === 'SHIPPED' && (
+                    <Button
+                      className="mt-3 w-full"
+                      variant="outline"
+                      onClick={() => router.push(`/customer/orders/${selectedOrder.id}/tracking`)}
+                    >
+                      <MapPin className="h-4 w-4 mr-2" />
+                      Track Package
+                    </Button>
+                  )}
+                </div>
+              )}
 
               {/* Order Summary */}
               <div className="grid gap-4 md:grid-cols-2">

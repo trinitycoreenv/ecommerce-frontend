@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useState, useEffect } from 'react'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
@@ -64,28 +64,42 @@ export default function ShippingDashboard() {
   const fetchData = async () => {
     try {
       setRefreshing(true)
+      const token = localStorage.getItem('auth_token')
+      const headers = {
+        'Authorization': `Bearer ${token}`
+      }
+
       const [statsResponse, shipmentsResponse, providersResponse] = await Promise.all([
-        fetch('/api/shipping/stats'),
-        fetch('/api/shipping/labels'),
-        fetch('/api/shipping/providers')
+        fetch('/api/shipping/stats', { headers }),
+        fetch('/api/shipping/labels', { headers }),
+        fetch('/api/shipping/providers', { headers })
       ])
 
       if (statsResponse.ok) {
         const statsData = await statsResponse.json()
+        console.log('📊 Stats data:', statsData)
         setStats(statsData.data)
+      } else {
+        console.error('❌ Stats response not OK:', statsResponse.status)
       }
 
       if (shipmentsResponse.ok) {
         const shipmentsData = await shipmentsResponse.json()
-        setShipments(shipmentsData.data)
+        console.log('📦 Shipments data:', shipmentsData)
+        setShipments(shipmentsData.data || [])
+      } else {
+        console.error('❌ Shipments response not OK:', shipmentsResponse.status)
       }
 
       if (providersResponse.ok) {
         const providersData = await providersResponse.json()
-        setProviders(providersData.data)
+        console.log('🚚 Providers data:', providersData)
+        setProviders(providersData.data || [])
+      } else {
+        console.error('❌ Providers response not OK:', providersResponse.status)
       }
     } catch (error) {
-      console.error('Error fetching shipping data:', error)
+      console.error('❌ Error fetching shipping data:', error)
     } finally {
       setLoading(false)
       setRefreshing(false)
@@ -259,10 +273,9 @@ export default function ShippingDashboard() {
                   </SelectTrigger>
                   <SelectContent>
                     <SelectItem value="all">All Carriers</SelectItem>
-                    <SelectItem value="LBC">LBC Express</SelectItem>
-                    <SelectItem value="J&T">J&T Express</SelectItem>
-                    <SelectItem value="2GO">2GO Express</SelectItem>
-                    <SelectItem value="Grab">Grab Express</SelectItem>
+                    <SelectItem value="FedEx">FedEx</SelectItem>
+                    <SelectItem value="UPS">UPS</SelectItem>
+                    <SelectItem value="USPS">USPS</SelectItem>
                   </SelectContent>
                 </Select>
                 <Select
@@ -298,7 +311,7 @@ export default function ShippingDashboard() {
                         <div className="text-right">
                           <p className="font-medium">{shipment.carrier}</p>
                           <p className="text-sm text-muted-foreground">
-                            ₱{Number(shipment.shippingCost).toFixed(2)}
+                            ${Number(shipment.shippingCost).toFixed(2)}
                           </p>
                         </div>
                         <Badge className={getStatusColor(shipment.status)}>
@@ -380,7 +393,7 @@ export default function ShippingDashboard() {
                   </div>
                   <div className="flex items-center justify-between">
                     <span className="text-sm font-medium">Total Shipping Cost</span>
-                    <span className="text-sm">₱{stats?.totalShippingCost.toFixed(2) || '0.00'}</span>
+                    <span className="text-sm">${stats?.totalShippingCost.toFixed(2) || '0.00'}</span>
                   </div>
                 </div>
               </CardContent>

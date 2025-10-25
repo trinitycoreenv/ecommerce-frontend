@@ -1,4 +1,4 @@
-"use client"
+﻿"use client"
 
 import { useState, useEffect } from "react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
@@ -202,12 +202,12 @@ export default function SubscriptionSignupPage() {
       if (plan.hasFreeTrial) {
         toast({
           title: "Free Trial Started!",
-          description: `Your ${plan.trialDays}-day free trial for ${plan.name} has begun. You'll be charged ₱${plan.price}/month after the trial ends.`,
+          description: `Your ${plan.trialDays}-day free trial for ${plan.name} has begun. You'll be charged $${plan.price}/month after the trial ends.`,
         })
       } else {
         toast({
           title: "Subscription Active!",
-          description: `Your ${plan.name} subscription is now active. You'll be charged ₱${plan.price}/month.`,
+          description: `Your ${plan.name} subscription is now active. You'll be charged $${plan.price}/month.`,
         })
       }
 
@@ -297,7 +297,7 @@ export default function SubscriptionSignupPage() {
             <CardContent className="space-y-4">
               <div className="flex justify-between items-center">
                 <span className="font-medium text-foreground">{plan.name}</span>
-                <span className="text-2xl font-bold text-foreground">₱{plan.price}/month</span>
+                <span className="text-2xl font-bold text-foreground">${plan.price}/month</span>
               </div>
               
               {plan.hasFreeTrial && (
@@ -307,7 +307,7 @@ export default function SubscriptionSignupPage() {
                     <span className="font-semibold">Free Trial Included</span>
                   </div>
                   <p className="text-green-800 dark:text-green-200 text-sm mt-1 font-medium">
-                    Start with a {plan.trialDays}-day free trial. You'll be charged ₱{plan.price}/month after the trial ends.
+                    Start with a {plan.trialDays}-day free trial. You'll be charged ${plan.price}/month after the trial ends.
                   </p>
                 </div>
               )}

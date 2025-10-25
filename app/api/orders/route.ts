@@ -124,6 +124,21 @@ async function getOrders(request: AuthenticatedRequest) {
               amount: true,
               type: true
             }
+          },
+          shipments: {
+            select: {
+              id: true,
+              carrier: true,
+              trackingNumber: true,
+              status: true,
+              estimatedDelivery: true,
+              actualDelivery: true,
+              shippingCost: true
+            },
+            orderBy: {
+              createdAt: 'desc'
+            },
+            take: 1
           }
         },
         orderBy: { createdAt: 'desc' },
@@ -170,6 +185,7 @@ async function getOrders(request: AuthenticatedRequest) {
       },
       stats: {
         ...statusStats,
+        total: total,
         totalRevenue: totalRevenue._sum.totalPrice || 0
       }
     })

@@ -254,10 +254,10 @@ export function ProductSelector({ product, className = "" }: ProductSelectorProp
 
         {/* Price */}
         <div className="text-3xl font-bold">
-          ₱{getCurrentPrice().toLocaleString('en-PH')}
+          ${getCurrentPrice().toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
           {selectedVariant && selectedVariant.price && selectedVariant.price !== product.price && (
             <span className="text-lg text-muted-foreground line-through ml-2">
-              ₱{Number(product.price).toLocaleString('en-PH')}
+              ${Number(product.price).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
             </span>
           )}
         </div>

@@ -111,19 +111,10 @@ async function getFinancePayouts(request: AuthenticatedRequest) {
       })
     ])
 
-    // Transform payouts data for frontend
-    const transformedPayouts = payouts.map(payout => ({
-      id: payout.id,
-      vendor: payout.vendor?.businessName || 'Unknown Vendor',
-      amount: Number(payout.amount),
-      period: `${payout.createdAt.toISOString().split('T')[0]} - ${payout.scheduledDate ? payout.scheduledDate.toISOString().split('T')[0] : 'N/A'}`,
-      status: payout.status.toLowerCase(),
-      dueDate: payout.scheduledDate ? payout.scheduledDate.toISOString().split('T')[0] : 'N/A'
-    }))
-
+    // Return payouts data in the same format as Admin API for consistency
     return NextResponse.json({
       success: true,
-      data: transformedPayouts,
+      data: payouts,
       stats: {
         PENDING: {
           count: pendingPayouts._count.id,
